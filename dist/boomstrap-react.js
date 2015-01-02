@@ -31,7 +31,7 @@ module.exports = React.createClass({
     var fauxboxClasses = {
       'fauxbox': true,
       'fauxbox-inline': !!this.props.inline
-    };
+    }
     if (this.props.boxClass) {
       fauxboxClasses[this.props.boxClass] = true;
     }

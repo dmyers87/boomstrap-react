@@ -12,22 +12,11 @@
     "dist/js/boomstrap-react.js",
     "src/**"
   ],
-  "scripts": {
-    "build": "browserify --exclude react/addons --standalone BoomStrapReact src/App.js -o dist/boomstrap-react.js"
-  },
-  "browserify": {
-    "transform": [
-      [
-        "reactify",
-        {
-          "es6": true
-        }
-      ]
-    ]
-  },
   "devDependencies": {
     "browserify": "^8.0.3",
-    "reactify": "^0.17.1"
+    "gulp": "^3.8.10",
+    "reactify": "^0.17.1",
+    "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
     "react": "^0.12.2"
