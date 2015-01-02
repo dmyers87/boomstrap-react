@@ -12,7 +12,8 @@ gulp.task('default', function() {
 
   var b = browserify({ standalone: 'BoomStrapReact'});
   b.exclude('react/addons');
-
+  b.exclude('lodash');
+  
   b.transform(reactifyES6); // use the reactify transform
   b.add('./src/App.js');
 

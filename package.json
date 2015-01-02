@@ -19,6 +19,7 @@
     "vinyl-source-stream": "^1.0.0"
   },
   "dependencies": {
+    "lodash": "^2.4.1",
     "react": "^0.12.2",
     "react-bootstrap": "^0.13.0"
   }
