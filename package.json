@@ -1,0 +1,21 @@
+{
+  "name": "boomstrap-react",
+  "description": "React Components and Mixins for the Boomstrap library",
+  "version": "1.9.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BoomTownROI/boomstrap-react"
+  },
+  "main": "src/App.js",
+  "files": [
+    "README.md",
+    "dist/js/boomstrap-react.js",
+    "src/**"
+  ],
+  "scripts": {
+    "build": "browserify --exclude react/addons --standalone BoomStrapReact src/App.js -o dist/boomstrap-react.js"
+  },
+  "browserify": {
+    "transform": "reactify"
+  }
+}
