@@ -16,6 +16,20 @@
     "build": "browserify --exclude react/addons --standalone BoomStrapReact src/App.js -o dist/boomstrap-react.js"
   },
   "browserify": {
-    "transform": "reactify"
+    "transform": [
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "reactify": "^0.17.1"
+  },
+  "dependencies": {
+    "react": "^0.12.2"
   }
 }
