@@ -6,15 +6,17 @@
     "type": "git",
     "url": "https://github.com/BoomTownROI/boomstrap-react"
   },
-  "main": "src/App.js",
+  "main": "dist/App.js",
   "files": [
     "README.md",
     "dist/js/boomstrap-react.js",
     "src/**"
   ],
   "devDependencies": {
+    "6to5ify": "^3.1.0",
     "browserify": "^8.0.3",
     "gulp": "^3.8.10",
+    "gulp-6to5": "^2.0.0",
     "reactify": "^0.17.1",
     "vinyl-source-stream": "^1.0.0"
   },
