@@ -7,8 +7,8 @@ module.exports = React.createClass({
   displayName: 'Fauxbox',
 
   propTypes: {
-    boxID:      React.PropTypes.string,
-    boxClass:   React.PropTypes.string,
+    id:         React.PropTypes.string.isRequired,
+    className:  React.PropTypes.string,
     labelClass: React.PropTypes.string,
     checked:    React.PropTypes.bool.isRequired,
     onClick:    React.PropTypes.func,
@@ -21,8 +21,8 @@ module.exports = React.createClass({
       'fauxbox': true,
       'fauxbox-inline': !!this.props.inline
     };
-    if (this.props.boxClass) {
-      fauxboxClasses[this.props.boxClass] = true;
+    if (this.props.className) {
+      fauxboxClasses[this.props.className] = true;
     }
 
     var fauxboxClass = cx(fauxboxClasses);
@@ -30,13 +30,13 @@ module.exports = React.createClass({
 
     return (
       <div className={fauxboxClass}>
-      <input
-        type='checkbox'
-        id={this.props.boxID}
-        checked={this.props.checked}
-        readOnly={true}
-        onClick={this.props.onClick} />
-        <label className={labelClass} htmlFor={this.props.boxID}>{this.props.label}</label>
+        <input
+          type='checkbox'
+          id={this.props.id}
+          checked={this.props.checked}
+          readOnly={true}
+          onClick={this.props.onClick} />
+        <label className={labelClass} htmlFor={this.props.id}>{this.props.label}</label>
       </div>
     );
   }
