@@ -8,4 +8,23 @@ React Boomstrap can be used as a global via `window.BoomstrapReact`, but we much
 
 ### Global Installation and Usage
 
-Download the file located at `dist/boomstrap-react.js`
+Download the file located at `dist/boomstrap-react.js` and include it in your browser `<script src="path/to/boomstrap-react.js"></script>`.  BoomstrapReact will be available on the window.
+
+### CommonJS Installation and Usage
+
+To install Boomstrap React
+
+`npm install boomstrap-react --save`
+
+Using Boomstrap React is as simple as
+
+```js
+var BoomstrapReact = require('boomstrap-react');
+var Fauxbox = BoomstrapReact.Components.Fauxbox;
+```
+
+But individual components can be required also:
+
+```js
+var Fauxbox = require('boomstrap-react/Components/Fauxbox.jsx');
+```
