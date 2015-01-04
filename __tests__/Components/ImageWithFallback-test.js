@@ -1,4 +1,4 @@
-// __tests__/CheckboxWithLabel-test.js
+// __tests__/ImageWithFallback-test.js
 'use strict';
 
 jest.dontMock('../../src/Components/ImageWithFallback.jsx');
