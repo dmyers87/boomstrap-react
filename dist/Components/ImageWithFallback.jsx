@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-var React = require('react/addons');
-var _ = require('lodash');
+var React = require("react/addons");
+var _ = require("lodash");
 
 module.exports = React.createClass({
-  displayName: 'Image with Fallback',
+  displayName: "Image with Fallback",
 
   propTypes: {
     src: React.PropTypes.string.isRequired,
@@ -32,7 +32,7 @@ module.exports = React.createClass({
 
     var src = this.state.src || this.props.src;
 
-    return React.createElement('img', React.__spread({
+    return React.createElement("img", React.__spread({
       src: src
     }, props, {
       onError: this._onError

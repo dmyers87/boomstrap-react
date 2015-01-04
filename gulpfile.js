@@ -15,11 +15,16 @@ gulp.task('compileScripts', function() {
   var source     = require('vinyl-source-stream');
   //var uglify     = require('uglifyify');
 
+  var globalShim = require('browserify-global-shim').configure({
+    'react/addons': 'React'
+  });
+
   var b = browserify({ standalone: 'BoomstrapReact'});
-  b.exclude('react/addons');
-  b.exclude('lodash');
+  //b.exclude('react/addons');
+  //b.exclude('lodash');
 
   b.transform(to5ify); // use the 6to5ify transform
+  b.transform(globalShim);
 
   // TODO: Implement uglifyify
   //b.transform(uglify);
@@ -30,4 +35,16 @@ gulp.task('compileScripts', function() {
   .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('docs', function() {
+  gulp.src('docs/**')
+    .pipe(gulp.dest('www/docs/'));
+
+  gulp.src('index.html')
+    .pipe(gulp.dest('www/'));
+
+  return gulp.src('dist/boomstrap-react.js')
+    .pipe(gulp.dest('www/'));
+});
+
 gulp.task('default', ['transformScripts', 'compileScripts']);
+gulp.task('website', ['docs']);
