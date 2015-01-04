@@ -13,10 +13,12 @@
     "src/**"
   ],
   "devDependencies": {
+    "6to5-jest": "^1.0.0",
     "6to5ify": "^3.1.0",
     "browserify": "^8.0.3",
     "gulp": "^3.8.10",
     "gulp-6to5": "^2.0.0",
+    "jest-cli": "^0.2.1",
     "uglifyify": "^2.6.0",
     "vinyl-source-stream": "^1.0.0"
   },
@@ -24,5 +26,14 @@
     "lodash": "^2.4.1",
     "react": "^0.12.2",
     "react-bootstrap": "^0.13.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/6to5-jest",
+    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"],
+    "testFileExtensions": ["es6", "js"],
+    "moduleFileExtensions": ["js", "json", "es6"]
   }
 }
