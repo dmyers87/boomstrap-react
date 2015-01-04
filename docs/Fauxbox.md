@@ -12,7 +12,7 @@
   checked={true}
   onClick={this._handleOnClick}
   inline={false}
-  label='Box Test'
+  label='Box Test' />
 ```
 ---
 
