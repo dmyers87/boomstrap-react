@@ -1,7 +1,7 @@
 {
   "name": "boomstrap-react",
   "description": "React Components and Mixins for the Boomstrap library",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/BoomTownROI/boomstrap-react"
@@ -25,8 +25,10 @@
   },
   "dependencies": {
     "lodash": "^2.4.1",
-    "react": "^0.12.2",
     "react-bootstrap": "^0.13.0"
+  },
+  "peerDependencies": {
+    "react": "^0.12.2"
   },
   "scripts": {
     "test": "jest"
