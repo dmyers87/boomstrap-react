@@ -1,4 +1,4 @@
-## Boomstrap React (Components and Mixins for Boomstrap)
+## Boomstrap React (Components and Mixins for Boomstrap) ![Build Status](https://travis-ci.org/BoomTownROI/boomstrap-react.svg?branch=master)
 
 Boomstrap React is a library of components we use to build applications with our Pattern Library, Boomstrap.
 
