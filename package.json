@@ -9,8 +9,8 @@
   "main": "dist/App.js",
   "files": [
     "README.md",
-    "dist/js/boomstrap-react.js",
-    "src/**"
+    "dist/boomstrap-react.js",
+    "dist/**"
   ],
   "devDependencies": {
     "6to5-jest": "^1.0.0",
