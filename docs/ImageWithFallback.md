@@ -2,7 +2,7 @@
 
 > Because the internet lies to us about images, sometimes we need a backup for img tags if src does not exist.
 
-### Example
+### Usage
 
 ```html
 <ImageWithFallback
