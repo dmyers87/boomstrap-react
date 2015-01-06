@@ -2673,9 +2673,12 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    return React.createElement("div", {
+    return React.createElement("div", null, React.createElement("div", {
       dangerouslySetInnerHTML: { __html: this.state.docs }
-    });
+    }), React.createElement("div", null, React.createElement("h3", null, "In Action"), React.createElement(ImageWithFallback, {
+      src: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png",
+      fallbackSrc: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png"
+    })));
   }
 });
 
