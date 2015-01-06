@@ -39,7 +39,7 @@ gulp.task('docs', function() {
   gulp.src('docs/**')
     .pipe(gulp.dest('www/docs/'));
 
-  gulp.src('index.html')
+  gulp.src(['index.html', 'react-boomstrap.svg'])
     .pipe(gulp.dest('www/'));
 
   return gulp.src('dist/boomstrap-react.js')
