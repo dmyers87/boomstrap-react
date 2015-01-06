@@ -1,11 +1,14 @@
 'use strict';
 
 var React = require('react/addons');
-var ImageWithFallback = require('../src/Components/ImageWithFallback.jsx');
 var request = require('superagent');
 var marked = require('marked');
 
 module.exports = React.createClass({
+  propTypes: {
+    doc: React.PropTypes.string.isRequired
+  },
+
   getInitialState() {
     return {
       docs: ''
@@ -13,8 +16,7 @@ module.exports = React.createClass({
   },
 
   componentDidMount() {
-    request.get('docs/ImageWithFallback.md').end((res) => {
-      console.log(res.text);
+    request.get(this.props.doc).end((res) => {
       this.setState({
         docs: marked(res.text)
       });
@@ -27,9 +29,7 @@ module.exports = React.createClass({
         <div dangerouslySetInnerHTML={{__html: this.state.docs}} />
         <div>
           <h3>In Action</h3>
-          <ImageWithFallback
-            src='http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png'
-            fallbackSrc='http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png' />
+          {this.props.children}
         </div>
       </div>
     );
