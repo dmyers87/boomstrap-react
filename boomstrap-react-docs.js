@@ -2,19 +2,28 @@
 "use strict";
 
 var React = (window.React);
+var DocWithExample = require("./DocWithExample.jsx");
 
-var ImageWithFallbackDocs = require("./ImageWithFallbackDocs.jsx");
+// Components
+
+var ImageWithFallback = require("../src/Components/ImageWithFallback.jsx");
+
 
 var App = React.createClass({
   displayName: "App",
   render: function () {
-    return React.createElement("div", null, React.createElement(ImageWithFallbackDocs, null));
+    return React.createElement("div", null, React.createElement(DocWithExample, {
+      doc: "docs/ImageWithFallback.md"
+    }, React.createElement(ImageWithFallback, {
+      src: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png",
+      fallbackSrc: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png"
+    })));
   }
 });
 
 React.render(React.createElement(App, null), document.getElementById("components"));
 
-},{"./ImageWithFallbackDocs.jsx":8}],2:[function(require,module,exports){
+},{"../src/Components/ImageWithFallback.jsx":7,"./DocWithExample.jsx":8}],2:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -9394,12 +9403,15 @@ module.exports = React.createClass({
 "use strict";
 
 var React = (window.React);
-var ImageWithFallback = require("../src/Components/ImageWithFallback.jsx");
 var request = require("superagent");
 var marked = require("marked");
 
 module.exports = React.createClass({
   displayName: "exports",
+  propTypes: {
+    doc: React.PropTypes.string.isRequired
+  },
+
   getInitialState: function () {
     return {
       docs: ""
@@ -9408,8 +9420,7 @@ module.exports = React.createClass({
 
   componentDidMount: function () {
     var _this = this;
-    request.get("docs/ImageWithFallback.md").end(function (res) {
-      console.log(res.text);
+    request.get(this.props.doc).end(function (res) {
       _this.setState({
         docs: marked(res.text)
       });
@@ -9419,12 +9430,9 @@ module.exports = React.createClass({
   render: function () {
     return React.createElement("div", null, React.createElement("div", {
       dangerouslySetInnerHTML: { __html: this.state.docs }
-    }), React.createElement("div", null, React.createElement("h3", null, "In Action"), React.createElement(ImageWithFallback, {
-      src: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png",
-      fallbackSrc: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png"
-    })));
+    }), React.createElement("div", null, React.createElement("h3", null, "In Action"), this.props.children));
   }
 });
 
-},{"../src/Components/ImageWithFallback.jsx":7,"marked":3,"superagent":4}]},{},[1])(1)
+},{"marked":3,"superagent":4}]},{},[1])(1)
 });
