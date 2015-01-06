@@ -1,6 +1,7 @@
 'use strict';
 
-var gulp   = require('gulp');
+var gulp    = require('gulp');
+var ghpages = require('gulp-gh-pages');
 
 gulp.task('transformScripts', function() {
   var to5    = require('gulp-6to5');
@@ -46,5 +47,11 @@ gulp.task('docs', function() {
     .pipe(gulp.dest('www/'));
 });
 
+// Website
+gulp.task('websiteDeploy', ['docs'], function () {
+  return gulp.src('./www/**/*')
+    .pipe(ghpages());
+});
+
 gulp.task('default', ['transformScripts', 'compileScripts']);
-gulp.task('website', ['docs']);
+gulp.task('website', ['websiteDeploy']);
