@@ -3,14 +3,7 @@
 var gulp    = require('gulp');
 var ghpages = require('gulp-gh-pages');
 
-gulp.task('transformScripts', function() {
-  var to5    = require('gulp-6to5');
-  return gulp.src('src/**')
-    .pipe(to5())
-    .pipe(gulp.dest('dist/'));
-});
-
-gulp.task('compileScripts', function() {
+function compileScriptsFromEntryPoint(entry, fileName, destination) {
   var browserify = require('browserify');
   var to5ify     = require('6to5ify');
   var source     = require('vinyl-source-stream');
@@ -29,14 +22,29 @@ gulp.task('compileScripts', function() {
 
   // TODO: Implement uglifyify
   //b.transform(uglify);
-  b.add('./src/App.js');
+  b.add(entry);
 
   return b.bundle()
-  .pipe(source('boomstrap-react.js'))
-  .pipe(gulp.dest('dist/'));
+  .pipe(source(fileName))
+  .pipe(gulp.dest(destination));
+}
+
+gulp.task('transformScripts', function() {
+  var to5    = require('gulp-6to5');
+  return gulp.src('src/**')
+    .pipe(to5())
+    .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('docs', function() {
+gulp.task('compileScripts', function() {
+  return compileScriptsFromEntryPoint('./src/App.js', 'boomstrap-react.js', 'dist/');
+});
+
+gulp.task('compileDocsScripts', function() {
+  return compileScriptsFromEntryPoint('./website/App.jsx', 'boomstrap-react-docs.js', 'www/');
+});
+
+gulp.task('docs', ['compileDocsScripts'], function() {
   gulp.src('docs/**')
     .pipe(gulp.dest('www/docs/'));
 
