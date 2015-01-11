@@ -36,8 +36,8 @@ gulp.task('transformScripts', function() {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('compileScripts', function() {
-  return compileScriptsFromEntryPoint('./src/App.js', 'boomstrap-react.js', 'dist/');
+gulp.task('compileScripts', ['transformScripts'], function() {
+  return compileScriptsFromEntryPoint('./dist/App.js', 'boomstrap-react.js', 'dist/');
 });
 
 gulp.task('compileDocsScripts', function() {
