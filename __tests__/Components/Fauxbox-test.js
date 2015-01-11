@@ -57,7 +57,6 @@ describe('Fauxbox', function() {
       <Fauxbox id='test-fauxbox' checked={true} inline={true} onClick={onClickEvent} />
     );
 
-    // Verify that it's Off by default
     var input = TestUtils.findRenderedDOMComponentWithTag(
       fauxbox, 'input'
     );
