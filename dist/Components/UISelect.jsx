@@ -5,31 +5,36 @@ var cx = React.addons.classSet;
 
 module.exports = React.createClass({
   displayName: "UISelect",
-
   propTypes: {
-    value: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
-    valueTranslation: React.PropTypes.string,
+    payload: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
+    text: React.PropTypes.string,
     placeholder: React.PropTypes.string,
     items: React.PropTypes.arrayOf(React.PropTypes.shape({
-      value: React.PropTypes.any,
-      valueTranslation: React.PropTypes.any
+      payload: React.PropTypes.any,
+      text: React.PropTypes.any
     })),
     buttonClass: React.PropTypes.string,
     inputClass: React.PropTypes.string,
+    includeSearchInValues: React.PropTypes.bool,
+    translateSearchValue: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    disabled: React.PropTypes.bool
+    disabled: React.PropTypes.bool,
+    alignRight: React.PropTypes.bool
   },
 
   getDefaultProps: function () {
     return {
-      disabled: false
+      disabled: false,
+      alignRight: false
     };
   },
 
   getInitialState: function () {
     return {
       open: false,
-      activeIndex: 0
+      search: null,
+      activeIndex: 0,
+      allowBlurEvent: false
     };
   },
 
@@ -37,7 +42,8 @@ module.exports = React.createClass({
     var _this = this;
     if (!this.props.disabled) {
       this.setState({
-        open: true
+        open: true,
+        allowBlurEvent: true
       }, function () {
         _this.refs.searchInput.getDOMNode().focus();
       });
@@ -58,14 +64,32 @@ module.exports = React.createClass({
   },
 
   getFilteredItems: function () {
-    var _this2 = this;
-    return this.props.items.filter(function (item) {
-      return !_this2.state.search || item.valueTranslation.indexOf(_this2.state.search) !== -1;
-    });
+    var items = this.props.items && this.props.items.slice();
+    var searchText;
+    if (items) {
+      if (this.props.includeSearchInValues && this.state.search) {
+        items.unshift({
+          payload: this.state.search,
+          text: this.props.translateSearchValue(this.state.search)
+        });
+      }
+
+      if (!this.state.search) {
+        return items;
+      }
+
+      searchText = this.state.search.toLowerCase();
+
+      return items.filter(function (item) {
+        return item.text.toLowerCase().indexOf(searchText) !== -1;
+      });
+    }
+
+    return [];
   },
 
   select: function (index) {
-    var _this3 = this;
+    var _this2 = this;
     var selectedItem = this.getFilteredItems()[index];
     this.setState({
       search: "",
@@ -73,7 +97,7 @@ module.exports = React.createClass({
       activeIndex: 0,
       allowBlurEvent: true
     }, function () {
-      _this3.props.onChange(selectedItem);
+      _this2.props.onChange(selectedItem);
     });
   },
 
@@ -120,15 +144,15 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    var _this4 = this;
+    var _this3 = this;
     var containerClass = cx({
       "ui-select-bootstrap dropdown": true,
       open: this.state.open
     });
 
-    var showElement, elementClass;
-    var isEmpty = !this.props.valueTranslation;
-
+    var showElement;
+    var isEmpty = !this.props.text;
+    var elementClass;
     if (!this.state.open) {
       elementClass = "btn btn-default form-control ui-select-match " + (this.props.buttonClass || "");
       showElement = React.createElement("button", {
@@ -140,7 +164,7 @@ module.exports = React.createClass({
         placeholder: this.props.placeholder
       }, isEmpty ? React.createElement("span", {
         className: "text-muted"
-      }, this.props.placeholder) : React.createElement("span", null, React.createElement("span", null, this.props.valueTranslation)), React.createElement("span", {
+      }, this.props.placeholder) : React.createElement("span", null, React.createElement("span", null, this.props.text)), React.createElement("span", {
         className: "caret"
       }));
     } else {
@@ -162,7 +186,7 @@ module.exports = React.createClass({
     var dropdownElements = this.getFilteredItems().map(function (item, index) {
       var rowClass = cx({
         "ui-select-choices-row": true,
-        active: _this4.state.activeIndex === index
+        active: _this3.state.activeIndex === index
       });
 
       return React.createElement("li", {
@@ -170,18 +194,23 @@ module.exports = React.createClass({
         key: index
       }, React.createElement("div", {
         className: rowClass,
-        onMouseEnter: _this4.setActiveItem.bind(_this4, index),
-        onClick: _this4.select.bind(_this4, index)
+        onMouseEnter: _this3.setActiveItem.bind(_this3, index),
+        onClick: _this3.select.bind(_this3, index)
       }, React.createElement("a", {
         href: "javascript:void(0)",
         className: "ui-select-choices-row-inner"
-      }, React.createElement("div", null, item.valueTranslation))));
+      }, React.createElement("div", null, item.text))));
+    });
+
+    var dropdownMenuClass = cx({
+      "ui-select-choices ui-select-choices-content dropdown-menu": true,
+      "dropdown-menu-right": this.props.alignRight
     });
 
     return React.createElement("div", {
       className: containerClass
     }, showElement, this.state.open && dropdownElements.length ? React.createElement("ul", {
-      className: "ui-select-choices ui-select-choices-content dropdown-menu",
+      className: dropdownMenuClass,
       onMouseEnter: this.preventBlurEvent,
       onMouseLeave: this.allowBlurEvent,
       role: "menu",
