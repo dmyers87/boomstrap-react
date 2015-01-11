@@ -5,43 +5,49 @@ var cx    = React.addons.classSet;
 
 module.exports = React.createClass({
   displayName: 'UISelect',
-
   propTypes: {
-    value: React.PropTypes.oneOfType([
+    payload: React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number
     ]),
-    valueTranslation: React.PropTypes.string,
+    text: React.PropTypes.string,
     placeholder: React.PropTypes.string,
     items: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        value: React.PropTypes.any,
-        valueTranslation: React.PropTypes.any
+        payload: React.PropTypes.any,
+        text: React.PropTypes.any
       })
     ),
     buttonClass: React.PropTypes.string,
     inputClass: React.PropTypes.string,
+    includeSearchInValues: React.PropTypes.bool,
+    translateSearchValue: React.PropTypes.func,
     onChange: React.PropTypes.func,
-    disabled: React.PropTypes.bool
+    disabled: React.PropTypes.bool,
+    alignRight: React.PropTypes.bool
   },
 
   getDefaultProps() {
     return {
-      disabled: false
+      disabled: false,
+      alignRight: false
     };
   },
 
   getInitialState() {
     return {
       open: false,
-      activeIndex: 0
+      search: null,
+      activeIndex: 0,
+      allowBlurEvent: false
     };
   },
 
   activate() {
     if (!this.props.disabled) {
       this.setState({
-        open: true
+        open: true,
+        allowBlurEvent: true
       }, () => {
         this.refs.searchInput.getDOMNode().focus();
       });
@@ -62,9 +68,28 @@ module.exports = React.createClass({
   },
 
   getFilteredItems() {
-    return this.props.items.filter((item) => {
-      return !this.state.search || item.valueTranslation.indexOf(this.state.search) !== -1;
-    });
+    var items = this.props.items && this.props.items.slice();
+    var searchText;
+    if (items) {
+      if (this.props.includeSearchInValues && this.state.search) {
+        items.unshift({
+          payload: this.state.search,
+          text: this.props.translateSearchValue(this.state.search)
+        });
+      }
+
+      if (!this.state.search) {
+        return items;
+      }
+
+      searchText = this.state.search.toLowerCase();
+
+      return items.filter((item) => {
+        return item.text.toLowerCase().indexOf(searchText) !== -1;
+      });
+    }
+
+    return [];
   },
 
   select(index) {
@@ -128,9 +153,9 @@ module.exports = React.createClass({
       'open': this.state.open
     });
 
-    var showElement, elementClass;
-    var isEmpty = !this.props.valueTranslation;
-
+    var showElement;
+    var isEmpty = !this.props.text;
+    var elementClass;
     if (!this.state.open) {
       elementClass = 'btn btn-default form-control ui-select-match ' + (this.props.buttonClass || '');
       showElement = (
@@ -140,8 +165,8 @@ module.exports = React.createClass({
           onClick={this.activate} placeholder={this.props.placeholder}>
           { isEmpty ?
             (<span className='text-muted'>{this.props.placeholder}</span>) :
-            (<span><span>{this.props.valueTranslation}</span></span>) }
-          <span className='caret'></span>
+            (<span><span>{this.props.text}</span></span>) }
+            <span className='caret'></span>
         </button>
       );
     } else {
@@ -170,11 +195,16 @@ module.exports = React.createClass({
             onMouseEnter={this.setActiveItem.bind(this, index)}
             onClick={this.select.bind(this, index)}>
             <a href='javascript:void(0)' className='ui-select-choices-row-inner'>
-              <div>{item.valueTranslation}</div>
+              <div>{item.text}</div>
             </a>
           </div>
         </li>
       );
+    });
+
+    var dropdownMenuClass = cx({
+      'ui-select-choices ui-select-choices-content dropdown-menu': true,
+      'dropdown-menu-right': this.props.alignRight
     });
 
     return (
@@ -182,11 +212,11 @@ module.exports = React.createClass({
         {showElement}
         {this.state.open && dropdownElements.length ?
           <ul
-          className='ui-select-choices ui-select-choices-content dropdown-menu'
-          onMouseEnter={this.preventBlurEvent}
-          onMouseLeave={this.allowBlurEvent}
-          role='menu' aria-labelledby='dLabel'>
-          {dropdownElements}
+            className={dropdownMenuClass}
+            onMouseEnter={this.preventBlurEvent}
+            onMouseLeave={this.allowBlurEvent}
+            role='menu' aria-labelledby='dLabel'>
+            {dropdownElements}
           </ul>
           : null
         }
