@@ -3,7 +3,7 @@
 var React = require("react/addons");
 var cx = React.addons.classSet;
 
-var Fauxbox = require("boomstrap-react").Components.Fauxbox;
+var Fauxbox = require("./Fauxbox.jsx");
 
 module.exports = React.createClass({
   displayName: "UI MultiSelect",
