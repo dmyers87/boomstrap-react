@@ -23,14 +23,14 @@ module.exports = React.createClass({
 
   _onPageBack() {
     if (this.props.currentPage > 1) {
-      this.onPage(this.props.currentPage - 1);
+      this.props.onPage(this.props.currentPage - 1);
     }
   },
 
   _onPageFwd() {
     var maxPage = this._getMaxPage();
     if (this.props.currentPage !== maxPage) {
-      this.onPage(this.props.currentPage + 1);
+      this.props.onPage(this.props.currentPage + 1);
     }
   },
 
