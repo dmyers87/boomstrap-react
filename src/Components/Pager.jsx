@@ -14,7 +14,7 @@ module.exports = React.createClass({
   },
 
   _getMaxPage() {
-    var maxPage = this.props.totalItems / this.props.itemsPerPage;
+    var maxPage = Math.floor(this.props.totalItems / this.props.itemsPerPage);
     if (this.props.totalItems % this.props.itemsPerPage) {
       maxPage++;
     }
