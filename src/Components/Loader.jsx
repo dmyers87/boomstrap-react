@@ -7,7 +7,7 @@ module.exports = React.createClass({
 
   render() {
     return (
-      <div className='loader'>
+      <div className='loader' {...this.props}>
         <span className='loader-pulse'/>
         <span className='loader-pulse'/>
         <span className='loader-pulse'/>
