@@ -2,6 +2,7 @@
 
 var gulp    = require('gulp');
 var ghpages = require('gulp-gh-pages');
+var connect = require('gulp-connect');
 
 function compileScriptsFromEntryPoint(entry, fileName, destination) {
   var browserify = require('browserify');
@@ -62,4 +63,21 @@ gulp.task('websiteDeploy', ['docs'], function () {
 });
 
 gulp.task('default', ['transformScripts', 'compileScripts']);
+
+gulp.task('server', ['docs'], function() {
+  connect.server({
+    hostname: 'localhost',
+    port: 9000,
+    root: 'www',
+    keepalive: false,
+    livereload: true
+  });
+
+  // Watch Javascript Files
+  gulp.watch([
+    'website/**/*.jsx'
+  ], ['docs']);
+
+});
+
 gulp.task('website', ['websiteDeploy']);
