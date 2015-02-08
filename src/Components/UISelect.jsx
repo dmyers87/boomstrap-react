@@ -56,15 +56,35 @@ module.exports = React.createClass({
 
   updateSearch(e) {
     this.setState({
-      search: e.target.value || '',
-      activeIndex: 0
+      search: e.target.value || ''
+    }, () => {
+      this.setActiveItem(0);
     });
   },
 
   setActiveItem(index) {
     this.setState({
       activeIndex: index
+    }, () => {
+      this._ensureHighlightVisible();
     });
+  },
+
+  _ensureHighlightVisible() {
+    var containerRef = this.refs.dropdownMenu;
+    var highlightedRef = this.refs['dropdownMenuItem_' + this.state.activeIndex];
+    if (containerRef && highlightedRef) {
+      var container   = containerRef.getDOMNode();
+      var highlighted = highlightedRef.getDOMNode();
+      var posY   = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
+      var height = container.offsetHeight;
+
+      if (posY > height) {
+        container.scrollTop += posY - height;
+      } else if (posY < highlighted.clientHeight) {
+        container.scrollTop -= highlighted.clientHeight - posY;
+      }
+    }
   },
 
   getFilteredItems() {
@@ -97,9 +117,9 @@ module.exports = React.createClass({
     this.setState({
       search: '',
       open: false,
-      activeIndex: 0,
       allowBlurEvent: true
     }, () => {
+      this.setActiveItem(0);
       this.props.onChange(selectedItem);
     });
   },
@@ -189,7 +209,7 @@ module.exports = React.createClass({
       });
 
       return (
-        <li className='ui-select-choices-group' key={index}>
+        <li className='ui-select-choices-group' key={index} ref={'dropdownMenuItem_' + index}>
           <div
             className={rowClass}
             onMouseEnter={this.setActiveItem.bind(this, index)}
@@ -212,6 +232,7 @@ module.exports = React.createClass({
         {showElement}
         {this.state.open && dropdownElements.length ?
           <ul
+            ref='dropdownMenu'
             className={dropdownMenuClass}
             onMouseEnter={this.preventBlurEvent}
             onMouseLeave={this.allowBlurEvent}

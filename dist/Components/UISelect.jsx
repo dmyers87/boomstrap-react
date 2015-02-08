@@ -51,16 +51,38 @@ module.exports = React.createClass({
   },
 
   updateSearch: function (e) {
+    var _this2 = this;
     this.setState({
-      search: e.target.value || "",
-      activeIndex: 0
+      search: e.target.value || ""
+    }, function () {
+      _this2.setActiveItem(0);
     });
   },
 
   setActiveItem: function (index) {
+    var _this3 = this;
     this.setState({
       activeIndex: index
+    }, function () {
+      _this3._ensureHighlightVisible();
     });
+  },
+
+  _ensureHighlightVisible: function () {
+    var containerRef = this.refs.dropdownMenu;
+    var highlightedRef = this.refs["dropdownMenuItem_" + this.state.activeIndex];
+    if (containerRef && highlightedRef) {
+      var container = containerRef.getDOMNode();
+      var highlighted = highlightedRef.getDOMNode();
+      var posY = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
+      var height = container.offsetHeight;
+
+      if (posY > height) {
+        container.scrollTop += posY - height;
+      } else if (posY < highlighted.clientHeight) {
+        container.scrollTop -= highlighted.clientHeight - posY;
+      }
+    }
   },
 
   getFilteredItems: function () {
@@ -89,15 +111,15 @@ module.exports = React.createClass({
   },
 
   select: function (index) {
-    var _this2 = this;
+    var _this4 = this;
     var selectedItem = this.getFilteredItems()[index];
     this.setState({
       search: "",
       open: false,
-      activeIndex: 0,
       allowBlurEvent: true
     }, function () {
-      _this2.props.onChange(selectedItem);
+      _this4.setActiveItem(0);
+      _this4.props.onChange(selectedItem);
     });
   },
 
@@ -144,7 +166,7 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    var _this3 = this;
+    var _this5 = this;
     var containerClass = cx({
       "ui-select-bootstrap dropdown": true,
       open: this.state.open
@@ -186,16 +208,17 @@ module.exports = React.createClass({
     var dropdownElements = this.getFilteredItems().map(function (item, index) {
       var rowClass = cx({
         "ui-select-choices-row": true,
-        active: _this3.state.activeIndex === index
+        active: _this5.state.activeIndex === index
       });
 
       return React.createElement("li", {
         className: "ui-select-choices-group",
-        key: index
+        key: index,
+        ref: "dropdownMenuItem_" + index
       }, React.createElement("div", {
         className: rowClass,
-        onMouseEnter: _this3.setActiveItem.bind(_this3, index),
-        onClick: _this3.select.bind(_this3, index)
+        onMouseEnter: _this5.setActiveItem.bind(_this5, index),
+        onClick: _this5.select.bind(_this5, index)
       }, React.createElement("a", {
         href: "javascript:void(0)",
         className: "ui-select-choices-row-inner"
@@ -210,6 +233,7 @@ module.exports = React.createClass({
     return React.createElement("div", {
       className: containerClass
     }, showElement, this.state.open && dropdownElements.length ? React.createElement("ul", {
+      ref: "dropdownMenu",
       className: dropdownMenuClass,
       onMouseEnter: this.preventBlurEvent,
       onMouseLeave: this.allowBlurEvent,
