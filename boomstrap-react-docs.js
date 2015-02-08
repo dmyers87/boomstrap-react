@@ -4,6 +4,11 @@
 var React = (window.React);
 var DocWithExample = require("./DocWithExample.jsx");
 
+var Sidebar = require("./Sidebar.jsx");
+var SidebarToggle = require("./SidebarToggle.jsx");
+var Body = require("./Body.jsx");
+var BodyOverlay = require("./BodyOverlay.jsx");
+
 // Components
 
 var ImageWithFallback = require("../src/Components/ImageWithFallback.jsx");
@@ -11,19 +16,70 @@ var ImageWithFallback = require("../src/Components/ImageWithFallback.jsx");
 
 var App = React.createClass({
   displayName: "App",
+  getInitialState: function () {
+    return {
+      open: false
+    };
+  },
+
+  _onToggleSidebar: function () {
+    this.setState({
+      open: !this.state.open
+    });
+  },
+
   render: function () {
-    return React.createElement("div", null, React.createElement(DocWithExample, {
+    var overlay = null;
+    var toggle = null;
+    if (this.state.open) {
+      overlay = React.createElement(BodyOverlay, {
+        onClick: this._onToggleSidebar
+      });
+    } else {
+      toggle = React.createElement(SidebarToggle, {
+        onClick: this._onToggleSidebar
+      });
+    }
+
+    var translate = this.state.open ? "200px" : "0px";
+    var containerStyle = {
+      width: "100%",
+      height: "100%",
+      position: "relative",
+      webkitTransform: "translateX(" + translate + ")",
+      transform: "translateX(" + translate + ")",
+      webkitTransition: ".3s ease all",
+      transition: ".3s ease all"
+    };
+
+    return React.createElement("div", {
+      style: containerStyle
+    }, React.createElement(Body, {
+      open: this.state.open
+    }, toggle, React.createElement("div", {
+      className: "container"
+    }, React.createElement("h1", null, "Boomstrap React ", React.createElement("img", {
+      src: "react-boomstrap.svg",
+      height: "80",
+      width: "80"
+    })), React.createElement("div", {
+      id: "components"
+    }, React.createElement(DocWithExample, {
       doc: "docs/ImageWithFallback.md"
     }, React.createElement(ImageWithFallback, {
       src: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png",
       fallbackSrc: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png"
-    })));
+    })))), overlay), React.createElement(Sidebar, {
+      open: this.state.open
+    }));
   }
 });
 
-React.render(React.createElement(App, null), document.getElementById("components"));
+window.addEventListener("load", function () {
+  React.render(React.createElement(App, null), document.body);
+});
 
-},{"../src/Components/ImageWithFallback.jsx":7,"./DocWithExample.jsx":8}],2:[function(require,module,exports){
+},{"../src/Components/ImageWithFallback.jsx":7,"./Body.jsx":8,"./BodyOverlay.jsx":9,"./DocWithExample.jsx":10,"./Sidebar.jsx":11,"./SidebarToggle.jsx":12}],2:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -9403,6 +9459,45 @@ module.exports = React.createClass({
 "use strict";
 
 var React = (window.React);
+
+module.exports = React.createClass({
+  displayName: "Body",
+
+  render: function () {
+    return React.createElement("div", null, this.props.children);
+  }
+});
+
+},{}],9:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+
+module.exports = React.createClass({
+  displayName: "Body Overlay",
+
+  propTypes: {
+    onClick: React.PropTypes.func
+  },
+
+  render: function () {
+    var overlayStyle = {
+      position: "absolute",
+      top: 0, right: 0, bottom: 0, left: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.54)"
+    };
+
+    return React.createElement("div", {
+      style: overlayStyle,
+      onClick: this.props.onClick
+    });
+  }
+});
+
+},{}],10:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
 var request = require("superagent");
 var marked = require("marked");
 
@@ -9434,5 +9529,75 @@ module.exports = React.createClass({
   }
 });
 
-},{"marked":3,"superagent":4}]},{},[1])(1)
+},{"marked":3,"superagent":4}],11:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+
+module.exports = React.createClass({
+  displayName: "Sidebar",
+  render: function () {
+    var sideBarStyle = {
+      width: "200px",
+      zIndex: 11,
+      boxShadow: "3px 0px 5px 0 rgba(0, 0, 0, 0.26)",
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      left: "-200px"
+    };
+
+    return React.createElement("div", {
+      style: sideBarStyle
+    }, React.createElement("ul", {
+      className: "nav nav-blocks"
+    }, React.createElement("li", {
+      className: "active"
+    }, React.createElement("a", {
+      href: "#"
+    }, "ImageWithFallback"))));
+  }
+});
+
+},{}],12:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+
+module.exports = React.createClass({
+  displayName: "Sidebar Toggle",
+
+  propTypes: {
+    onClick: React.PropTypes.func
+  },
+
+  render: function () {
+    var toggleStyle = {
+      position: "absolute",
+      top: 10,
+      left: 10,
+      zIndex: 1,
+      cursor: "pointer"
+    };
+
+    var barStyle = {
+      height: "4px",
+      width: "20px",
+      backgroundColor: "#f68a24",
+      marginTop: "2px"
+    };
+    return React.createElement("div", {
+      style: toggleStyle,
+      onClick: this.props.onClick
+    }, React.createElement("div", {
+      style: barStyle
+    }), React.createElement("div", {
+      style: barStyle
+    }), React.createElement("div", {
+      style: barStyle
+    }));
+  }
+});
+
+},{}]},{},[1])(1)
 });
