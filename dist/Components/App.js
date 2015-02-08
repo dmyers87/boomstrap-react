@@ -13,5 +13,6 @@ module.exports = {
   Score: require("./Score.jsx"),
   Switcher: require("./Switcher.jsx"),
   UIMultiSelect: require("./UIMultiSelect.jsx"),
-  UISelect: require("./UISelect.jsx")
+  UISelect: require("./UISelect.jsx"),
+  UITypeaheadSelect: require("./UITypeaheadSelect.jsx")
 };
