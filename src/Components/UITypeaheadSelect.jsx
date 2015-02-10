@@ -20,7 +20,8 @@ module.exports = React.createClass({
         element: React.PropTypes.element,
         payload: React.PropTypes.any
       })
-    )
+    ),
+    overlayModal:  React.PropTypes.bool
   },
 
   getInitialState() {
@@ -32,7 +33,10 @@ module.exports = React.createClass({
   },
 
   componentDidMount() {
-    var inputLeft = this.getDOMNode().offsetLeft;
+    var node = this.getDOMNode();
+    var nodeBox = node.getBoundingClientRect();
+    var documentElement = document.documentElement;
+    var inputLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
     this.setState({
       searchLeft: inputLeft
     });
@@ -127,7 +131,8 @@ module.exports = React.createClass({
               searchIndex={this.state.searchIndex}
               selectActive={this._selectActive}
               selectMatch={this._selectMatch}
-              options={this.props.options}/>
+              options={this.props.options}
+              overlayModal={this.props.overlayModal}/>
           }
           placement='bottom'>
           <input

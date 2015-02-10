@@ -2,6 +2,8 @@
 
 var React = require("react/addons");
 
+var ModalOverlay = require("../Constants/BootstrapConstants").Modal.Overlay;
+
 var UITypeaheadSelectOverlay = React.createClass({
   displayName: "UI Typeahead Select Overlay",
 
@@ -15,7 +17,8 @@ var UITypeaheadSelectOverlay = React.createClass({
     options: React.PropTypes.arrayOf(React.PropTypes.shape({
       element: React.PropTypes.element,
       payload: React.PropTypes.any
-    }))
+    })),
+    overlayModal: React.PropTypes.bool
   },
 
   _selectActive: function (index) {
@@ -52,13 +55,19 @@ var UITypeaheadSelectOverlay = React.createClass({
     // should be.
     var positionLeft = this.props.positionLeftOverride || this.props.positionLeft;
 
+    var ulStyle = {
+      display: "block",
+      position: "absolute",
+      left: positionLeft,
+      top: this.props.positionTop
+    };
+
+    if (this.props.overlayModal) {
+      ulStyle.zIndex = ModalOverlay.zIndex;
+    }
+
     return React.createElement("ul", {
-      style: {
-        display: "block",
-        position: "absolute",
-        left: positionLeft,
-        top: this.props.positionTop
-      },
+      style: ulStyle,
       className: "dropdown-menu",
       role: "listbox",
       "aria-hidden": "false"
