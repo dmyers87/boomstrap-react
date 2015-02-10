@@ -105,7 +105,10 @@ module.exports = React.createClass({
       searchText = this.state.search.toLowerCase();
 
       return items.filter((item) => {
-        return item.text.toLowerCase().indexOf(searchText) !== -1;
+        return (
+          item.text.toLowerCase().indexOf(searchText) !== -1 ||
+          item.payload.toLowerCase().indexOf(searchText) !== -1
+        );
       });
     }
 
