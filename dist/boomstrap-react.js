@@ -873,7 +873,14 @@ module.exports = React.createClass({
       searchText = this.state.search.toLowerCase();
 
       return items.filter(function (item) {
-        return item.text.toLowerCase().indexOf(searchText) !== -1 || item.payload.toLowerCase().indexOf(searchText) !== -1;
+        var itemText = item.text || "";
+        var itemPayload = item.payload;
+        if (itemPayload === null) {
+          itemPayload = "";
+        } else {
+          itemPayload = itemPayload.toString();
+        }
+        return itemText.toLowerCase().indexOf(searchText) !== -1 || itemPayload.toLowerCase().indexOf(searchText) !== -1;
       });
     }
 
