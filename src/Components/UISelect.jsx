@@ -55,11 +55,17 @@ module.exports = React.createClass({
   },
 
   updateSearch(e) {
-    this.setState({
-      search: e.target.value || ''
-    }, () => {
-      this.setActiveItem(0);
-    });
+    // Internet Explorer fires change events on blur
+    // Because these events do not have a value we can ignore it
+    // Because the value will be the same as last time
+    var val = e.target.value || '';
+    if (val !== this.state.search) {
+      this.setState({
+        search: val
+      }, () => {
+        this.setActiveItem(0);
+      }); 
+    }
   },
 
   setActiveItem(index) {

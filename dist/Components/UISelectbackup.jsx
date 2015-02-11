@@ -3,8 +3,34 @@
 var React = require("react/addons");
 var cx = React.addons.classSet;
 
+var DocumentClickMixin = require("../Mixins/DocumentClickMixin.jsx");
+
+var UISelectList = React.createClass({
+  displayName: "UI Select List",
+
+  propTypes: {
+    dropdownMenuClass: React.PropTypes.string,
+    onClose: React.PropTypes.func.isRequired
+  },
+
+  mixins: [DocumentClickMixin],
+
+  onDocumentClick: function () {
+    this.props.onClose();
+  },
+
+  render: function () {
+    return React.createElement("ul", {
+      className: this.props.dropdownMenuClass,
+      role: "menu",
+      "aria-labelledby": "dLabel"
+    }, this.props.children);
+  }
+});
+
 module.exports = React.createClass({
   displayName: "UISelect",
+
   propTypes: {
     payload: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
     text: React.PropTypes.string,
@@ -33,8 +59,7 @@ module.exports = React.createClass({
     return {
       open: false,
       search: null,
-      activeIndex: 0,
-      allowBlurEvent: false
+      activeIndex: 0
     };
   },
 
@@ -42,8 +67,7 @@ module.exports = React.createClass({
     var _this = this;
     if (!this.props.disabled) {
       this.setState({
-        open: true,
-        allowBlurEvent: true
+        open: true
       }, function () {
         _this.refs.searchInput.getDOMNode().focus();
       });
@@ -52,13 +76,12 @@ module.exports = React.createClass({
 
   updateSearch: function (e) {
     var _this2 = this;
+    console.log("Update search called", e, e.target, e.target.value);
     // Internet Explorer fires change events on blur
     // Because these events do not have a value we can ignore it
-    // Because the value will be the same as last time
-    var val = e.target.value || "";
-    if (val !== this.state.search) {
+    if (typeof e.target.value !== "undefined") {
       this.setState({
-        search: val
+        search: e.target.value || ""
       }, function () {
         _this2.setActiveItem(0);
       });
@@ -128,8 +151,7 @@ module.exports = React.createClass({
     var selectedItem = this.getFilteredItems()[index];
     this.setState({
       search: "",
-      open: false,
-      allowBlurEvent: true
+      open: false
     }, function () {
       _this4.setActiveItem(0);
       _this4.props.onChange(selectedItem);
@@ -158,24 +180,16 @@ module.exports = React.createClass({
     }
   },
 
-  allowBlurEvent: function () {
-    this.setState({
-      allowBlurEvent: true
-    });
-  },
-
-  preventBlurEvent: function () {
-    this.setState({
-      allowBlurEvent: false
-    });
-  },
-
-  onBlur: function () {
-    if (this.state.allowBlurEvent) {
+  onListClose: function () {
+    if (this.state.open) {
       this.setState({
         open: false
       });
     }
+  },
+
+  _preventDefault: function (e) {
+    e.preventDefault();
   },
 
   render: function () {
@@ -212,7 +226,6 @@ module.exports = React.createClass({
         className: elementClass,
         placeholder: this.props.placeholder,
         value: this.state.search,
-        onBlur: this.onBlur,
         onChange: this.updateSearch,
         onKeyDown: this.onKeyDown
       });
@@ -233,7 +246,8 @@ module.exports = React.createClass({
         onMouseEnter: _this5.setActiveItem.bind(_this5, index),
         onClick: _this5.select.bind(_this5, index)
       }, React.createElement("a", {
-        href: "javascript:void(0)",
+        href: "#",
+        onClick: _this5._preventDefault,
         className: "ui-select-choices-row-inner"
       }, React.createElement("div", null, item.text))));
     });
@@ -245,13 +259,10 @@ module.exports = React.createClass({
 
     return React.createElement("div", {
       className: containerClass
-    }, showElement, this.state.open && dropdownElements.length ? React.createElement("ul", {
+    }, showElement, this.state.open && dropdownElements.length ? React.createElement(UISelectList, {
       ref: "dropdownMenu",
-      className: dropdownMenuClass,
-      onMouseEnter: this.preventBlurEvent,
-      onMouseLeave: this.allowBlurEvent,
-      role: "menu",
-      "aria-labelledby": "dLabel"
+      onClose: this.onListClose,
+      dropdownMenuClass: dropdownMenuClass
     }, dropdownElements) : null);
   }
 });
