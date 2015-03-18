@@ -15,7 +15,7 @@ module.exports = React.createClass({
     inline: React.PropTypes.bool,
     label: React.PropTypes.node
   },
-  render: function () {
+  render: function render() {
     var labelClass = this.props.labelClass || "";
     var fauxdioClassObj = {
       fauxdio: true,
@@ -26,17 +26,20 @@ module.exports = React.createClass({
     }
     var fauxdioClass = cx(fauxdioClassObj);
 
-    return React.createElement("div", {
-      className: fauxdioClass
-    }, React.createElement("input", {
-      id: this.props.radioID,
-      type: "radio",
-      value: this.props.value,
-      checked: this.props.checked,
-      onChange: this.props.onChange
-    }), React.createElement("label", {
-      className: labelClass,
-      htmlFor: this.props.radioID
-    }, this.props.label));
+    return React.createElement(
+      "div",
+      { className: fauxdioClass },
+      React.createElement("input", {
+        id: this.props.radioID,
+        type: "radio",
+        value: this.props.value,
+        checked: this.props.checked,
+        onChange: this.props.onChange }),
+      React.createElement(
+        "label",
+        { className: labelClass, htmlFor: this.props.radioID },
+        this.props.label
+      )
+    );
   }
 });

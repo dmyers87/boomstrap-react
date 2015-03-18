@@ -22,7 +22,7 @@ module.exports = React.createClass({
     overlayModal: React.PropTypes.bool
   },
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       searchText: "",
       searchIndex: 0,
@@ -30,7 +30,7 @@ module.exports = React.createClass({
     };
   },
 
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     var node = this.getDOMNode();
     var nodeBox = node.getBoundingClientRect();
     var documentElement = document.documentElement;
@@ -40,7 +40,7 @@ module.exports = React.createClass({
     });
   },
 
-  _onKeyDown: function (e) {
+  _onKeyDown: function _onKeyDown(e) {
     if (e.key === "Enter" || e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
     }
@@ -74,8 +74,9 @@ module.exports = React.createClass({
     }
   },
 
-  _onChange: function (e) {
+  _onChange: function _onChange(e) {
     var _this = this;
+
     this.setState({
       searchText: e.target.value
     }, function () {
@@ -83,34 +84,35 @@ module.exports = React.createClass({
     });
   },
 
-  _selectActive: function (index) {
+  _selectActive: function _selectActive(index) {
     this.setState({
       searchIndex: index
     });
   },
 
-  _selectMatch: function (payload) {
-    var _this2 = this;
+  _selectMatch: function _selectMatch(payload) {
+    var _this = this;
+
     // Blur input to close search
     this.refs.overlay._renderedComponent.getDOMNode().blur();
 
     this.setState({
       searchText: ""
     }, function () {
-      _this2.props.onSelectMatch(payload);
-      _this2.props.onSearch(_this2.state.searchText);
+      _this.props.onSelectMatch(payload);
+      _this.props.onSearch(_this.state.searchText);
     });
   },
 
-  _onFocus: function () {
+  _onFocus: function _onFocus() {
     this.refs.overlay.show();
   },
 
-  _onBlur: function () {
+  _onBlur: function _onBlur() {
     this.refs.overlay.hide();
   },
 
-  render: function () {
+  render: function render() {
     var searchIcon = "ficon ficon-search";
     if (this.props.iconClass) {
       searchIcon += " " + this.props.iconClass;
@@ -121,33 +123,31 @@ module.exports = React.createClass({
       inputClass += this.props.inputClass;
     }
 
-    return React.createElement("div", {
-      className: this.props.className
-    }, React.createElement(OverlayTrigger, {
-      ref: "overlay",
-      trigger: "manual",
-      defaultOverlayShown: false,
-      overlay: React.createElement(UITypeaheadSelectOverlay, {
-        positionLeftOverride: this.state.searchLeft,
-        searchIndex: this.state.searchIndex,
-        selectActive: this._selectActive,
-        selectMatch: this._selectMatch,
-        options: this.props.options,
-        overlayModal: this.props.overlayModal
-      }),
-      placement: "bottom"
-    }, React.createElement("input", {
-      onFocus: this._onFocus,
-      onBlur: this._onBlur,
-      autoComplete: "off",
-      type: "text",
-      className: inputClass,
-      placeholder: this.props.placeholder,
-      onKeyDown: this._onKeyDown,
-      onChange: this._onChange,
-      value: this.state.searchText
-    })), React.createElement("i", {
-      className: searchIcon
-    }));
+    return React.createElement(
+      "div",
+      { className: this.props.className },
+      React.createElement(
+        OverlayTrigger,
+        { ref: "overlay", trigger: "manual",
+          defaultOverlayShown: false,
+          overlay: React.createElement(UITypeaheadSelectOverlay, {
+            positionLeftOverride: this.state.searchLeft,
+            searchIndex: this.state.searchIndex,
+            selectActive: this._selectActive,
+            selectMatch: this._selectMatch,
+            options: this.props.options,
+            overlayModal: this.props.overlayModal }),
+          placement: "bottom" },
+        React.createElement("input", {
+          onFocus: this._onFocus, onBlur: this._onBlur,
+          autoComplete: "off", type: "text",
+          className: inputClass,
+          placeholder: this.props.placeholder,
+          onKeyDown: this._onKeyDown,
+          onChange: this._onChange,
+          value: this.state.searchText })
+      ),
+      React.createElement("i", { className: searchIcon })
+    );
   }
 });

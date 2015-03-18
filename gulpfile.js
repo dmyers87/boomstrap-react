@@ -6,7 +6,7 @@ var connect = require('gulp-connect');
 
 function compileScriptsFromEntryPoint(entry, fileName, destination) {
   var browserify = require('browserify');
-  var to5ify     = require('6to5ify');
+  var to5ify     = require('babelify');
   var source     = require('vinyl-source-stream');
   //var uglify     = require('uglifyify');
 
@@ -18,7 +18,7 @@ function compileScriptsFromEntryPoint(entry, fileName, destination) {
   //b.exclude('react/addons');
   //b.exclude('lodash');
 
-  b.transform(to5ify); // use the 6to5ify transform
+  b.transform(to5ify); // use the babelify transform
   b.transform(globalShim);
 
   // TODO: Implement uglifyify
@@ -31,7 +31,7 @@ function compileScriptsFromEntryPoint(entry, fileName, destination) {
 }
 
 gulp.task('transformScripts', function() {
-  var to5    = require('gulp-6to5');
+  var to5    = require('gulp-babel');
   return gulp.src('src/**')
     .pipe(to5())
     .pipe(gulp.dest('dist/'));

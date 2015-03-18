@@ -16,7 +16,7 @@ module.exports = React.createClass({
     label: React.PropTypes.node
   },
 
-  render: function () {
+  render: function render() {
     var fauxboxClasses = {
       fauxbox: true,
       "fauxbox-inline": !!this.props.inline
@@ -28,17 +28,20 @@ module.exports = React.createClass({
     var fauxboxClass = cx(fauxboxClasses);
     var labelClass = this.props.labelClass || "";
 
-    return React.createElement("div", {
-      className: fauxboxClass
-    }, React.createElement("input", {
-      type: "checkbox",
-      id: this.props.id,
-      checked: this.props.checked,
-      readOnly: true,
-      onClick: this.props.onClick
-    }), React.createElement("label", {
-      className: labelClass,
-      htmlFor: this.props.id
-    }, this.props.label));
+    return React.createElement(
+      "div",
+      { className: fauxboxClass },
+      React.createElement("input", {
+        type: "checkbox",
+        id: this.props.id,
+        checked: this.props.checked,
+        readOnly: true,
+        onClick: this.props.onClick }),
+      React.createElement(
+        "label",
+        { className: labelClass, htmlFor: this.props.id },
+        this.props.label
+      )
+    );
   }
 });

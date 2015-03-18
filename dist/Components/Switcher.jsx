@@ -13,7 +13,7 @@ module.exports = React.createClass({
     onClick: React.PropTypes.func
   },
 
-  render: function () {
+  render: function render() {
     var switcherClasses = {
       switcher: true };
     if (this.props.className) {
@@ -22,28 +22,33 @@ module.exports = React.createClass({
 
     var switcherClass = cx(switcherClasses);
 
-    return React.createElement("div", {
-      className: switcherClass
-    }, React.createElement("input", {
-      type: "checkbox",
-      className: "switcher__input",
-      id: this.props.id,
-      checked: this.props.checked,
-      readOnly: true,
-      onClick: this.props.onClick
-    }), React.createElement("label", {
-      className: "switcher__label",
-      htmlFor: this.props.id
-    }, React.createElement("div", {
-      className: "switcher__inner"
-    }, React.createElement("div", {
-      className: "switcher__on"
-    }, React.createElement("i", {
-      className: "ficon ficon-checkmark"
-    })), React.createElement("div", {
-      className: "switcher__off"
-    }, React.createElement("i", {
-      className: "ficon ficon-cross"
-    })))));
+    return React.createElement(
+      "div",
+      { className: switcherClass },
+      React.createElement("input", { type: "checkbox",
+        className: "switcher__input",
+        id: this.props.id,
+        checked: this.props.checked,
+        readOnly: true,
+        onClick: this.props.onClick }),
+      React.createElement(
+        "label",
+        { className: "switcher__label", htmlFor: this.props.id },
+        React.createElement(
+          "div",
+          { className: "switcher__inner" },
+          React.createElement(
+            "div",
+            { className: "switcher__on" },
+            React.createElement("i", { className: "ficon ficon-checkmark" })
+          ),
+          React.createElement(
+            "div",
+            { className: "switcher__off" },
+            React.createElement("i", { className: "ficon ficon-cross" })
+          )
+        )
+      )
+    );
   }
 });

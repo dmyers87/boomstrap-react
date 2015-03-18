@@ -13,7 +13,7 @@ module.exports = React.createClass({
     onPage: React.PropTypes.func
   },
 
-  _getMaxPage: function () {
+  _getMaxPage: function _getMaxPage() {
     var maxPage = Math.floor(this.props.totalItems / this.props.itemsPerPage);
     if (this.props.totalItems % this.props.itemsPerPage) {
       maxPage++;
@@ -21,20 +21,20 @@ module.exports = React.createClass({
     return maxPage;
   },
 
-  _onPageBack: function () {
+  _onPageBack: function _onPageBack() {
     if (this.props.currentPage > 1) {
       this.props.onPage(this.props.currentPage - 1);
     }
   },
 
-  _onPageFwd: function () {
+  _onPageFwd: function _onPageFwd() {
     var maxPage = this._getMaxPage();
     if (this.props.currentPage !== maxPage) {
       this.props.onPage(this.props.currentPage + 1);
     }
   },
 
-  render: function () {
+  render: function render() {
     var currentPage = this.props.currentPage;
     var maxPage = this._getMaxPage();
 
@@ -48,20 +48,19 @@ module.exports = React.createClass({
       disabled: currentPage === maxPage
     });
 
-    return React.createElement("div", {
-      className: "btn-group minimal-pager"
-    }, React.createElement("button", {
-      type: "button",
-      className: backBtnClass,
-      onClick: this._onPageBack
-    }, React.createElement("i", {
-      className: "ficon ficon-chevron-left"
-    })), React.createElement("button", {
-      type: "button",
-      className: fwdBtnClass,
-      onClick: this._onPageFwd
-    }, React.createElement("i", {
-      className: "ficon ficon-chevron-right"
-    })));
+    return React.createElement(
+      "div",
+      { className: "btn-group minimal-pager" },
+      React.createElement(
+        "button",
+        { type: "button", className: backBtnClass, onClick: this._onPageBack },
+        React.createElement("i", { className: "ficon ficon-chevron-left" })
+      ),
+      React.createElement(
+        "button",
+        { type: "button", className: fwdBtnClass, onClick: this._onPageFwd },
+        React.createElement("i", { className: "ficon ficon-chevron-right" })
+      )
+    );
   }
 });

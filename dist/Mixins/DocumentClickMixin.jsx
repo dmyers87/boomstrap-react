@@ -26,7 +26,7 @@ function isNodeInRoot(node, root) {
 
 var DocumentClickMixin = {
 
-  handleDocumentKeyUp: function (e) {
+  handleDocumentKeyUp: function handleDocumentKeyUp(e) {
     if (e.keyCode === 27) {
       if (this.onDocumentClick) {
         this.onDocumentClick();
@@ -36,7 +36,7 @@ var DocumentClickMixin = {
     }
   },
 
-  handleDocumentClick: function (e) {
+  handleDocumentClick: function handleDocumentClick(e) {
     // If the click originated from within this component
     // don't do anything.
     if (isNodeInRoot(e.target, this.getDOMNode())) {
@@ -50,12 +50,12 @@ var DocumentClickMixin = {
     }
   },
 
-  bindRootCloseHandlers: function () {
+  bindRootCloseHandlers: function bindRootCloseHandlers() {
     this._onDocumentClickListener = EventListener.listen(document, "click", this.handleDocumentClick);
     this._onDocumentKeyupListener = EventListener.listen(document, "keyup", this.handleDocumentKeyUp);
   },
 
-  unbindRootCloseHandlers: function () {
+  unbindRootCloseHandlers: function unbindRootCloseHandlers() {
     if (this._onDocumentClickListener) {
       this._onDocumentClickListener.remove();
     }
@@ -65,11 +65,11 @@ var DocumentClickMixin = {
     }
   },
 
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     this.bindRootCloseHandlers();
   },
 
-  componentWillUnmount: function () {
+  componentWillUnmount: function componentWillUnmount() {
     this.unbindRootCloseHandlers();
   }
 };

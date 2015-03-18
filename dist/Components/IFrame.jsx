@@ -12,8 +12,9 @@ module.exports = React.createClass({
     onCloseFrame: React.PropTypes.func
   },
 
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     var _this = this;
+
     // React does not work with onLoad events in iFrames yet
     // Because of the event delegation setters
     // https://github.com/facebook/react/issues/1718
@@ -29,28 +30,27 @@ module.exports = React.createClass({
     }
   },
 
-  _iFrameCloseRegister: function () {
-    var _this2 = this;
+  _iFrameCloseRegister: function _iFrameCloseRegister() {
+    var _this = this;
+
     var element = this.refs.iframe.getDOMNode();
     if (element && element.contentWindow && element.contentWindow.registerClose) {
       element.contentWindow.registerClose(function () {
-        _this2.props.onCloseFrame();
+        _this.props.onCloseFrame();
       });
     }
   },
 
-  render: function () {
+  render: function render() {
     var src = this.props.src;
     var width = this.props.width || null;
     var height = this.props.height || null;
 
-    return React.createElement("iframe", {
-      ref: "iframe",
+    return React.createElement("iframe", { ref: "iframe",
       src: src,
       width: width,
       height: height,
       seamless: true,
-      onLoad: this._iFrameCloseRegister
-    });
+      onLoad: this._iFrameCloseRegister });
   }
 });

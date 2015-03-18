@@ -6,7 +6,8 @@ var PureRenderMixin = React.addons.PureRenderMixin;
 
 var LeadCategories = require("../Constants/LeadCategories");
 
-var categories = {}, abbrs = {};
+var categories = {},
+    abbrs = {};
 
 LeadCategories.forEach(function (category) {
   categories[category.value.toString()] = category.name;
@@ -24,7 +25,7 @@ module.exports = React.createClass({
 
   mixins: [PureRenderMixin],
 
-  render: function () {
+  render: function render() {
     var category = categories[this.props.category];
     var abbr = abbrs[this.props.category];
 
@@ -38,8 +39,10 @@ module.exports = React.createClass({
       "leadcat-eq": isEqualLength && !isAbbreviated
     });
 
-    return React.createElement("span", {
-      className: catClass
-    }, isAbbreviated ? abbr : category);
+    return React.createElement(
+      "span",
+      { className: catClass },
+      isAbbreviated ? abbr : category
+    );
   }
 });

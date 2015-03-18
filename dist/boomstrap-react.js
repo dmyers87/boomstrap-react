@@ -46,7 +46,7 @@ module.exports = React.createClass({
     label: React.PropTypes.node
   },
 
-  render: function () {
+  render: function render() {
     var fauxboxClasses = {
       fauxbox: true,
       "fauxbox-inline": !!this.props.inline
@@ -58,18 +58,12 @@ module.exports = React.createClass({
     var fauxboxClass = cx(fauxboxClasses);
     var labelClass = this.props.labelClass || "";
 
-    return React.createElement("div", {
-      className: fauxboxClass
-    }, React.createElement("input", {
+    return React.createElement("div", { className: fauxboxClass }, React.createElement("input", {
       type: "checkbox",
       id: this.props.id,
       checked: this.props.checked,
       readOnly: true,
-      onClick: this.props.onClick
-    }), React.createElement("label", {
-      className: labelClass,
-      htmlFor: this.props.id
-    }, this.props.label));
+      onClick: this.props.onClick }), React.createElement("label", { className: labelClass, htmlFor: this.props.id }, this.props.label));
   }
 });
 
@@ -91,7 +85,7 @@ module.exports = React.createClass({
     inline: React.PropTypes.bool,
     label: React.PropTypes.node
   },
-  render: function () {
+  render: function render() {
     var labelClass = this.props.labelClass || "";
     var fauxdioClassObj = {
       fauxdio: true,
@@ -102,18 +96,12 @@ module.exports = React.createClass({
     }
     var fauxdioClass = cx(fauxdioClassObj);
 
-    return React.createElement("div", {
-      className: fauxdioClass
-    }, React.createElement("input", {
+    return React.createElement("div", { className: fauxdioClass }, React.createElement("input", {
       id: this.props.radioID,
       type: "radio",
       value: this.props.value,
       checked: this.props.checked,
-      onChange: this.props.onChange
-    }), React.createElement("label", {
-      className: labelClass,
-      htmlFor: this.props.radioID
-    }, this.props.label));
+      onChange: this.props.onChange }), React.createElement("label", { className: labelClass, htmlFor: this.props.radioID }, this.props.label));
   }
 });
 
@@ -132,8 +120,9 @@ module.exports = React.createClass({
     onCloseFrame: React.PropTypes.func
   },
 
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     var _this = this;
+
     // React does not work with onLoad events in iFrames yet
     // Because of the event delegation setters
     // https://github.com/facebook/react/issues/1718
@@ -149,29 +138,28 @@ module.exports = React.createClass({
     }
   },
 
-  _iFrameCloseRegister: function () {
-    var _this2 = this;
+  _iFrameCloseRegister: function _iFrameCloseRegister() {
+    var _this = this;
+
     var element = this.refs.iframe.getDOMNode();
     if (element && element.contentWindow && element.contentWindow.registerClose) {
       element.contentWindow.registerClose(function () {
-        _this2.props.onCloseFrame();
+        _this.props.onCloseFrame();
       });
     }
   },
 
-  render: function () {
+  render: function render() {
     var src = this.props.src;
     var width = this.props.width || null;
     var height = this.props.height || null;
 
-    return React.createElement("iframe", {
-      ref: "iframe",
+    return React.createElement("iframe", { ref: "iframe",
       src: src,
       width: width,
       height: height,
       seamless: true,
-      onLoad: this._iFrameCloseRegister
-    });
+      onLoad: this._iFrameCloseRegister });
   }
 });
 
@@ -192,18 +180,23 @@ module.exports = React.createClass({
     text: React.PropTypes.string,
     icon: React.PropTypes.string
   },
-  render: function () {
-    return this.props.showIf ? React.createElement(OverlayTrigger, {
-      placement: "top",
-      overlay: React.createElement(Tooltip, null, this.props.text)
-    }, React.createElement("span", {
-      className: "ficon ficon-" + this.props.icon
-    })) : null;
+  render: function render() {
+    return this.props.showIf ? React.createElement(OverlayTrigger, { placement: "top", overlay: React.createElement(Tooltip, null, this.props.text) }, React.createElement("span", { className: "ficon ficon-" + this.props.icon })) : null;
   }
 });
 
 },{"react-bootstrap/OverlayTrigger":57,"react-bootstrap/Tooltip":71}],7:[function(require,module,exports){
 "use strict";
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
 
 var React = (window.React);
 var _ = require("lodash");
@@ -216,13 +209,13 @@ module.exports = React.createClass({
     fallbackSrc: React.PropTypes.string.isRequired
   },
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       src: null
     };
   },
 
-  _onError: function () {
+  _onError: function _onError() {
     if (!this.state.src) {
       this.setState({
         src: this.props.fallbackSrc
@@ -230,18 +223,14 @@ module.exports = React.createClass({
     }
   },
 
-  render: function () {
+  render: function render() {
     var props = _.extend({}, this.props);
     delete props.fallbackSrc;
     delete props.src;
 
     var src = this.state.src || this.props.src;
 
-    return React.createElement("img", React.__spread({
-      src: src
-    }, props, {
-      onError: this._onError
-    }));
+    return React.createElement("img", _extends({ src: src }, props, { onError: this._onError }));
   }
 });
 
@@ -254,7 +243,8 @@ var PureRenderMixin = React.addons.PureRenderMixin;
 
 var LeadCategories = require("../Constants/LeadCategories");
 
-var categories = {}, abbrs = {};
+var categories = {},
+    abbrs = {};
 
 LeadCategories.forEach(function (category) {
   categories[category.value.toString()] = category.name;
@@ -272,7 +262,7 @@ module.exports = React.createClass({
 
   mixins: [PureRenderMixin],
 
-  render: function () {
+  render: function render() {
     var category = categories[this.props.category];
     var abbr = abbrs[this.props.category];
 
@@ -286,30 +276,30 @@ module.exports = React.createClass({
       "leadcat-eq": isEqualLength && !isAbbreviated
     });
 
-    return React.createElement("span", {
-      className: catClass
-    }, isAbbreviated ? abbr : category);
+    return React.createElement("span", { className: catClass }, isAbbreviated ? abbr : category);
   }
 });
 
 },{"../Constants/LeadCategories":20}],9:[function(require,module,exports){
 "use strict";
 
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
 var React = (window.React);
 
 module.exports = React.createClass({
   displayName: "Loader",
 
-  render: function () {
-    return React.createElement("div", React.__spread({
-      className: "loader"
-    }, this.props), React.createElement("span", {
-      className: "loader-pulse"
-    }), React.createElement("span", {
-      className: "loader-pulse"
-    }), React.createElement("span", {
-      className: "loader-pulse"
-    }));
+  render: function render() {
+    return React.createElement("div", _extends({ className: "loader" }, this.props), React.createElement("span", { className: "loader-pulse" }), React.createElement("span", { className: "loader-pulse" }), React.createElement("span", { className: "loader-pulse" }));
   }
 });
 
@@ -329,15 +319,15 @@ module.exports = React.createClass({
     onClose: React.PropTypes.func
   },
 
-  getDefaultProps: function () {
+  getDefaultProps: function getDefaultProps() {
     return {
       type: "default",
-      onClose: function () {},
+      onClose: function onClose() {},
       showClose: true
     };
   },
 
-  render: function () {
+  render: function render() {
     var markerClass = "marker marker-" + this.props.type;
     var closeClass = "ficon ficon-cross";
     if (this.props.closeClass) {
@@ -347,15 +337,10 @@ module.exports = React.createClass({
     var close = null;
 
     if (this.props.showClose) {
-      close = React.createElement("i", {
-        className: closeClass,
-        onClick: this.props.onClose
-      });
+      close = React.createElement("i", { className: closeClass, onClick: this.props.onClose });
     }
 
-    return React.createElement("span", {
-      className: markerClass
-    }, React.createElement("span", null, this.props.label, " "), close);
+    return React.createElement("span", { className: markerClass }, React.createElement("span", null, this.props.label, " "), close);
   }
 });
 
@@ -375,7 +360,7 @@ module.exports = React.createClass({
     onPage: React.PropTypes.func
   },
 
-  _getMaxPage: function () {
+  _getMaxPage: function _getMaxPage() {
     var maxPage = Math.floor(this.props.totalItems / this.props.itemsPerPage);
     if (this.props.totalItems % this.props.itemsPerPage) {
       maxPage++;
@@ -383,20 +368,20 @@ module.exports = React.createClass({
     return maxPage;
   },
 
-  _onPageBack: function () {
+  _onPageBack: function _onPageBack() {
     if (this.props.currentPage > 1) {
       this.props.onPage(this.props.currentPage - 1);
     }
   },
 
-  _onPageFwd: function () {
+  _onPageFwd: function _onPageFwd() {
     var maxPage = this._getMaxPage();
     if (this.props.currentPage !== maxPage) {
       this.props.onPage(this.props.currentPage + 1);
     }
   },
 
-  render: function () {
+  render: function render() {
     var currentPage = this.props.currentPage;
     var maxPage = this._getMaxPage();
 
@@ -410,21 +395,7 @@ module.exports = React.createClass({
       disabled: currentPage === maxPage
     });
 
-    return React.createElement("div", {
-      className: "btn-group minimal-pager"
-    }, React.createElement("button", {
-      type: "button",
-      className: backBtnClass,
-      onClick: this._onPageBack
-    }, React.createElement("i", {
-      className: "ficon ficon-chevron-left"
-    })), React.createElement("button", {
-      type: "button",
-      className: fwdBtnClass,
-      onClick: this._onPageFwd
-    }, React.createElement("i", {
-      className: "ficon ficon-chevron-right"
-    })));
+    return React.createElement("div", { className: "btn-group minimal-pager" }, React.createElement("button", { type: "button", className: backBtnClass, onClick: this._onPageBack }, React.createElement("i", { className: "ficon ficon-chevron-left" })), React.createElement("button", { type: "button", className: fwdBtnClass, onClick: this._onPageFwd }, React.createElement("i", { className: "ficon ficon-chevron-right" })));
   }
 });
 
@@ -440,7 +411,7 @@ module.exports = React.createClass({
     score: React.PropTypes.number,
     size: React.PropTypes.string
   },
-  render: function () {
+  render: function render() {
     var scoreClass = "score";
     var scoreTranslation;
 
@@ -459,9 +430,7 @@ module.exports = React.createClass({
       scoreClass += " score-" + this.props.size;
     }
 
-    return React.createElement("span", {
-      className: scoreClass
-    }, this.props.score);
+    return React.createElement("span", { className: scoreClass }, this.props.score);
   }
 });
 
@@ -481,7 +450,7 @@ module.exports = React.createClass({
     onClick: React.PropTypes.func
   },
 
-  render: function () {
+  render: function render() {
     var switcherClasses = {
       switcher: true };
     if (this.props.className) {
@@ -490,29 +459,12 @@ module.exports = React.createClass({
 
     var switcherClass = cx(switcherClasses);
 
-    return React.createElement("div", {
-      className: switcherClass
-    }, React.createElement("input", {
-      type: "checkbox",
+    return React.createElement("div", { className: switcherClass }, React.createElement("input", { type: "checkbox",
       className: "switcher__input",
       id: this.props.id,
       checked: this.props.checked,
       readOnly: true,
-      onClick: this.props.onClick
-    }), React.createElement("label", {
-      className: "switcher__label",
-      htmlFor: this.props.id
-    }, React.createElement("div", {
-      className: "switcher__inner"
-    }, React.createElement("div", {
-      className: "switcher__on"
-    }, React.createElement("i", {
-      className: "ficon ficon-checkmark"
-    })), React.createElement("div", {
-      className: "switcher__off"
-    }, React.createElement("i", {
-      className: "ficon ficon-cross"
-    })))));
+      onClick: this.props.onClick }), React.createElement("label", { className: "switcher__label", htmlFor: this.props.id }, React.createElement("div", { className: "switcher__inner" }, React.createElement("div", { className: "switcher__on" }, React.createElement("i", { className: "ficon ficon-checkmark" })), React.createElement("div", { className: "switcher__off" }, React.createElement("i", { className: "ficon ficon-cross" })))));
   }
 });
 
@@ -542,7 +494,7 @@ module.exports = React.createClass({
     alignRight: React.PropTypes.bool
   },
 
-  getDefaultProps: function () {
+  getDefaultProps: function getDefaultProps() {
     return {
       selectedValues: [],
       disabled: false,
@@ -550,7 +502,7 @@ module.exports = React.createClass({
     };
   },
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       open: false,
       search: null,
@@ -559,8 +511,9 @@ module.exports = React.createClass({
     };
   },
 
-  activate: function () {
+  activate: function activate() {
     var _this = this;
+
     if (!this.props.disabled) {
       this.setState({
         open: true,
@@ -571,20 +524,20 @@ module.exports = React.createClass({
     }
   },
 
-  updateSearch: function (e) {
+  updateSearch: function updateSearch(e) {
     this.setState({
       search: e.target.value || "",
       activeIndex: 0
     });
   },
 
-  setActiveItem: function (index) {
+  setActiveItem: function setActiveItem(index) {
     this.setState({
       activeIndex: index
     });
   },
 
-  getFilteredItems: function () {
+  getFilteredItems: function getFilteredItems() {
     var items = this.props.items && this.props.items.slice();
     var searchText;
     if (items && items.length) {
@@ -602,8 +555,9 @@ module.exports = React.createClass({
     return [];
   },
 
-  select: function (index) {
-    var _this2 = this;
+  select: function select(index) {
+    var _this = this;
+
     var selectedItem = this.getFilteredItems()[index];
     this.setState({
       search: "",
@@ -612,24 +566,25 @@ module.exports = React.createClass({
       allowBlurEvent: true
     }, function () {
       var selectedValues;
-      if (_this2._payloadIsSelected(selectedItem.payload)) {
-        selectedValues = _this2.props.selectedValues.filter(function (val) {
+      if (_this._payloadIsSelected(selectedItem.payload)) {
+        selectedValues = _this.props.selectedValues.filter(function (val) {
           return val !== selectedItem.payload;
         });
       } else {
-        selectedValues = _this2.props.selectedValues.concat([selectedItem.payload]);
+        selectedValues = _this.props.selectedValues.concat([selectedItem.payload]);
       }
-      _this2.props.onChange(selectedValues);
+      _this.props.onChange(selectedValues);
     });
   },
 
-  onKeyDown: function (e) {
+  onKeyDown: function onKeyDown(e) {
     var filteredItemMaxIndex, activeIndex;
 
     if (e.key === "Enter") {
       e.preventDefault();
       this.select(this.state.activeIndex);
     } else {
+
       filteredItemMaxIndex = this.getFilteredItems().length - 1;
       activeIndex = this.state.activeIndex;
 
@@ -645,19 +600,19 @@ module.exports = React.createClass({
     }
   },
 
-  allowBlurEvent: function () {
+  allowBlurEvent: function allowBlurEvent() {
     this.setState({
       allowBlurEvent: true
     });
   },
 
-  preventBlurEvent: function () {
+  preventBlurEvent: function preventBlurEvent() {
     this.setState({
       allowBlurEvent: false
     });
   },
 
-  onBlur: function () {
+  onBlur: function onBlur() {
     if (this.state.allowBlurEvent) {
       this.setState({
         open: false
@@ -665,7 +620,7 @@ module.exports = React.createClass({
     }
   },
 
-  _renderBaseElement: function () {
+  _renderBaseElement: function _renderBaseElement() {
     var showElement, innerElement;
     var isEmpty = !this.props.text;
     var elementClass;
@@ -674,50 +629,38 @@ module.exports = React.createClass({
       elementClass = "btn btn-default form-control ui-select-match " + (this.props.buttonClass || "");
 
       if (isEmpty) {
-        innerElement = React.createElement("span", {
-          className: "text-muted"
-        }, this.props.placeholder);
+        innerElement = React.createElement("span", { className: "text-muted" }, this.props.placeholder);
       } else {
         innerElement = React.createElement("span", null, React.createElement("span", null, this.props.text));
       }
 
-      showElement = React.createElement("button", {
-        type: "button",
-        tabIndex: "-1",
+      showElement = React.createElement("button", { type: "button", tabIndex: "-1",
         className: elementClass,
         disabled: this.props.disabled,
-        onClick: this.activate,
-        placeholder: this.props.placeholder
-      }, innerElement, React.createElement("span", {
-        className: "caret"
-      }));
+        onClick: this.activate, placeholder: this.props.placeholder }, innerElement, React.createElement("span", { className: "caret" }));
     } else {
       elementClass = "form-control ui-select-search " + (this.props.inputClass || "");
-      showElement = React.createElement("input", {
-        type: "text",
-        autoComplete: "off",
-        tabIndex: "-1",
-        ref: "searchInput",
+      showElement = React.createElement("input", { type: "text", autoComplete: "off", tabIndex: "-1", ref: "searchInput",
         className: elementClass,
         placeholder: this.props.placeholder,
         value: this.state.search,
         onBlur: this.onBlur,
         onChange: this.updateSearch,
-        onKeyDown: this.onKeyDown
-      });
+        onKeyDown: this.onKeyDown });
     }
 
     return showElement;
   },
 
-  _payloadIsSelected: function (payload) {
+  _payloadIsSelected: function _payloadIsSelected(payload) {
     return this.props.selectedValues.filter(function (selectedValue) {
       return selectedValue === payload;
     }).length > 0;
   },
 
-  render: function () {
-    var _this3 = this;
+  render: function render() {
+    var _this = this;
+
     var showElement = this._renderBaseElement();
 
     var containerClass = cx({
@@ -728,26 +671,18 @@ module.exports = React.createClass({
     var dropdownElements = this.getFilteredItems().map(function (item, index) {
       var rowClass = cx({
         "ui-select-choices-row": true,
-        active: _this3.state.activeIndex === index
+        active: _this.state.activeIndex === index
       });
 
-      var itemSelected = _this3._payloadIsSelected(item.payload);
+      var itemSelected = _this._payloadIsSelected(item.payload);
 
-      return React.createElement("li", {
-        className: "ui-select-choices-group",
-        key: index
-      }, React.createElement("div", {
+      return React.createElement("li", { className: "ui-select-choices-group", key: index }, React.createElement("div", {
         className: rowClass,
-        onMouseEnter: _this3.setActiveItem.bind(_this3, index),
-        onClick: _this3.select.bind(_this3, index)
-      }, React.createElement("a", {
-        href: "javascript:void(0)",
-        className: "ui-select-choices-row-inner"
-      }, React.createElement(Fauxbox, {
+        onMouseEnter: _this.setActiveItem.bind(_this, index),
+        onClick: _this.select.bind(_this, index) }, React.createElement("a", { href: "javascript:void(0)", className: "ui-select-choices-row-inner" }, React.createElement(Fauxbox, {
         id: "ui-multi-select-" + item.payload,
         checked: itemSelected,
-        label: item.text
-      }))));
+        label: item.text }))));
     });
 
     var dropdownMenuClass = cx({
@@ -755,15 +690,11 @@ module.exports = React.createClass({
       "dropdown-menu-right": this.props.alignRight
     });
 
-    return React.createElement("div", {
-      className: containerClass
-    }, showElement, this.state.open && dropdownElements.length ? React.createElement("ul", {
+    return React.createElement("div", { className: containerClass }, showElement, this.state.open && dropdownElements.length ? React.createElement("ul", {
       className: dropdownMenuClass,
       onMouseEnter: this.preventBlurEvent,
       onMouseLeave: this.allowBlurEvent,
-      role: "menu",
-      "aria-labelledby": "dLabel"
-    }, dropdownElements) : null);
+      role: "menu", "aria-labelledby": "dLabel" }, dropdownElements) : null);
   }
 });
 
@@ -792,14 +723,14 @@ module.exports = React.createClass({
     alignRight: React.PropTypes.bool
   },
 
-  getDefaultProps: function () {
+  getDefaultProps: function getDefaultProps() {
     return {
       disabled: false,
       alignRight: false
     };
   },
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       open: false,
       search: null,
@@ -808,8 +739,9 @@ module.exports = React.createClass({
     };
   },
 
-  activate: function () {
+  activate: function activate() {
     var _this = this;
+
     if (!this.props.disabled) {
       this.setState({
         open: true,
@@ -820,8 +752,9 @@ module.exports = React.createClass({
     }
   },
 
-  updateSearch: function (e) {
-    var _this2 = this;
+  updateSearch: function updateSearch(e) {
+    var _this = this;
+
     // Internet Explorer fires change events on blur
     // Because these events do not have a value we can ignore it
     // Because the value will be the same as last time
@@ -830,21 +763,22 @@ module.exports = React.createClass({
       this.setState({
         search: val
       }, function () {
-        _this2.setActiveItem(0);
+        _this.setActiveItem(0);
       });
     }
   },
 
-  setActiveItem: function (index) {
-    var _this3 = this;
+  setActiveItem: function setActiveItem(index) {
+    var _this = this;
+
     this.setState({
       activeIndex: index
     }, function () {
-      _this3._ensureHighlightVisible();
+      _this._ensureHighlightVisible();
     });
   },
 
-  _ensureHighlightVisible: function () {
+  _ensureHighlightVisible: function _ensureHighlightVisible() {
     var containerRef = this.refs.dropdownMenu;
     var highlightedRef = this.refs["dropdownMenuItem_" + this.state.activeIndex];
     if (containerRef && highlightedRef) {
@@ -861,7 +795,7 @@ module.exports = React.createClass({
     }
   },
 
-  getFilteredItems: function () {
+  getFilteredItems: function getFilteredItems() {
     var items = this.props.items && this.props.items.slice();
     var searchText;
     if (items) {
@@ -893,26 +827,28 @@ module.exports = React.createClass({
     return [];
   },
 
-  select: function (index) {
-    var _this4 = this;
+  select: function select(index) {
+    var _this = this;
+
     var selectedItem = this.getFilteredItems()[index];
     this.setState({
       search: "",
       open: false,
       allowBlurEvent: true
     }, function () {
-      _this4.setActiveItem(0);
-      _this4.props.onChange(selectedItem);
+      _this.setActiveItem(0);
+      _this.props.onChange(selectedItem);
     });
   },
 
-  onKeyDown: function (e) {
+  onKeyDown: function onKeyDown(e) {
     var filteredItemMaxIndex, activeIndex;
 
     if (e.key === "Enter") {
       e.preventDefault();
       this.select(this.state.activeIndex);
     } else {
+
       filteredItemMaxIndex = this.getFilteredItems().length - 1;
       activeIndex = this.state.activeIndex;
 
@@ -928,19 +864,19 @@ module.exports = React.createClass({
     }
   },
 
-  allowBlurEvent: function () {
+  allowBlurEvent: function allowBlurEvent() {
     this.setState({
       allowBlurEvent: true
     });
   },
 
-  preventBlurEvent: function () {
+  preventBlurEvent: function preventBlurEvent() {
     this.setState({
       allowBlurEvent: false
     });
   },
 
-  onBlur: function () {
+  onBlur: function onBlur() {
     if (this.state.allowBlurEvent) {
       this.setState({
         open: false
@@ -948,8 +884,9 @@ module.exports = React.createClass({
     }
   },
 
-  render: function () {
-    var _this5 = this;
+  render: function render() {
+    var _this = this;
+
     var containerClass = cx({
       "ui-select-bootstrap dropdown": true,
       open: this.state.open
@@ -960,52 +897,31 @@ module.exports = React.createClass({
     var elementClass;
     if (!this.state.open) {
       elementClass = "btn btn-default form-control ui-select-match " + (this.props.buttonClass || "");
-      showElement = React.createElement("button", {
-        type: "button",
-        tabIndex: "-1",
+      showElement = React.createElement("button", { type: "button", tabIndex: "-1",
         className: elementClass,
         disabled: this.props.disabled,
-        onClick: this.activate,
-        placeholder: this.props.placeholder
-      }, isEmpty ? React.createElement("span", {
-        className: "text-muted"
-      }, this.props.placeholder) : React.createElement("span", null, React.createElement("span", null, this.props.text)), React.createElement("span", {
-        className: "caret"
-      }));
+        onClick: this.activate, placeholder: this.props.placeholder }, isEmpty ? React.createElement("span", { className: "text-muted" }, this.props.placeholder) : React.createElement("span", null, React.createElement("span", null, this.props.text)), React.createElement("span", { className: "caret" }));
     } else {
       elementClass = "form-control ui-select-search " + (this.props.inputClass || "");
-      showElement = React.createElement("input", {
-        type: "text",
-        autoComplete: "off",
-        tabIndex: "-1",
-        ref: "searchInput",
+      showElement = React.createElement("input", { type: "text", autoComplete: "off", tabIndex: "-1", ref: "searchInput",
         className: elementClass,
         placeholder: this.props.placeholder,
         value: this.state.search,
         onBlur: this.onBlur,
         onChange: this.updateSearch,
-        onKeyDown: this.onKeyDown
-      });
+        onKeyDown: this.onKeyDown });
     }
 
     var dropdownElements = this.getFilteredItems().map(function (item, index) {
       var rowClass = cx({
         "ui-select-choices-row": true,
-        active: _this5.state.activeIndex === index
+        active: _this.state.activeIndex === index
       });
 
-      return React.createElement("li", {
-        className: "ui-select-choices-group",
-        key: index,
-        ref: "dropdownMenuItem_" + index
-      }, React.createElement("div", {
+      return React.createElement("li", { className: "ui-select-choices-group", key: index, ref: "dropdownMenuItem_" + index }, React.createElement("div", {
         className: rowClass,
-        onMouseEnter: _this5.setActiveItem.bind(_this5, index),
-        onClick: _this5.select.bind(_this5, index)
-      }, React.createElement("a", {
-        href: "javascript:void(0)",
-        className: "ui-select-choices-row-inner"
-      }, React.createElement("div", null, item.text))));
+        onMouseEnter: _this.setActiveItem.bind(_this, index),
+        onClick: _this.select.bind(_this, index) }, React.createElement("a", { href: "javascript:void(0)", className: "ui-select-choices-row-inner" }, React.createElement("div", null, item.text))));
     });
 
     var dropdownMenuClass = cx({
@@ -1013,16 +929,12 @@ module.exports = React.createClass({
       "dropdown-menu-right": this.props.alignRight
     });
 
-    return React.createElement("div", {
-      className: containerClass
-    }, showElement, this.state.open && dropdownElements.length ? React.createElement("ul", {
+    return React.createElement("div", { className: containerClass }, showElement, this.state.open && dropdownElements.length ? React.createElement("ul", {
       ref: "dropdownMenu",
       className: dropdownMenuClass,
       onMouseEnter: this.preventBlurEvent,
       onMouseLeave: this.allowBlurEvent,
-      role: "menu",
-      "aria-labelledby": "dLabel"
-    }, dropdownElements) : null);
+      role: "menu", "aria-labelledby": "dLabel" }, dropdownElements) : null);
   }
 });
 
@@ -1051,7 +963,7 @@ module.exports = React.createClass({
     overlayModal: React.PropTypes.bool
   },
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       searchText: "",
       searchIndex: 0,
@@ -1059,7 +971,7 @@ module.exports = React.createClass({
     };
   },
 
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     var node = this.getDOMNode();
     var nodeBox = node.getBoundingClientRect();
     var documentElement = document.documentElement;
@@ -1069,7 +981,7 @@ module.exports = React.createClass({
     });
   },
 
-  _onKeyDown: function (e) {
+  _onKeyDown: function _onKeyDown(e) {
     if (e.key === "Enter" || e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
     }
@@ -1103,8 +1015,9 @@ module.exports = React.createClass({
     }
   },
 
-  _onChange: function (e) {
+  _onChange: function _onChange(e) {
     var _this = this;
+
     this.setState({
       searchText: e.target.value
     }, function () {
@@ -1112,34 +1025,35 @@ module.exports = React.createClass({
     });
   },
 
-  _selectActive: function (index) {
+  _selectActive: function _selectActive(index) {
     this.setState({
       searchIndex: index
     });
   },
 
-  _selectMatch: function (payload) {
-    var _this2 = this;
+  _selectMatch: function _selectMatch(payload) {
+    var _this = this;
+
     // Blur input to close search
     this.refs.overlay._renderedComponent.getDOMNode().blur();
 
     this.setState({
       searchText: ""
     }, function () {
-      _this2.props.onSelectMatch(payload);
-      _this2.props.onSearch(_this2.state.searchText);
+      _this.props.onSelectMatch(payload);
+      _this.props.onSearch(_this.state.searchText);
     });
   },
 
-  _onFocus: function () {
+  _onFocus: function _onFocus() {
     this.refs.overlay.show();
   },
 
-  _onBlur: function () {
+  _onBlur: function _onBlur() {
     this.refs.overlay.hide();
   },
 
-  render: function () {
+  render: function render() {
     var searchIcon = "ficon ficon-search";
     if (this.props.iconClass) {
       searchIcon += " " + this.props.iconClass;
@@ -1150,11 +1064,7 @@ module.exports = React.createClass({
       inputClass += this.props.inputClass;
     }
 
-    return React.createElement("div", {
-      className: this.props.className
-    }, React.createElement(OverlayTrigger, {
-      ref: "overlay",
-      trigger: "manual",
+    return React.createElement("div", { className: this.props.className }, React.createElement(OverlayTrigger, { ref: "overlay", trigger: "manual",
       defaultOverlayShown: false,
       overlay: React.createElement(UITypeaheadSelectOverlay, {
         positionLeftOverride: this.state.searchLeft,
@@ -1162,22 +1072,15 @@ module.exports = React.createClass({
         selectActive: this._selectActive,
         selectMatch: this._selectMatch,
         options: this.props.options,
-        overlayModal: this.props.overlayModal
-      }),
-      placement: "bottom"
-    }, React.createElement("input", {
-      onFocus: this._onFocus,
-      onBlur: this._onBlur,
-      autoComplete: "off",
-      type: "text",
+        overlayModal: this.props.overlayModal }),
+      placement: "bottom" }, React.createElement("input", {
+      onFocus: this._onFocus, onBlur: this._onBlur,
+      autoComplete: "off", type: "text",
       className: inputClass,
       placeholder: this.props.placeholder,
       onKeyDown: this._onKeyDown,
       onChange: this._onChange,
-      value: this.state.searchText
-    })), React.createElement("i", {
-      className: searchIcon
-    }));
+      value: this.state.searchText })), React.createElement("i", { className: searchIcon }));
   }
 });
 
@@ -1205,16 +1108,17 @@ var UITypeaheadSelectOverlay = React.createClass({
     overlayModal: React.PropTypes.bool
   },
 
-  _selectActive: function (index) {
+  _selectActive: function _selectActive(index) {
     this.props.selectActive(index);
   },
 
-  _selectMatch: function (index) {
+  _selectMatch: function _selectMatch(index) {
     this.props.selectMatch(index);
   },
 
-  render: function () {
+  render: function render() {
     var _this = this;
+
     if (!this.props.options || !this.props.options.length) {
       return React.createElement("span", null);
     }
@@ -1223,15 +1127,10 @@ var UITypeaheadSelectOverlay = React.createClass({
     // Before the input blur
     var options = this.props.options.map(function (result, index) {
       var optionClass = _this.props.searchIndex === index ? "active" : "";
-      return React.createElement("li", {
-        role: "option",
-        key: index,
+      return React.createElement("li", { role: "option", key: index,
         className: optionClass,
         onMouseEnter: _this._selectActive.bind(_this, index),
-        onMouseDown: _this._selectMatch.bind(_this, result.payload)
-      }, React.createElement("a", {
-        tabIndex: "-1"
-      }, result.element));
+        onMouseDown: _this._selectMatch.bind(_this, result.payload) }, React.createElement("a", { tabIndex: "-1" }, result.element));
     });
 
     // OverlayTrigger uses offsetWidth to calculate left, which is often 0
@@ -1252,10 +1151,7 @@ var UITypeaheadSelectOverlay = React.createClass({
 
     return React.createElement("ul", {
       style: ulStyle,
-      className: "dropdown-menu",
-      role: "listbox",
-      "aria-hidden": "false"
-    }, options);
+      className: "dropdown-menu", role: "listbox", "aria-hidden": "false" }, options);
   }
 });
 
@@ -1367,7 +1263,7 @@ function isNodeInRoot(node, root) {
 
 var DocumentClickMixin = {
 
-  handleDocumentKeyUp: function (e) {
+  handleDocumentKeyUp: function handleDocumentKeyUp(e) {
     if (e.keyCode === 27) {
       if (this.onDocumentClick) {
         this.onDocumentClick();
@@ -1377,7 +1273,7 @@ var DocumentClickMixin = {
     }
   },
 
-  handleDocumentClick: function (e) {
+  handleDocumentClick: function handleDocumentClick(e) {
     // If the click originated from within this component
     // don't do anything.
     if (isNodeInRoot(e.target, this.getDOMNode())) {
@@ -1391,12 +1287,12 @@ var DocumentClickMixin = {
     }
   },
 
-  bindRootCloseHandlers: function () {
+  bindRootCloseHandlers: function bindRootCloseHandlers() {
     this._onDocumentClickListener = EventListener.listen(document, "click", this.handleDocumentClick);
     this._onDocumentKeyupListener = EventListener.listen(document, "keyup", this.handleDocumentKeyUp);
   },
 
-  unbindRootCloseHandlers: function () {
+  unbindRootCloseHandlers: function unbindRootCloseHandlers() {
     if (this._onDocumentClickListener) {
       this._onDocumentClickListener.remove();
     }
@@ -1406,11 +1302,11 @@ var DocumentClickMixin = {
     }
   },
 
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     this.bindRootCloseHandlers();
   },
 
-  componentWillUnmount: function () {
+  componentWillUnmount: function componentWillUnmount() {
     this.unbindRootCloseHandlers();
   }
 };

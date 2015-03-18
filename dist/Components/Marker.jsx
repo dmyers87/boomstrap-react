@@ -13,15 +13,15 @@ module.exports = React.createClass({
     onClose: React.PropTypes.func
   },
 
-  getDefaultProps: function () {
+  getDefaultProps: function getDefaultProps() {
     return {
       type: "default",
-      onClose: function () {},
+      onClose: function onClose() {},
       showClose: true
     };
   },
 
-  render: function () {
+  render: function render() {
     var markerClass = "marker marker-" + this.props.type;
     var closeClass = "ficon ficon-cross";
     if (this.props.closeClass) {
@@ -31,14 +31,19 @@ module.exports = React.createClass({
     var close = null;
 
     if (this.props.showClose) {
-      close = React.createElement("i", {
-        className: closeClass,
-        onClick: this.props.onClose
-      });
+      close = React.createElement("i", { className: closeClass, onClick: this.props.onClose });
     }
 
-    return React.createElement("span", {
-      className: markerClass
-    }, React.createElement("span", null, this.props.label, " "), close);
+    return React.createElement(
+      "span",
+      { className: markerClass },
+      React.createElement(
+        "span",
+        null,
+        this.props.label,
+        " "
+      ),
+      close
+    );
   }
 });

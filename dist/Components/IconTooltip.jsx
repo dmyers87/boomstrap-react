@@ -14,12 +14,15 @@ module.exports = React.createClass({
     text: React.PropTypes.string,
     icon: React.PropTypes.string
   },
-  render: function () {
-    return this.props.showIf ? React.createElement(OverlayTrigger, {
-      placement: "top",
-      overlay: React.createElement(Tooltip, null, this.props.text)
-    }, React.createElement("span", {
-      className: "ficon ficon-" + this.props.icon
-    })) : null;
+  render: function render() {
+    return this.props.showIf ? React.createElement(
+      OverlayTrigger,
+      { placement: "top", overlay: React.createElement(
+          Tooltip,
+          null,
+          this.props.text
+        ) },
+      React.createElement("span", { className: "ficon ficon-" + this.props.icon })
+    ) : null;
   }
 });

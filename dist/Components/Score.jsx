@@ -9,7 +9,7 @@ module.exports = React.createClass({
     score: React.PropTypes.number,
     size: React.PropTypes.string
   },
-  render: function () {
+  render: function render() {
     var scoreClass = "score";
     var scoreTranslation;
 
@@ -28,8 +28,10 @@ module.exports = React.createClass({
       scoreClass += " score-" + this.props.size;
     }
 
-    return React.createElement("span", {
-      className: scoreClass
-    }, this.props.score);
+    return React.createElement(
+      "span",
+      { className: scoreClass },
+      this.props.score
+    );
   }
 });
