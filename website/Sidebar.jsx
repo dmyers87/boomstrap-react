@@ -4,6 +4,14 @@ var React = require('react/addons');
 
 module.exports = React.createClass({
   displayName: 'Sidebar',
+
+  propTypes: {
+    components: React.PropTypes.arrayOf(React.PropTypes.shape({
+      path: React.PropTypes.string,
+      name: React.PropTypes.string
+    }))
+  },
+
   render() {
     var sideBarStyle = {
       width: '200px',
@@ -15,10 +23,16 @@ module.exports = React.createClass({
       left: '-200px'
     };
 
+    var links = this.props.components.map(function(component) {
+      return (
+        <li><a href='#'>{component.name}</a></li>
+      );
+    });
+
     return (
       <div style={sideBarStyle}>
         <ul className="nav nav-blocks">
-          <li className="active"><a href="#">ImageWithFallback</a></li>
+          {links}
         </ul>
       </div>
     );

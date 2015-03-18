@@ -8,6 +8,9 @@ var SidebarToggle = require('./SidebarToggle.jsx');
 var Body          = require('./Body.jsx');
 var BodyOverlay   = require('./BodyOverlay.jsx');
 
+// Docs
+var request = require('superagent');
+
 // Components
 
 var ImageWithFallback = require('../src/Components/ImageWithFallback.jsx');
@@ -16,8 +19,22 @@ var ImageWithFallback = require('../src/Components/ImageWithFallback.jsx');
 var App = React.createClass({
   getInitialState() {
     return {
-      open: false
+      open: false,
+      components: {}
     };
+  },
+
+  componentDidMount() {
+    var _this = this;
+    request.get('docs/docs.json').end(function(err, data) {
+      if (err) {
+        return;
+      }
+
+      _this.setState({
+        components: data.body
+      });
+    });
   },
 
   _onToggleSidebar() {
@@ -48,6 +65,16 @@ var App = React.createClass({
       'transition':       '.3s ease all'
     };
 
+    var sideBarComponents = Object.keys(this.state.components).map(function(component) {
+      var componentParts = component.split('/');
+      var componentName = componentParts[componentParts.length - 1];
+
+      return {
+        path: component,
+        name: componentName
+      };
+    });
+
     return (
       <div style={containerStyle}>
         <Body open={this.state.open}>
@@ -67,7 +94,7 @@ var App = React.createClass({
           </div>
           {overlay}
         </Body>
-        <Sidebar open={this.state.open} />
+        <Sidebar open={this.state.open} components={sideBarComponents} />
       </div>
     );
   }
