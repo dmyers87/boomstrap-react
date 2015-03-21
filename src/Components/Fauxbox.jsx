@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react/addons');
-var cx    = React.addons.classSet;
+var cx    = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'Fauxbox',
@@ -17,15 +17,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var fauxboxClasses = {
-      'fauxbox': true,
+    var fauxboxClass = cx(this.props.className, 'fauxbox', {
       'fauxbox-inline': !!this.props.inline
-    };
-    if (this.props.className) {
-      fauxboxClasses[this.props.className] = true;
-    }
-
-    var fauxboxClass = cx(fauxboxClasses);
+    });
     var labelClass = this.props.labelClass || '';
 
     return (

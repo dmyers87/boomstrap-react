@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react/addons');
-var cx    = React.addons.classSet;
+var cx    = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'Switcher',
@@ -14,14 +14,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var switcherClasses = {
-      'switcher': true,
-    };
-    if (this.props.className) {
-      switcherClasses[this.props.className] = true;
-    }
-
-    var switcherClass = cx(switcherClasses);
+    var switcherClass = cx('switcher', this.props.className);
 
     return (
       <div className={switcherClass}>

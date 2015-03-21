@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require("react/addons");
-var cx = React.addons.classSet;
+var cx = require("classnames");
 
 module.exports = React.createClass({
   displayName: "Pager",
@@ -38,13 +38,11 @@ module.exports = React.createClass({
     var currentPage = this.props.currentPage;
     var maxPage = this._getMaxPage();
 
-    var backBtnClass = cx({
-      "btn btn-default btn-icon": true,
+    var backBtnClass = cx("btn btn-default btn-icon", {
       disabled: currentPage === 1
     });
 
-    var fwdBtnClass = cx({
-      "btn btn-default btn-icon": true,
+    var fwdBtnClass = cx("btn btn-default btn-icon", {
       disabled: currentPage === maxPage
     });
 

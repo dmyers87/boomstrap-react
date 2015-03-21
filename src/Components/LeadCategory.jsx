@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react/addons');
-var cx    = React.addons.classSet;
+var cx    = require('classnames');
 var PureRenderMixin = React.addons.PureRenderMixin;
 
 var LeadCategories = require('../Constants/LeadCategories');
@@ -33,10 +33,9 @@ module.exports = React.createClass({
     var isAbbreviated = this.props.abbreviated;
 
     var categoryClass = 'leadcat-' + category.toLowerCase();
-    var catClass = categoryClass + ' ' + cx({
-      'leadcat': true,
+    var catClass = cx(categoryClass, 'leadcat', {
       'leadcat-eq-abbr': isEqualLength && isAbbreviated,
-      'leadcat-eq': isEqualLength && !isAbbreviated
+      'leadcat-eq':      isEqualLength && !isAbbreviated
     });
 
     return (

@@ -3,8 +3,7 @@
 var React = require('react/addons');
 
 // Components
-var OverlayTrigger = require('react-bootstrap/OverlayTrigger');
-var Tooltip        = require('react-bootstrap/Tooltip');
+var { OverlayTrigger, Tooltip } = require('react-bootstrap');
 
 module.exports = React.createClass({
   displayName: 'Icon Tooltip',

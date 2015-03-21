@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react/addons');
-var cx    = React.addons.classSet;
+var cx    = require('classnames');
 
 var Fauxbox = require('./Fauxbox.jsx');
 
@@ -56,7 +56,7 @@ module.exports = React.createClass({
         open: true,
         allowBlurEvent: true
       }, () => {
-        this.refs.searchInput.getDOMNode().focus();
+        React.findDOMNode(this.refs.searchInput).focus();
       });
     }
   },
@@ -209,14 +209,12 @@ module.exports = React.createClass({
   render() {
     var showElement = this._renderBaseElement();
 
-    var containerClass = cx({
-      'ui-select-bootstrap dropdown': true,
+    var containerClass = cx('ui-select-bootstrap dropdown', {
       'open': this.state.open
     });
 
     var dropdownElements = this.getFilteredItems().map((item, index) => {
-      var rowClass = cx({
-        'ui-select-choices-row': true,
+      var rowClass = cx('ui-select-choices-row', {
         'active': this.state.activeIndex === index
       });
 
@@ -239,8 +237,7 @@ module.exports = React.createClass({
       );
     });
 
-    var dropdownMenuClass = cx({
-      'ui-select-choices ui-select-choices-content dropdown-menu': true,
+    var dropdownMenuClass = cx('ui-select-choices ui-select-choices-content dropdown-menu', {
       'dropdown-menu-right': this.props.alignRight
     });
 

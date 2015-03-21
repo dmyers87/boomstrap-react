@@ -31,7 +31,7 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function componentDidMount() {
-    var node = this.getDOMNode();
+    var node = React.findDOMNode(this);
     var nodeBox = node.getBoundingClientRect();
     var documentElement = document.documentElement;
     var inputLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
@@ -94,7 +94,7 @@ module.exports = React.createClass({
     var _this = this;
 
     // Blur input to close search
-    this.refs.overlay._renderedComponent.getDOMNode().blur();
+    React.findDOMNode(this.refs.overlay._renderedComponent).blur();
 
     this.setState({
       searchText: ""

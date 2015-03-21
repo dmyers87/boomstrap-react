@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require("react/addons");
-var cx = React.addons.classSet;
+var cx = require("classnames");
 
 module.exports = React.createClass({
   displayName: "Score",

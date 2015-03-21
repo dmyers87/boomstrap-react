@@ -1,6 +1,7 @@
 // __tests__/CheckboxWithLabel-test.js
 
 jest.dontMock('../../src/Components/Fauxbox.jsx');
+jest.dontMock('classnames');
 
 describe('Fauxbox', function() {
   var React     = require('react/addons');
@@ -42,7 +43,7 @@ describe('Fauxbox', function() {
       <Fauxbox id='test-fauxbox' checked={true} inline={true} />
     );
 
-    var fauxboxClasses = fauxbox.getDOMNode().className.split(' ').sort();
+    var fauxboxClasses = React.findDOMNode(fauxbox).className.split(' ').sort();
 
     expect(fauxboxClasses[1]).toEqual('fauxbox-inline');
   });

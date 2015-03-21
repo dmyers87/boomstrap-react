@@ -1,7 +1,7 @@
 "use strict";
 
 var React = require("react/addons");
-var cx = React.addons.classSet;
+var cx = require("classnames");
 
 module.exports = React.createClass({
   displayName: "UISelect",
@@ -46,7 +46,7 @@ module.exports = React.createClass({
         open: true,
         allowBlurEvent: true
       }, function () {
-        _this.refs.searchInput.getDOMNode().focus();
+        React.findDOMNode(_this.refs.searchInput).focus();
       });
     }
   },
@@ -81,8 +81,8 @@ module.exports = React.createClass({
     var containerRef = this.refs.dropdownMenu;
     var highlightedRef = this.refs["dropdownMenuItem_" + this.state.activeIndex];
     if (containerRef && highlightedRef) {
-      var container = containerRef.getDOMNode();
-      var highlighted = highlightedRef.getDOMNode();
+      var container = React.findDOMNode(containerRef);
+      var highlighted = React.findDOMNode(highlightedRef);
       var posY = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
       var height = container.offsetHeight;
 

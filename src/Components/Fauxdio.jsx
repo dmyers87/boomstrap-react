@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react/addons');
-var cx    = React.addons.classSet;
+var cx    = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'Fauxdio',
@@ -17,14 +17,9 @@ module.exports = React.createClass({
   },
   render: function() {
     var labelClass = this.props.labelClass || '';
-    var fauxdioClassObj = {
-      'fauxdio': true,
+    var fauxdioClass = cx(this.props.radioClass, 'fauxdio', {
       'fauxdio-inline': !!this.props.inline
-    };
-    if (this.props.radioClass) {
-      fauxdioClassObj[this.props.radioClass] = true;
-    }
-    var fauxdioClass = cx(fauxdioClassObj);
+    });
 
     return (
       <div className={fauxdioClass}>
