@@ -3,7 +3,7 @@
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
 
-var EventListener = require('react-bootstrap/utils/EventListener');
+var EventListener = require('react-bootstrap/lib/utils/EventListener');
 
 /**
 * Checks whether a node is within
