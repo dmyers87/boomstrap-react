@@ -94,7 +94,7 @@ module.exports = React.createClass({
     var _this = this;
 
     // Blur input to close search
-    React.findDOMNode(this.refs.overlay._renderedComponent).blur();
+    this.refs.overlay.getOverlayDOMNode().blur();
 
     this.setState({
       searchText: ""
