@@ -1220,8 +1220,6 @@ module.exports = {
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
 
-var EventListener = require("react-bootstrap/lib/utils/EventListener");
-
 /**
 * Checks whether a node is within
 * a root nodes tree
@@ -1268,8 +1266,19 @@ var DocumentClickMixin = {
   },
 
   bindRootCloseHandlers: function bindRootCloseHandlers() {
-    this._onDocumentClickListener = EventListener.listen(document, "click", this.handleDocumentClick);
-    this._onDocumentKeyupListener = EventListener.listen(document, "keyup", this.handleDocumentKeyUp);
+    document.addEventListener("click", this.handleDocumentClick);
+    this._onDocumentClickListener = {
+      remove: function remove() {
+        document.removeEventListener("click", this.handleDocumentClick, false);
+      }
+    };
+
+    document.addEventListener("keyup", this.handleDocumentKeyUp, false);
+    this._onDocumentKeyupListener = {
+      remove: function remove() {
+        document.removeEventListener("keyup", this.handleDocumentKeyUp, false);
+      }
+    };
   },
 
   unbindRootCloseHandlers: function unbindRootCloseHandlers() {
@@ -1293,7 +1302,7 @@ var DocumentClickMixin = {
 
 module.exports = DocumentClickMixin;
 
-},{"react-bootstrap/lib/utils/EventListener":77}],23:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
