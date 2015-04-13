@@ -14,6 +14,7 @@ var request = require('superagent');
 // Components
 
 var ImageWithFallback = require('../src/Components/ImageWithFallback.jsx');
+var Pager = require('../src/Components/Pager.jsx');
 
 
 var App = React.createClass({

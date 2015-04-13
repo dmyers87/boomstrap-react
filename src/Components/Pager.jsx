@@ -10,7 +10,8 @@ module.exports = React.createClass({
     currentPage:  React.PropTypes.number.isRequired,
     totalItems:   React.PropTypes.number.isRequired,
     itemsPerPage: React.PropTypes.number.isRequired,
-    onPage:       React.PropTypes.func
+    onPage:       React.PropTypes.func,
+    disabled:     React.PropTypes.bool
   },
 
   _getMaxPage() {
@@ -39,11 +40,11 @@ module.exports = React.createClass({
     var maxPage = this._getMaxPage();
 
     var backBtnClass = cx('btn btn-default btn-icon', {
-      'disabled': currentPage === 1
+      'disabled': currentPage === 1 || this.props.disabled
     });
 
     var fwdBtnClass = cx('btn btn-default btn-icon', {
-      'disabled': currentPage === maxPage
+      'disabled': currentPage === maxPage || this.props.disabled
     });
 
     return (
