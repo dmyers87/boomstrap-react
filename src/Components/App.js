@@ -1,6 +1,8 @@
 module.exports = {
   Fauxbox:           require('./Fauxbox.jsx'),
   Fauxdio:           require('./Fauxdio.jsx'),
+  FauxLink:          require('./FauxLink.jsx'),
+  Icon:              require('./Icon.jsx'),
   IconTooltip:       require('./IconTooltip.jsx'),
   IFrame:            require('./IFrame.jsx'),
   ImageWithFallback: require('./ImageWithFallback.jsx'),

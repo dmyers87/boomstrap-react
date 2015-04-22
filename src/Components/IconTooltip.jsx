@@ -1,9 +1,10 @@
 'use strict';
 
-var React = require('react/addons');
+const React = require('react/addons');
 
 // Components
-var { OverlayTrigger, Tooltip } = require('react-bootstrap');
+const { OverlayTrigger, Tooltip } = require('react-bootstrap');
+const Icon = require('./Icon.jsx');
 
 module.exports = React.createClass({
   displayName: 'Icon Tooltip',
@@ -13,11 +14,12 @@ module.exports = React.createClass({
     text: React.PropTypes.string,
     icon: React.PropTypes.string
   },
+
   render() {
     return (
       this.props.showIf ?
       <OverlayTrigger placement='top' overlay={<Tooltip>{this.props.text}</Tooltip>}>
-        <span className={'ficon ficon-' + this.props.icon}></span>
+        <Icon icon={this.props.icon} />
       </OverlayTrigger> : null
     );
   }
