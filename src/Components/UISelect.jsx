@@ -1,34 +1,66 @@
-'use strict';
+const React = require('react/addons');
+const cx    = require('classnames');
+const FauxLink = require('./FauxLink.jsx');
+const DocumentClickMixin = require('../Mixins/DocumentClickMixin.jsx');
 
-var React = require('react/addons');
-var cx    = require('classnames');
+const UISelectDropdownMenu = React.createClass({
+  displayName: 'UI Select Dropdown Menu',
+
+  propTypes: {
+    className: React.PropTypes.string,
+    onClose:   React.PropTypes.func,
+    children:  React.PropTypes.any
+  },
+
+  mixins: [DocumentClickMixin],
+
+  onDocumentClick() {
+    this.props.onClose();
+  },
+
+  render() {
+    return (
+      <ul
+        aria-labelledby='dLabel'
+        className={this.props.className}
+        role='menu'>
+        {this.props.children}
+      </ul>
+    );
+  }
+});
 
 module.exports = React.createClass({
   displayName: 'UISelect',
+
   propTypes: {
-    payload: React.PropTypes.oneOfType([
+    payload:     React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number
     ]),
-    text: React.PropTypes.string,
+    text:        React.PropTypes.string,
     placeholder: React.PropTypes.string,
     items: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        payload: React.PropTypes.any,
-        text: React.PropTypes.any
+        payload: React.PropTypes.oneOfType([
+          React.PropTypes.string,
+          React.PropTypes.number
+        ]),
+        text: React.PropTypes.string
       })
     ),
     buttonClass: React.PropTypes.string,
-    inputClass: React.PropTypes.string,
+    inputClass:  React.PropTypes.string,
     includeSearchInValues: React.PropTypes.bool,
-    translateSearchValue: React.PropTypes.func,
-    onChange: React.PropTypes.func,
-    disabled: React.PropTypes.bool,
-    alignRight: React.PropTypes.bool
+    translateSearchValue:  React.PropTypes.func,
+    onChange:              React.PropTypes.func,
+    disabled:              React.PropTypes.bool,
+    alignRight:            React.PropTypes.bool
   },
 
   getDefaultProps() {
     return {
+      items: [],
       disabled: false,
       alignRight: false
     };
@@ -38,16 +70,14 @@ module.exports = React.createClass({
     return {
       open: false,
       search: null,
-      activeIndex: 0,
-      allowBlurEvent: false
+      activeIndex: 0
     };
   },
 
   activate() {
     if (!this.props.disabled) {
       this.setState({
-        open: true,
-        allowBlurEvent: true
+        open: true
       }, () => {
         React.findDOMNode(this.refs.searchInput).focus();
       });
@@ -58,32 +88,24 @@ module.exports = React.createClass({
     // Internet Explorer fires change events on blur
     // Because these events do not have a value we can ignore it
     // Because the value will be the same as last time
-    var val = e.target.value || '';
+    const val = e.target.value || '';
     if (val !== this.state.search) {
-      this.setState({
-        search: val
-      }, () => {
-        this.setActiveItem(0);
-      });
+      this.setState({ search: val }, () => this.setActiveItem(0));
     }
   },
 
   setActiveItem(index) {
-    this.setState({
-      activeIndex: index
-    }, () => {
-      this._ensureHighlightVisible();
-    });
+    this.setState({ activeIndex: index }, () => this._ensureHighlightVisible());
   },
 
   _ensureHighlightVisible() {
-    var containerRef = this.refs.dropdownMenu;
-    var highlightedRef = this.refs['dropdownMenuItem_' + this.state.activeIndex];
+    const containerRef = this.refs.dropdownMenu;
+    const highlightedRef = this.refs['dropdownMenuItem_' + this.state.activeIndex];
     if (containerRef && highlightedRef) {
-      var container   = React.findDOMNode(containerRef);
-      var highlighted = React.findDOMNode(highlightedRef);
-      var posY   = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
-      var height = container.offsetHeight;
+      const container   = React.findDOMNode(containerRef);
+      const highlighted = React.findDOMNode(highlightedRef);
+      const posY   = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
+      const height = container.offsetHeight;
 
       if (posY > height) {
         container.scrollTop += posY - height;
@@ -94,46 +116,38 @@ module.exports = React.createClass({
   },
 
   getFilteredItems() {
-    var items = this.props.items && this.props.items.slice();
-    var searchText;
-    if (items) {
-      if (this.props.includeSearchInValues && this.state.search) {
-        items.unshift({
-          payload: this.state.search,
-          text: this.props.translateSearchValue(this.state.search)
-        });
-      }
+    const items = this.props.items.slice();
+    let searchText;
 
-      if (!this.state.search) {
-        return items;
-      }
-
-      searchText = this.state.search.toLowerCase();
-
-      return items.filter((item) => {
-        var itemText    = item.text || '';
-        var itemPayload = item.payload;
-        if (itemPayload === null) {
-          itemPayload = '';
-        } else {
-          itemPayload = itemPayload.toString();
-        }
-        return (
-          itemText.toLowerCase().indexOf(searchText) !== -1 ||
-          itemPayload.toLowerCase().indexOf(searchText) !== -1
-        );
+    if (this.props.includeSearchInValues && this.state.search) {
+      items.unshift({
+        payload: this.state.search,
+        text: this.props.translateSearchValue(this.state.search)
       });
     }
 
-    return [];
+    if (!this.state.search) {
+      return items;
+    }
+
+    searchText = this.state.search.toLowerCase();
+
+    return items.filter((item) => {
+      const itemText  = item.text || '';
+      let itemPayload = item.payload;
+      itemPayload = itemPayload === null ? '' : itemPayload.toString();
+      return (
+        itemText.toLowerCase().indexOf(searchText) !== -1 ||
+        itemPayload.toLowerCase().indexOf(searchText) !== -1
+      );
+    });
   },
 
   select(index) {
-    var selectedItem = this.getFilteredItems()[index];
+    const selectedItem = this.getFilteredItems()[index];
     this.setState({
       search: '',
-      open: false,
-      allowBlurEvent: true
+      open: false
     }, () => {
       this.setActiveItem(0);
       this.props.onChange(selectedItem);
@@ -141,12 +155,12 @@ module.exports = React.createClass({
   },
 
   onKeyDown(e) {
-    var filteredItemMaxIndex, activeIndex;
-
     if (e.key === 'Enter') {
       e.preventDefault();
       this.select(this.state.activeIndex);
     } else {
+      let filteredItemMaxIndex;
+      let activeIndex;
 
       filteredItemMaxIndex = this.getFilteredItems().length - 1;
       activeIndex = this.state.activeIndex;
@@ -163,100 +177,93 @@ module.exports = React.createClass({
     }
   },
 
-  allowBlurEvent() {
+  onClose() {
     this.setState({
-      allowBlurEvent: true
+      open: false
     });
   },
 
-  preventBlurEvent() {
-    this.setState({
-      allowBlurEvent: false
+  renderDropdownItem(item, index) {
+    const rowClass = cx('ui-select-choices-row', {
+      'active': this.state.activeIndex === index
     });
-  },
 
-  onBlur() {
-    if (this.state.allowBlurEvent) {
-      this.setState({
-        open: false
-      });
-    }
+    return (
+      <li
+        className='ui-select-choices-group'
+        key={index}
+        ref={'dropdownMenuItem_' + index}>
+        <div
+          className={rowClass}
+          onMouseEnter={() => this.setActiveItem(index)}
+          onClick={() => this.select(index)}>
+          <FauxLink className='ui-select-choices-row-inner'>
+            <div>{item.text}</div>
+          </FauxLink>
+        </div>
+      </li>
+    );
   },
 
   render() {
-    var containerClass = cx({
-      'ui-select-bootstrap dropdown': true,
+    const containerClass = cx('ui-select-bootstrap dropdown', {
       'open': this.state.open
     });
 
-    var showElement;
-    var isEmpty = !this.props.text;
-    var elementClass;
+    let showElement;
+    let dropdownMenu = null;
+    const isEmpty = !this.props.text;
+    let elementClass;
     if (!this.state.open) {
-      elementClass = 'btn btn-default form-control ui-select-match ' + (this.props.buttonClass || '');
+      elementClass = cx('btn btn-default form-control ui-select-match', this.props.buttonClass);
       showElement = (
-        <button type='button' tabIndex='-1'
+        <button
           className={elementClass}
           disabled={this.props.disabled}
-          onClick={this.activate} placeholder={this.props.placeholder}>
+          onClick={this.activate}
+          placeholder={this.props.placeholder}
+          tabIndex='-1'
+          type='button'>
           { isEmpty ?
             (<span className='text-muted'>{this.props.placeholder}</span>) :
-            (<span><span>{this.props.text}</span></span>) }
+            (<span>{this.props.text}</span>) }
             <span className='caret'></span>
         </button>
       );
     } else {
-      elementClass = 'form-control ui-select-search ' + (this.props.inputClass || '');
+      elementClass = cx('form-control ui-select-search', this.props.inputClass);
       showElement = (
-        <input type='text' autoComplete='off' tabIndex='-1' ref='searchInput'
+        <input
+          autoComplete='off'
           className={elementClass}
-          placeholder={this.props.placeholder}
-          value={this.state.search}
-          onBlur={this.onBlur}
           onChange={this.updateSearch}
-          onKeyDown={this.onKeyDown}/>
+          onKeyDown={this.onKeyDown}
+          placeholder={this.props.placeholder}
+          ref='searchInput'
+          tabIndex='-1'
+          type='text'
+          value={this.state.search}/>
       );
+      const dropdownElements = this.getFilteredItems().map(this.renderDropdownItem);
+      if (dropdownElements.length) {
+        const dropdownMenuClass = cx('ui-select-choices ui-select-choices-content dropdown-menu', {
+          'dropdown-menu-right': this.props.alignRight
+        });
+        dropdownMenu = (
+          <UISelectDropdownMenu
+            className={dropdownMenuClass}
+            onClose={this.onClose}
+            ref='dropdownMenu'>
+            {dropdownElements}
+          </UISelectDropdownMenu>
+        );
+      }
     }
-
-    var dropdownElements = this.getFilteredItems().map((item, index) => {
-      var rowClass = cx({
-        'ui-select-choices-row': true,
-        'active': this.state.activeIndex === index
-      });
-
-      return (
-        <li className='ui-select-choices-group' key={index} ref={'dropdownMenuItem_' + index}>
-          <div
-            className={rowClass}
-            onMouseEnter={this.setActiveItem.bind(this, index)}
-            onClick={this.select.bind(this, index)}>
-            <a href='javascript:void(0)' className='ui-select-choices-row-inner'>
-              <div>{item.text}</div>
-            </a>
-          </div>
-        </li>
-      );
-    });
-
-    var dropdownMenuClass = cx({
-      'ui-select-choices ui-select-choices-content dropdown-menu': true,
-      'dropdown-menu-right': this.props.alignRight
-    });
 
     return (
       <div className={containerClass}>
         {showElement}
-        {this.state.open && dropdownElements.length ?
-          <ul
-            ref='dropdownMenu'
-            className={dropdownMenuClass}
-            onMouseEnter={this.preventBlurEvent}
-            onMouseLeave={this.allowBlurEvent}
-            role='menu' aria-labelledby='dLabel'>
-            {dropdownElements}
-          </ul>
-          : null
-        }
+        {dropdownMenu}
       </div>
     );
   }

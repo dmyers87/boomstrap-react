@@ -1,7 +1,7 @@
-'use strict';
-
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
+
+const React = require('react/addons');
 
 /**
 * Checks whether a node is within
@@ -12,75 +12,49 @@
 * @returns {boolean}
 */
 function isNodeInRoot(node, root) {
-  while (node) {
-    if (node === root) {
+  let cycleNode = node;
+  while (cycleNode) {
+    if (cycleNode === root) {
       return true;
     }
-    node = node.parentNode;
+    cycleNode = cycleNode.parentNode;
   }
 
   return false;
 }
 
-var DocumentClickMixin = {
+module.exports = {
 
-  handleDocumentKeyUp: function (e) {
+  handleDocumentKeyUp: function(e) {
     if (e.keyCode === 27) {
-      if (this.onDocumentClick) {
-        this.onDocumentClick();
-      } else if (console && console.warn) {
-        console.warn('Please provide the function `onDocumentClick` to your Component');
-      }
+      this.onDocumentClick();
     }
   },
 
-  handleDocumentClick: function (e) {
+  handleDocumentClick: function(e) {
     // If the click originated from within this component
     // don't do anything.
-    if (isNodeInRoot(e.target, this.getDOMNode())) {
+    if (isNodeInRoot(e.target, React.findDOMNode(this))) {
       return;
     }
+    this.onDocumentClick();
+  },
 
+  componentDidMount: function() {
     if (this.onDocumentClick) {
-      this.onDocumentClick();
+      document.addEventListener('click', this.handleDocumentClick, false);
+      document.addEventListener('keyup', this.handleDocumentKeyUp, false);
     } else if (console && console.warn) {
       console.warn('Please provide the function `onDocumentClick` to your Component');
     }
   },
 
-  bindRootCloseHandlers: function () {
-    document.addEventListener('click', this.handleDocumentClick);
-    this._onDocumentClickListener = {
-      remove: function remove() {
-        document.removeEventListener('click', this.handleDocumentClick, false);
-      }
-    };
-
-    document.addEventListener('keyup', this.handleDocumentKeyUp, false);
-    this._onDocumentKeyupListener = {
-      remove: function remove() {
-        document.removeEventListener('keyup', this.handleDocumentKeyUp, false);
-      }
-    };
-  },
-
-  unbindRootCloseHandlers: function () {
-    if (this._onDocumentClickListener) {
-      this._onDocumentClickListener.remove();
+  componentWillUnmount: function() {
+    if (this.onDocumentClick) {
+      document.removeEventListener('click', this.handleDocumentClick, false);
+      document.removeEventListener('keyup', this.handleDocumentKeyUp, false);
+    } else if (console && console.warn) {
+      console.warn('Please provide the function `onDocumentClick` to your Component');
     }
-
-    if (this._onDocumentKeyupListener) {
-      this._onDocumentKeyupListener.remove();
-    }
-  },
-
-  componentDidMount: function() {
-    this.bindRootCloseHandlers();
-  },
-
-  componentWillUnmount: function () {
-    this.unbindRootCloseHandlers();
   }
 };
-
-module.exports = DocumentClickMixin;
