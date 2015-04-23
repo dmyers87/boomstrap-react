@@ -103,13 +103,6 @@ var App = React.createClass({
           React.createElement(
             "div",
             { id: "components" },
-            React.createElement(
-              DocWithExample,
-              { doc: "docs/ImageWithFallback.md" },
-              React.createElement(ImageWithFallback, {
-                src: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png",
-                fallbackSrc: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png" })
-            ),
             sideBarComponents.map(function (comp) {
               return React.createElement(GeneratedDoc, { name: comp.name, info: comp.info });
             })
