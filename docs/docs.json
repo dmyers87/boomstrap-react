@@ -243,7 +243,36 @@
   },
   "dist/Components/Loader.jsx": {
     "description": "",
-    "props": {}
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "desaturated": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "small": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "center": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
   },
   "dist/Components/Marker.jsx": {
     "description": "",
@@ -294,6 +323,40 @@
           "value": "function onClose() {}",
           "computed": false
         }
+      }
+    }
+  },
+  "dist/Components/MessageFace.jsx": {
+    "description": "",
+    "props": {
+      "placement": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"\"",
+              "computed": false
+            },
+            {
+              "value": "\"left\"",
+              "computed": false
+            },
+            {
+              "value": "\"top\"",
+              "computed": false
+            },
+            {
+              "value": "\"right\"",
+              "computed": false
+            },
+            {
+              "value": "\"bottom\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
       }
     }
   },
@@ -756,6 +819,32 @@
         "description": ""
       },
       "overlayModal": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "dist/Components/Well.jsx": {
+    "description": "",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "large": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "small": {
         "type": {
           "name": "bool"
         },
