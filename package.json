@@ -1,7 +1,7 @@
 {
   "name": "boomstrap-react",
   "description": "React Components and Mixins for the Boomstrap library",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/BoomTownROI/boomstrap-react"
@@ -26,7 +26,7 @@
     "gulp-gh-pages": "^0.4.0",
     "jest-cli": "^0.2.1",
     "marked": "^0.3.2",
-    "react-docgen": "^1.0.2",
+    "react-docgen": "^1.2.0",
     "superagent": "^0.21.0",
     "uglifyify": "^2.6.0",
     "vinyl-source-stream": "^1.0.0"
