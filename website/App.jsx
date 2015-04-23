@@ -1,24 +1,15 @@
-'use strict';
+const React = require('react/addons');
 
-var React = require('react/addons');
-var DocWithExample = require('./DocWithExample.jsx');
-
-var Sidebar       = require('./Sidebar.jsx');
-var SidebarToggle = require('./SidebarToggle.jsx');
-var Body          = require('./Body.jsx');
-var BodyOverlay   = require('./BodyOverlay.jsx');
-var GeneratedDoc  = require('./GeneratedDoc.jsx');
+const Sidebar       = require('./Sidebar.jsx');
+const Body          = require('./Body.jsx');
+const GeneratedDoc  = require('./GeneratedDoc.jsx');
 
 // Docs
-var request = require('superagent');
+const request = require('superagent');
 
-// Components
+const App = React.createClass({
+  displayName: 'App',
 
-var ImageWithFallback = require('../src/Components/ImageWithFallback.jsx');
-var Pager = require('../src/Components/Pager.jsx');
-
-
-var App = React.createClass({
   getInitialState() {
     return {
       open: false,
@@ -26,14 +17,13 @@ var App = React.createClass({
     };
   },
 
-  componentDidMount() {
-    var _this = this;
-    request.get('docs/docs.json').end(function(err, data) {
+  componentWillMount() {
+    request.get('docs/docs.json').end((err, data) => {
       if (err) {
         return;
       }
 
-      _this.setState({
+      this.setState({
         components: data.body
       });
     });
@@ -46,18 +36,8 @@ var App = React.createClass({
   },
 
   render() {
-    var overlay = null;
-    var toggle = null;
-    if (this.state.open) {
-      overlay = (
-        <BodyOverlay onClick={this._onToggleSidebar} />
-      );
-    } else {
-      toggle = <SidebarToggle onClick={this._onToggleSidebar} />;
-    }
-
-    var translate = this.state.open ? '200px' : '0px';
-    var containerStyle = {
+    const translate = this.state.open ? '200px' : '0px';
+    const containerStyle = {
       'width':    '100%',
       'height':   '100%',
       'position': 'relative',
@@ -67,9 +47,9 @@ var App = React.createClass({
       'transition':       '.3s ease all'
     };
 
-    var sideBarComponents = Object.keys(this.state.components).map((component) => {
-      var componentParts = component.split('/');
-      var componentName = componentParts[componentParts.length - 1].split('.')[0];
+    const sideBarComponents = Object.keys(this.state.components).map((component) => {
+      const componentParts = component.split('/');
+      const componentName = componentParts[componentParts.length - 1].split('.')[0];
 
       return {
         path: component,
@@ -82,27 +62,19 @@ var App = React.createClass({
 
     return (
       <div style={containerStyle}>
-        <Body open={this.state.open}>
-          {toggle}
+        <Body>
           <div className='container'>
             <h1>
               Boomstrap React&nbsp;
               <img src='react-boomstrap.svg' height='80' width='80'/>
             </h1>
             <div id='components'>
-              <DocWithExample doc='docs/ImageWithFallback.md'>
-                <ImageWithFallback
-                  src='http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png'
-                  fallbackSrc='http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png' />
-              </DocWithExample>
               {sideBarComponents.map((comp) => {
-                return <GeneratedDoc name={comp.name} info={comp.info} />
+                return <GeneratedDoc name={comp.name} info={comp.info} />;
               })}
             </div>
           </div>
-          {overlay}
         </Body>
-        <Sidebar open={this.state.open} components={sideBarComponents} />
       </div>
     );
   }

@@ -38,14 +38,13 @@ module.exports = React.createClass({
 
   render() {
     const divStyle = {
-      'boxShadow': '0px 2px  5px  0 rgba(0, 0, 0, 0.26)',
       'padding': 10,
       'marginTop': 20,
       'marginBottom': 20
     };
 
     return (
-      <div style={divStyle} id={this.props.name}>
+      <div style={divStyle} id={this.props.name} className='shadow-depth-1'>
         <h1>{this.props.name}</h1>
         <h3>Description</h3>
         <p>{this.props.info.description}</p>

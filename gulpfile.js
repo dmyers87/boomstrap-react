@@ -57,7 +57,7 @@ gulp.task('docs', ['compileDocsScripts'], function() {
 });
 
 // Website
-gulp.task('websiteDeploy', ['docs'], function () {
+gulp.task('websiteDeploy', ['docs'], function() {
   return gulp.src('./www/**/*')
     .pipe(ghpages());
 });
