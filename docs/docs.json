@@ -1,4 +1,8 @@
 {
+  "dist/Components/FauxLink.jsx": {
+    "description": "",
+    "props": {}
+  },
   "dist/Components/Fauxbox.jsx": {
     "description": "",
     "props": {
@@ -147,6 +151,25 @@
       }
     }
   },
+  "dist/Components/Icon.jsx": {
+    "description": "",
+    "props": {
+      "icon": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
   "dist/Components/IconTooltip.jsx": {
     "description": "",
     "props": {
@@ -268,7 +291,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "function () {}",
+          "value": "function onClose() {}",
           "computed": false
         }
       }
@@ -301,6 +324,13 @@
       "onPage": {
         "type": {
           "name": "func"
+        },
+        "required": false,
+        "description": ""
+      },
+      "disabled": {
+        "type": {
+          "name": "bool"
         },
         "required": false,
         "description": ""
@@ -508,16 +538,28 @@
             "name": "shape",
             "value": {
               "payload": {
-                "name": "any"
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ]
               },
               "text": {
-                "name": "any"
+                "name": "string"
               }
             }
           }
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
       },
       "buttonClass": {
         "type": {

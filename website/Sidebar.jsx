@@ -23,9 +23,9 @@ module.exports = React.createClass({
       left: '-200px'
     };
 
-    var links = this.props.components.map(function(component) {
+    var links = this.props.components.map(function(component, index) {
       return (
-        <li><a href='#'>{component.name}</a></li>
+        <li key={index}><a href={'#' + component.name}>{component.name}</a></li>
       );
     });
 

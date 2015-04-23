@@ -7,6 +7,7 @@ var Sidebar       = require('./Sidebar.jsx');
 var SidebarToggle = require('./SidebarToggle.jsx');
 var Body          = require('./Body.jsx');
 var BodyOverlay   = require('./BodyOverlay.jsx');
+var GeneratedDoc  = require('./GeneratedDoc.jsx');
 
 // Docs
 var request = require('superagent');
@@ -66,15 +67,18 @@ var App = React.createClass({
       'transition':       '.3s ease all'
     };
 
-    var sideBarComponents = Object.keys(this.state.components).map(function(component) {
+    var sideBarComponents = Object.keys(this.state.components).map((component) => {
       var componentParts = component.split('/');
-      var componentName = componentParts[componentParts.length - 1];
+      var componentName = componentParts[componentParts.length - 1].split('.')[0];
 
       return {
         path: component,
-        name: componentName
+        name: componentName,
+        info: this.state.components[component]
       };
     });
+
+    console.log(sideBarComponents.map(comp => comp.info));
 
     return (
       <div style={containerStyle}>
@@ -91,6 +95,9 @@ var App = React.createClass({
                   src='http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png'
                   fallbackSrc='http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png' />
               </DocWithExample>
+              {sideBarComponents.map((comp) => {
+                return <GeneratedDoc name={comp.name} info={comp.info} />
+              })}
             </div>
           </div>
           {overlay}
