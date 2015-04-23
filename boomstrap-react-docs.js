@@ -8,37 +8,54 @@ var Sidebar = require("./Sidebar.jsx");
 var SidebarToggle = require("./SidebarToggle.jsx");
 var Body = require("./Body.jsx");
 var BodyOverlay = require("./BodyOverlay.jsx");
+var GeneratedDoc = require("./GeneratedDoc.jsx");
+
+// Docs
+var request = require("superagent");
 
 // Components
 
 var ImageWithFallback = require("../src/Components/ImageWithFallback.jsx");
-
+var Pager = require("../src/Components/Pager.jsx");
 
 var App = React.createClass({
   displayName: "App",
-  getInitialState: function () {
+
+  getInitialState: function getInitialState() {
     return {
-      open: false
+      open: false,
+      components: {}
     };
   },
 
-  _onToggleSidebar: function () {
+  componentDidMount: function componentDidMount() {
+    var _this = this;
+    request.get("docs/docs.json").end(function (err, data) {
+      if (err) {
+        return;
+      }
+
+      _this.setState({
+        components: data.body
+      });
+    });
+  },
+
+  _onToggleSidebar: function _onToggleSidebar() {
     this.setState({
       open: !this.state.open
     });
   },
 
-  render: function () {
+  render: function render() {
+    var _this = this;
+
     var overlay = null;
     var toggle = null;
     if (this.state.open) {
-      overlay = React.createElement(BodyOverlay, {
-        onClick: this._onToggleSidebar
-      });
+      overlay = React.createElement(BodyOverlay, { onClick: this._onToggleSidebar });
     } else {
-      toggle = React.createElement(SidebarToggle, {
-        onClick: this._onToggleSidebar
-      });
+      toggle = React.createElement(SidebarToggle, { onClick: this._onToggleSidebar });
     }
 
     var translate = this.state.open ? "200px" : "0px";
@@ -52,26 +69,56 @@ var App = React.createClass({
       transition: ".3s ease all"
     };
 
-    return React.createElement("div", {
-      style: containerStyle
-    }, React.createElement(Body, {
-      open: this.state.open
-    }, toggle, React.createElement("div", {
-      className: "container"
-    }, React.createElement("h1", null, "Boomstrap React ", React.createElement("img", {
-      src: "react-boomstrap.svg",
-      height: "80",
-      width: "80"
-    })), React.createElement("div", {
-      id: "components"
-    }, React.createElement(DocWithExample, {
-      doc: "docs/ImageWithFallback.md"
-    }, React.createElement(ImageWithFallback, {
-      src: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png",
-      fallbackSrc: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png"
-    })))), overlay), React.createElement(Sidebar, {
-      open: this.state.open
+    var sideBarComponents = Object.keys(this.state.components).map(function (component) {
+      var componentParts = component.split("/");
+      var componentName = componentParts[componentParts.length - 1].split(".")[0];
+
+      return {
+        path: component,
+        name: componentName,
+        info: _this.state.components[component]
+      };
+    });
+
+    console.log(sideBarComponents.map(function (comp) {
+      return comp.info;
     }));
+
+    return React.createElement(
+      "div",
+      { style: containerStyle },
+      React.createElement(
+        Body,
+        { open: this.state.open },
+        toggle,
+        React.createElement(
+          "div",
+          { className: "container" },
+          React.createElement(
+            "h1",
+            null,
+            "Boomstrap React ",
+            React.createElement("img", { src: "react-boomstrap.svg", height: "80", width: "80" })
+          ),
+          React.createElement(
+            "div",
+            { id: "components" },
+            React.createElement(
+              DocWithExample,
+              { doc: "docs/ImageWithFallback.md" },
+              React.createElement(ImageWithFallback, {
+                src: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-log.png",
+                fallbackSrc: "http://2lnopk3ltiuj1tkm8y4d7nfx.wpengine.netdna-cdn.com/wp-content/themes/boomtownroi/images/site/boomtown-logo.png" })
+            ),
+            sideBarComponents.map(function (comp) {
+              return React.createElement(GeneratedDoc, { name: comp.name, info: comp.info });
+            })
+          )
+        ),
+        overlay
+      ),
+      React.createElement(Sidebar, { open: this.state.open, components: sideBarComponents })
+    );
   }
 });
 
@@ -79,7 +126,39 @@ window.addEventListener("load", function () {
   React.render(React.createElement(App, null), document.body);
 });
 
-},{"../src/Components/ImageWithFallback.jsx":7,"./Body.jsx":8,"./BodyOverlay.jsx":9,"./DocWithExample.jsx":10,"./Sidebar.jsx":11,"./SidebarToggle.jsx":12}],2:[function(require,module,exports){
+},{"../src/Components/ImageWithFallback.jsx":8,"../src/Components/Pager.jsx":9,"./Body.jsx":10,"./BodyOverlay.jsx":11,"./DocWithExample.jsx":12,"./GeneratedDoc.jsx":13,"./Sidebar.jsx":14,"./SidebarToggle.jsx":15,"superagent":5}],2:[function(require,module,exports){
+function classNames() {
+	var classes = '';
+	var arg;
+
+	for (var i = 0; i < arguments.length; i++) {
+		arg = arguments[i];
+		if (!arg) {
+			continue;
+		}
+
+		if ('string' === typeof arg || 'number' === typeof arg) {
+			classes += ' ' + arg;
+		} else if (Object.prototype.toString.call(arg) === '[object Array]') {
+			classes += ' ' + classNames.apply(null, arg);
+		} else if ('object' === typeof arg) {
+			for (var key in arg) {
+				if (!arg.hasOwnProperty(key) || !arg[key]) {
+					continue;
+				}
+				classes += ' ' + key;
+			}
+		}
+	}
+	return classes.substr(1);
+}
+
+// safely export classNames in case the script is included directly on a page
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = classNames;
+}
+
+},{}],3:[function(require,module,exports){
 (function (global){
 /**
  * @license
@@ -6868,7 +6947,7 @@ window.addEventListener("load", function () {
 }.call(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -8138,7 +8217,7 @@ if (typeof exports === 'object') {
 }());
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -9221,7 +9300,7 @@ request.put = function(url, data, fn){
 
 module.exports = request;
 
-},{"emitter":5,"reduce":6}],5:[function(require,module,exports){
+},{"emitter":6,"reduce":7}],6:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -9387,7 +9466,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 
 /**
  * Reduce `arr` with `fn`.
@@ -9412,8 +9491,10 @@ module.exports = function(arr, fn, initial){
   
   return curr;
 };
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var React = (window.React);
 var _ = require("lodash");
@@ -9426,13 +9507,13 @@ module.exports = React.createClass({
     fallbackSrc: React.PropTypes.string.isRequired
   },
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       src: null
     };
   },
 
-  _onError: function () {
+  _onError: function _onError() {
     if (!this.state.src) {
       this.setState({
         src: this.props.fallbackSrc
@@ -9440,22 +9521,85 @@ module.exports = React.createClass({
     }
   },
 
-  render: function () {
+  render: function render() {
     var props = _.extend({}, this.props);
     delete props.fallbackSrc;
     delete props.src;
 
     var src = this.state.src || this.props.src;
 
-    return React.createElement("img", React.__spread({
-      src: src
-    }, props, {
-      onError: this._onError
-    }));
+    return React.createElement("img", _extends({ src: src }, props, { onError: this._onError }));
   }
 });
 
-},{"lodash":2}],8:[function(require,module,exports){
+},{"lodash":3}],9:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+var cx = require("classnames");
+
+module.exports = React.createClass({
+  displayName: "Pager",
+
+  propTypes: {
+    currentPage: React.PropTypes.number.isRequired,
+    totalItems: React.PropTypes.number.isRequired,
+    itemsPerPage: React.PropTypes.number.isRequired,
+    onPage: React.PropTypes.func,
+    disabled: React.PropTypes.bool
+  },
+
+  _getMaxPage: function _getMaxPage() {
+    var maxPage = Math.floor(this.props.totalItems / this.props.itemsPerPage);
+    if (this.props.totalItems % this.props.itemsPerPage) {
+      maxPage++;
+    }
+    return maxPage;
+  },
+
+  _onPageBack: function _onPageBack() {
+    if (this.props.currentPage > 1) {
+      this.props.onPage(this.props.currentPage - 1);
+    }
+  },
+
+  _onPageFwd: function _onPageFwd() {
+    var maxPage = this._getMaxPage();
+    if (this.props.currentPage !== maxPage) {
+      this.props.onPage(this.props.currentPage + 1);
+    }
+  },
+
+  render: function render() {
+    var currentPage = this.props.currentPage;
+    var maxPage = this._getMaxPage();
+
+    var backBtnClass = cx("btn btn-default btn-icon", {
+      disabled: currentPage === 1 || this.props.disabled
+    });
+
+    var fwdBtnClass = cx("btn btn-default btn-icon", {
+      disabled: currentPage === maxPage || this.props.disabled
+    });
+
+    return React.createElement(
+      "div",
+      { className: "btn-group minimal-pager" },
+      React.createElement(
+        "button",
+        { type: "button", className: backBtnClass, onClick: this._onPageBack },
+        React.createElement("i", { className: "ficon ficon-chevron-left" })
+      ),
+      React.createElement(
+        "button",
+        { type: "button", className: fwdBtnClass, onClick: this._onPageFwd },
+        React.createElement("i", { className: "ficon ficon-chevron-right" })
+      )
+    );
+  }
+});
+
+},{"classnames":2}],10:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -9463,12 +9607,16 @@ var React = (window.React);
 module.exports = React.createClass({
   displayName: "Body",
 
-  render: function () {
-    return React.createElement("div", null, this.props.children);
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      this.props.children
+    );
   }
 });
 
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -9480,21 +9628,18 @@ module.exports = React.createClass({
     onClick: React.PropTypes.func
   },
 
-  render: function () {
+  render: function render() {
     var overlayStyle = {
       position: "absolute",
       top: 0, right: 0, bottom: 0, left: 0,
       backgroundColor: "rgba(0, 0, 0, 0.54)"
     };
 
-    return React.createElement("div", {
-      style: overlayStyle,
-      onClick: this.props.onClick
-    });
+    return React.createElement("div", { style: overlayStyle, onClick: this.props.onClick });
   }
 });
 
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -9503,18 +9648,20 @@ var marked = require("marked");
 
 module.exports = React.createClass({
   displayName: "exports",
+
   propTypes: {
     doc: React.PropTypes.string.isRequired
   },
 
-  getInitialState: function () {
+  getInitialState: function getInitialState() {
     return {
       docs: ""
     };
   },
 
-  componentDidMount: function () {
+  componentDidMount: function componentDidMount() {
     var _this = this;
+
     request.get(this.props.doc).end(function (res) {
       _this.setState({
         docs: marked(res.text)
@@ -9522,21 +9669,183 @@ module.exports = React.createClass({
     });
   },
 
-  render: function () {
-    return React.createElement("div", null, React.createElement("div", {
-      dangerouslySetInnerHTML: { __html: this.state.docs }
-    }), React.createElement("div", null, React.createElement("h3", null, "In Action"), this.props.children));
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      React.createElement("div", { dangerouslySetInnerHTML: { __html: this.state.docs } }),
+      React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "h3",
+          null,
+          "In Action"
+        ),
+        this.props.children
+      )
+    );
   }
 });
 
-},{"marked":3,"superagent":4}],11:[function(require,module,exports){
+},{"marked":4,"superagent":5}],13:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+
+module.exports = React.createClass({
+  displayName: "exports",
+
+  propTypes: {
+    name: React.PropTypes.string,
+    info: React.PropTypes.shape({
+      description: React.PropTypes.string,
+      props: React.PropTypes.object
+    })
+  },
+
+  renderRows: function renderRows() {
+    var _this = this;
+
+    return Object.keys(this.props.info.props).sort(function (propA, propB) {
+      var thisPropA = _this.props.info.props[propA];
+      var thisPropB = _this.props.info.props[propB];
+      if (thisPropA.required && !thisPropB.required) {
+        return -1;
+      }
+
+      if (propA < propB) {
+        return -1;
+      }
+
+      return 1;
+    }).map(function (prop, index) {
+      var thisProp = _this.props.info.props[prop];
+      return React.createElement(
+        "tr",
+        { key: index },
+        React.createElement(
+          "td",
+          null,
+          prop
+        ),
+        React.createElement(
+          "td",
+          null,
+          thisProp.required ? React.createElement(
+            "b",
+            null,
+            "Yes"
+          ) : "No"
+        ),
+        React.createElement(
+          "td",
+          null,
+          thisProp.defaultValue || "N/A"
+        ),
+        React.createElement(
+          "td",
+          null,
+          thisProp.type.name
+        ),
+        React.createElement(
+          "td",
+          null,
+          thisProp.description
+        )
+      );
+    });
+  },
+
+  render: function render() {
+    var divStyle = {
+      boxShadow: "0px 2px  5px  0 rgba(0, 0, 0, 0.26)",
+      padding: 10,
+      marginTop: 20,
+      marginBottom: 20
+    };
+
+    return React.createElement(
+      "div",
+      { style: divStyle, id: this.props.name },
+      React.createElement(
+        "h1",
+        null,
+        this.props.name
+      ),
+      React.createElement(
+        "h3",
+        null,
+        "Description"
+      ),
+      React.createElement(
+        "p",
+        null,
+        this.props.info.description
+      ),
+      React.createElement(
+        "h3",
+        null,
+        "Props"
+      ),
+      React.createElement(
+        "table",
+        { className: "table table-bordered" },
+        React.createElement(
+          "thead",
+          null,
+          React.createElement(
+            "th",
+            null,
+            "Name"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Required"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Default Value"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Type"
+          ),
+          React.createElement(
+            "th",
+            null,
+            "Description"
+          )
+        ),
+        React.createElement(
+          "tbody",
+          null,
+          this.renderRows()
+        )
+      )
+    );
+  }
+});
+
+},{}],14:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
 
 module.exports = React.createClass({
   displayName: "Sidebar",
-  render: function () {
+
+  propTypes: {
+    components: React.PropTypes.arrayOf(React.PropTypes.shape({
+      path: React.PropTypes.string,
+      name: React.PropTypes.string
+    }))
+  },
+
+  render: function render() {
     var sideBarStyle = {
       width: "200px",
       zIndex: 11,
@@ -9547,19 +9856,31 @@ module.exports = React.createClass({
       left: "-200px"
     };
 
-    return React.createElement("div", {
-      style: sideBarStyle
-    }, React.createElement("ul", {
-      className: "nav nav-blocks"
-    }, React.createElement("li", {
-      className: "active"
-    }, React.createElement("a", {
-      href: "#"
-    }, "ImageWithFallback"))));
+    var links = this.props.components.map(function (component, index) {
+      return React.createElement(
+        "li",
+        { key: index },
+        React.createElement(
+          "a",
+          { href: "#" + component.name },
+          component.name
+        )
+      );
+    });
+
+    return React.createElement(
+      "div",
+      { style: sideBarStyle },
+      React.createElement(
+        "ul",
+        { className: "nav nav-blocks" },
+        links
+      )
+    );
   }
 });
 
-},{}],12:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -9571,7 +9892,7 @@ module.exports = React.createClass({
     onClick: React.PropTypes.func
   },
 
-  render: function () {
+  render: function render() {
     var toggleStyle = {
       position: "absolute",
       top: 10,
@@ -9586,16 +9907,13 @@ module.exports = React.createClass({
       backgroundColor: "#f68a24",
       marginTop: "2px"
     };
-    return React.createElement("div", {
-      style: toggleStyle,
-      onClick: this.props.onClick
-    }, React.createElement("div", {
-      style: barStyle
-    }), React.createElement("div", {
-      style: barStyle
-    }), React.createElement("div", {
-      style: barStyle
-    }));
+    return React.createElement(
+      "div",
+      { style: toggleStyle, onClick: this.props.onClick },
+      React.createElement("div", { style: barStyle }),
+      React.createElement("div", { style: barStyle }),
+      React.createElement("div", { style: barStyle })
+    );
   }
 });
 
