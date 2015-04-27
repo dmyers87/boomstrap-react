@@ -33,13 +33,21 @@ module.exports = React.createClass({
   },
 
   componentDidMount() {
-    var node = React.findDOMNode(this);
-    var nodeBox = node.getBoundingClientRect();
-    var documentElement = document.documentElement;
-    var inputLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
-    this.setState({
-      searchLeft: inputLeft
-    });
+    this._updateSearchLeft();
+  },
+
+  componentDidUpdate() {
+    this._updateSearchLeft();
+  },
+
+  _updateSearchLeft() {
+    const node            = React.findDOMNode(this);
+    const nodeBox         = node.getBoundingClientRect();
+    const documentElement = document.documentElement;
+    const searchLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
+    if (searchLeft !== this.state.searchLeft) {
+      this.setState({ searchLeft });
+    }
   },
 
   _onKeyDown(e) {
