@@ -35,8 +35,8 @@ module.exports = React.createClass({
 
     var element = React.findDOMNode(this.refs.iframe);
     if (element && element.contentWindow && element.contentWindow.registerClose) {
-      element.contentWindow.registerClose(function () {
-        _this.props.onCloseFrame();
+      element.contentWindow.registerClose(function (options) {
+        _this.props.onCloseFrame(options);
       });
     }
   },

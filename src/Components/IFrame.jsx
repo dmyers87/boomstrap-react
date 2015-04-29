@@ -33,8 +33,8 @@ module.exports = React.createClass({
     if (element &&
       element.contentWindow &&
       element.contentWindow.registerClose) {
-      element.contentWindow.registerClose(() => {
-        this.props.onCloseFrame();
+      element.contentWindow.registerClose((options) => {
+        this.props.onCloseFrame(options);
       });
     }
   },
