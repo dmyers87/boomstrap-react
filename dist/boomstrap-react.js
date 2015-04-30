@@ -48,6 +48,11 @@ var _extends = Object.assign || function (target) {
 
 var React = (window.React);
 
+/**
+ * Faux Link allows the user to create text that resembles a link
+ *  without worrying about the href accidentally causing a route change.
+ * It is intended to be used with actionable text that does not navigate.
+ */
 module.exports = React.createClass({
   displayName: "Faux Link",
 
