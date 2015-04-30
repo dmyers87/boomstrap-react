@@ -120,6 +120,12 @@ window.addEventListener("load", function () {
 });
 
 },{"../src/Components/MessageFace.jsx":6,"./Body.jsx":7,"./GeneratedDoc.jsx":8,"./Sidebar.jsx":9,"superagent":3}],2:[function(require,module,exports){
+/*!
+  Copyright (c) 2015 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
 function classNames() {
 	var classes = '';
 	var arg;
@@ -146,9 +152,16 @@ function classNames() {
 	return classes.substr(1);
 }
 
-// safely export classNames in case the script is included directly on a page
+// safely export classNames for node / browserify
 if (typeof module !== 'undefined' && module.exports) {
 	module.exports = classNames;
+}
+
+// safely export classNames for RequireJS
+if (typeof define !== 'undefined' && define.amd) {
+	define('classnames', [], function() {
+		return classNames;
+	});
 }
 
 },{}],3:[function(require,module,exports){
