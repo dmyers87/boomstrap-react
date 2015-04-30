@@ -4,6 +4,8 @@ const Sidebar       = require('./Sidebar.jsx');
 const Body          = require('./Body.jsx');
 const GeneratedDoc  = require('./GeneratedDoc.jsx');
 
+const MessageFace = require('../src/Components/MessageFace.jsx');
+
 // Docs
 const request = require('superagent');
 
@@ -70,6 +72,18 @@ const App = React.createClass({
             </h1>
             <div id='components'>
               {sideBarComponents.map((comp) => {
+                if (comp.name === 'MessageFace') {
+                  return (
+                    <GeneratedDoc name={comp.name} info={comp.info}>
+                      <MessageFace />&nbsp;
+                      <MessageFace placement='left'/>&nbsp;
+                      <MessageFace placement='top'/>&nbsp;
+                      <MessageFace placement='right'/>&nbsp;
+                      <MessageFace placement='bottom'/>
+                    </GeneratedDoc>
+                  )
+                }
+
                 return <GeneratedDoc name={comp.name} info={comp.info} />;
               })}
             </div>

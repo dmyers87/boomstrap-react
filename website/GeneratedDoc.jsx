@@ -82,6 +82,7 @@ module.exports = React.createClass({
         <h1>{this.props.name}</h1>
         {description}
         {this.renderTable()}
+        {this.props.children}
       </div>
     );
   }
