@@ -4,56 +4,56 @@
     "props": {}
   },
   "dist/Components/Fauxbox.jsx": {
-    "description": "",
+    "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
     "props": {
       "id": {
         "type": {
           "name": "string"
         },
         "required": true,
-        "description": ""
+        "description": "Identifier used to link the label and the checkbox"
       },
       "className": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Optional class to provide to div wrapping Fauxbox"
       },
       "labelClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Optional class to provide to wrap the label"
       },
       "checked": {
         "type": {
           "name": "bool"
         },
         "required": true,
-        "description": ""
+        "description": "Indicated whether or not the Fauxbox is checked"
       },
       "onClick": {
         "type": {
           "name": "func"
         },
         "required": false,
-        "description": ""
+        "description": "Event to fire when the Fauxbox is clicked"
       },
       "inline": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": ""
+        "description": "Indicates whether or not the Fauxbox is block styled or inline"
       },
       "label": {
         "type": {
           "name": "node"
         },
         "required": false,
-        "description": ""
+        "description": "Label that is tied to updating the Fauxbox"
       }
     }
   },
