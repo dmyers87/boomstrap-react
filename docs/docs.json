@@ -1,6 +1,6 @@
 {
   "dist/Components/FauxLink.jsx": {
-    "description": "",
+    "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
     "props": {}
   },
   "dist/Components/Fauxbox.jsx": {
