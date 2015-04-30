@@ -134,16 +134,51 @@ module.exports = Fauxbox;
 var React = (window.React);
 var cx = require("classnames");
 
+/**
+ * Display radio buttons in style with the Fauxdio
+ */
 module.exports = React.createClass({
   displayName: "Fauxdio",
   propTypes: {
-    radioID: React.PropTypes.string,
+
+    /**
+     * Identifier provided to link together the input with the label
+     */
+    radioID: React.PropTypes.string.isRequired,
+
+    /**
+     * Optional class to pass to the div that wraps the Fauxdio
+     */
     radioClass: React.PropTypes.string,
+
+    /**
+     * Optional class to pass to the label that accompanies the input
+     */
     labelClass: React.PropTypes.string,
+
+    /**
+     * Indicates whether or not the Fauxdio is selected
+     */
     checked: React.PropTypes.bool.isRequired,
+
+    /**
+     * Provided for information on submitting forms
+     */
     value: React.PropTypes.string,
+
+    /**
+     * A callback to fire when the Fauxdio is selected.
+     */
     onChange: React.PropTypes.func,
+
+    /**
+     * Indicates whether or not the Fauxdio is `block` or `inline`
+     */
     inline: React.PropTypes.bool,
+
+    /**
+     * A label to accompany the Fauxdio.  Can be text or a React node
+     */
     label: React.PropTypes.node
   },
   render: function render() {
