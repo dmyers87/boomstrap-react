@@ -7,6 +7,8 @@ var Sidebar = require("./Sidebar.jsx");
 var Body = require("./Body.jsx");
 var GeneratedDoc = require("./GeneratedDoc.jsx");
 
+var MessageFace = require("../src/Components/MessageFace.jsx");
+
 // Docs
 var request = require("superagent");
 
@@ -88,6 +90,22 @@ var App = React.createClass({
             "div",
             { id: "components" },
             sideBarComponents.map(function (comp) {
+              if (comp.name === "MessageFace") {
+                return React.createElement(
+                  GeneratedDoc,
+                  { name: comp.name, info: comp.info },
+                  React.createElement(MessageFace, null),
+                  " ",
+                  React.createElement(MessageFace, { placement: "left" }),
+                  " ",
+                  React.createElement(MessageFace, { placement: "top" }),
+                  " ",
+                  React.createElement(MessageFace, { placement: "right" }),
+                  " ",
+                  React.createElement(MessageFace, { placement: "bottom" })
+                );
+              }
+
               return React.createElement(GeneratedDoc, { name: comp.name, info: comp.info });
             })
           )
@@ -101,7 +119,39 @@ window.addEventListener("load", function () {
   React.render(React.createElement(App, null), document.body);
 });
 
-},{"./Body.jsx":5,"./GeneratedDoc.jsx":6,"./Sidebar.jsx":7,"superagent":2}],2:[function(require,module,exports){
+},{"../src/Components/MessageFace.jsx":6,"./Body.jsx":7,"./GeneratedDoc.jsx":8,"./Sidebar.jsx":9,"superagent":3}],2:[function(require,module,exports){
+function classNames() {
+	var classes = '';
+	var arg;
+
+	for (var i = 0; i < arguments.length; i++) {
+		arg = arguments[i];
+		if (!arg) {
+			continue;
+		}
+
+		if ('string' === typeof arg || 'number' === typeof arg) {
+			classes += ' ' + arg;
+		} else if (Object.prototype.toString.call(arg) === '[object Array]') {
+			classes += ' ' + classNames.apply(null, arg);
+		} else if ('object' === typeof arg) {
+			for (var key in arg) {
+				if (!arg.hasOwnProperty(key) || !arg[key]) {
+					continue;
+				}
+				classes += ' ' + key;
+			}
+		}
+	}
+	return classes.substr(1);
+}
+
+// safely export classNames in case the script is included directly on a page
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = classNames;
+}
+
+},{}],3:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -1184,7 +1234,7 @@ request.put = function(url, data, fn){
 
 module.exports = request;
 
-},{"emitter":3,"reduce":4}],3:[function(require,module,exports){
+},{"emitter":4,"reduce":5}],4:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -1350,7 +1400,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 /**
  * Reduce `arr` with `fn`.
@@ -1375,7 +1425,42 @@ module.exports = function(arr, fn, initial){
   
   return curr;
 };
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+var cx = require("classnames");
+
+module.exports = React.createClass({
+  displayName: "Message Face",
+
+  propTypes: {
+    placement: React.PropTypes.oneOf(["", "left", "top", "right", "bottom"])
+  },
+
+  render: function render() {
+    var className = cx("message-face", {
+      "message-face-arrow-left": this.props.placement === "left",
+      "message-face-arrow-top": this.props.placement === "top",
+      "message-face-arrow-bottom": this.props.placement === "bottom",
+      "message-face-arrow-right": this.props.placement === "right"
+    });
+
+    return React.createElement(
+      "div",
+      { className: className },
+      React.createElement(
+        "div",
+        { className: "message-face-eyes" },
+        React.createElement("span", { className: "message-face-eye" }),
+        React.createElement("span", { className: "message-face-eye" })
+      ),
+      React.createElement("div", { className: "message-face-mouth" })
+    );
+  }
+});
+
+},{"classnames":2}],7:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -1392,7 +1477,7 @@ module.exports = React.createClass({
   }
 });
 
-},{}],6:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -1549,12 +1634,13 @@ module.exports = React.createClass({
         this.props.name
       ),
       description,
-      this.renderTable()
+      this.renderTable(),
+      this.props.children
     );
   }
 });
 
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
