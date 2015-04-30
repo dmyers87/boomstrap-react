@@ -194,8 +194,8 @@ module.exports = React.createClass({
 
     var element = React.findDOMNode(this.refs.iframe);
     if (element && element.contentWindow && element.contentWindow.registerClose) {
-      element.contentWindow.registerClose(function () {
-        _this.props.onCloseFrame();
+      element.contentWindow.registerClose(function (options) {
+        _this.props.onCloseFrame(options);
       });
     }
   },
@@ -1108,13 +1108,21 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function componentDidMount() {
+    this._updateSearchLeft();
+  },
+
+  componentDidUpdate: function componentDidUpdate() {
+    this._updateSearchLeft();
+  },
+
+  _updateSearchLeft: function _updateSearchLeft() {
     var node = React.findDOMNode(this);
     var nodeBox = node.getBoundingClientRect();
     var documentElement = document.documentElement;
-    var inputLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
-    this.setState({
-      searchLeft: inputLeft
-    });
+    var searchLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
+    if (searchLeft !== this.state.searchLeft) {
+      this.setState({ searchLeft: searchLeft });
+    }
   },
 
   _onKeyDown: function _onKeyDown(e) {

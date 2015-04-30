@@ -1408,10 +1408,16 @@ module.exports = React.createClass({
     })
   },
 
-  renderRows: function renderRows() {
+  renderTable: function renderTable() {
     var _this = this;
 
-    return Object.keys(this.props.info.props).sort(function (propA, propB) {
+    var props = Object.keys(this.props.info.props);
+
+    if (!props || !props.length) {
+      return null;
+    }
+
+    var rows = props.sort(function (propA, propB) {
       var thisPropA = _this.props.info.props[propA];
       var thisPropB = _this.props.info.props[propB];
       if (thisPropA.required && !thisPropB.required) {
@@ -1459,33 +1465,10 @@ module.exports = React.createClass({
         )
       );
     });
-  },
-
-  render: function render() {
-    var divStyle = {
-      padding: 10,
-      marginTop: 20,
-      marginBottom: 20
-    };
 
     return React.createElement(
       "div",
-      { style: divStyle, id: this.props.name, className: "shadow-depth-1" },
-      React.createElement(
-        "h1",
-        null,
-        this.props.name
-      ),
-      React.createElement(
-        "h3",
-        null,
-        "Description"
-      ),
-      React.createElement(
-        "p",
-        null,
-        this.props.info.description
-      ),
+      null,
       React.createElement(
         "h3",
         null,
@@ -1526,9 +1509,47 @@ module.exports = React.createClass({
         React.createElement(
           "tbody",
           null,
-          this.renderRows()
+          rows
         )
       )
+    );
+  },
+
+  render: function render() {
+    var divStyle = {
+      padding: 10,
+      marginTop: 20,
+      marginBottom: 20
+    };
+
+    var description = null;
+    if (this.props.info.description) {
+      description = React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "h3",
+          null,
+          "Description"
+        ),
+        React.createElement(
+          "p",
+          null,
+          this.props.info.description
+        )
+      );
+    }
+
+    return React.createElement(
+      "div",
+      { style: divStyle, id: this.props.name, className: "shadow-depth-1" },
+      React.createElement(
+        "h1",
+        null,
+        this.props.name
+      ),
+      description,
+      this.renderTable()
     );
   }
 });
