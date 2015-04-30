@@ -58,63 +58,63 @@
     }
   },
   "dist/Components/Fauxdio.jsx": {
-    "description": "",
+    "description": "Display radio buttons in style with the Fauxdio",
     "props": {
       "radioID": {
         "type": {
           "name": "string"
         },
-        "required": false,
-        "description": ""
+        "required": true,
+        "description": "Identifier provided to link together the input with the label"
       },
       "radioClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Optional class to pass to the div that wraps the Fauxdio"
       },
       "labelClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Optional class to pass to the label that accompanies the input"
       },
       "checked": {
         "type": {
           "name": "bool"
         },
         "required": true,
-        "description": ""
+        "description": "Indicates whether or not the Fauxdio is selected"
       },
       "value": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Provided for information on submitting forms"
       },
       "onChange": {
         "type": {
           "name": "func"
         },
         "required": false,
-        "description": ""
+        "description": "A callback to fire when the Fauxdio is selected."
       },
       "inline": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": ""
+        "description": "Indicates whether or not the Fauxdio is `block` or `inline`"
       },
       "label": {
         "type": {
           "name": "node"
         },
         "required": false,
-        "description": ""
+        "description": "A label to accompany the Fauxdio.  Can be text or a React node"
       }
     }
   },
