@@ -9,8 +9,14 @@ module.exports = React.createClass({
     })
   },
 
-  renderRows() {
-    return Object.keys(this.props.info.props).sort((propA, propB) => {
+  renderTable() {
+    const props = Object.keys(this.props.info.props);
+
+    if (!props || !props.length) {
+      return null;
+    }
+
+    let rows = props.sort((propA, propB) => {
       const thisPropA = this.props.info.props[propA];
       const thisPropB = this.props.info.props[propB];
       if (thisPropA.required && !thisPropB.required) {
@@ -34,20 +40,9 @@ module.exports = React.createClass({
         </tr>
       );
     });
-  },
-
-  render() {
-    const divStyle = {
-      'padding': 10,
-      'marginTop': 20,
-      'marginBottom': 20
-    };
 
     return (
-      <div style={divStyle} id={this.props.name} className='shadow-depth-1'>
-        <h1>{this.props.name}</h1>
-        <h3>Description</h3>
-        <p>{this.props.info.description}</p>
+      <div>
         <h3>Props</h3>
         <table className='table table-bordered'>
           <thead>
@@ -58,9 +53,35 @@ module.exports = React.createClass({
             <th>Description</th>
           </thead>
           <tbody>
-            {this.renderRows()}
+            {rows}
           </tbody>
         </table>
+      </div>
+    )
+  },
+
+  render() {
+    const divStyle = {
+      'padding': 10,
+      'marginTop': 20,
+      'marginBottom': 20
+    };
+
+    let description = null;
+    if (this.props.info.description) {
+      description = (
+        <div>
+          <h3>Description</h3>
+          <p>{this.props.info.description}</p>
+        </div>
+      );
+    }
+
+    return (
+      <div style={divStyle} id={this.props.name} className='shadow-depth-1'>
+        <h1>{this.props.name}</h1>
+        {description}
+        {this.renderTable()}
       </div>
     );
   }
