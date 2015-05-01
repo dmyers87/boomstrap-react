@@ -7,6 +7,7 @@ var _ = require("lodash");
 var Sidebar = require("./Sidebar.jsx");
 var Body = require("./Body.jsx");
 var GeneratedDoc = require("./GeneratedDoc.jsx");
+var Header = require("./Header.jsx");
 
 var MessageFace = require("../src/Components/MessageFace.jsx");
 
@@ -76,25 +77,10 @@ var App = React.createClass({
       React.createElement(
         Body,
         null,
+        React.createElement(Header, null),
         React.createElement(
           "div",
           { className: "container" },
-          React.createElement(
-            "div",
-            { style: _.assign({}, styles.layout.flex, styles.layout.flexSpaceBetween, styles.layout.flexCenter, {
-                marginTop: 10
-              }) },
-            React.createElement(
-              "h1",
-              null,
-              "Boomstrap React"
-            ),
-            React.createElement(
-              "a",
-              { href: "http://www.github.com/BoomTownROI/boomstrap-react" },
-              React.createElement("img", { src: "react-boomstrap.svg", height: "80", width: "80" })
-            )
-          ),
           React.createElement(
             "div",
             { id: "components" },
@@ -133,7 +119,7 @@ window.addEventListener("load", function () {
   React.render(React.createElement(App, null), document.body);
 });
 
-},{"../src/Components/MessageFace.jsx":7,"./Body.jsx":8,"./GeneratedDoc.jsx":9,"./Sidebar.jsx":10,"./Styles":11,"lodash":3,"superagent":4}],2:[function(require,module,exports){
+},{"../src/Components/MessageFace.jsx":7,"./Body.jsx":8,"./GeneratedDoc.jsx":9,"./Header.jsx":10,"./Sidebar.jsx":11,"./Styles":12,"lodash":3,"superagent":4}],2:[function(require,module,exports){
 /*!
   Copyright (c) 2015 Jed Watson.
   Licensed under the MIT License (MIT), see
@@ -8467,6 +8453,57 @@ module.exports = React.createClass({
 
 var React = (window.React);
 
+var headerStyle = {
+  height: "100vh",
+  width: "100vw",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative"
+};
+
+var headerWrapperStyle = {
+  backgroundColor: "rgba(0, 0, 0, 0.60)",
+  position: "absolute",
+  top: 0, left: 0, right: 0, bottom: 0,
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center" };
+
+var titleStyle = {
+  fontFamily: "Lato, Roboto, sans serif",
+  fontSize: 96,
+  fontWeight: 300,
+  color: "#ffffff"
+};
+
+module.exports = React.createClass({
+  displayName: "Header",
+
+  render: function render() {
+
+    return React.createElement(
+      "div",
+      { style: headerStyle },
+      React.createElement("img", { src: "react-boomstrap.svg" }),
+      React.createElement(
+        "div",
+        { style: headerWrapperStyle },
+        React.createElement(
+          "span",
+          { style: titleStyle },
+          "Boomstrap React"
+        )
+      )
+    );
+  }
+});
+
+},{}],11:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+
 module.exports = React.createClass({
   displayName: "Sidebar",
 
@@ -8512,7 +8549,7 @@ module.exports = React.createClass({
   }
 });
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 module.exports = {
   colors: {
