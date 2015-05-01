@@ -4,6 +4,7 @@ const _     = require('lodash');
 const Sidebar       = require('./Sidebar.jsx');
 const Body          = require('./Body.jsx');
 const GeneratedDoc  = require('./GeneratedDoc.jsx');
+const Header        = require('./Header.jsx');
 
 const MessageFace = require('../src/Components/MessageFace.jsx');
 
@@ -66,22 +67,8 @@ const App = React.createClass({
     return (
       <div style={containerStyle}>
         <Body>
+            <Header />
           <div className='container'>
-            <div style={_.assign(
-              {},
-              styles.layout.flex,
-              styles.layout.flexSpaceBetween,
-              styles.layout.flexCenter, {
-                marginTop: 10
-              }
-            )}>
-              <h1>
-                Boomstrap React
-              </h1>
-              <a href='http://www.github.com/BoomTownROI/boomstrap-react'>
-                <img src='react-boomstrap.svg' height='80' width='80'/>
-              </a>
-            </div>
             <div id='components'>
               {sideBarComponents.map((comp) => {
                 if (comp.name === 'MessageFace') {
