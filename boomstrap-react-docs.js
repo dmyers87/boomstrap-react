@@ -70,10 +70,6 @@ var App = React.createClass({
       };
     });
 
-    console.log(sideBarComponents.map(function (comp) {
-      return comp.info;
-    }));
-
     return React.createElement(
       "div",
       { style: containerStyle },
