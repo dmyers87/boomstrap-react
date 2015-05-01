@@ -1,4 +1,5 @@
 const React = require('react/addons');
+const _     = require('lodash');
 
 const Sidebar       = require('./Sidebar.jsx');
 const Body          = require('./Body.jsx');
@@ -8,6 +9,8 @@ const MessageFace = require('../src/Components/MessageFace.jsx');
 
 // Docs
 const request = require('superagent');
+
+const styles = require('./Styles');
 
 const App = React.createClass({
   displayName: 'App',
@@ -66,15 +69,27 @@ const App = React.createClass({
       <div style={containerStyle}>
         <Body>
           <div className='container'>
-            <h1>
-              Boomstrap React&nbsp;
-              <img src='react-boomstrap.svg' height='80' width='80'/>
-            </h1>
+            <div style={_.assign(
+              {},
+              styles.layout.flex,
+              styles.layout.flexSpaceBetween,
+              styles.layout.flexCenter, {
+                marginTop: 10
+              }
+            )}>
+              <h1>
+                Boomstrap React
+              </h1>
+              <a href='http://www.github.com/BoomTownROI/boomstrap-react'>
+                <img src='react-boomstrap.svg' height='80' width='80'/>
+              </a>
+            </div>
             <div id='components'>
               {sideBarComponents.map((comp) => {
                 if (comp.name === 'MessageFace') {
                   return (
                     <GeneratedDoc name={comp.name} info={comp.info}>
+                      <h4>Examples</h4>
                       <MessageFace />&nbsp;
                       <MessageFace placement='left'/>&nbsp;
                       <MessageFace placement='top'/>&nbsp;

@@ -43,7 +43,7 @@ module.exports = React.createClass({
 
     return (
       <div>
-        <h3>Props</h3>
+        <h4>Props</h4>
         <table className='table table-bordered'>
           <thead>
             <th>Name</th>
@@ -63,23 +63,32 @@ module.exports = React.createClass({
   render() {
     const divStyle = {
       'padding': 10,
+      'paddingTop': 60,
       'marginTop': 20,
-      'marginBottom': 20
+      'marginBottom': 20,
+      'position': 'relative'
+    };
+
+    const headerStyle = {
+      'position': 'absolute',
+      'top': 10,
+      'left': 10,
+      fontSize: 24,
+      fontWeight: 500
     };
 
     let description = null;
     if (this.props.info.description) {
       description = (
         <div>
-          <h3>Description</h3>
-          <p>{this.props.info.description}</p>
+          <p className='lead'>{this.props.info.description}</p>
         </div>
       );
     }
 
     return (
       <div style={divStyle} id={this.props.name} className='shadow-depth-1'>
-        <h1>{this.props.name}</h1>
+        <span style={headerStyle}>{this.props.name}</span>
         {description}
         {this.renderTable()}
         {this.props.children}
