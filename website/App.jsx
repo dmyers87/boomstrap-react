@@ -63,8 +63,6 @@ const App = React.createClass({
       };
     });
 
-    console.log(sideBarComponents.map(comp => comp.info));
-
     return (
       <div style={containerStyle}>
         <Body>
