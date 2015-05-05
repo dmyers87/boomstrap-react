@@ -360,6 +360,72 @@
       }
     }
   },
+  "dist/Components/NavLinksBar.jsx": {
+    "description": "Nav Links Bar provides an animated `tab switcher`-like control",
+    "props": {
+      "activeKey": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "The current key of the child that should have the bar",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "navClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optional class for wrapping the list",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
+      },
+      "barClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optional class for wrapping the bar that slides",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
+      },
+      "orientation": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"vertical\"",
+              "computed": false
+            },
+            {
+              "value": "\"horizontal\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Direction of the list ('vertical' or 'horizontal'), defaults to 'vertical'",
+        "defaultValue": {
+          "value": "\"vertical\"",
+          "computed": false
+        }
+      },
+      "children": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "Actual Nav Links to render (expected in <li><a /></li> format)\nThis property is provided by React children"
+      }
+    }
+  },
   "dist/Components/Pager.jsx": {
     "description": "",
     "props": {

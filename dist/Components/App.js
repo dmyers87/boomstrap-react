@@ -12,6 +12,7 @@ module.exports = {
   Loader: require("./Loader.jsx"),
   Marker: require("./Marker.jsx"),
   MessageFace: require("./MessageFace.jsx"),
+  NavLinksBar: require("./NavLinksBar.jsx"),
   Pager: require("./Pager.jsx"),
   Score: require("./Score.jsx"),
   Switcher: require("./Switcher.jsx"),
