@@ -25,6 +25,11 @@ const titleStyle = {
   color: '#ffffff'
 };
 
+const logoStyle = {
+  height: 'auto',
+  maxHeight: '100%'
+};
+
 module.exports = React.createClass({
   displayName: 'Header',
 
@@ -32,7 +37,7 @@ module.exports = React.createClass({
 
     return (
       <div style={headerStyle}>
-        <img src='react-boomstrap.svg'/>
+        <img style={logoStyle} src='react-boomstrap.svg'/>
         <div style={headerWrapperStyle}>
           <span style={titleStyle}>Boomstrap React</span>
         </div>
