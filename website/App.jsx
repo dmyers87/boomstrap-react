@@ -47,9 +47,9 @@ const App = React.createClass({
       'width':    '100%',
       'height':   '100%',
       'position': 'relative',
-      'webkitTransform': 'translateX(' + translate + ')',
+      'WebkitTransform': 'translateX(' + translate + ')',
       'transform':       'translateX(' + translate + ')',
-      'webkitTransition': '.3s ease all',
+      'WebkitTransition': '.3s ease all',
       'transition':       '.3s ease all'
     };
 
