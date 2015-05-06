@@ -1,9 +1,8 @@
-'use strict';
+const React = require('react/addons');
+const cx    = require('classnames');
 
-var React = require('react/addons');
-
-var OverlayTrigger           = require('react-bootstrap').OverlayTrigger;
-var UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay.jsx');
+const OverlayTrigger           = require('react-bootstrap').OverlayTrigger;
+const UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay.jsx');
 
 module.exports = React.createClass({
   displayName: 'UI Typeahead Select',
@@ -62,7 +61,7 @@ module.exports = React.createClass({
       return;
     }
 
-    var newSearchIndex = 0;
+    let newSearchIndex = 0;
     if (e.key === 'ArrowDown') {
       if (this.state.searchIndex !== this.props.options.length - 1) {
         newSearchIndex = this.state.searchIndex + 1;
@@ -119,15 +118,9 @@ module.exports = React.createClass({
   },
 
   render() {
-    var searchIcon = 'ficon ficon-search';
-    if (this.props.iconClass) {
-      searchIcon += ' ' + this.props.iconClass;
-    }
+    const searchIcon = cx('ficon ficon-search', this.props.iconClass);
 
-    var inputClass = 'form-control ';
-    if (this.props.inputClass) {
-      inputClass += this.props.inputClass;
-    }
+    const inputClass = cx('form-control', this.props.inputClass);
 
     return (
       <div className={this.props.className}>

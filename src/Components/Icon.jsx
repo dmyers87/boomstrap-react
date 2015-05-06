@@ -1,8 +1,7 @@
-'use strict';
-
 const React = require('react/addons');
 const cx    = require('classnames');
-const _     = require('lodash');
+
+const { assign, omit } = require('lodash');
 
 module.exports = React.createClass({
   displayName: 'Icon',
@@ -13,15 +12,14 @@ module.exports = React.createClass({
   },
 
   render() {
-    let props = _.assign({}, this.props);
+    let props = assign({}, this.props);
     const { className, icon } = props;
 
     // Remove className from props to prevent collision
-    delete props.className;
-    delete props.icon;
+    props = omit(props, ['className', 'icon']);
 
-    var iconClass = cx(
-      this.props.className,
+    const iconClass = cx(
+      className,
       'ficon',
       'ficon-' + icon
     );

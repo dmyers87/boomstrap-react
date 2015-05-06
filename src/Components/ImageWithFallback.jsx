@@ -1,7 +1,5 @@
-'use strict';
-
-var React = require('react/addons');
-var _     = require('lodash');
+const React = require('react/addons');
+const { extend, omit } = require('lodash');
 
 module.exports = React.createClass({
   displayName: 'Image with Fallback',
@@ -26,11 +24,9 @@ module.exports = React.createClass({
   },
 
   render() {
-    var props = _.extend({}, this.props);
-    delete props.fallbackSrc;
-    delete props.src;
+    const props = omit(extend({}, this.props), ['fallbackSrc', 'src']);
 
-    var src = this.state.src || this.props.src;
+    const src = this.state.src || this.props.src;
 
     return (
       <img src={src} {...props} onError={this._onError}/>

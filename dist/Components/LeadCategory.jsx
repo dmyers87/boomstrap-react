@@ -6,8 +6,8 @@ var PureRenderMixin = React.addons.PureRenderMixin;
 
 var LeadCategories = require("../Constants/LeadCategories");
 
-var categories = {},
-    abbrs = {};
+var categories = {};
+var abbrs = {};
 
 LeadCategories.forEach(function (category) {
   categories[category.value.toString()] = category.name;

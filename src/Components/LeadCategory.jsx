@@ -1,13 +1,11 @@
-'use strict';
+const React = require('react/addons');
+const cx    = require('classnames');
+const PureRenderMixin = React.addons.PureRenderMixin;
 
-var React = require('react/addons');
-var cx    = require('classnames');
-var PureRenderMixin = React.addons.PureRenderMixin;
+const LeadCategories = require('../Constants/LeadCategories');
 
-var LeadCategories = require('../Constants/LeadCategories');
-
-var categories = {},
-abbrs = {};
+let categories = {};
+let abbrs = {};
 
 LeadCategories.forEach(function(category) {
   categories[category.value.toString()] = category.name;
@@ -26,14 +24,14 @@ module.exports = React.createClass({
   mixins: [PureRenderMixin],
 
   render: function() {
-    var category = categories[this.props.category];
-    var abbr     = abbrs[this.props.category];
+    const category = categories[this.props.category];
+    const abbr     = abbrs[this.props.category];
 
-    var isEqualLength = this.props.equal;
-    var isAbbreviated = this.props.abbreviated;
+    const isEqualLength = this.props.equal;
+    const isAbbreviated = this.props.abbreviated;
 
-    var categoryClass = 'leadcat-' + category.toLowerCase();
-    var catClass = cx(categoryClass, 'leadcat', {
+    const categoryClass = 'leadcat-' + category.toLowerCase();
+    const catClass = cx(categoryClass, 'leadcat', {
       'leadcat-eq-abbr': isEqualLength && isAbbreviated,
       'leadcat-eq':      isEqualLength && !isAbbreviated
     });

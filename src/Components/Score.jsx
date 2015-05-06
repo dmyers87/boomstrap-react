@@ -1,7 +1,5 @@
-'use strict';
-
-var React = require('react/addons');
-var cx    = require('classnames');
+const React = require('react/addons');
+const cx    = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'Score',
@@ -10,23 +8,19 @@ module.exports = React.createClass({
     size: React.PropTypes.string
   },
   render: function() {
-    var scoreClass = 'score';
-    var scoreTranslation;
+    let scoreTranslation;
 
     scoreTranslation = parseInt(this.props.score, 10);
     if (isNaN(scoreTranslation)) {
       scoreTranslation = 0;
     }
 
-    scoreClass += ' ' + cx({
+    const scoreClass = cx('score', {
       'score-excellent': scoreTranslation >= 76,
       'score-good':      scoreTranslation >= 56 && scoreTranslation < 76,
-      'score-average':   scoreTranslation >= 26 && scoreTranslation < 56
+      'score-average':   scoreTranslation >= 26 && scoreTranslation < 56,
+      ['score-' + this.props.size]: this.props.size
     });
-
-    if (this.props.size) {
-      scoreClass += ' score-' + this.props.size;
-    }
 
     return (
       <span className={scoreClass}>{this.props.score}</span>

@@ -1,7 +1,4 @@
 /*eslint no-script-url:0 */
-
-'use strict';
-
 const React = require('react/addons');
 
 /**

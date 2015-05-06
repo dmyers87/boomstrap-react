@@ -1,7 +1,5 @@
-'use strict';
-
-var React = require('react/addons');
-var cx    = require('classnames');
+const React = require('react/addons');
+const cx    = require('classnames');
 
 /**
  * Display radio buttons in style with the Fauxdio
@@ -51,8 +49,8 @@ module.exports = React.createClass({
     label: React.PropTypes.node
   },
   render: function() {
-    var labelClass = this.props.labelClass || '';
-    var fauxdioClass = cx(this.props.radioClass, 'fauxdio', {
+    const labelClass = this.props.labelClass || '';
+    const fauxdioClass = cx(this.props.radioClass, 'fauxdio', {
       'fauxdio-inline': !!this.props.inline
     });
 

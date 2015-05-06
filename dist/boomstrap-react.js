@@ -33,8 +33,6 @@ module.exports = {
 };
 
 },{"./FauxLink.jsx":3,"./Fauxbox.jsx":4,"./Fauxdio.jsx":5,"./IFrame.jsx":6,"./Icon.jsx":7,"./IconTooltip.jsx":8,"./ImageWithFallback.jsx":9,"./LeadCategory.jsx":10,"./Loader.jsx":11,"./Marker.jsx":12,"./MessageFace.jsx":13,"./NavLinksBar.jsx":14,"./Pager.jsx":15,"./Score.jsx":16,"./Switcher.jsx":17,"./UIMultiSelect.jsx":18,"./UISelect.jsx":19,"./UITypeaheadSelect.jsx":20,"./Well.jsx":22}],3:[function(require,module,exports){
-/*eslint no-script-url:0 */
-
 "use strict";
 
 var _extends = Object.assign || function (target) {
@@ -47,6 +45,7 @@ var _extends = Object.assign || function (target) {
   }return target;
 };
 
+/*eslint no-script-url:0 */
 var React = (window.React);
 
 /**
@@ -270,7 +269,11 @@ var _extends = Object.assign || function (target) {
 
 var React = (window.React);
 var cx = require("classnames");
-var _ = require("lodash");
+
+var _require = require("lodash");
+
+var assign = _require.assign;
+var omit = _require.omit;
 
 module.exports = React.createClass({
   displayName: "Icon",
@@ -281,15 +284,14 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var props = _.assign({}, this.props);
+    var props = assign({}, this.props);
     var className = props.className;
     var icon = props.icon;
 
     // Remove className from props to prevent collision
-    delete props.className;
-    delete props.icon;
+    props = omit(props, ["className", "icon"]);
 
-    var iconClass = cx(this.props.className, "ficon", "ficon-" + icon);
+    var iconClass = cx(className, "ficon", "ficon-" + icon);
 
     return React.createElement("i", _extends({ className: iconClass }, props));
   }
@@ -337,7 +339,11 @@ var _extends = Object.assign || function (target) {
 };
 
 var React = (window.React);
-var _ = require("lodash");
+
+var _require = require("lodash");
+
+var extend = _require.extend;
+var omit = _require.omit;
 
 module.exports = React.createClass({
   displayName: "Image with Fallback",
@@ -362,9 +368,7 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var props = _.extend({}, this.props);
-    delete props.fallbackSrc;
-    delete props.src;
+    var props = omit(extend({}, this.props), ["fallbackSrc", "src"]);
 
     var src = this.state.src || this.props.src;
 
@@ -381,8 +385,8 @@ var PureRenderMixin = React.addons.PureRenderMixin;
 
 var LeadCategories = require("../Constants/LeadCategories");
 
-var categories = {},
-    abbrs = {};
+var categories = {};
+var abbrs = {};
 
 LeadCategories.forEach(function (category) {
   categories[category.value.toString()] = category.name;
@@ -458,6 +462,7 @@ module.exports = React.createClass({
 "use strict";
 
 var React = (window.React);
+var cx = require("classnames");
 
 module.exports = React.createClass({
   displayName: "Marker",
@@ -480,13 +485,9 @@ module.exports = React.createClass({
 
   render: function render() {
     var markerClass = "marker marker-" + this.props.type;
-    var closeClass = "ficon ficon-cross";
-    if (this.props.closeClass) {
-      closeClass += " " + this.props.closeClass;
-    }
+    var closeClass = cx("ficon ficon-cross", this.props.closeClass);
 
     var close = null;
-
     if (this.props.showClose) {
       close = React.createElement("i", { className: closeClass, onClick: this.props.onClose });
     }
@@ -495,7 +496,7 @@ module.exports = React.createClass({
   }
 });
 
-},{}],13:[function(require,module,exports){
+},{"classnames":29}],13:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -748,6 +749,10 @@ module.exports = React.createClass({
 },{"classnames":29}],16:[function(require,module,exports){
 "use strict";
 
+var _defineProperty = function _defineProperty(obj, key, value) {
+  return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+};
+
 var React = (window.React);
 var cx = require("classnames");
 
@@ -758,23 +763,17 @@ module.exports = React.createClass({
     size: React.PropTypes.string
   },
   render: function render() {
-    var scoreClass = "score";
-    var scoreTranslation;
+    var scoreTranslation = undefined;
 
     scoreTranslation = parseInt(this.props.score, 10);
     if (isNaN(scoreTranslation)) {
       scoreTranslation = 0;
     }
 
-    scoreClass += " " + cx({
+    var scoreClass = cx("score", _defineProperty({
       "score-excellent": scoreTranslation >= 76,
       "score-good": scoreTranslation >= 56 && scoreTranslation < 76,
-      "score-average": scoreTranslation >= 26 && scoreTranslation < 56
-    });
-
-    if (this.props.size) {
-      scoreClass += " score-" + this.props.size;
-    }
+      "score-average": scoreTranslation >= 26 && scoreTranslation < 56 }, "score-" + this.props.size, this.props.size));
 
     return React.createElement("span", { className: scoreClass }, this.props.score);
   }
@@ -815,6 +814,7 @@ var React = (window.React);
 var cx = require("classnames");
 
 var Fauxbox = require("./Fauxbox.jsx");
+var FauxLink = require("./FauxLink.jsx");
 
 module.exports = React.createClass({
   displayName: "UI MultiSelect",
@@ -879,7 +879,7 @@ module.exports = React.createClass({
 
   getFilteredItems: function getFilteredItems() {
     var items = this.props.items && this.props.items.slice();
-    var searchText;
+    var searchText = undefined;
     if (items && items.length) {
       if (!this.state.search) {
         return items;
@@ -905,7 +905,7 @@ module.exports = React.createClass({
       activeIndex: 0,
       allowBlurEvent: true
     }, function () {
-      var selectedValues;
+      var selectedValues = undefined;
       if (_this._payloadIsSelected(selectedItem.payload)) {
         selectedValues = _this.props.selectedValues.filter(function (val) {
           return val !== selectedItem.payload;
@@ -918,7 +918,8 @@ module.exports = React.createClass({
   },
 
   onKeyDown: function onKeyDown(e) {
-    var filteredItemMaxIndex, activeIndex;
+    var filteredItemMaxIndex = undefined;
+    var activeIndex = undefined;
 
     if (e.key === "Enter") {
       e.preventDefault();
@@ -961,9 +962,10 @@ module.exports = React.createClass({
   },
 
   _renderBaseElement: function _renderBaseElement() {
-    var showElement, innerElement;
+    var showElement = undefined;
+    var innerElement = undefined;
+    var elementClass = undefined;
     var isEmpty = !this.props.text;
-    var elementClass;
 
     if (!this.state.open) {
       elementClass = "btn btn-default form-control ui-select-match " + (this.props.buttonClass || "");
@@ -1017,7 +1019,7 @@ module.exports = React.createClass({
       return React.createElement("li", { className: "ui-select-choices-group", key: index }, React.createElement("div", {
         className: rowClass,
         onMouseEnter: _this.setActiveItem.bind(_this, index),
-        onClick: _this.select.bind(_this, index) }, React.createElement("a", { href: "javascript:void(0)", className: "ui-select-choices-row-inner" }, React.createElement(Fauxbox, {
+        onClick: _this.select.bind(_this, index) }, React.createElement(FauxLink, { className: "ui-select-choices-row-inner" }, React.createElement(Fauxbox, {
         id: "ui-multi-select-" + item.payload,
         checked: itemSelected,
         label: item.text }))));
@@ -1035,7 +1037,9 @@ module.exports = React.createClass({
   }
 });
 
-},{"./Fauxbox.jsx":4,"classnames":29}],19:[function(require,module,exports){
+},{"./FauxLink.jsx":3,"./Fauxbox.jsx":4,"classnames":29}],19:[function(require,module,exports){
+/*eslint react/no-multi-comp: 0*/
+
 "use strict";
 
 var React = (window.React);
@@ -1290,6 +1294,7 @@ module.exports = React.createClass({
 "use strict";
 
 var React = (window.React);
+var cx = require("classnames");
 
 var OverlayTrigger = require("react-bootstrap").OverlayTrigger;
 var UITypeaheadSelectOverlay = require("./UITypeaheadSelectOverlay.jsx");
@@ -1410,15 +1415,9 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var searchIcon = "ficon ficon-search";
-    if (this.props.iconClass) {
-      searchIcon += " " + this.props.iconClass;
-    }
+    var searchIcon = cx("ficon ficon-search", this.props.iconClass);
 
-    var inputClass = "form-control ";
-    if (this.props.inputClass) {
-      inputClass += this.props.inputClass;
-    }
+    var inputClass = cx("form-control", this.props.inputClass);
 
     return React.createElement("div", { className: this.props.className }, React.createElement(OverlayTrigger, { ref: "overlay", trigger: "manual",
       defaultOverlayShown: false,
@@ -1440,7 +1439,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"./UITypeaheadSelectOverlay.jsx":21,"react-bootstrap":81}],21:[function(require,module,exports){
+},{"./UITypeaheadSelectOverlay.jsx":21,"classnames":29,"react-bootstrap":81}],21:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -1626,6 +1625,8 @@ module.exports = {
 };
 
 },{"./DocumentClickMixin.jsx":27}],27:[function(require,module,exports){
+/*eslint no-console:0*/
+
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
 

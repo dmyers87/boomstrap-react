@@ -1,3 +1,5 @@
+/*eslint react/no-multi-comp: 0*/
+
 const React = require('react/addons');
 const cx    = require('classnames');
 const FauxLink = require('./FauxLink.jsx');

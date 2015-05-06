@@ -4,6 +4,7 @@ var React = require("react/addons");
 var cx = require("classnames");
 
 var Fauxbox = require("./Fauxbox.jsx");
+var FauxLink = require("./FauxLink.jsx");
 
 module.exports = React.createClass({
   displayName: "UI MultiSelect",
@@ -68,7 +69,7 @@ module.exports = React.createClass({
 
   getFilteredItems: function getFilteredItems() {
     var items = this.props.items && this.props.items.slice();
-    var searchText;
+    var searchText = undefined;
     if (items && items.length) {
       if (!this.state.search) {
         return items;
@@ -94,7 +95,7 @@ module.exports = React.createClass({
       activeIndex: 0,
       allowBlurEvent: true
     }, function () {
-      var selectedValues;
+      var selectedValues = undefined;
       if (_this._payloadIsSelected(selectedItem.payload)) {
         selectedValues = _this.props.selectedValues.filter(function (val) {
           return val !== selectedItem.payload;
@@ -107,7 +108,8 @@ module.exports = React.createClass({
   },
 
   onKeyDown: function onKeyDown(e) {
-    var filteredItemMaxIndex, activeIndex;
+    var filteredItemMaxIndex = undefined;
+    var activeIndex = undefined;
 
     if (e.key === "Enter") {
       e.preventDefault();
@@ -150,9 +152,10 @@ module.exports = React.createClass({
   },
 
   _renderBaseElement: function _renderBaseElement() {
-    var showElement, innerElement;
+    var showElement = undefined;
+    var innerElement = undefined;
+    var elementClass = undefined;
     var isEmpty = !this.props.text;
-    var elementClass;
 
     if (!this.state.open) {
       elementClass = "btn btn-default form-control ui-select-match " + (this.props.buttonClass || "");
@@ -230,8 +233,8 @@ module.exports = React.createClass({
             onMouseEnter: _this.setActiveItem.bind(_this, index),
             onClick: _this.select.bind(_this, index) },
           React.createElement(
-            "a",
-            { href: "javascript:void(0)", className: "ui-select-choices-row-inner" },
+            FauxLink,
+            { className: "ui-select-choices-row-inner" },
             React.createElement(Fauxbox, {
               id: "ui-multi-select-" + item.payload,
               checked: itemSelected,

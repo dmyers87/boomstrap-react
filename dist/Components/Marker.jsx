@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require("react/addons");
+var cx = require("classnames");
 
 module.exports = React.createClass({
   displayName: "Marker",
@@ -23,13 +24,9 @@ module.exports = React.createClass({
 
   render: function render() {
     var markerClass = "marker marker-" + this.props.type;
-    var closeClass = "ficon ficon-cross";
-    if (this.props.closeClass) {
-      closeClass += " " + this.props.closeClass;
-    }
+    var closeClass = cx("ficon ficon-cross", this.props.closeClass);
 
     var close = null;
-
     if (this.props.showClose) {
       close = React.createElement("i", { className: closeClass, onClick: this.props.onClose });
     }

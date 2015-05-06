@@ -1,10 +1,8 @@
-'use strict';
+const React = require('react/addons');
 
-var React = require('react/addons');
+const ModalOverlay = require('../Constants/BootstrapConstants').Modal.Overlay;
 
-var ModalOverlay = require('../Constants/BootstrapConstants').Modal.Overlay;
-
-var UITypeaheadSelectOverlay = React.createClass({
+const UITypeaheadSelectOverlay = React.createClass({
   displayName: 'UI Typeahead Select Overlay',
 
   propTypes: {
@@ -38,8 +36,8 @@ var UITypeaheadSelectOverlay = React.createClass({
 
     // Select is fired on mouse down so that the select fires
     // Before the input blur
-    var options = this.props.options.map((result, index) => {
-      var optionClass = this.props.searchIndex === index ? 'active': '';
+    const options = this.props.options.map((result, index) => {
+      const optionClass = this.props.searchIndex === index ? 'active': '';
       return (
         <li role='option' key={index}
           className={optionClass}
@@ -53,9 +51,9 @@ var UITypeaheadSelectOverlay = React.createClass({
     // OverlayTrigger uses offsetWidth to calculate left, which is often 0
     // at the time of render.  Just allow us to override what it thinks the left
     // should be.
-    var positionLeft = this.props.positionLeftOverride || this.props.positionLeft;
+    const positionLeft = this.props.positionLeftOverride || this.props.positionLeft;
 
-    var ulStyle = {
+    let ulStyle = {
       display:  'block',
       position: 'absolute',
       left: positionLeft,

@@ -1,7 +1,5 @@
-'use strict';
-
-var React = require('react/addons');
-var cx    = require('classnames');
+const React = require('react/addons');
+const cx    = require('classnames');
 
 module.exports = React.createClass({
   displayName: 'Pager',
@@ -15,7 +13,7 @@ module.exports = React.createClass({
   },
 
   _getMaxPage() {
-    var maxPage = Math.floor(this.props.totalItems / this.props.itemsPerPage);
+    let maxPage = Math.floor(this.props.totalItems / this.props.itemsPerPage);
     if (this.props.totalItems % this.props.itemsPerPage) {
       maxPage++;
     }
@@ -29,21 +27,21 @@ module.exports = React.createClass({
   },
 
   _onPageFwd() {
-    var maxPage = this._getMaxPage();
+    const maxPage = this._getMaxPage();
     if (this.props.currentPage !== maxPage) {
       this.props.onPage(this.props.currentPage + 1);
     }
   },
 
   render() {
-    var currentPage = this.props.currentPage;
-    var maxPage = this._getMaxPage();
+    const currentPage = this.props.currentPage;
+    const maxPage = this._getMaxPage();
 
-    var backBtnClass = cx('btn btn-default btn-icon', {
+    const backBtnClass = cx('btn btn-default btn-icon', {
       'disabled': currentPage === 1 || this.props.disabled
     });
 
-    var fwdBtnClass = cx('btn btn-default btn-icon', {
+    const fwdBtnClass = cx('btn btn-default btn-icon', {
       'disabled': currentPage === maxPage || this.props.disabled
     });
 

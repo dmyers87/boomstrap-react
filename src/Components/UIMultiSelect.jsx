@@ -1,9 +1,8 @@
-'use strict';
+const React = require('react/addons');
+const cx    = require('classnames');
 
-var React = require('react/addons');
-var cx    = require('classnames');
-
-var Fauxbox = require('./Fauxbox.jsx');
+const Fauxbox  = require('./Fauxbox.jsx');
+const FauxLink = require('./FauxLink.jsx');
 
 module.exports = React.createClass({
   displayName: 'UI MultiSelect',
@@ -75,8 +74,8 @@ module.exports = React.createClass({
   },
 
   getFilteredItems() {
-    var items = this.props.items && this.props.items.slice();
-    var searchText;
+    const items = this.props.items && this.props.items.slice();
+    let searchText;
     if (items && items.length) {
       if (!this.state.search) {
         return items;
@@ -93,14 +92,14 @@ module.exports = React.createClass({
   },
 
   select(index) {
-    var selectedItem = this.getFilteredItems()[index];
+    const selectedItem = this.getFilteredItems()[index];
     this.setState({
       search: '',
       open: false,
       activeIndex: 0,
       allowBlurEvent: true
     }, () => {
-      var selectedValues;
+      let selectedValues;
       if (this._payloadIsSelected(selectedItem.payload)) {
         selectedValues = this.props.selectedValues.filter((val) => {
           return val !== selectedItem.payload;
@@ -113,7 +112,8 @@ module.exports = React.createClass({
   },
 
   onKeyDown(e) {
-    var filteredItemMaxIndex, activeIndex;
+    let filteredItemMaxIndex;
+    let activeIndex;
 
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -156,9 +156,10 @@ module.exports = React.createClass({
   },
 
   _renderBaseElement() {
-    var showElement, innerElement;
-    var isEmpty = !this.props.text;
-    var elementClass;
+    let showElement;
+    let innerElement;
+    let elementClass;
+    const isEmpty = !this.props.text;
 
     if (!this.state.open) {
       elementClass = 'btn btn-default form-control ui-select-match ' + (this.props.buttonClass || '');
@@ -207,18 +208,18 @@ module.exports = React.createClass({
   },
 
   render() {
-    var showElement = this._renderBaseElement();
+    const showElement = this._renderBaseElement();
 
-    var containerClass = cx('ui-select-bootstrap dropdown', {
+    const containerClass = cx('ui-select-bootstrap dropdown', {
       'open': this.state.open
     });
 
-    var dropdownElements = this.getFilteredItems().map((item, index) => {
-      var rowClass = cx('ui-select-choices-row', {
+    const dropdownElements = this.getFilteredItems().map((item, index) => {
+      const rowClass = cx('ui-select-choices-row', {
         'active': this.state.activeIndex === index
       });
 
-      var itemSelected = this._payloadIsSelected(item.payload);
+      const itemSelected = this._payloadIsSelected(item.payload);
 
       return (
         <li className='ui-select-choices-group' key={index}>
@@ -226,18 +227,18 @@ module.exports = React.createClass({
             className={rowClass}
             onMouseEnter={this.setActiveItem.bind(this, index)}
             onClick={this.select.bind(this, index)}>
-            <a href='javascript:void(0)' className='ui-select-choices-row-inner'>
-            <Fauxbox
-              id={'ui-multi-select-' + item.payload}
-              checked={itemSelected}
-              label={item.text}/>
-            </a>
+            <FauxLink className='ui-select-choices-row-inner'>
+              <Fauxbox
+                id={'ui-multi-select-' + item.payload}
+                checked={itemSelected}
+                label={item.text}/>
+            </FauxLink>
           </div>
         </li>
       );
     });
 
-    var dropdownMenuClass = cx('ui-select-choices ui-select-choices-content dropdown-menu', {
+    const dropdownMenuClass = cx('ui-select-choices ui-select-choices-content dropdown-menu', {
       'dropdown-menu-right': this.props.alignRight
     });
 

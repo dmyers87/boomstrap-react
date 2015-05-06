@@ -4,7 +4,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var React = require("react/addons");
 var cx = require("classnames");
-var _ = require("lodash");
+
+var _require = require("lodash");
+
+var assign = _require.assign;
+var omit = _require.omit;
 
 module.exports = React.createClass({
   displayName: "Icon",
@@ -15,15 +19,14 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var props = _.assign({}, this.props);
+    var props = assign({}, this.props);
     var className = props.className;
     var icon = props.icon;
 
     // Remove className from props to prevent collision
-    delete props.className;
-    delete props.icon;
+    props = omit(props, ["className", "icon"]);
 
-    var iconClass = cx(this.props.className, "ficon", "ficon-" + icon);
+    var iconClass = cx(className, "ficon", "ficon-" + icon);
 
     return React.createElement("i", _extends({ className: iconClass }, props));
   }

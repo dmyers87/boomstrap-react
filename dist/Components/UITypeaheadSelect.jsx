@@ -1,6 +1,7 @@
 "use strict";
 
 var React = require("react/addons");
+var cx = require("classnames");
 
 var OverlayTrigger = require("react-bootstrap").OverlayTrigger;
 var UITypeaheadSelectOverlay = require("./UITypeaheadSelectOverlay.jsx");
@@ -121,15 +122,9 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var searchIcon = "ficon ficon-search";
-    if (this.props.iconClass) {
-      searchIcon += " " + this.props.iconClass;
-    }
+    var searchIcon = cx("ficon ficon-search", this.props.iconClass);
 
-    var inputClass = "form-control ";
-    if (this.props.inputClass) {
-      inputClass += this.props.inputClass;
-    }
+    var inputClass = cx("form-control", this.props.inputClass);
 
     return React.createElement(
       "div",
