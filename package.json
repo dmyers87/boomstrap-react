@@ -39,7 +39,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint -c .eslintrc --ext .js --ext .jsx src/. || `exit 0`",
+    "lint": "eslint -c .eslintrc --ext .js --ext .jsx src/.",
     "docs": "react-docgen dist/Components/ --pretty --o ./docs/docs.json"
   },
   "jest": {
