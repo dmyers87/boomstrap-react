@@ -54,9 +54,9 @@ var App = React.createClass({
       width: "100%",
       height: "100%",
       position: "relative",
-      webkitTransform: "translateX(" + translate + ")",
+      WebkitTransform: "translateX(" + translate + ")",
       transform: "translateX(" + translate + ")",
-      webkitTransition: ".3s ease all",
+      WebkitTransition: ".3s ease all",
       transition: ".3s ease all"
     };
 
@@ -120,11 +120,10 @@ window.addEventListener("load", function () {
 });
 
 },{"../src/Components/MessageFace.jsx":7,"./Body.jsx":8,"./GeneratedDoc.jsx":9,"./Header.jsx":10,"./Sidebar.jsx":11,"./Styles":12,"lodash":3,"superagent":4}],2:[function(require,module,exports){
-/*
+/*!
   Copyright (c) 2015 Jed Watson.
-  
   Licensed under the MIT License (MIT), see
-  https://github.com/JedWatson/classnames/blob/master/LICENSE
+  http://jedwatson.github.io/classnames
 */
 
 function classNames() {
@@ -169,12 +168,12 @@ if (typeof define !== 'undefined' && define.amd) {
 (function (global){
 /**
  * @license
- * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
+ * Lo-Dash 2.4.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern -o ./dist/lodash.js`
  * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
  * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- * Available under MIT license <http://lodash.com/license>
+ * Available under MIT license <https://lodash.com/license>
  */
 ;(function() {
 
@@ -1663,6 +1662,7 @@ if (typeof define !== 'undefined' && define.amd) {
     var setBindData = !defineProperty ? noop : function(func, value) {
       descriptor.value = value;
       defineProperty(func, '__bindData__', descriptor);
+      descriptor.value = null;
     };
 
     /**
@@ -6308,7 +6308,7 @@ if (typeof define !== 'undefined' && define.amd) {
      * debugging. See http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/#toc-sourceurl
      *
      * For more information on precompiling templates see:
-     * http://lodash.com/custom-builds
+     * https://lodash.com/custom-builds
      *
      * For more information on Chrome extension sandboxes see:
      * http://developer.chrome.com/stable/extensions/sandboxingEval.html
@@ -6877,7 +6877,7 @@ if (typeof define !== 'undefined' && define.amd) {
      * @memberOf _
      * @type string
      */
-    lodash.VERSION = '2.4.1';
+    lodash.VERSION = '2.4.2';
 
     // add "Chaining" functions to the wrapper
     lodash.prototype.chain = wrapperChain;
