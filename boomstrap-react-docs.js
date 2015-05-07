@@ -423,34 +423,6 @@
 	var React = __webpack_require__(1);
 
 	__webpack_require__(11);
-	// const headerStyle = {
-	//   height: '100vh',
-	//   width: '100vw',
-	//   display: 'flex',
-	//   justifyContent: 'center',
-	//   alignItems: 'center',
-	//   position: 'relative'
-	// };
-
-	var headerWrapperStyle = {
-	  backgroundColor: 'rgba(0, 0, 0, 0.60)',
-	  position: 'absolute',
-	  top: 0, left: 0, right: 0, bottom: 0,
-	  display: 'flex',
-	  justifyContent: 'center',
-	  alignItems: 'center' };
-
-	var titleStyle = {
-	  fontFamily: 'Lato, Roboto, sans serif',
-	  fontSize: 96,
-	  fontWeight: 300,
-	  color: '#ffffff'
-	};
-
-	var logoStyle = {
-	  height: 'auto',
-	  maxHeight: '100%'
-	};
 
 	module.exports = React.createClass({
 	  displayName: 'Header',
@@ -460,13 +432,13 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'header' },
-	      React.createElement('img', { style: logoStyle, src: 'react-boomstrap.svg' }),
+	      React.createElement('img', { className: 'logo', src: 'react-boomstrap.svg' }),
 	      React.createElement(
 	        'div',
-	        { style: headerWrapperStyle },
+	        { className: 'header-wrapper' },
 	        React.createElement(
 	          'span',
-	          { style: titleStyle },
+	          { className: 'title' },
 	          'Boomstrap React'
 	        )
 	      )
@@ -8857,8 +8829,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./header.less", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./header.less");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?{browsers:[\"last 2 version\", \"IE 9\"]}!./header.less", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/less-loader/index.js!./../../node_modules/autoprefixer-loader/index.js?{browsers:[\"last 2 version\", \"IE 9\"]}!./header.less");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -8872,7 +8844,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(15)();
-	exports.push([module.id, ".header {\n  height: 100vh;\n  width: 100vw;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n}\n", ""]);
+	exports.push([module.id, ".header-wrapper {\n  background-color: rgba(0, 0, 0, 0.6);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-justify-content: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n}\n.header {\n  height: 100vh;\n  width: 100vw;\n  display: -webkit-flex;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-justify-content: center;\n  -ms-flex-pack: center;\n  justify-content: center;\n  -webkit-align-items: center;\n  -ms-flex-align: center;\n  align-items: center;\n  position: relative;\n}\n.title {\n  font-family: Lato, Roboto, sans serif;\n  font-size: 96px;\n  font-weight: 300;\n  color: #ffffff;\n}\n.logo {\n  height: auto;\n  max-height: 100%;\n}\n", ""]);
 
 /***/ },
 /* 13 */
