@@ -1,5 +1,4 @@
 const React = require('react/addons');
-const _     = require('lodash');
 
 const Body          = require('./Body.jsx');
 const GeneratedDoc  = require('./GeneratedDoc.jsx');
@@ -16,8 +15,6 @@ const Playground = require('component-playground');
 
 // Docs
 const request = require('superagent');
-
-const styles = require('./Styles');
 
 require('./less/app.less');
 
