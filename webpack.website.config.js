@@ -3,7 +3,6 @@ var webpack = require('webpack');
 
 module.exports = {
   cache: true,
-  devtool: 'source-map',
   entry: path.join(__dirname, 'website/App.jsx'),
   output: {
     path: path.join(__dirname, 'www'),
