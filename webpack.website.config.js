@@ -10,7 +10,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: /\.less$/, loader: 'css-loader!less-loader'}
+      { test: /\.less$/, loader: 'style-loader!css-loader!less-loader'}
     ]
   },
   resolve: {
@@ -18,7 +18,7 @@ module.exports = {
     extensions: ['', '.js', '.less', '.jsx']
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin([])
+    //new webpack.optimize.UglifyJsPlugin([])
   ],
   externals: {
     'react': 'React',

@@ -1,13 +1,14 @@
 const React = require('react/addons');
 
-const headerStyle = {
-  height: '100vh',
-  width: '100vw',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative'
-};
+require('./less/header.less');
+// const headerStyle = {
+//   height: '100vh',
+//   width: '100vw',
+//   display: 'flex',
+//   justifyContent: 'center',
+//   alignItems: 'center',
+//   position: 'relative'
+// };
 
 const headerWrapperStyle = {
   backgroundColor: 'rgba(0, 0, 0, 0.60)',
@@ -36,7 +37,7 @@ module.exports = React.createClass({
   render() {
 
     return (
-      <div style={headerStyle}>
+      <div className='header'>
         <img style={logoStyle} src='react-boomstrap.svg'/>
         <div style={headerWrapperStyle}>
           <span style={titleStyle}>Boomstrap React</span>
