@@ -1,8 +1,13 @@
 'use strict';
 
+var path    = require('path');
 var gulp    = require('gulp');
+var gutil   = require('gulp-util');
 var ghpages = require('gulp-gh-pages');
 var connect = require('gulp-connect');
+
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
 
 function compileScriptsFromEntryPoint(entry, fileName, destination) {
   var browserify = require('browserify');
@@ -41,8 +46,21 @@ gulp.task('compileScripts', ['transformScripts'], function() {
   return compileScriptsFromEntryPoint('./dist/App.js', 'boomstrap-react.js', 'dist/');
 });
 
-gulp.task('compileDocsScripts', function() {
-  return compileScriptsFromEntryPoint('./website/App.jsx', 'boomstrap-react-docs.js', 'www/');
+gulp.task('compileDocsScripts', function(callback) {
+   // run webpack
+  webpack(require('./webpack.website.config.js'), function(err, stats) {
+    if(err) {
+      throw new gutil.PluginError('webpack', err);
+    }
+    stats = stats.toString();
+
+    // Remove dropping unused statements and individual modules built
+    var tester = /Dropping unused(.*?)\n|\n(.*?)\[built\]/g;
+    stats = stats.replace(tester, '');
+    gutil.log('[webpack]', stats);
+    gutil.log('[webpack]', new Date());
+    callback();
+  });
 });
 
 gulp.task('docs', ['compileDocsScripts'], function() {
@@ -64,20 +82,20 @@ gulp.task('websiteDeploy', ['docs'], function() {
 
 gulp.task('default', ['transformScripts', 'compileScripts']);
 
-gulp.task('server', ['docs'], function() {
-  connect.server({
-    hostname: 'localhost',
-    port: 9000,
-    root: 'www',
-    keepalive: false,
-    livereload: true
+gulp.task('server', function(callback) {
+  // Start a webpack-dev-server
+  var compiler = webpack(require('./webpack.website.config.js'));
+
+  new WebpackDevServer(compiler, {
+    watchDelay: 300
+  }).listen(9000, 'localhost', function(err) {
+    if (err) throw new gutil.PluginError('webpack-dev-server', err);
+    // Server listening
+    gutil.log('[webpack-dev-server]', 'http://localhost:9000/webpack-dev-server/index.html');
+
+    // keep the server alive or continue?
+    // callback();
   });
-
-  // Watch Javascript Files
-  gulp.watch([
-    'website/**/*.jsx'
-  ], ['docs']);
-
 });
 
 gulp.task('website', ['websiteDeploy']);
