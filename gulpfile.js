@@ -63,7 +63,12 @@ gulp.task('compileDocsScripts', function(callback) {
   });
 });
 
-gulp.task('docs', ['compileDocsScripts'], function() {
+gulp.task('copyDocs', function() {
+  gulp.src([
+    'node_modules/babel-core/browser.min.js',
+    'node_modules/babel-core/browser-polyfill.min.js'
+  ]).pipe(gulp.dest('www/'));
+
   gulp.src('docs/**')
     .pipe(gulp.dest('www/docs/'));
 
@@ -74,6 +79,8 @@ gulp.task('docs', ['compileDocsScripts'], function() {
     .pipe(gulp.dest('www/'));
 });
 
+gulp.task('docs', ['compileDocsScripts', 'copyDocs']);
+
 // Website
 gulp.task('websiteDeploy', ['docs'], function() {
   return gulp.src('./www/**/*')
@@ -82,12 +89,13 @@ gulp.task('websiteDeploy', ['docs'], function() {
 
 gulp.task('default', ['transformScripts', 'compileScripts']);
 
-gulp.task('server', function(callback) {
+gulp.task('server', ['copyDocs'], function(callback) {
   // Start a webpack-dev-server
   var compiler = webpack(require('./webpack.website.config.js'));
 
   new WebpackDevServer(compiler, {
-    watchDelay: 300
+    watchDelay: 300,
+    contentBase: 'www/'
   }).listen(9000, 'localhost', function(err) {
     if (err) throw new gutil.PluginError('webpack-dev-server', err);
     // Server listening

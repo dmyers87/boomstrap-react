@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+  cache: true,
   devtool: 'source-map',
   entry: path.join(__dirname, 'website/App.jsx'),
   output: {
@@ -10,7 +11,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
+      { test: /\.jsx?$/, exclude: [/node_modules/, /examples/], loader: 'babel-loader' },
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader!autoprefixer-loader?{browsers:["last 2 version", "IE 9"]}'}
     ]
   },

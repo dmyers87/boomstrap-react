@@ -6,7 +6,13 @@ const GeneratedDoc  = require('./GeneratedDoc.jsx');
 const Header        = require('./Header.jsx');
 
 const MessageFace = require('../src/Components/MessageFace.jsx');
+const messageFaceExample = require('raw!./examples/MessageFace.example.js');
+
+
 const NavLinksBar = require('../src/Components/NavLinksBar');
+
+
+const Playground = require('component-playground');
 
 // Docs
 const request = require('superagent');
@@ -80,12 +86,11 @@ const App = React.createClass({
                   if (comp.name === 'MessageFace') {
                     return (
                       <GeneratedDoc name={comp.name} info={comp.info}>
-                        <h4>Examples</h4>
-                        <MessageFace />&nbsp;
-                        <MessageFace placement='left'/>&nbsp;
-                        <MessageFace placement='top'/>&nbsp;
-                        <MessageFace placement='right'/>&nbsp;
-                        <MessageFace placement='bottom'/>
+                        <h4>Try it out!</h4>
+                        <Playground
+                          codeText={messageFaceExample}
+                          theme={'neo'}
+                          scope={{React: React, MessageFace: MessageFace}}/>
                       </GeneratedDoc>
                     );
                   }
@@ -102,5 +107,5 @@ const App = React.createClass({
 });
 
 window.addEventListener('load', function() {
-  React.render(<App />, document.body);
+  React.render(<App />, document.getElementById('page'));
 });
