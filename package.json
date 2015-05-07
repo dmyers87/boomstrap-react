@@ -35,6 +35,7 @@
     "marked": "^0.3.2",
     "raw-loader": "^0.5.1",
     "react-docgen": "^1.2.0",
+    "react-router": "^0.13.3",
     "style-loader": "^0.12.2",
     "superagent": "^0.21.0",
     "uglifyify": "^2.6.0",
