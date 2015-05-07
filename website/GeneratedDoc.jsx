@@ -1,6 +1,8 @@
 const React = require('react/addons');
 
 module.exports = React.createClass({
+  displayName: 'Generated Doc',
+
   propTypes: {
     name: React.PropTypes.string,
     info: React.PropTypes.shape({
@@ -57,7 +59,7 @@ module.exports = React.createClass({
           </tbody>
         </table>
       </div>
-    )
+    );
   },
 
   render() {

@@ -1,17 +1,19 @@
 const React = require('react/addons');
 const _     = require('lodash');
 
-const Sidebar       = require('./Sidebar.jsx');
 const Body          = require('./Body.jsx');
 const GeneratedDoc  = require('./GeneratedDoc.jsx');
 const Header        = require('./Header.jsx');
 
 const MessageFace = require('../src/Components/MessageFace.jsx');
+const NavLinksBar = require('../src/Components/NavLinksBar');
 
 // Docs
 const request = require('superagent');
 
 const styles = require('./Styles');
+
+require('./less/app.less');
 
 const App = React.createClass({
   displayName: 'App',
@@ -65,30 +67,35 @@ const App = React.createClass({
     });
 
     return (
-      <div style={containerStyle}>
-        <Body>
+      <div>
+        <NavLinksBar navClass='nav-sm nav-fixed' activeKey={null}>
+          {sideBarComponents.map((comp) => <li><a href={'#' + comp.name}>{comp.name}</a></li>)}
+        </NavLinksBar>
+        <div style={containerStyle}>
+          <Body>
             <Header />
-          <div className='container'>
-            <div id='components'>
-              {sideBarComponents.map((comp) => {
-                if (comp.name === 'MessageFace') {
-                  return (
-                    <GeneratedDoc name={comp.name} info={comp.info}>
-                      <h4>Examples</h4>
-                      <MessageFace />&nbsp;
-                      <MessageFace placement='left'/>&nbsp;
-                      <MessageFace placement='top'/>&nbsp;
-                      <MessageFace placement='right'/>&nbsp;
-                      <MessageFace placement='bottom'/>
-                    </GeneratedDoc>
-                  )
-                }
+            <div className='container'>
+              <div id='components' className='components'>
+                {sideBarComponents.map((comp) => {
+                  if (comp.name === 'MessageFace') {
+                    return (
+                      <GeneratedDoc name={comp.name} info={comp.info}>
+                        <h4>Examples</h4>
+                        <MessageFace />&nbsp;
+                        <MessageFace placement='left'/>&nbsp;
+                        <MessageFace placement='top'/>&nbsp;
+                        <MessageFace placement='right'/>&nbsp;
+                        <MessageFace placement='bottom'/>
+                      </GeneratedDoc>
+                    );
+                  }
 
-                return <GeneratedDoc name={comp.name} info={comp.info} />;
-              })}
+                  return <GeneratedDoc name={comp.name} info={comp.info} />;
+                })}
+              </div>
             </div>
-          </div>
-        </Body>
+          </Body>
+        </div>
       </div>
     );
   }
