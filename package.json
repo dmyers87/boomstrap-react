@@ -13,6 +13,7 @@
     "dist/**"
   ],
   "devDependencies": {
+    "autoprefixer-loader": "^1.2.0",
     "babel-eslint": "^3.0.0",
     "babel-jest": "^4.0.0",
     "babel-loader": "^5.0.0",
