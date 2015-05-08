@@ -2,10 +2,10 @@ const React = require('react/addons');
 const _     = require('lodash');
 const { Link } = require('react-router');
 
-const GeneratedDoc  = require('../GeneratedDoc.jsx');
-const MessageFace = require('../../src/Components/MessageFace.jsx');
+const GeneratedDoc       = require('../GeneratedDoc.jsx');
+const MessageFace        = require('../../src/Components/MessageFace.jsx');
 const messageFaceExample = require('raw!../examples/MessageFace.example.js');
-const NavLinksBar = require('../../src/Components/NavLinksBar.jsx');
+const NavLinksBar        = require('../../src/Components/NavLinksBar.jsx');
 const navLinksBarExample = require('raw!../examples/NavLinksBar.example.js');
 
 const Playground  = require('component-playground');
@@ -43,6 +43,7 @@ const DocsPage = React.createClass({
             <GeneratedDoc name={comp.name} info={comp.info}>
               <h4>Try it out!</h4>
               <Playground
+                key='messageFace'
                 codeText={messageFaceExample}
                 theme={'neo'}
                 scope={{React: React, MessageFace: MessageFace}}/>
@@ -53,6 +54,7 @@ const DocsPage = React.createClass({
             <GeneratedDoc name={comp.name} info={comp.info}>
               <h4>Try it out!</h4>
               <Playground
+                key='navLinksBar'
                 codeText={navLinksBarExample}
                 theme={'neo'}
                 scope={{React: React, NavLinksBar: NavLinksBar}}/>
