@@ -2,7 +2,6 @@
 
 var React = require("react/addons");
 var cx = require("classnames");
-var cloneWithProps = React.addons.cloneWithProps;
 
 var Orientations = {
   Vertical: "vertical",
@@ -10,20 +9,27 @@ var Orientations = {
 };
 
 var getVerticalNavPos = function (child) {
-  var childTop = child.offsetTop;
-  var childHeight = child.getBoundingClientRect().height;
+  var top = child.offsetTop;
 
-  return {
-    top: childTop,
-    height: childHeight
-  };
+  var _child$getBoundingClientRect = child.getBoundingClientRect();
+
+  var height = _child$getBoundingClientRect.height;
+
+  top = Math.round(top);
+  height = Math.round(height);
+
+  return { top: top, height: height };
 };
 
 var getHorizontalNavPos = function (child) {
+  var left = child.offsetLeft;
+
   var _child$getBoundingClientRect = child.getBoundingClientRect();
 
-  var left = _child$getBoundingClientRect.left;
   var width = _child$getBoundingClientRect.width;
+
+  left = Math.round(left);
+  width = Math.round(width);
 
   return { left: left, width: width };
 };
@@ -103,6 +109,7 @@ module.exports = React.createClass({
         childCount++;
       }
     });
+
     this.setState({
       navPositions: navPositions,
       childCount: childCount
@@ -166,7 +173,7 @@ module.exports = React.createClass({
         "ul",
         { className: listClass },
         React.Children.map(this.props.children, function (child, index) {
-          return cloneWithProps(child, {
+          return React.cloneElement(child, {
             key: index,
             ref: "navChild-" + index
           });
