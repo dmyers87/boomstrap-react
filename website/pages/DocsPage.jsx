@@ -10,14 +10,15 @@ const navLinksBarExample = require('raw!../examples/NavLinksBar.example.js');
 
 const Playground  = require('component-playground');
 
-require('../less/app.less');
+require('../less/docs.less');
 
 const DocsPage = React.createClass({
   displayName: 'Docs Page',
 
   propTypes: {
     components: React.PropTypes.array,
-    params: React.PropTypes.object
+    params: React.PropTypes.object,
+    version: React.PropTypes.string
   },
 
   getDefaultProps() {
@@ -67,14 +68,13 @@ const DocsPage = React.createClass({
     }
 
     return (
-      <div>
-        <NavLinksBar navClass='nav-sm nav-fixed' activeKey={componentIndex}>
+      <div className='container-fluid container-docs'>
+        <span className='docs-version'>Version {this.props.version}</span>
+        <NavLinksBar navClass='nav-sm nav-docs' activeKey={componentIndex}>
           {sideBarComponents.map((comp) => <li><Link to={'/docs/' + comp.name}>{comp.name}</Link></li>)}
         </NavLinksBar>
-        <div className='container'>
-          <div id='components' className='components'>
-            {doc}
-          </div>
+        <div id='components' className='components'>
+          {doc}
         </div>
       </div>
     );

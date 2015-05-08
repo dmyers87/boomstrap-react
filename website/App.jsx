@@ -6,6 +6,9 @@ const Route        = Router.Route;
 const SplashPage = require('./pages/SplashPage');
 const DocsPage   = require('./pages/DocsPage');
 
+const version = JSON.parse(require('raw!../package.json')).version;
+console.log(version);
+
 const request = require('superagent');
 
 request.get('docs/docs.json').end((err, data) => {
@@ -25,14 +28,13 @@ request.get('docs/docs.json').end((err, data) => {
       info: componentsBody[component]
     };
   });
-  console.log(components);
 
   const App = React.createClass({
     displayName: 'App',
     render() {
       return (
         <div>
-          <RouteHandler components={components} {...this.props} />
+          <RouteHandler version={version} components={components} {...this.props} />
         </div>
       );
     }

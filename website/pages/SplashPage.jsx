@@ -1,15 +1,17 @@
 const React  = require('react/addons');
 const Header = require('../Header.jsx');
 
-require('../less/app.less');
-
 const App = React.createClass({
   displayName: 'App',
+
+  propTypes: {
+    version: React.PropTypes.string
+  },
 
   render() {
     return (
       <div>
-        <Header />
+        <Header version={this.props.version}/>
       </div>
     );
   }
