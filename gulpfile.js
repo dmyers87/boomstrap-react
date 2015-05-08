@@ -1,10 +1,8 @@
 'use strict';
 
-var path    = require('path');
 var gulp    = require('gulp');
 var gutil   = require('gulp-util');
 var ghpages = require('gulp-gh-pages');
-var connect = require('gulp-connect');
 
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
@@ -16,7 +14,8 @@ function compileScriptsFromEntryPoint(entry, fileName, destination) {
   //var uglify     = require('uglifyify');
 
   var globalShim = require('browserify-global-shim').configure({
-    'react/addons': 'React'
+    'react/addons': 'React',
+    'react': 'React'
   });
 
   var b = browserify({ standalone: 'BoomstrapReact'});
@@ -64,10 +63,6 @@ gulp.task('compileDocsScripts', function(callback) {
 });
 
 gulp.task('copyDocs', function() {
-  gulp.src([
-    'node_modules/babel-core/browser.min.js',
-    'node_modules/babel-core/browser-polyfill.min.js'
-  ]).pipe(gulp.dest('www/'));
 
   gulp.src('docs/**')
     .pipe(gulp.dest('www/docs/'));
@@ -89,7 +84,7 @@ gulp.task('websiteDeploy', ['docs'], function() {
 
 gulp.task('default', ['transformScripts', 'compileScripts']);
 
-gulp.task('server', ['copyDocs'], function(callback) {
+gulp.task('server', ['copyDocs'], function() {
   // Start a webpack-dev-server
   var compiler = webpack(require('./webpack.website.config.js'));
 
