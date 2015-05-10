@@ -2,7 +2,8 @@ const React = require('react/addons');
 const _     = require('lodash');
 const { Link } = require('react-router');
 
-const GeneratedDoc       = require('../GeneratedDoc.jsx');
+const GeneratedDoc       = require('../Components/GeneratedDoc.jsx');
+
 const MessageFace        = require('../../src/Components/MessageFace.jsx');
 const messageFaceExample = require('raw!../examples/MessageFace.example.js');
 const NavLinksBar        = require('../../src/Components/NavLinksBar.jsx');
@@ -10,7 +11,7 @@ const navLinksBarExample = require('raw!../examples/NavLinksBar.example.js');
 
 const Playground  = require('component-playground');
 
-require('../less/docs.less');
+require('../less/DocsPage.less');
 
 const DocsPage = React.createClass({
   displayName: 'Docs Page',
@@ -68,12 +69,12 @@ const DocsPage = React.createClass({
     }
 
     return (
-      <div className='container-fluid container-docs'>
-        <span className='docs-version'>Version {this.props.version}</span>
-        <NavLinksBar navClass='nav-sm nav-docs' activeKey={componentIndex}>
+      <div className='container-fluid DocsPage'>
+        <span className='DocsPage__version'>Version {this.props.version}</span>
+        <NavLinksBar navClass='nav-sm DocsPage__nav' activeKey={componentIndex}>
           {sideBarComponents.map((comp) => <li><Link to={'/docs/' + comp.name}>{comp.name}</Link></li>)}
         </NavLinksBar>
-        <div id='components' className='components'>
+        <div id='components' className='DocsPage__components'>
           {doc}
         </div>
       </div>

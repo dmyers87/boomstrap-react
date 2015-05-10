@@ -1,14 +1,11 @@
-const React = require('react/addons');
+const React  = require('react/addons');
 const Router = require('react-router');
-const RouteHandler = Router.RouteHandler;
-const Route        = Router.Route;
+const { RouteHandler, Route } = Router;
 
-const SplashPage = require('./pages/SplashPage');
-const DocsPage   = require('./pages/DocsPage');
+const SplashPage = require('./Pages/SplashPage');
+const DocsPage   = require('./Pages/DocsPage');
 
 const version = JSON.parse(require('raw!../package.json')).version;
-console.log(version);
-
 const request = require('superagent');
 
 request.get('docs/docs.json').end((err, data) => {

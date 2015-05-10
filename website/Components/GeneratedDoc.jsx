@@ -1,5 +1,7 @@
 const React = require('react/addons');
 
+require('../less/GeneratedDoc');
+
 module.exports = React.createClass({
   displayName: 'Generated Doc',
 
@@ -63,22 +65,6 @@ module.exports = React.createClass({
   },
 
   render() {
-    const divStyle = {
-      'padding': 10,
-      'paddingTop': 60,
-      'marginTop': 20,
-      'marginBottom': 20,
-      'position': 'relative'
-    };
-
-    const headerStyle = {
-      'position': 'absolute',
-      'top': 10,
-      'left': 10,
-      fontSize: 24,
-      fontWeight: 500
-    };
-
     let description = null;
     if (this.props.info.description) {
       description = (
@@ -89,8 +75,8 @@ module.exports = React.createClass({
     }
 
     return (
-      <div style={divStyle} id={this.props.name} className='shadow-depth-1'>
-        <span style={headerStyle}>{this.props.name}</span>
+      <div id={this.props.name} className='GeneratedDoc shadow-depth-1'>
+        <span className='GeneratedDoc__header'>{this.props.name}</span>
         {description}
         {this.renderTable()}
         {this.props.children}
