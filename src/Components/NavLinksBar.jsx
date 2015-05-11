@@ -132,7 +132,6 @@ module.exports = React.createClass({
         WebkitTransform: transform,
         msTransform:     transform,
         height:          `${barHeight}px`,
-        width:           '3px',
         top:             '0'
       };
     } else {
@@ -151,7 +150,6 @@ module.exports = React.createClass({
         transform:       transform,
         WebkitTransform: transform,
         msTransform:     transform,
-        height:          '3px',
         width:           `${barWidth}px`,
         left:            '0',
         bottom:          '0'
