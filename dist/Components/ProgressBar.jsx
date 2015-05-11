@@ -23,7 +23,9 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var positionTranslation, style, label;
+    var label = null;
+    var positionTranslation = this.props.position;
+    var style = {};
 
     positionTranslation = parseInt(this.props.position, 10);
     if (isNaN(positionTranslation) || positionTranslation < 0) {
@@ -51,8 +53,7 @@ module.exports = React.createClass({
     };
 
     // If showLabel is true and size isn't extra small, construct label
-    label = null;
-    if (this.props.showLabel && this.props.size != "xs") {
+    if (this.props.showLabel && this.props.size !== "xs") {
       label = React.createElement(
         "div",
         { className: "progress-bar__bar__label" },

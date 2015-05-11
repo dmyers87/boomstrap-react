@@ -7,8 +7,8 @@ module.exports = React.createClass({
   propTypes: {
     position:   React.PropTypes.number,
     showLabel:  React.PropTypes.bool,
-    size:       React.PropTypes.oneOf(['','xs','sm','lg']),
-    type:       React.PropTypes.oneOf(['attention','danger','info','primary','success','success-to-danger','warning'])
+    size:       React.PropTypes.oneOf(['', 'xs','sm', 'lg']),
+    type:       React.PropTypes.oneOf(['attention', 'danger', 'info', 'primary', 'success', 'success-to-danger', 'warning'])
   },
 
   getDefaultProps() {
@@ -21,7 +21,9 @@ module.exports = React.createClass({
   },
 
   render() {
-    var positionTranslation,style,label;
+    let label = null;
+    let positionTranslation = this.props.position;
+    let style = {};
 
     positionTranslation = parseInt(this.props.position, 10);
     if (isNaN(positionTranslation) || positionTranslation < 0) {
@@ -49,16 +51,15 @@ module.exports = React.createClass({
     };
 
     // If showLabel is true and size isn't extra small, construct label
-    label = null;
-    if (this.props.showLabel && this.props.size != 'xs') {
+    if (this.props.showLabel && this.props.size !== 'xs') {
       label = (
-        <div className="progress-bar__bar__label">{positionTranslation + '%'}</div>
+        <div className='progress-bar__bar__label'>{positionTranslation + '%'}</div>
       );
     }
 
     return (
       <div className={classes}>
-        <div className="progress-bar__bar" style={style}>
+        <div className='progress-bar__bar' style={style}>
           {label}
         </div>
       </div>
