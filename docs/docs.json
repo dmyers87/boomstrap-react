@@ -466,6 +466,51 @@
       }
     }
   },
+  "dist/Components/ProgressBar.jsx": {
+    "description": "",
+    "props": {
+      "position": {
+        "required": false,
+        "defaultValue": {
+          "value": "0",
+          "computed": false
+        },
+        "type": {
+          "name": "number"
+        },
+        "description": "Number 1-100 representing a percentage."
+      },
+      "size": {
+        "required": false,
+        "type": {
+          "name": "string"
+        },
+        "description": "Optons: xs, sm, lg."
+      },
+      "type": {
+        "required": false,
+        "defaultValue": {
+          "value": "primary",
+          "computed": false
+        },
+        "type": {
+          "name": "string"
+        },
+        "description": "Optons: attention, danger, info, primary, success, success-to-danger, warning."
+      },
+      "showLabel": {
+        "required": false,
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        },
+        "type": {
+          "name": "boolean"
+        },
+        "description": "Set to 'true' to show label in progress bar."
+      }
+    }
+  },
   "dist/Components/Score.jsx": {
     "description": "",
     "props": {

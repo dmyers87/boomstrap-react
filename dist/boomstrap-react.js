@@ -664,7 +664,6 @@ module.exports = React.createClass({
         WebkitTransform: transform,
         msTransform: transform,
         height: "" + barHeight + "px",
-        width: "3px",
         top: "0"
       };
     } else {
@@ -683,7 +682,6 @@ module.exports = React.createClass({
         transform: transform,
         WebkitTransform: transform,
         msTransform: transform,
-        height: "3px",
         width: "" + barWidth + "px",
         left: "0",
         bottom: "0"
@@ -1758,10 +1756,11 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],29:[function(require,module,exports){
-/*!
+/*
   Copyright (c) 2015 Jed Watson.
+  
   Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
+  https://github.com/JedWatson/classnames/blob/master/LICENSE
 */
 
 function classNames() {
@@ -1806,12 +1805,12 @@ if (typeof define !== 'undefined' && define.amd) {
 (function (global){
 /**
  * @license
- * Lo-Dash 2.4.2 (Custom Build) <https://lodash.com/>
+ * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modern -o ./dist/lodash.js`
  * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
  * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- * Available under MIT license <https://lodash.com/license>
+ * Available under MIT license <http://lodash.com/license>
  */
 ;(function() {
 
@@ -3300,7 +3299,6 @@ if (typeof define !== 'undefined' && define.amd) {
     var setBindData = !defineProperty ? noop : function(func, value) {
       descriptor.value = value;
       defineProperty(func, '__bindData__', descriptor);
-      descriptor.value = null;
     };
 
     /**
@@ -7946,7 +7944,7 @@ if (typeof define !== 'undefined' && define.amd) {
      * debugging. See http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/#toc-sourceurl
      *
      * For more information on precompiling templates see:
-     * https://lodash.com/custom-builds
+     * http://lodash.com/custom-builds
      *
      * For more information on Chrome extension sandboxes see:
      * http://developer.chrome.com/stable/extensions/sandboxingEval.html
@@ -8515,7 +8513,7 @@ if (typeof define !== 'undefined' && define.amd) {
      * @memberOf _
      * @type string
      */
-    lodash.VERSION = '2.4.2';
+    lodash.VERSION = '2.4.1';
 
     // add "Chaining" functions to the wrapper
     lodash.prototype.chain = wrapperChain;
