@@ -7,7 +7,7 @@ module.exports = React.createClass({
   propTypes: {
     position:   React.PropTypes.number,
     showLabel:  React.PropTypes.bool,
-    size:       React.PropTypes.oneOf(['', 'xs','sm', 'lg']),
+    size:       React.PropTypes.oneOf(['', 'xs', 'sm', 'lg']),
     type:       React.PropTypes.oneOf(['attention', 'danger', 'info', 'primary', 'success', 'success-to-danger', 'warning'])
   },
 
@@ -44,13 +44,17 @@ module.exports = React.createClass({
       'progress-bar--lg':                 this.props.size === 'lg'
     });
 
-    // Style for positioning progres-bar__bar
+    /**
+     * Style for positioning bar
+     */
     style = {
       transform: 'translateX(' + positionTranslation + '%)',
       WebkitTransform: 'translateX(' + positionTranslation + '%)'
     };
 
-    // If showLabel is true and size isn't extra small, construct label
+    /**
+     * If showLabel is true and size isn't extra small, construct label
+     */
     if (this.props.showLabel && this.props.size !== 'xs') {
       label = (
         <div className='progress-bar__bar__label'>{positionTranslation + '%'}</div>
