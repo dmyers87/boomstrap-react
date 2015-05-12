@@ -8,6 +8,8 @@ const MessageFace        = require('../../src/Components/MessageFace.jsx');
 const messageFaceExample = require('raw!../examples/MessageFace.example.js');
 const NavLinksBar        = require('../../src/Components/NavLinksBar.jsx');
 const navLinksBarExample = require('raw!../examples/NavLinksBar.example.js');
+const ProgressBar        = require('../../src/Components/ProgressBar.jsx');
+const progressBarExample = require('raw!../examples/ProgressBar.example.js');
 
 const Playground  = require('component-playground');
 
@@ -60,6 +62,17 @@ const DocsPage = React.createClass({
                 codeText={navLinksBarExample}
                 theme={'neo'}
                 scope={{React: React, NavLinksBar: NavLinksBar}}/>
+            </GeneratedDoc>
+          );
+        } else if (comp.name === 'ProgressBar') {
+          doc = (
+            <GeneratedDoc name={comp.name} info={comp.info}>
+              <h4>Try it out!</h4>
+              <Playground
+                key='progressBar'
+                codeText={progressBarExample}
+                theme={'neo'}
+                scope={{React: React, ProgressBar: ProgressBar}}/>
             </GeneratedDoc>
           );
         } else {
