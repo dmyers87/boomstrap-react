@@ -36,10 +36,8 @@ module.exports = React.createClass({
   },
 
   render() {
-    let label = null;
-    let positionTranslation = this.props.position;
-    let style = {};
 
+    let positionTranslation = this.props.position;
     positionTranslation = parseInt(this.props.position, 10);
     if (isNaN(positionTranslation) || positionTranslation < 0) {
       positionTranslation = 0;
@@ -62,14 +60,15 @@ module.exports = React.createClass({
     /**
      * Style for positioning bar
      */
-    style = {
-      transform: 'translateX(' + positionTranslation + '%)',
-      WebkitTransform: 'translateX(' + positionTranslation + '%)'
+    const style = {
+      transform: `translateX(${positionTranslation}%)`,
+      WebkitTransform: `translateX(${positionTranslation}%)`
     };
 
     /**
      * If showLabel is true and size isn't extra small, construct label
      */
+    let label = null;
     if (this.props.showLabel && this.props.size !== 'xs') {
       label = (
         <div className='progress-bar__bar__label'>{positionTranslation + '%'}</div>
