@@ -8,6 +8,8 @@ const DocsPage   = require('./Pages/DocsPage');
 const version = JSON.parse(require('raw!../package.json')).version;
 const request = require('superagent');
 
+require('./less/App.less');
+
 request.get('docs/docs.json').end((err, data) => {
   if (err) {
     return;
