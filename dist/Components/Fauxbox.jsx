@@ -37,7 +37,7 @@ var Fauxbox = React.createClass({
     onClick: React.PropTypes.func,
 
     /**
-     * Indicates whether or not the Fauxbox is block styled or inline
+     * Indicates whether or not the Fauxbox is a block element or inline-block element
      */
     inline: React.PropTypes.bool,
 

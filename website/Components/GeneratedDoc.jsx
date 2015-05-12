@@ -1,4 +1,5 @@
-const React = require('react/addons');
+const React      = require('react/addons');
+const DocExample = require('./DocExample');
 
 require('../less/GeneratedDoc');
 
@@ -50,22 +51,6 @@ module.exports = React.createClass({
   renderPropRow(prop, index) {
     const thisProp = this.props.info.props[prop];
     let valueColumn = this.renderPropType(thisProp.type);
-
-    // if (thisProp.type.value) {
-    //   // Enums
-    //   if (thisProp.type.value.length) {
-    //     const values = thisProp.type.value.map((val) => val.value);
-    //     valueColumn = `${valueColumn} (${values.join(', ')})`;
-    //   }
-
-    //   // Shapes are objects passed in
-    //   if (thisProp.type.value.name &&
-    //     thisProp.type.value.name === 'shape' &&
-    //     thisProp.type.value.value) {
-    //     valueColumn = `${valueColumn} { ${Object.keys(thisProp.type.value.value).join(', ')} }`;
-    //   }
-    // }
-
     return (
       <tr key={index}>
         <td>{prop}</td>
@@ -132,7 +117,7 @@ module.exports = React.createClass({
         <span className='GeneratedDoc__header'>{this.props.name}</span>
         {description}
         {this.renderTable()}
-        {this.props.children}
+        <DocExample name={this.props.name} />
       </div>
     );
   }

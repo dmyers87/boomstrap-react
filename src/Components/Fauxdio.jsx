@@ -39,7 +39,7 @@ module.exports = React.createClass({
     onChange: React.PropTypes.func,
 
     /**
-     * Indicates whether or not the Fauxdio is `block` or `inline`
+     * Indicates whether or not the Fauxdio is block element or inline-block element
      */
     inline: React.PropTypes.bool,
 
