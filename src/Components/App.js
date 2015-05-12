@@ -12,6 +12,7 @@ module.exports = {
   MessageFace:       require('./MessageFace.jsx'),
   NavLinksBar:       require('./NavLinksBar.jsx'),
   Pager:             require('./Pager.jsx'),
+  ProgressBar:       require('./ProgressBar.jsx'),
   Score:             require('./Score.jsx'),
   Switcher:          require('./Switcher.jsx'),
   UIMultiSelect:     require('./UIMultiSelect.jsx'),
