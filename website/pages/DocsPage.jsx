@@ -4,6 +4,8 @@ const { Link } = require('react-router');
 
 const GeneratedDoc       = require('../Components/GeneratedDoc.jsx');
 
+const Fauxbox            = require('../../src/Components/Fauxbox.jsx');
+const fauxboxExample     = require('raw!../examples/Fauxbox.example.js');
 const MessageFace        = require('../../src/Components/MessageFace.jsx');
 const messageFaceExample = require('raw!../examples/MessageFace.example.js');
 const NavLinksBar        = require('../../src/Components/NavLinksBar.jsx');
@@ -73,6 +75,17 @@ const DocsPage = React.createClass({
                 codeText={progressBarExample}
                 theme={'neo'}
                 scope={{React: React, ProgressBar: ProgressBar}}/>
+            </GeneratedDoc>
+          );
+        } else if (comp.name === 'Fauxbox') {
+          doc = (
+            <GeneratedDoc name={comp.name} info={comp.info}>
+              <h4>Try it out!</h4>
+              <Playground
+                key='Fauxbox'
+                codeText={fauxboxExample}
+                theme={'neo'}
+                scope={{React: React, Fauxbox: Fauxbox}}/>
             </GeneratedDoc>
           );
         } else {
