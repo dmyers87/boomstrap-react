@@ -243,7 +243,7 @@
 	  value: true
 	});
 
-	var _polyfill = __webpack_require__(22);
+	var _polyfill = __webpack_require__(21);
 
 	var _polyfill2 = _interopRequireDefault(_polyfill);
 
@@ -251,19 +251,19 @@
 
 	var _React2 = _interopRequireDefault(_React);
 
-	var _Editor = __webpack_require__(8);
+	var _Editor = __webpack_require__(7);
 
 	var _Editor2 = _interopRequireDefault(_Editor);
 
-	var _Preview = __webpack_require__(7);
+	var _Preview = __webpack_require__(6);
 
 	var _Preview2 = _interopRequireDefault(_Preview);
 
-	var _EsPreview = __webpack_require__(9);
+	var _EsPreview = __webpack_require__(8);
 
 	var _EsPreview2 = _interopRequireDefault(_EsPreview);
 
-	var _Doc = __webpack_require__(10);
+	var _Doc = __webpack_require__(9);
 
 	var _Doc2 = _interopRequireDefault(_Doc);
 
@@ -358,8 +358,7 @@
 /***/ },
 /* 4 */,
 /* 5 */,
-/* 6 */,
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -472,7 +471,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -533,7 +532,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -638,7 +637,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -768,6 +767,7 @@
 	});
 
 /***/ },
+/* 10 */,
 /* 11 */,
 /* 12 */,
 /* 13 */,
@@ -778,14 +778,14 @@
 /* 18 */,
 /* 19 */,
 /* 20 */,
-/* 21 */,
-/* 22 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(49);
+	module.exports = __webpack_require__(46);
 
 
 /***/ },
+/* 22 */,
 /* 23 */,
 /* 24 */,
 /* 25 */,
@@ -899,16 +899,16 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(72).Buffer))
 
 /***/ },
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(71);
+	module.exports = __webpack_require__(69);
 
 
 /***/ },
+/* 47 */,
+/* 48 */,
+/* 49 */,
 /* 50 */,
 /* 51 */,
 /* 52 */,
@@ -928,9 +928,7 @@
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -946,6 +944,8 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
+/* 70 */,
+/* 71 */,
 /* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -4373,7 +4373,7 @@
 	  , cof      = __webpack_require__(139)
 	  , $def     = __webpack_require__(140)
 	  , assert   = __webpack_require__(144)
-	  , forOf    = __webpack_require__(165)
+	  , forOf    = __webpack_require__(162)
 	  , setProto = __webpack_require__(152).set
 	  , species  = __webpack_require__(161)
 	  , SPECIES  = __webpack_require__(150)('species')
@@ -4381,7 +4381,7 @@
 	  , PROMISE  = 'Promise'
 	  , global   = $.g
 	  , process  = global.process
-	  , asap     = process && process.nextTick || __webpack_require__(166).set
+	  , asap     = process && process.nextTick || __webpack_require__(163).set
 	  , P        = global[PROMISE]
 	  , isFunction     = $.isFunction
 	  , isObject       = $.isObject
@@ -4602,10 +4602,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var strong = __webpack_require__(162);
+	var strong = __webpack_require__(164);
 
 	// 23.1 Map Objects
-	__webpack_require__(163)('Map', {
+	__webpack_require__(165)('Map', {
 	  // 23.1.3.6 Map.prototype.get(key)
 	  get: function get(key){
 	    var entry = strong.getEntry(this, key);
@@ -4622,10 +4622,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var strong = __webpack_require__(162);
+	var strong = __webpack_require__(164);
 
 	// 23.2 Set Objects
-	__webpack_require__(163)('Set', {
+	__webpack_require__(165)('Set', {
 	  // 23.2.3.1 Set.prototype.add(value)
 	  add: function add(value){
 	    return strong.def(this, value = value === 0 ? 0 : value, value);
@@ -4638,7 +4638,7 @@
 
 	'use strict';
 	var $         = __webpack_require__(135)
-	  , weak      = __webpack_require__(164)
+	  , weak      = __webpack_require__(166)
 	  , leakStore = weak.leakStore
 	  , ID        = weak.ID
 	  , WEAK      = weak.WEAK
@@ -4648,7 +4648,7 @@
 	  , tmp       = {};
 
 	// 23.3 WeakMap Objects
-	var WeakMap = __webpack_require__(163)('WeakMap', {
+	var WeakMap = __webpack_require__(165)('WeakMap', {
 	  // 23.3.3.3 WeakMap.prototype.get(key)
 	  get: function get(key){
 	    if(isObject(key)){
@@ -4682,10 +4682,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var weak = __webpack_require__(164);
+	var weak = __webpack_require__(166);
 
 	// 23.4 WeakSet Objects
-	__webpack_require__(163)('WeakSet', {
+	__webpack_require__(165)('WeakSet', {
 	  // 23.4.3.1 WeakSet.prototype.add(value)
 	  add: function add(value){
 	    return weak.def(this, value, true);
@@ -5016,7 +5016,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var $def  = __webpack_require__(140)
-	  , $task = __webpack_require__(166);
+	  , $task = __webpack_require__(163);
 	$def($def.G + $def.B, {
 	  setImmediate:   $task.set,
 	  clearImmediate: $task.clear
@@ -5708,12 +5708,116 @@
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var ctx  = __webpack_require__(157)
+	  , get  = __webpack_require__(154).get
+	  , call = __webpack_require__(158);
+	module.exports = function(iterable, entries, fn, that){
+	  var iterator = get(iterable)
+	    , f        = ctx(fn, that, entries ? 2 : 1)
+	    , step;
+	  while(!(step = iterator.next()).done){
+	    if(call(iterator, f, step.value, entries) === false){
+	      return call.close(iterator);
+	    }
+	  }
+	};
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var $      = __webpack_require__(135)
+	  , ctx    = __webpack_require__(157)
+	  , cof    = __webpack_require__(139)
+	  , invoke = __webpack_require__(141)
+	  , cel    = __webpack_require__(138)
+	  , global             = $.g
+	  , isFunction         = $.isFunction
+	  , html               = $.html
+	  , process            = global.process
+	  , setTask            = global.setImmediate
+	  , clearTask          = global.clearImmediate
+	  , postMessage        = global.postMessage
+	  , addEventListener   = global.addEventListener
+	  , MessageChannel     = global.MessageChannel
+	  , counter            = 0
+	  , queue              = {}
+	  , ONREADYSTATECHANGE = 'onreadystatechange'
+	  , defer, channel, port;
+	function run(){
+	  var id = +this;
+	  if($.has(queue, id)){
+	    var fn = queue[id];
+	    delete queue[id];
+	    fn();
+	  }
+	}
+	function listner(event){
+	  run.call(event.data);
+	}
+	// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
+	if(!isFunction(setTask) || !isFunction(clearTask)){
+	  setTask = function(fn){
+	    var args = [], i = 1;
+	    while(arguments.length > i)args.push(arguments[i++]);
+	    queue[++counter] = function(){
+	      invoke(isFunction(fn) ? fn : Function(fn), args);
+	    };
+	    defer(counter);
+	    return counter;
+	  };
+	  clearTask = function(id){
+	    delete queue[id];
+	  };
+	  // Node.js 0.8-
+	  if(cof(process) == 'process'){
+	    defer = function(id){
+	      process.nextTick(ctx(run, id, 1));
+	    };
+	  // Modern browsers, skip implementation for WebWorkers
+	  // IE8 has postMessage, but it's sync & typeof its postMessage is object
+	  } else if(addEventListener && isFunction(postMessage) && !global.importScripts){
+	    defer = function(id){
+	      postMessage(id, '*');
+	    };
+	    addEventListener('message', listner, false);
+	  // WebWorkers
+	  } else if(isFunction(MessageChannel)){
+	    channel = new MessageChannel;
+	    port    = channel.port2;
+	    channel.port1.onmessage = listner;
+	    defer = ctx(port.postMessage, port, 1);
+	  // IE8-
+	  } else if(ONREADYSTATECHANGE in cel('script')){
+	    defer = function(id){
+	      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function(){
+	        html.removeChild(this);
+	        run.call(id);
+	      };
+	    };
+	  // Rest old browsers
+	  } else {
+	    defer = function(id){
+	      setTimeout(ctx(run, id, 1), 0);
+	    };
+	  }
+	}
+	module.exports = {
+	  set:   setTask,
+	  clear: clearTask
+	};
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	var $        = __webpack_require__(135)
 	  , ctx      = __webpack_require__(157)
 	  , safe     = __webpack_require__(143).safe
 	  , assert   = __webpack_require__(144)
-	  , forOf    = __webpack_require__(165)
+	  , forOf    = __webpack_require__(162)
 	  , step     = __webpack_require__(154).step
 	  , has      = $.has
 	  , set      = $.set
@@ -5866,14 +5970,14 @@
 	};
 
 /***/ },
-/* 163 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $     = __webpack_require__(135)
 	  , $def  = __webpack_require__(140)
 	  , BUGGY = __webpack_require__(154).BUGGY
-	  , forOf = __webpack_require__(165)
+	  , forOf = __webpack_require__(162)
 	  , species = __webpack_require__(161)
 	  , assertInstance = __webpack_require__(144).inst;
 
@@ -5936,14 +6040,14 @@
 	};
 
 /***/ },
-/* 164 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var $         = __webpack_require__(135)
 	  , safe      = __webpack_require__(143).safe
 	  , assert    = __webpack_require__(144)
-	  , forOf     = __webpack_require__(165)
+	  , forOf     = __webpack_require__(162)
 	  , _has      = $.has
 	  , isObject  = $.isObject
 	  , hide      = $.hide
@@ -6025,110 +6129,6 @@
 	};
 
 /***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var ctx  = __webpack_require__(157)
-	  , get  = __webpack_require__(154).get
-	  , call = __webpack_require__(158);
-	module.exports = function(iterable, entries, fn, that){
-	  var iterator = get(iterable)
-	    , f        = ctx(fn, that, entries ? 2 : 1)
-	    , step;
-	  while(!(step = iterator.next()).done){
-	    if(call(iterator, f, step.value, entries) === false){
-	      return call.close(iterator);
-	    }
-	  }
-	};
-
-/***/ },
-/* 166 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var $      = __webpack_require__(135)
-	  , ctx    = __webpack_require__(157)
-	  , cof    = __webpack_require__(139)
-	  , invoke = __webpack_require__(141)
-	  , cel    = __webpack_require__(138)
-	  , global             = $.g
-	  , isFunction         = $.isFunction
-	  , html               = $.html
-	  , process            = global.process
-	  , setTask            = global.setImmediate
-	  , clearTask          = global.clearImmediate
-	  , postMessage        = global.postMessage
-	  , addEventListener   = global.addEventListener
-	  , MessageChannel     = global.MessageChannel
-	  , counter            = 0
-	  , queue              = {}
-	  , ONREADYSTATECHANGE = 'onreadystatechange'
-	  , defer, channel, port;
-	function run(){
-	  var id = +this;
-	  if($.has(queue, id)){
-	    var fn = queue[id];
-	    delete queue[id];
-	    fn();
-	  }
-	}
-	function listner(event){
-	  run.call(event.data);
-	}
-	// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
-	if(!isFunction(setTask) || !isFunction(clearTask)){
-	  setTask = function(fn){
-	    var args = [], i = 1;
-	    while(arguments.length > i)args.push(arguments[i++]);
-	    queue[++counter] = function(){
-	      invoke(isFunction(fn) ? fn : Function(fn), args);
-	    };
-	    defer(counter);
-	    return counter;
-	  };
-	  clearTask = function(id){
-	    delete queue[id];
-	  };
-	  // Node.js 0.8-
-	  if(cof(process) == 'process'){
-	    defer = function(id){
-	      process.nextTick(ctx(run, id, 1));
-	    };
-	  // Modern browsers, skip implementation for WebWorkers
-	  // IE8 has postMessage, but it's sync & typeof its postMessage is object
-	  } else if(addEventListener && isFunction(postMessage) && !global.importScripts){
-	    defer = function(id){
-	      postMessage(id, '*');
-	    };
-	    addEventListener('message', listner, false);
-	  // WebWorkers
-	  } else if(isFunction(MessageChannel)){
-	    channel = new MessageChannel;
-	    port    = channel.port2;
-	    channel.port1.onmessage = listner;
-	    defer = ctx(port.postMessage, port, 1);
-	  // IE8-
-	  } else if(ONREADYSTATECHANGE in cel('script')){
-	    defer = function(id){
-	      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function(){
-	        html.removeChild(this);
-	        run.call(id);
-	      };
-	    };
-	  // Rest old browsers
-	  } else {
-	    defer = function(id){
-	      setTimeout(ctx(run, id, 1), 0);
-	    };
-	  }
-	}
-	module.exports = {
-	  set:   setTask,
-	  clear: clearTask
-	};
-
-/***/ },
 /* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -6184,7 +6184,7 @@
 
 	// https://github.com/DavidBruant/Map-Set.prototype.toJSON
 	var $def  = __webpack_require__(140)
-	  , forOf = __webpack_require__(165);
+	  , forOf = __webpack_require__(162);
 	module.exports = function(NAME){
 	  $def($def.P, NAME, {
 	    toJSON: function toJSON(){
