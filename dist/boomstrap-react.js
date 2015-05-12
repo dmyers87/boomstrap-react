@@ -398,27 +398,51 @@ module.exports = React.createClass({
   displayName: "Lead Category",
 
   propTypes: {
-    category: React.PropTypes.number,
+    category: React.PropTypes.number.isRequired,
     equal: React.PropTypes.bool,
-    abbreviated: React.PropTypes.bool
+    abbreviated: React.PropTypes.bool,
+    small: React.PropTypes.bool,
+    outline: React.PropTypes.bool,
+    muted: React.PropTypes.bool,
+    disabled: React.PropTypes.bool
   },
 
   mixins: [PureRenderMixin],
 
+  getDefaultProps: function getDefaultProps() {
+    return {
+      equal: false,
+      abbreviated: false,
+      small: false,
+      outline: false,
+      muted: false,
+      disabled: false
+    };
+  },
+
   render: function render() {
+    var _props = this.props;
+    var equal = _props.equal;
+    var abbreviated = _props.abbreviated;
+    var small = _props.small;
+    var outline = _props.outline;
+    var muted = _props.muted;
+    var disabled = _props.disabled;
+
     var category = categories[this.props.category];
     var abbr = abbrs[this.props.category];
 
-    var isEqualLength = this.props.equal;
-    var isAbbreviated = this.props.abbreviated;
-
     var categoryClass = "leadcat-" + category.toLowerCase();
     var catClass = cx(categoryClass, "leadcat", {
-      "leadcat-eq-abbr": isEqualLength && isAbbreviated,
-      "leadcat-eq": isEqualLength && !isAbbreviated
+      "leadcat-eq-abbr": equal && abbreviated && !small,
+      "leadcat-eq-abbr-sm": equal && abbreviated && small,
+      "leadcat-eq": equal && !abbreviated,
+      "leadcat-outline": outline,
+      "leadcat-muted": muted,
+      "leadcat-disabled": disabled
     });
 
-    return React.createElement("span", { className: catClass }, isAbbreviated ? abbr : category);
+    return React.createElement("span", { className: catClass }, abbreviated ? abbr : category);
   }
 });
 
@@ -1839,11 +1863,10 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],30:[function(require,module,exports){
-/*
+/*!
   Copyright (c) 2015 Jed Watson.
-  
   Licensed under the MIT License (MIT), see
-  https://github.com/JedWatson/classnames/blob/master/LICENSE
+  http://jedwatson.github.io/classnames
 */
 
 function classNames() {
@@ -1888,12 +1911,12 @@ if (typeof define !== 'undefined' && define.amd) {
 (function (global){
 /**
  * @license
- * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
+ * Lo-Dash 2.4.2 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern -o ./dist/lodash.js`
  * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
  * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- * Available under MIT license <http://lodash.com/license>
+ * Available under MIT license <https://lodash.com/license>
  */
 ;(function() {
 
@@ -3382,6 +3405,7 @@ if (typeof define !== 'undefined' && define.amd) {
     var setBindData = !defineProperty ? noop : function(func, value) {
       descriptor.value = value;
       defineProperty(func, '__bindData__', descriptor);
+      descriptor.value = null;
     };
 
     /**
@@ -8027,7 +8051,7 @@ if (typeof define !== 'undefined' && define.amd) {
      * debugging. See http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/#toc-sourceurl
      *
      * For more information on precompiling templates see:
-     * http://lodash.com/custom-builds
+     * https://lodash.com/custom-builds
      *
      * For more information on Chrome extension sandboxes see:
      * http://developer.chrome.com/stable/extensions/sandboxingEval.html
@@ -8596,7 +8620,7 @@ if (typeof define !== 'undefined' && define.amd) {
      * @memberOf _
      * @type string
      */
-    lodash.VERSION = '2.4.1';
+    lodash.VERSION = '2.4.2';
 
     // add "Chaining" functions to the wrapper
     lodash.prototype.chain = wrapperChain;
