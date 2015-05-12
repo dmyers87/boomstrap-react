@@ -470,44 +470,96 @@
     "description": "",
     "props": {
       "position": {
-        "required": false,
-        "defaultValue": {
-          "value": "0",
-          "computed": false
-        },
         "type": {
           "name": "number"
         },
-        "description": "Number 1-100 representing a percentage."
-      },
-      "size": {
         "required": false,
-        "type": {
-          "name": "string"
-        },
-        "description": "Optons: xs, sm, lg."
-      },
-      "type": {
-        "required": false,
+        "description": "Number 1-100 representing a percentage.",
         "defaultValue": {
-          "value": "primary",
+          "value": "0",
           "computed": false
-        },
-        "type": {
-          "name": "string"
-        },
-        "description": "Optons: attention, danger, info, primary, success, success-to-danger, warning."
+        }
       },
       "showLabel": {
+        "type": {
+          "name": "bool"
+        },
         "required": false,
+        "description": "Set to 'true' to show label in progress bar.",
         "defaultValue": {
           "value": "false",
           "computed": false
-        },
+        }
+      },
+      "size": {
         "type": {
-          "name": "boolean"
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"\"",
+              "computed": false
+            },
+            {
+              "value": "\"xs\"",
+              "computed": false
+            },
+            {
+              "value": "\"sm\"",
+              "computed": false
+            },
+            {
+              "value": "\"lg\"",
+              "computed": false
+            }
+          ]
         },
-        "description": "Set to 'true' to show label in progress bar."
+        "required": false,
+        "description": "Options: xs, sm, lg.",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
+      },
+      "type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"attention\"",
+              "computed": false
+            },
+            {
+              "value": "\"danger\"",
+              "computed": false
+            },
+            {
+              "value": "\"info\"",
+              "computed": false
+            },
+            {
+              "value": "\"primary\"",
+              "computed": false
+            },
+            {
+              "value": "\"success\"",
+              "computed": false
+            },
+            {
+              "value": "\"success-to-danger\"",
+              "computed": false
+            },
+            {
+              "value": "\"warning\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Options: attention, danger, info, primary, success, success-to-danger, warning.",
+        "defaultValue": {
+          "value": "\"primary\"",
+          "computed": false
+        }
       }
     }
   },

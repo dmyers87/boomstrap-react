@@ -5,9 +5,24 @@ module.exports = React.createClass({
   displayName: 'Progress Bar',
 
   propTypes: {
+    /**
+     * Number 1-100 representing a percentage.
+     */
     position:   React.PropTypes.number,
+
+    /**
+     * Set to 'true' to show label in progress bar.
+     */
     showLabel:  React.PropTypes.bool,
+
+    /**
+     * Options: xs, sm, lg.
+     */
     size:       React.PropTypes.oneOf(['', 'xs', 'sm', 'lg']),
+
+    /**
+     * Options: attention, danger, info, primary, success, success-to-danger, warning.
+     */
     type:       React.PropTypes.oneOf(['attention', 'danger', 'info', 'primary', 'success', 'success-to-danger', 'warning'])
   },
 
