@@ -2,6 +2,13 @@ const React = require('react/addons');
 
 require('../less/GeneratedDoc');
 
+const DocProps = {
+  'SHAPE': 'shape',
+  'ARRAYOF': 'arrayOf',
+  'UNION': 'union',
+  'ENUM': 'enum'
+};
+
 module.exports = React.createClass({
   displayName: 'Generated Doc',
 
@@ -11,6 +18,63 @@ module.exports = React.createClass({
       description: React.PropTypes.string,
       props: React.PropTypes.object
     })
+  },
+
+  renderPropType(type) {
+    const name = type.name;
+    switch (name) {
+      case DocProps.UNION:
+        const values = type.value.map(this.renderPropType);
+        return `${values.join(' or ')}`;
+
+      case DocProps.ARRAYOF:
+        const value = this.renderPropType(type.value);
+        return `[ ${value} ]`;
+
+      case DocProps.SHAPE:
+        const values = Object.keys(type.value).map((propName) => {
+          const val = this.renderPropType(type.value[propName]);
+          return `${propName}: ${val}`;
+        });
+        return `{ ${values.join(', ')} }`;
+
+      case DocProps.ENUM:
+        const values = type.value.map((val) => val.value);
+        return `Options: [ ${values.join(', ')} ]`;
+
+      default:
+        return name;
+    }
+  },
+
+  renderPropRow(prop, index) {
+    const thisProp = this.props.info.props[prop];
+    let valueColumn = this.renderPropType(thisProp.type);
+
+    // if (thisProp.type.value) {
+    //   // Enums
+    //   if (thisProp.type.value.length) {
+    //     const values = thisProp.type.value.map((val) => val.value);
+    //     valueColumn = `${valueColumn} (${values.join(', ')})`;
+    //   }
+
+    //   // Shapes are objects passed in
+    //   if (thisProp.type.value.name &&
+    //     thisProp.type.value.name === 'shape' &&
+    //     thisProp.type.value.value) {
+    //     valueColumn = `${valueColumn} { ${Object.keys(thisProp.type.value.value).join(', ')} }`;
+    //   }
+    // }
+
+    return (
+      <tr key={index}>
+        <td>{prop}</td>
+        <td>{thisProp.required ? <b>Yes</b> : 'No'}</td>
+        <td>{thisProp.defaultValue || 'N/A'}</td>
+        <td>{valueColumn}</td>
+        <td>{thisProp.description}</td>
+      </tr>
+      );
   },
 
   renderTable() {
@@ -32,18 +96,7 @@ module.exports = React.createClass({
       }
 
       return 1;
-    }).map((prop, index) => {
-      const thisProp = this.props.info.props[prop];
-      return (
-        <tr key={index}>
-          <td>{prop}</td>
-          <td>{thisProp.required ? <b>Yes</b> : 'No'}</td>
-          <td>{thisProp.defaultValue || 'N/A'}</td>
-          <td>{thisProp.type.name}</td>
-          <td>{thisProp.description}</td>
-        </tr>
-      );
-    });
+    }).map(this.renderPropRow);
 
     return (
       <div>
