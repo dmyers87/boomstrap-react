@@ -644,9 +644,9 @@
   "dist/Components/Switcher.jsx": {
     "description": "Toggle switch.",
     "props": {
-      "id": {
+      "checked": {
         "type": {
-          "name": "string"
+          "name": "bool"
         },
         "required": true,
         "description": ""
@@ -656,11 +656,22 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Optionally include additional class name(s)."
       },
-      "checked": {
+      "disabled": {
         "type": {
           "name": "bool"
+        },
+        "required": false,
+        "description": "Disable switcher.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "id": {
+        "type": {
+          "name": "string"
         },
         "required": true,
         "description": ""
@@ -687,7 +698,11 @@
           ]
         },
         "required": false,
-        "description": "Options: xs, sm, lg."
+        "description": "Options: sm.",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
       }
     }
   },

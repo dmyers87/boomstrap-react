@@ -812,17 +812,14 @@ module.exports = React.createClass({
      * Number 1-100 representing a percentage.
      */
     progress: React.PropTypes.number,
-
     /**
      * Set to 'true' to show label in progress bar.
      */
     showLabel: React.PropTypes.bool,
-
     /**
      * Options: xs, sm, lg.
      */
     size: React.PropTypes.oneOf(["", "xs", "sm", "lg"]),
-
     /**
      * Options: attention, danger, info, primary, success, success-to-danger, warning.
      */
@@ -864,8 +861,7 @@ module.exports = React.createClass({
       "progress-bar--primary": type === "primary",
       "progress-bar--success": type === "success",
       "progress-bar--success-to-danger": type === "success-to-danger",
-      "progress-bar--warning": type === "warning"
-    }, {
+      "progress-bar--warning": type === "warning",
       "progress-bar--xs": size === "xs",
       "progress-bar--sm": size === "sm",
       "progress-bar--lg": size === "lg"
@@ -931,8 +927,23 @@ module.exports = React.createClass({
 },{"classnames":30}],18:[function(require,module,exports){
 "use strict";
 
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }return target;
+};
+
 var React = (window.React);
 var cx = require("classnames");
+
+var _require = require("lodash");
+
+var assign = _require.assign;
+var omit = _require.omit;
 
 /**
  * Toggle switch.
@@ -941,31 +952,62 @@ module.exports = React.createClass({
   displayName: "Switcher",
 
   propTypes: {
-    id: React.PropTypes.string.isRequired,
-    className: React.PropTypes.string,
     checked: React.PropTypes.bool.isRequired,
-    onClick: React.PropTypes.func,
-
     /**
-     * Options: xs, sm, lg.
+     * Optionally include additional class name(s).
      */
-    size: React.PropTypes.oneOf(["", "sm"]) },
+    className: React.PropTypes.string,
+    /**
+     * Disable switcher.
+     */
+    disabled: React.PropTypes.bool,
+    id: React.PropTypes.string.isRequired,
+    onClick: React.PropTypes.func,
+    /**
+     * Options: sm.
+     */
+    size: React.PropTypes.oneOf(["", "sm"])
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      disabled: false,
+      size: ""
+    };
+  },
 
   render: function render() {
-    var switcherClass = cx("switcher", this.props.className, {
-      "progress-bar--sm": this.props.size === "sm"
+
+    var props = assign({}, this.props);
+
+    var checked = props.checked;
+    var className = props.className;
+    var disabled = props.disabled;
+    var id = props.id;
+    var onClick = props.onClick;
+    var size = props.size;
+
+    props = omit(props, ["checked", "className", "disabled", "id", "onClick", "size"]);
+
+    var switcherClass = cx("switcher", className, {
+      "switcher--sm": size === "sm",
+      "switcher--disabled": disabled
     });
 
-    return React.createElement("div", { className: switcherClass }, React.createElement("input", { type: "checkbox",
+    var switcherLabelClass = cx("switcher__label", {
+      "switcher__label--sm": size === "sm"
+    });
+
+    return React.createElement("div", _extends({ className: switcherClass }, props), React.createElement("input", { type: "checkbox",
       className: "switcher__input",
-      id: this.props.id,
-      checked: this.props.checked,
+      id: id,
+      checked: checked,
       readOnly: true,
-      onClick: this.props.onClick }), React.createElement("label", { className: "switcher__label", htmlFor: this.props.id }, React.createElement("div", { className: "switcher__inner" }, React.createElement("div", { className: "switcher__on" }, React.createElement("i", { className: "ficon ficon-checkmark" })), React.createElement("div", { className: "switcher__off" }, React.createElement("i", { className: "ficon ficon-cross" })))));
+      onClick: onClick }), React.createElement("label", { className: switcherLabelClass, htmlFor: id }, React.createElement("div", { className: "switcher__inner" }, React.createElement("div", { className: "switcher__on" }, React.createElement("i", { className: "ficon ficon-checkmark" })), React.createElement("div", { className: "switcher__off" }, React.createElement("i", { className: "ficon ficon-cross" })))));
   }
 });
 
-},{"classnames":30}],19:[function(require,module,exports){
+},{"classnames":30,"lodash":31}],19:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
