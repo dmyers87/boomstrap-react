@@ -528,7 +528,7 @@
         "required": false,
         "description": "Optionally include additional class name(s)."
       },
-      "position": {
+      "progress": {
         "type": {
           "name": "number"
         },
