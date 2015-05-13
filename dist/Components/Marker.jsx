@@ -3,6 +3,9 @@
 var React = require("react/addons");
 var cx = require("classnames");
 
+/**
+ * Use markers to represent current searching / filtering parameters.
+ */
 module.exports = React.createClass({
   displayName: "Marker",
 

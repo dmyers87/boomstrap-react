@@ -5,6 +5,9 @@ var _defineProperty = function (obj, key, value) { return Object.defineProperty(
 var React = require("react/addons");
 var cx = require("classnames");
 
+/**
+ * Use scores to rank / score data.
+ */
 module.exports = React.createClass({
   displayName: "Score",
   propTypes: {

@@ -489,6 +489,9 @@ module.exports = React.createClass({
 var React = (window.React);
 var cx = require("classnames");
 
+/**
+ * Use markers to represent current searching / filtering parameters.
+ */
 module.exports = React.createClass({
   displayName: "Marker",
 
@@ -872,6 +875,9 @@ var _defineProperty = function _defineProperty(obj, key, value) {
 var React = (window.React);
 var cx = require("classnames");
 
+/**
+ * Use scores to rank / score data.
+ */
 module.exports = React.createClass({
   displayName: "Score",
   propTypes: {

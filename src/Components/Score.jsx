@@ -1,6 +1,9 @@
 const React = require('react/addons');
 const cx    = require('classnames');
 
+/**
+ * Use scores to rank / score data.
+ */
 module.exports = React.createClass({
   displayName: 'Score',
   propTypes: {

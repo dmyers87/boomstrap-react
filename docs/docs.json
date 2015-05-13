@@ -327,7 +327,7 @@
     }
   },
   "dist/Components/Marker.jsx": {
-    "description": "",
+    "description": "Use markers to represent current searching / filtering parameters.",
     "props": {
       "type": {
         "type": {
@@ -623,7 +623,7 @@
     }
   },
   "dist/Components/Score.jsx": {
-    "description": "",
+    "description": "Use scores to rank / score data.",
     "props": {
       "score": {
         "type": {

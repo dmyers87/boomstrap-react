@@ -13,6 +13,14 @@ const DocTypes = {
     Component: require('../../src/Components/Icon.jsx'),
     Example:   require('raw!../examples/Icon.example.js')
   },
+  LeadCategory: {
+    Component: require('../../src/Components/LeadCategory.jsx'),
+    Example:   require('raw!../examples/LeadCategory.example.js')
+  },
+  Marker: {
+    Component: require('../../src/Components/Marker.jsx'),
+    Example:   require('raw!../examples/Marker.example.js')
+  },
   MessageFace: {
     Component: require('../../src/Components/MessageFace.jsx'),
     Example:   require('raw!../examples/MessageFace.example.js')
@@ -24,6 +32,10 @@ const DocTypes = {
   ProgressBar: {
     Component: require('../../src/Components/ProgressBar.jsx'),
     Example:   require('raw!../examples/ProgressBar.example.js')
+  },
+  Score: {
+    Component: require('../../src/Components/Score.jsx'),
+    Example:   require('raw!../examples/Score.example.js')
   }
 }
 const Playground  = require('component-playground');
