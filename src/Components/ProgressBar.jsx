@@ -1,6 +1,8 @@
 const React = require('react/addons');
 const cx    = require('classnames');
 
+const { assign, omit } = require('lodash');
+
 module.exports = React.createClass({
   displayName: 'Progress Bar',
 
@@ -12,27 +14,27 @@ module.exports = React.createClass({
     /**
      * Number 1-100 representing a percentage.
      */
-    position:   React.PropTypes.number,
+    progress:  React.PropTypes.number,
 
     /**
      * Set to 'true' to show label in progress bar.
      */
-    showLabel:  React.PropTypes.bool,
+    showLabel: React.PropTypes.bool,
 
     /**
      * Options: xs, sm, lg.
      */
-    size:       React.PropTypes.oneOf(['', 'xs', 'sm', 'lg']),
+    size:      React.PropTypes.oneOf(['', 'xs', 'sm', 'lg']),
 
     /**
      * Options: attention, danger, info, primary, success, success-to-danger, warning.
      */
-    type:       React.PropTypes.oneOf(['attention', 'danger', 'info', 'primary', 'success', 'success-to-danger', 'warning'])
+    type:      React.PropTypes.oneOf(['attention', 'danger', 'info', 'primary', 'success', 'success-to-danger', 'warning'])
   },
 
   getDefaultProps() {
     return {
-      position:    0,
+      progress:    0,
       showLabel:   false,
       size:        '',
       type:        'primary'
@@ -40,47 +42,61 @@ module.exports = React.createClass({
   },
 
   render() {
+    let props = assign({}, this.props);
 
-    let positionTranslation = this.props.position;
-    positionTranslation = parseInt(this.props.position, 10);
-    if (isNaN(positionTranslation) || positionTranslation < 0) {
-      positionTranslation = 0;
+    const {
+      className,
+      progress,
+      showLabel,
+      size,
+      type
+    } = props;
+
+    props = omit(props, ['className', 'progress', 'showLabel', 'size', 'type'])
+
+    let progressTranslation = progress;
+
+    progressTranslation = parseInt(progress, 10);
+
+    if (isNaN(progressTranslation) || progressTranslation < 0) {
+      progressTranslation = 0;
     }
 
-    const classes = cx('progress-bar', this.props.className, {
-      'progress-bar--attention':          this.props.type === 'attention',
-      'progress-bar--danger':             this.props.type === 'danger',
-      'progress-bar--info':               this.props.type === 'info',
-      'progress-bar--primary':            this.props.type === 'primary',
-      'progress-bar--success':            this.props.type === 'success',
-      'progress-bar--success-to-danger':  this.props.type === 'success-to-danger',
-      'progress-bar--warning':            this.props.type === 'warning'
+    const classes = cx('progress-bar', className, {
+      'progress-bar--attention':          type === 'attention',
+      'progress-bar--danger':             type === 'danger',
+      'progress-bar--info':               type === 'info',
+      'progress-bar--primary':            type === 'primary',
+      'progress-bar--success':            type === 'success',
+      'progress-bar--success-to-danger':  type === 'success-to-danger',
+      'progress-bar--warning':            type === 'warning'
     }, {
-      'progress-bar--xs':                 this.props.size === 'xs',
-      'progress-bar--sm':                 this.props.size === 'sm',
-      'progress-bar--lg':                 this.props.size === 'lg'
+      'progress-bar--xs':                 size === 'xs',
+      'progress-bar--sm':                 size === 'sm',
+      'progress-bar--lg':                 size === 'lg'
     });
 
     /**
-     * Style for positioning bar
+     * Style for progressing bar
      */
     const style = {
-      transform: `translateX(${positionTranslation}%)`,
-      WebkitTransform: `translateX(${positionTranslation}%)`
+      transform: `translateX(${progressTranslation}%)`,
+      WebkitTransform: `translateX(${progressTranslation}%)`
     };
 
     /**
      * If showLabel is true and size isn't extra small, construct label
      */
     let label = null;
-    if (this.props.showLabel && this.props.size !== 'xs') {
+
+    if (showLabel && size !== 'xs') {
       label = (
-        <div className='progress-bar__bar__label'>{positionTranslation + '%'}</div>
+        <div className='progress-bar__bar__label'>{progressTranslation + '%'}</div>
       );
     }
 
     return (
-      <div className={classes}>
+      <div className={classes} {...props} >
         <div className='progress-bar__bar' style={style}>
           {label}
         </div>
