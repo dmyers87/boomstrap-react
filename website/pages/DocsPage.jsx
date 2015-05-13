@@ -1,4 +1,5 @@
 const React = require('react/addons');
+const cx    = require('classnames');
 const _     = require('lodash');
 const { Link } = require('react-router');
 
@@ -42,7 +43,18 @@ const DocsPage = React.createClass({
       <div className='container-fluid DocsPage'>
         <span className='DocsPage__version'>Version {this.props.version}</span>
         <NavLinksBar navClass='nav-sm DocsPage__nav' activeKey={componentIndex}>
-          {sideBarComponents.map((comp) => <li><Link to={'/docs/' + comp.name}>{comp.name}</Link></li>)}
+        {
+          sideBarComponents.map((comp, index) => {
+            const listItemClass = cx({
+              'active': index === componentIndex
+            });
+            return (
+              <li className={listItemClass}>
+                <Link to={'/docs/' + comp.name}>{comp.name}</Link>
+              </li>
+            );
+          })
+        }
         </NavLinksBar>
         <div id='components' className='DocsPage__components'>
           {doc}
