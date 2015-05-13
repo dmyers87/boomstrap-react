@@ -36,6 +36,10 @@ const DocTypes = {
   Score: {
     Component: require('../../src/Components/Score.jsx'),
     Example:   require('raw!../examples/Score.example.js')
+  },
+  Switcher: {
+    Component: require('../../src/Components/Switcher.jsx'),
+    Example:   require('raw!../examples/Switcher.example.js')
   }
 }
 const Playground  = require('component-playground');

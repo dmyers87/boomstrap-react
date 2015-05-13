@@ -642,7 +642,7 @@
     }
   },
   "dist/Components/Switcher.jsx": {
-    "description": "",
+    "description": "Toggle switch.",
     "props": {
       "id": {
         "type": {
@@ -671,6 +671,23 @@
         },
         "required": false,
         "description": ""
+      },
+      "size": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"\"",
+              "computed": false
+            },
+            {
+              "value": "\"sm\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Options: xs, sm, lg."
       }
     }
   },

@@ -1,6 +1,9 @@
 const React = require('react/addons');
 const cx    = require('classnames');
 
+/**
+ * Toggle switch.
+ */
 module.exports = React.createClass({
   displayName: 'Switcher',
 
@@ -8,11 +11,18 @@ module.exports = React.createClass({
     id:         React.PropTypes.string.isRequired,
     className:  React.PropTypes.string,
     checked:    React.PropTypes.bool.isRequired,
-    onClick:    React.PropTypes.func
+    onClick:    React.PropTypes.func,
+
+    /**
+     * Options: sm.
+     */
+    size:       React.PropTypes.oneOf(['', 'sm']),
   },
 
   render: function() {
-    const switcherClass = cx('switcher', this.props.className);
+    const switcherClass = cx('switcher', this.props.className, {
+      'switcher--sm': this.props.size === 'sm'
+    });
 
     return (
       <div className={switcherClass}>
