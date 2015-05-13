@@ -46,7 +46,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Indicates whether or not the Fauxbox is block styled or inline"
+        "description": "Indicates whether or not the Fauxbox is a block element or inline-block element"
       },
       "label": {
         "type": {
@@ -107,7 +107,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Indicates whether or not the Fauxdio is `block` or `inline`"
+        "description": "Indicates whether or not the Fauxdio is block element or inline-block element"
       },
       "label": {
         "type": {

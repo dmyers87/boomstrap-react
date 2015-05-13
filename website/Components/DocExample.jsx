@@ -1,6 +1,18 @@
 const React = require('react/addons');
 
 const DocTypes = {
+  Fauxbox: {
+    Component: require('../../src/Components/Fauxbox.jsx'),
+    Example:   require('raw!../examples/Fauxbox.example.js')
+  },
+  Fauxdio: {
+    Component: require('../../src/Components/Fauxdio.jsx'),
+    Example:   require('raw!../examples/Fauxdio.example.js')
+  },
+  Icon: {
+    Component: require('../../src/Components/Icon.jsx'),
+    Example:   require('raw!../examples/Icon.example.js')
+  },
   MessageFace: {
     Component: require('../../src/Components/MessageFace.jsx'),
     Example:   require('raw!../examples/MessageFace.example.js')
