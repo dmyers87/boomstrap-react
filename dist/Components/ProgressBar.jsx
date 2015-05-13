@@ -1,7 +1,14 @@
 "use strict";
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var React = require("react/addons");
 var cx = require("classnames");
+
+var _require = require("lodash");
+
+var assign = _require.assign;
+var omit = _require.omit;
 
 module.exports = React.createClass({
   displayName: "Progress Bar",
@@ -14,7 +21,7 @@ module.exports = React.createClass({
     /**
      * Number 1-100 representing a percentage.
      */
-    position: React.PropTypes.number,
+    progress: React.PropTypes.number,
 
     /**
      * Set to 'true' to show label in progress bar.
@@ -34,7 +41,7 @@ module.exports = React.createClass({
 
   getDefaultProps: function getDefaultProps() {
     return {
-      position: 0,
+      progress: 0,
       showLabel: false,
       size: "",
       type: "primary"
@@ -42,50 +49,62 @@ module.exports = React.createClass({
   },
 
   render: function render() {
+    var props = assign({}, this.props);
 
-    var positionTranslation = this.props.position;
-    positionTranslation = parseInt(this.props.position, 10);
-    if (isNaN(positionTranslation) || positionTranslation < 0) {
-      positionTranslation = 0;
+    var className = props.className;
+    var progress = props.progress;
+    var showLabel = props.showLabel;
+    var size = props.size;
+    var type = props.type;
+
+    props = omit(props, ["className", "progress", "showLabel", "size", "type"]);
+
+    var progressTranslation = progress;
+
+    progressTranslation = parseInt(progress, 10);
+
+    if (isNaN(progressTranslation) || progressTranslation < 0) {
+      progressTranslation = 0;
     }
 
-    var classes = cx("progress-bar", this.props.className, {
-      "progress-bar--attention": this.props.type === "attention",
-      "progress-bar--danger": this.props.type === "danger",
-      "progress-bar--info": this.props.type === "info",
-      "progress-bar--primary": this.props.type === "primary",
-      "progress-bar--success": this.props.type === "success",
-      "progress-bar--success-to-danger": this.props.type === "success-to-danger",
-      "progress-bar--warning": this.props.type === "warning"
+    var classes = cx("progress-bar", className, {
+      "progress-bar--attention": type === "attention",
+      "progress-bar--danger": type === "danger",
+      "progress-bar--info": type === "info",
+      "progress-bar--primary": type === "primary",
+      "progress-bar--success": type === "success",
+      "progress-bar--success-to-danger": type === "success-to-danger",
+      "progress-bar--warning": type === "warning"
     }, {
-      "progress-bar--xs": this.props.size === "xs",
-      "progress-bar--sm": this.props.size === "sm",
-      "progress-bar--lg": this.props.size === "lg"
+      "progress-bar--xs": size === "xs",
+      "progress-bar--sm": size === "sm",
+      "progress-bar--lg": size === "lg"
     });
 
     /**
-     * Style for positioning bar
+     * Style for progressing bar
      */
     var style = {
-      transform: "translateX(" + positionTranslation + "%)",
-      WebkitTransform: "translateX(" + positionTranslation + "%)"
+      transform: "translateX(" + progressTranslation + "%)",
+      WebkitTransform: "translateX(" + progressTranslation + "%)"
     };
 
     /**
      * If showLabel is true and size isn't extra small, construct label
      */
     var label = null;
-    if (this.props.showLabel && this.props.size !== "xs") {
+
+    if (showLabel && size !== "xs") {
       label = React.createElement(
         "div",
         { className: "progress-bar__bar__label" },
-        positionTranslation + "%"
+        progressTranslation + "%"
       );
     }
 
     return React.createElement(
       "div",
-      { className: classes },
+      _extends({ className: classes }, props),
       React.createElement(
         "div",
         { className: "progress-bar__bar", style: style },
