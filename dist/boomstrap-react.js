@@ -787,6 +787,10 @@ module.exports = React.createClass({
 
   propTypes: {
     /**
+     * Optionally include additional class name(s).
+     */
+    className: React.PropTypes.string,
+    /**
      * Number 1-100 representing a percentage.
      */
     position: React.PropTypes.number,
@@ -824,7 +828,7 @@ module.exports = React.createClass({
       positionTranslation = 0;
     }
 
-    var classes = cx("progress-bar", {
+    var classes = cx("progress-bar", this.props.className, {
       "progress-bar--attention": this.props.type === "attention",
       "progress-bar--danger": this.props.type === "danger",
       "progress-bar--info": this.props.type === "info",
