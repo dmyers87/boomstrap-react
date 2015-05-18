@@ -3,6 +3,9 @@
 var React = require("react/addons");
 var cx = require("classnames");
 
+// Components
+var Icon = require("./Icon.jsx");
+
 module.exports = React.createClass({
   displayName: "Pager",
 
@@ -11,7 +14,16 @@ module.exports = React.createClass({
     totalItems: React.PropTypes.number.isRequired,
     itemsPerPage: React.PropTypes.number.isRequired,
     onPage: React.PropTypes.func,
-    disabled: React.PropTypes.bool
+    disabled: React.PropTypes.bool,
+    className: React.PropTypes.string
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      onPage: function onPage() {},
+      disabled: false,
+      className: ""
+    };
   },
 
   _getMaxPage: function _getMaxPage() {
@@ -47,18 +59,20 @@ module.exports = React.createClass({
       disabled: currentPage === maxPage || this.props.disabled
     });
 
+    var pagerClass = cx("btn-group minimal-pager", this.props.className);
+
     return React.createElement(
       "div",
-      { className: "btn-group minimal-pager" },
+      { className: pagerClass },
       React.createElement(
         "button",
         { type: "button", className: backBtnClass, onClick: this._onPageBack },
-        React.createElement("i", { className: "ficon ficon-chevron-left" })
+        React.createElement(Icon, { icon: "chevron-left" })
       ),
       React.createElement(
         "button",
         { type: "button", className: fwdBtnClass, onClick: this._onPageFwd },
-        React.createElement("i", { className: "ficon ficon-chevron-right" })
+        React.createElement(Icon, { icon: "chevron-right" })
       )
     );
   }

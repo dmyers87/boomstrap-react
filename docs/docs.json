@@ -363,7 +363,11 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
       },
       "onClose": {
         "type": {
@@ -373,6 +377,17 @@
         "description": "",
         "defaultValue": {
           "value": "function onClose() {}",
+          "computed": false
+        }
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "\"\"",
           "computed": false
         }
       }
@@ -507,14 +522,33 @@
           "name": "func"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "function onPage() {}",
+          "computed": false
+        }
       },
       "disabled": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": ""
+        "description": "",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
       }
     }
   },

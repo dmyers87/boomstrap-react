@@ -1,6 +1,9 @@
 const React = require('react/addons');
 const cx    = require('classnames');
 
+// Components
+const Icon = require('./Icon.jsx');
+
 module.exports = React.createClass({
   displayName: 'Pager',
 
@@ -9,7 +12,16 @@ module.exports = React.createClass({
     totalItems:   React.PropTypes.number.isRequired,
     itemsPerPage: React.PropTypes.number.isRequired,
     onPage:       React.PropTypes.func,
-    disabled:     React.PropTypes.bool
+    disabled:     React.PropTypes.bool,
+    className:    React.PropTypes.string
+  },
+
+  getDefaultProps() {
+    return {
+      onPage:    function() {},
+      disabled:  false,
+      className: ''
+    };
   },
 
   _getMaxPage() {
@@ -45,13 +57,15 @@ module.exports = React.createClass({
       'disabled': currentPage === maxPage || this.props.disabled
     });
 
+    const pagerClass = cx('btn-group minimal-pager', this.props.className);
+
     return (
-      <div className='btn-group minimal-pager'>
+      <div className={pagerClass}>
         <button type='button' className={backBtnClass} onClick={this._onPageBack}>
-          <i className='ficon ficon-chevron-left' />
+          <Icon icon='chevron-left' />
         </button>
         <button type='button' className={fwdBtnClass} onClick={this._onPageFwd}>
-          <i className='ficon ficon-chevron-right' />
+          <Icon icon='chevron-right' />
         </button>
       </div>
     );

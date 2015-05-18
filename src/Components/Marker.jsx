@@ -1,6 +1,9 @@
 const React = require('react/addons');
 const cx    = require('classnames');
 
+// Components
+const Icon = require('./Icon.jsx');
+
 /**
  * Use markers to represent current searching / filtering parameters.
  */
@@ -12,25 +15,27 @@ module.exports = React.createClass({
     label:      React.PropTypes.string.isRequired,
     showClose:  React.PropTypes.bool,
     closeClass: React.PropTypes.string,
-    onClose:    React.PropTypes.func
+    onClose:    React.PropTypes.func,
+    className:  React.PropTypes.string
   },
 
   getDefaultProps() {
     return {
-      type:      'default',
-      onClose:   function() {},
-      showClose: true
+      type:       'default',
+      onClose:    function() {},
+      closeClass: '',
+      showClose:  true,
+      className:  ''
     };
   },
 
   render() {
-    const markerClass = 'marker marker-' + this.props.type;
-    const closeClass = cx('ficon ficon-cross', this.props.closeClass);
+    const markerClass = cx('marker', 'marker-' + this.props.type, this.props.className);
 
     let close = null;
     if (this.props.showClose) {
       close = (
-        <i className={closeClass} onClick={this.props.onClose} />
+        <Icon icon='cross' className={this.props.closeClass} onClick={this.props.onClose} />
       );
     }
 
