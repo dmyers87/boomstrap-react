@@ -489,6 +489,9 @@ module.exports = React.createClass({
 var React = (window.React);
 var cx = require("classnames");
 
+// Components
+var Icon = require("./Icon.jsx");
+
 /**
  * Use markers to represent current searching / filtering parameters.
  */
@@ -500,31 +503,33 @@ module.exports = React.createClass({
     label: React.PropTypes.string.isRequired,
     showClose: React.PropTypes.bool,
     closeClass: React.PropTypes.string,
-    onClose: React.PropTypes.func
+    onClose: React.PropTypes.func,
+    className: React.PropTypes.string
   },
 
   getDefaultProps: function getDefaultProps() {
     return {
       type: "default",
       onClose: function onClose() {},
-      showClose: true
+      closeClass: "",
+      showClose: true,
+      className: ""
     };
   },
 
   render: function render() {
-    var markerClass = "marker marker-" + this.props.type;
-    var closeClass = cx("ficon ficon-cross", this.props.closeClass);
+    var markerClass = cx("marker", "marker-" + this.props.type, this.props.className);
 
     var close = null;
     if (this.props.showClose) {
-      close = React.createElement("i", { className: closeClass, onClick: this.props.onClose });
+      close = React.createElement(Icon, { icon: "cross", className: this.props.closeClass, onClick: this.props.onClose });
     }
 
     return React.createElement("span", { className: markerClass }, React.createElement("span", null, this.props.label, " "), close);
   }
 });
 
-},{"classnames":30}],13:[function(require,module,exports){
+},{"./Icon.jsx":7,"classnames":30}],13:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -731,6 +736,9 @@ module.exports = React.createClass({
 var React = (window.React);
 var cx = require("classnames");
 
+// Components
+var Icon = require("./Icon.jsx");
+
 module.exports = React.createClass({
   displayName: "Pager",
 
@@ -739,7 +747,16 @@ module.exports = React.createClass({
     totalItems: React.PropTypes.number.isRequired,
     itemsPerPage: React.PropTypes.number.isRequired,
     onPage: React.PropTypes.func,
-    disabled: React.PropTypes.bool
+    disabled: React.PropTypes.bool,
+    className: React.PropTypes.string
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      onPage: function onPage() {},
+      disabled: false,
+      className: ""
+    };
   },
 
   _getMaxPage: function _getMaxPage() {
@@ -775,11 +792,13 @@ module.exports = React.createClass({
       disabled: currentPage === maxPage || this.props.disabled
     });
 
-    return React.createElement("div", { className: "btn-group minimal-pager" }, React.createElement("button", { type: "button", className: backBtnClass, onClick: this._onPageBack }, React.createElement("i", { className: "ficon ficon-chevron-left" })), React.createElement("button", { type: "button", className: fwdBtnClass, onClick: this._onPageFwd }, React.createElement("i", { className: "ficon ficon-chevron-right" })));
+    var pagerClass = cx("btn-group minimal-pager", this.props.className);
+
+    return React.createElement("div", { className: pagerClass }, React.createElement("button", { type: "button", className: backBtnClass, onClick: this._onPageBack }, React.createElement(Icon, { icon: "chevron-left" })), React.createElement("button", { type: "button", className: fwdBtnClass, onClick: this._onPageFwd }, React.createElement(Icon, { icon: "chevron-right" })));
   }
 });
 
-},{"classnames":30}],16:[function(require,module,exports){
+},{"./Icon.jsx":7,"classnames":30}],16:[function(require,module,exports){
 "use strict";
 
 var _extends = Object.assign || function (target) {
