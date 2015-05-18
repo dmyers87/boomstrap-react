@@ -17,6 +17,10 @@ const DocTypes = {
     Component: require('../../src/Components/LeadCategory.jsx'),
     Example:   require('raw!../examples/LeadCategory.example.js')
   },
+  Loader: {
+    Component: require('../../src/Components/Loader.jsx'),
+    Example:   require('raw!../examples/Loader.example.js')
+  },
   Marker: {
     Component: require('../../src/Components/Marker.jsx'),
     Example:   require('raw!../examples/Marker.example.js')
@@ -29,6 +33,10 @@ const DocTypes = {
     Component: require('../../src/Components/NavLinksBar.jsx'),
     Example:   require('raw!../examples/NavLinksBar.example.js')
   },
+  Pager: {
+    Component: require('../../src/Components/Pager.jsx'),
+    Example:   require('raw!../examples/Pager.example.js')
+  },
   ProgressBar: {
     Component: require('../../src/Components/ProgressBar.jsx'),
     Example:   require('raw!../examples/ProgressBar.example.js')
@@ -40,6 +48,10 @@ const DocTypes = {
   Switcher: {
     Component: require('../../src/Components/Switcher.jsx'),
     Example:   require('raw!../examples/Switcher.example.js')
+  },
+  Well: {
+    Component: require('../../src/Components/Well.jsx'),
+    Example:   require('raw!../examples/Well.example.js')
   }
 }
 const Playground  = require('component-playground');
