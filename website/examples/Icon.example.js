@@ -3,7 +3,7 @@ var ComponentExample = React.createClass({
     return (
       <div>
         <h4>Icons</h4>
-        <p style={{fontSize: 2 + 'em'}}>
+        <p style={{fontSize: '2em'}}>
           <Icon icon='heart'/> <Icon icon='eye'/> <Icon icon='chat'/> <Icon icon='user'/> <Icon icon='cog'/> 
           <Icon icon='chevron-left'/> <Icon icon='chevron-right'/>
         </p>
