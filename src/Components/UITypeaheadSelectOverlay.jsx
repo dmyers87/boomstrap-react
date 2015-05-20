@@ -37,7 +37,7 @@ const UITypeaheadSelectOverlay = React.createClass({
     // Select is fired on mouse down so that the select fires
     // Before the input blur
     const options = this.props.options.map((result, index) => {
-      const optionClass = this.props.searchIndex === index ? 'active': '';
+      const optionClass = this.props.searchIndex === index ? 'active' : '';
       return (
         <li role='option' key={index}
           className={optionClass}
