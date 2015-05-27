@@ -11,6 +11,10 @@ module.exports = React.createClass({
 
   propTypes: {
     /**
+     * Optionally include children.
+     */
+    children: React.PropTypes.any,
+    /**
      * Optionally include additional class name(s).
      */
     className: React.PropTypes.string,
@@ -31,7 +35,7 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var calloutClass = cx("callout", "callout-" + this.props.type, this.props.className);
+    var classes = cx("callout", "callout-" + this.props.type, this.props.className);
 
     var calloutHeading = null;
 
@@ -45,9 +49,9 @@ module.exports = React.createClass({
 
     return React.createElement(
       "div",
-      { className: calloutClass },
+      { className: classes },
       calloutHeading,
-      React.createElement("div", this.props)
+      this.props.children
     );
   }
 });

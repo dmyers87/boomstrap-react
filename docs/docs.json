@@ -2,6 +2,13 @@
   "dist/Components/Callout.jsx": {
     "description": "Use callouts to display important information or messages.",
     "props": {
+      "children": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "Optionally include children."
+      },
       "className": {
         "type": {
           "name": "string"

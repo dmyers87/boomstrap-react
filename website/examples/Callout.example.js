@@ -4,9 +4,10 @@ var ComponentExample = React.createClass({
       <div>
         <h4>Callout</h4>
         <Callout>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit vel felis vehicula gravida.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit vel felis vehicula gravida.</p>
+          <p>Just a default callout without a heading and two paragraphs.</p>
+          <p>Just a default callout without a heading and two paragraphs.</p>
         </Callout>
+        <Callout heading='Highway to the Danger Zone!' type='danger' />
         <Callout heading='Callout Attention' type='attention'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit vel felis vehicula gravida.
         </Callout>

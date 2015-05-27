@@ -1,7 +1,6 @@
 const React = require('react/addons');
 const cx    = require('classnames');
 
-
 /**
  * Use callouts to display important information or messages.
  */
@@ -9,6 +8,10 @@ module.exports = React.createClass({
   displayName: 'Callout',
 
   propTypes: {
+    /**
+     * Optionally include children.
+     */
+    children: React.PropTypes.any,
     /**
      * Optionally include additional class name(s).
      */
@@ -20,7 +23,7 @@ module.exports = React.createClass({
     /**
      * Options: attention, danger, info, success, warning.
      */
-    type:      React.PropTypes.oneOf(['attention', 'danger', 'info', 'success', 'warning'])
+    type:       React.PropTypes.oneOf(['attention', 'danger', 'info', 'success', 'warning'])
   },
 
   getDefaultProps() {
@@ -30,7 +33,7 @@ module.exports = React.createClass({
   },
 
   render() {
-    const calloutClass = cx('callout', 'callout-' + this.props.type, this.props.className);
+    const classes = cx('callout', 'callout-' + this.props.type, this.props.className);
 
     let calloutHeading = null;
 
@@ -41,9 +44,9 @@ module.exports = React.createClass({
     }
 
     return (
-      <div className={calloutClass}>
+      <div className={classes}>
         {calloutHeading}
-        <div {...this.props} />
+        {this.props.children}
       </div>
     );
   }
