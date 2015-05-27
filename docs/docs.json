@@ -1,4 +1,56 @@
 {
+  "dist/Components/Callout.jsx": {
+    "description": "Use callouts to display important information or messages.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "heading": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include a heading."
+      },
+      "type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"attention\"",
+              "computed": false
+            },
+            {
+              "value": "\"danger\"",
+              "computed": false
+            },
+            {
+              "value": "\"info\"",
+              "computed": false
+            },
+            {
+              "value": "\"success\"",
+              "computed": false
+            },
+            {
+              "value": "\"warning\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Options: attention, danger, info, success, warning.",
+        "defaultValue": {
+          "value": "\"info\"",
+          "computed": false
+        }
+      }
+    }
+  },
   "dist/Components/FauxLink.jsx": {
     "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
     "props": {}

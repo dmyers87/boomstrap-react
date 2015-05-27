@@ -1,6 +1,10 @@
 const React = require('react/addons');
 
 const DocTypes = {
+  Callout: {
+    Component: require('../../src/Components/Callout.jsx'),
+    Example:   require('raw!../examples/Callout.example.js')
+  },
   Fauxbox: {
     Component: require('../../src/Components/Fauxbox.jsx'),
     Example:   require('raw!../examples/Fauxbox.example.js')
