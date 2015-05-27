@@ -50,9 +50,58 @@
           ]
         },
         "required": false,
-        "description": "Options: attention, danger, info, success, warning.",
+        "description": "Optionally include type.",
         "defaultValue": {
           "value": "\"info\"",
+          "computed": false
+        }
+      }
+    }
+  },
+  "dist/Components/Circle.jsx": {
+    "description": "Circles are just the colored dots next to times, online now, etc.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"\"",
+              "computed": false
+            },
+            {
+              "value": "\"now\"",
+              "computed": false
+            },
+            {
+              "value": "\"today\"",
+              "computed": false
+            },
+            {
+              "value": "\"14-days\"",
+              "computed": false
+            },
+            {
+              "value": "\"90-days\"",
+              "computed": false
+            },
+            {
+              "value": "\"forever\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Optionally include type.",
+        "defaultValue": {
+          "value": "\"\"",
           "computed": false
         }
       }
@@ -707,7 +756,7 @@
           ]
         },
         "required": false,
-        "description": "Options: attention, danger, info, primary, success, success-to-danger, warning.",
+        "description": "Optionally include type.",
         "defaultValue": {
           "value": "\"primary\"",
           "computed": false

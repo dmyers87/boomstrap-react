@@ -21,7 +21,7 @@ module.exports = React.createClass({
      */
     heading:    React.PropTypes.string,
     /**
-     * Options: attention, danger, info, success, warning.
+     * Optionally include type.
      */
     type:       React.PropTypes.oneOf(['attention', 'danger', 'info', 'success', 'warning'])
   },
