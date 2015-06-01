@@ -49,6 +49,10 @@ const DocTypes = {
     Component: require('../../src/Components/ProgressBar.jsx'),
     Example:   require('raw!../examples/ProgressBar.example.js')
   },
+  Sash: {
+    Component: require('../../src/Components/Sash.jsx'),
+    Example:   require('raw!../examples/Sash.example.js')
+  },
   Score: {
     Component: require('../../src/Components/Score.jsx'),
     Example:   require('raw!../examples/Score.example.js')

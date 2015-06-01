@@ -764,6 +764,43 @@
       }
     }
   },
+  "dist/Components/Sash.jsx": {
+    "description": "Use sashes for showing property status.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "\"back\"",
+              "computed": false
+            },
+            {
+              "value": "\"new\"",
+              "computed": false
+            },
+            {
+              "value": "\"off\"",
+              "computed": false
+            },
+            {
+              "value": "\"reduced\"",
+              "computed": false
+            }
+          ]
+        },
+        "required": true,
+        "description": "Type is required."
+      }
+    }
+  },
   "dist/Components/Score.jsx": {
     "description": "Use scores to rank / score data.",
     "props": {
