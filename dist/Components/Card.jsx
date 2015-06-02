@@ -126,8 +126,11 @@ module.exports = React.createClass({
       )
     );
 
+    var listingMarkup = null;
+
     if (this.props.isSmall) {
-      return React.createElement(
+
+      listingMarkup = React.createElement(
         "div",
         { className: "row row-xcondensed" },
         React.createElement(
@@ -164,7 +167,7 @@ module.exports = React.createClass({
         )
       );
     } else {
-      return React.createElement(
+      listingMarkup = React.createElement(
         "div",
         { className: "row row-xcondensed" },
         React.createElement(

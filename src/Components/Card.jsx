@@ -1,9 +1,10 @@
 
-const React = require('react/addons');
-const cx    = require('classnames');
-const dateHelper = require('../Utilities/dateHelper');
-
+const React                 = require('react/addons');
+const cx                    = require('classnames');
+const dateHelper            = require('../Utilities/dateHelper');
+const Button                = require('react-bootstrap').Button;
 const { ImageWithFallback } = require('boomstrap-react').Components;
+const Icon                  = require('./Icon.jsx');
 
 module.exports = React.createClass({
   displayName: 'Card',
@@ -60,7 +61,7 @@ module.exports = React.createClass({
       dateDistance = dateHelper.distance(props.reduced.when);
       innerSash = (
         <span>
-          <i className='ficon ficon-arrow-down' /> {props.reduced.change} ({ props.reduced.changePercent }) <span className='sash-time'>{dateDistance}</span>
+          <Icon icon='arrow-down' /> {props.reduced.changed} ({ props.reduced.changePercent }) <span className='sash-time'>{dateDistance}</span>
         </span>
       );
     } else if (props.backOnMarket) {
@@ -95,10 +96,10 @@ module.exports = React.createClass({
       </p>
     );
 
-   
+    let listingMarkup = null;
 
     if (this.props.isSmall) {
-      return (
+      listingMarkup =
         <div className='row row-xcondensed'>
           <div className='col-xs-8'>
             {listingLink}
@@ -109,22 +110,22 @@ module.exports = React.createClass({
             <p className='card-sm-priority card-sm-price'>{ props.listPrice }</p>
             <p className='xsmall'>{ props.pricePerSqft }/SQFT</p>
           </div>
-        </div>
-      );
+        </div>;
     } else {
-      return (
-        <div className='row row-xcondensed'>
+      listingMarkup = 
+        <div>
           <p className='card-priority card-price'>{ props.listPrice }</p>
           {listingLink}
-          <div className='col-xs-7'>
-            <p className='small'>{ props.address.city } , { props.address.state }</p>
-            <p className='small'>{ props.address.neighborhood }</p>
-          </div>
-          <div className='col-xs-5 text-right'>
-            <p className='small'>{ props.pricePerSqft }/SQFT</p>
+          <div className='row row-xcondensed'>
+            <div className='col-xs-7'>
+              <p className='small'>{ props.address.city } , { props.address.state }</p>
+              <p className='small'>{ props.address.neighborhood }</p>
             </div>
-        </div>
-      );
+            <div className='col-xs-5 text-right'>
+              <p className='small'>{ props.pricePerSqft }/SQFT</p>
+            </div>
+          </div>
+        </div>;
     }
     return (listingMarkup);
 
@@ -143,11 +144,23 @@ module.exports = React.createClass({
     });
 
     return (
-      <div className={cardStatsClass}>
-        <span className={cardStatClass}>{ props.beds } BEDS</span>
-        <span className={cardStatClass}>{ props.baths } BATHS</span>
-        <span className={cardStatClass}>{ props.sqft } SQFT</span>
-        <span className={cardStatClass}>{ props.acres } ACRES</span>
+      <div>
+        <div className={cardStatsClass}>
+          <span className={cardStatClass}>{ props.beds } BEDS</span>
+          <span className={cardStatClass}>{ props.baths } BATHS</span>
+          <span className={cardStatClass}>{ props.sqft } SQFT</span>
+          <span className={cardStatClass}>{ props.acres } ACRES</span>
+        </div>
+        <div className='card-container'>
+          <div className='row row-xcondensed'>
+            <div className='col-sm-6'>
+              <Button bsSize='small' className='btn-block'><Icon icon='star'/> 1220 Best-Fit</Button>
+            </div>
+            <div className='col-sm-6'>
+              <Button bsSize='small' className='btn-block'><Icon icon='heart'/> 11 Favs</Button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   },
@@ -160,7 +173,7 @@ module.exports = React.createClass({
 
     const cardContainerClass = cx({
       'card-sm-container': this.props.isSmall,
-      'card-container': !this.props.isSmall
+      'card-container card-intro': !this.props.isSmall
     });
 
     let imageSrc = null;
