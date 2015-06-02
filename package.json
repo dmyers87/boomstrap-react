@@ -33,6 +33,7 @@
     "less": "^2.5.0",
     "less-loader": "^2.2.0",
     "marked": "^0.3.2",
+    "moment": "^2.8.4",
     "raw-loader": "^0.5.1",
     "react-docgen": "^1.2.0",
     "react-router": "^0.13.3",

@@ -3,6 +3,9 @@
 var React = require("react/addons");
 var cx = require("classnames");
 
+// Components
+var Icon = require("./Icon.jsx");
+
 /**
  * Use sashes for showing property status.
  */
@@ -23,10 +26,15 @@ module.exports = React.createClass({
   render: function render() {
     var classes = cx("sash", "sash-" + this.props.type, this.props.className);
 
+    var sashType = this.props.type;
+    if (sashType === "reduced") {
+      sashType = React.createElement(Icon, { icon: "arrow-down" });
+    }
+
     return React.createElement(
       "div",
       { className: classes },
-      this.props.type,
+      sashType,
       React.createElement(
         "span",
         { className: "sash-time" },

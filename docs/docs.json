@@ -58,6 +58,128 @@
       }
     }
   },
+  "dist/Components/Card.jsx": {
+    "description": "",
+    "props": {
+      "children": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
+      "isSmall": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "newProperty": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "offMarket": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "bool"
+            }
+          ]
+        },
+        "required": false,
+        "description": ""
+      },
+      "reduced": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "changed": {
+              "name": "string"
+            },
+            "changePercent": {
+              "name": "string"
+            },
+            "when": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "backOnMarket": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "imageSrc": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "listingUrl": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "fullAddress": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "address": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "city": {
+              "name": "string"
+            },
+            "street": {
+              "name": "string"
+            },
+            "state": {
+              "name": "string"
+            },
+            "neighborhood": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "listPrice": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "pricePerSqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
   "dist/Components/Circle.jsx": {
     "description": "Circles are just the colored dots next to times, online now, etc.",
     "props": {

@@ -5,6 +5,10 @@ const DocTypes = {
     Component: require('../../src/Components/Callout.jsx'),
     Example:   require('raw!../examples/Callout.example.js')
   },
+  Card: {
+    Component: require('../../src/Components/Card.jsx'),
+    Example:   require('raw!../examples/Card.example.js')
+  },
   Circle: {
     Component: require('../../src/Components/Circle.jsx'),
     Example:   require('raw!../examples/Circle.example.js')
