@@ -99,7 +99,7 @@ module.exports = React.createClass({
     let listingMarkup = null;
 
     if (this.props.isSmall) {
-      listingMarkup =
+      listingMarkup = (
         <div className='row row-xcondensed'>
           <div className='col-xs-8'>
             {listingLink}
@@ -110,9 +110,9 @@ module.exports = React.createClass({
             <p className='card-sm-priority card-sm-price'>{ props.listPrice }</p>
             <p className='xsmall'>{ props.pricePerSqft }/SQFT</p>
           </div>
-        </div>;
+        </div>);
     } else {
-      listingMarkup = 
+      listingMarkup = (
         <div>
           <p className='card-priority card-price'>{ props.listPrice }</p>
           {listingLink}
@@ -125,7 +125,7 @@ module.exports = React.createClass({
               <p className='small'>{ props.pricePerSqft }/SQFT</p>
             </div>
           </div>
-        </div>;
+        </div>);
     }
     return (listingMarkup);
 

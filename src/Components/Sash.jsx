@@ -18,8 +18,17 @@ module.exports = React.createClass({
      * Type is required.
      */
     type:           React.PropTypes.oneOf(['back', 'new', 'off', 'reduced']).isRequired,
+    /**
+     * Time stamp is required.
+     */
     timeStamp:      React.PropTypes.string.isRequired,
+    /**
+     * For 'reduced' type, include amount property was reduced in dollars
+     */
     reducedAmount:  React.PropTypes.string,
+    /**
+     * For 'reduced' type, include amount property was reduced as a percentage
+     */
     reducedPercent: React.PropTypes.string
   },
 
@@ -29,14 +38,24 @@ module.exports = React.createClass({
 
     let sashTitle = null;
 
-    if (this.props.type === 'back') {
-      sashTitle = 'Back';
-    } else if (this.props.type === 'new') {
-      sashTitle = 'New';
-    } else if (this.props.type === 'off') {
-      sashTitle = 'Off';
-    } else if (this.props.type === 'reduced') {
-      sashTitle = <span><Icon icon='arrow-down' /> {this.props.reducedAmount} ({this.props.reducedPercent})</span>;
+    switch (this.props.type) {
+      case 'back':
+        sashTitle = 'Back';
+        break;
+      case 'new':
+        sashTitle = 'New';
+        break;
+      case 'off':
+        sashTitle = 'Off';
+        break;
+      case 'reduced':
+        if (this.props.reducedAmount && this.props.reducedPercent) {
+          sashTitle = <span><Icon icon='arrow-down' /> {this.props.reducedAmount} ({this.props.reducedPercent})</span>;
+        } else {
+          sashTitle = 'Reduced';
+        }
+        break;
+      default:
     }
 
     return (

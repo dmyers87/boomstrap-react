@@ -920,6 +920,27 @@
         },
         "required": true,
         "description": "Type is required."
+      },
+      "timeStamp": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "Time stamp is required."
+      },
+      "reducedAmount": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "For 'reduced' type, include amount property was reduced in dollars"
+      },
+      "reducedPercent": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "For 'reduced' type, include amount property was reduced as a percentage"
       }
     }
   },
