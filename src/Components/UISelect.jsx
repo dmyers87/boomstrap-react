@@ -1,8 +1,8 @@
 /*eslint react/no-multi-comp: 0*/
 
-const React = require('react/addons');
-const cx    = require('classnames');
-const FauxLink = require('./FauxLink.jsx');
+const React              = require('react/addons');
+const cx                 = require('classnames');
+const FauxLink           = require('./FauxLink.jsx');
 const DocumentClickMixin = require('../Mixins/DocumentClickMixin.jsx');
 
 const UISelectDropdownMenu = React.createClass({
@@ -22,12 +22,7 @@ const UISelectDropdownMenu = React.createClass({
 
   render() {
     return (
-      <ul
-        aria-labelledby='dLabel'
-        className={this.props.className}
-        role='menu'>
-        {this.props.children}
-      </ul>
+      <ul aria-labelledby='dLabel' className={this.props.className} role='menu'>{this.props.children}</ul>
     );
   }
 });
@@ -36,12 +31,24 @@ module.exports = React.createClass({
   displayName: 'UISelect',
 
   propTypes: {
+    /**
+     * The value the selected item returns. Can be a string or number.
+     */
     payload:     React.PropTypes.oneOfType([
       React.PropTypes.string,
       React.PropTypes.number
     ]),
+    /**
+     * The label the selected item displays.
+     */
     text:        React.PropTypes.string,
+    /**
+     * The initial text the UISelect displays
+     */
     placeholder: React.PropTypes.string,
+    /**
+     * The list of items to populate the dropdown; [{payload: 'value', text: 'label'}..]
+     */
     items: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         payload: React.PropTypes.oneOfType([
@@ -51,11 +58,27 @@ module.exports = React.createClass({
         text: React.PropTypes.string
       })
     ),
-    buttonClass: React.PropTypes.string,
-    inputClass:  React.PropTypes.string,
+    /**
+     * Add a class to the button portion of the component.
+     */
+    buttonClass:           React.PropTypes.string,
+    /**
+     * Add a class to the input portion of the component.
+     */
+    inputClass:            React.PropTypes.string,
+    /**
+     * Add a class to the component container.
+     */
+    containerClass:        React.PropTypes.string,
     includeSearchInValues: React.PropTypes.bool,
     translateSearchValue:  React.PropTypes.func,
+    /**
+     * Function to call when a selection is made.
+     */
     onChange:              React.PropTypes.func,
+    /**
+     * Disable the element.
+     */
     disabled:              React.PropTypes.bool,
     alignRight:            React.PropTypes.bool
   },
@@ -64,7 +87,8 @@ module.exports = React.createClass({
     return {
       items: [],
       disabled: false,
-      alignRight: false
+      alignRight: false,
+      containerClass: ''
     };
   },
 
@@ -91,6 +115,7 @@ module.exports = React.createClass({
     // Because these events do not have a value we can ignore it
     // Because the value will be the same as last time
     const val = e.target.value || '';
+
     if (val !== this.state.search) {
       this.setState({ search: val }, () => this.setActiveItem(0));
     }
@@ -101,13 +126,14 @@ module.exports = React.createClass({
   },
 
   _ensureHighlightVisible() {
-    const containerRef = this.refs.dropdownMenu;
+    const containerRef   = this.refs.dropdownMenu;
     const highlightedRef = this.refs['dropdownMenuItem_' + this.state.activeIndex];
+
     if (containerRef && highlightedRef) {
       const container   = React.findDOMNode(containerRef);
       const highlighted = React.findDOMNode(highlightedRef);
-      const posY   = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
-      const height = container.offsetHeight;
+      const posY        = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
+      const height      = container.offsetHeight;
 
       if (posY > height) {
         container.scrollTop += posY - height;
@@ -137,9 +163,11 @@ module.exports = React.createClass({
     return items.filter((item) => {
       const itemText  = item.text || '';
       let itemPayload = item.payload;
+
       itemPayload = itemPayload === null ? '' : itemPayload.toString();
+
       return (
-        itemText.toLowerCase().indexOf(searchText) !== -1 ||
+        itemText.toLowerCase().indexOf(searchText)    !== -1 ||
         itemPayload.toLowerCase().indexOf(searchText) !== -1
       );
     });
@@ -147,6 +175,7 @@ module.exports = React.createClass({
 
   select(index) {
     const selectedItem = this.getFilteredItems()[index];
+
     this.setState({
       search: '',
       open: false
@@ -159,6 +188,7 @@ module.exports = React.createClass({
   onKeyDown(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
+
       this.select(this.state.activeIndex);
     } else {
       let filteredItemMaxIndex;
@@ -170,10 +200,12 @@ module.exports = React.createClass({
       if (e.key === 'ArrowDown') {
         if (activeIndex < filteredItemMaxIndex) {
           e.preventDefault();
+
           this.setActiveItem(activeIndex + 1);
         }
       } else if (e.key === 'ArrowUp' && activeIndex > 0) {
         e.preventDefault();
+
         this.setActiveItem(activeIndex - 1);
       }
     }
@@ -191,14 +223,8 @@ module.exports = React.createClass({
     });
 
     return (
-      <li
-        className='ui-select-choices-group'
-        key={index}
-        ref={'dropdownMenuItem_' + index}>
-        <div
-          className={rowClass}
-          onMouseEnter={() => this.setActiveItem(index)}
-          onClick={() => this.select(index)}>
+      <li className='ui-select-choices-group' key={index} ref={'dropdownMenuItem_' + index}>
+        <div className={rowClass} onMouseEnter={() => this.setActiveItem(index)} onClick={() => this.select(index)}>
           <FauxLink className='ui-select-choices-row-inner'>
             <div>{item.text}</div>
           </FauxLink>
@@ -208,54 +234,38 @@ module.exports = React.createClass({
   },
 
   render() {
-    const containerClass = cx('ui-select-bootstrap dropdown', {
+    const containerClass = cx('ui-select-bootstrap dropdown', this.props.containerClass, {
       'open': this.state.open
     });
 
-    let showElement;
+    const isEmpty    = !this.props.text;
     let dropdownMenu = null;
-    const isEmpty = !this.props.text;
     let elementClass;
+    let showElement;
+
     if (!this.state.open) {
       elementClass = cx('btn btn-default form-control ui-select-match', this.props.buttonClass);
-      showElement = (
-        <button
-          className={elementClass}
-          disabled={this.props.disabled}
-          onClick={this.activate}
-          placeholder={this.props.placeholder}
-          tabIndex='-1'
-          type='button'>
-          { isEmpty ?
-            (<span className='text-muted'>{this.props.placeholder}</span>) :
-            (<span>{this.props.text}</span>) }
-            <span className='caret'></span>
+      showElement  = (
+        <button className={elementClass} disabled={this.props.disabled} onClick={this.activate} placeholder={this.props.placeholder} tabIndex='-1' type='button'>
+          {isEmpty ?  (<span className='text-muted'>{this.props.placeholder}</span>) : (<span>{this.props.text}</span>) }
+          <span className='caret'></span>
         </button>
       );
     } else {
       elementClass = cx('form-control ui-select-search', this.props.inputClass);
-      showElement = (
-        <input
-          autoComplete='off'
-          className={elementClass}
-          onChange={this.updateSearch}
-          onKeyDown={this.onKeyDown}
-          placeholder={this.props.placeholder}
-          ref='searchInput'
-          tabIndex='-1'
-          type='text'
-          value={this.state.search}/>
+      showElement  = (
+        <input autoComplete='off' className={elementClass} onChange={this.updateSearch} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder} ref='searchInput' tabIndex='-1' type='text' value={this.state.search}/>
       );
+
       const dropdownElements = this.getFilteredItems().map(this.renderDropdownItem);
+
       if (dropdownElements.length) {
         const dropdownMenuClass = cx('ui-select-choices ui-select-choices-content dropdown-menu', {
           'dropdown-menu-right': this.props.alignRight
         });
+
         dropdownMenu = (
-          <UISelectDropdownMenu
-            className={dropdownMenuClass}
-            onClose={this.onClose}
-            ref='dropdownMenu'>
+          <UISelectDropdownMenu className={dropdownMenuClass} onClose={this.onClose} ref='dropdownMenu'>
             {dropdownElements}
           </UISelectDropdownMenu>
         );
