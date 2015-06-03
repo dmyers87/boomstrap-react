@@ -1,27 +1,133 @@
 {
+  "dist/Components/AutoComplete.jsx": {
+    "description": "AutoComplete provides a way to have a typeahead with a dropdown menu.",
+    "props": {
+      "getItemValue": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Function to extrapolate the value of an item from an item.",
+        "defaultValue": {
+          "value": "function getItemValue(item) {\n  return item;\n}",
+          "computed": false
+        }
+      },
+      "initialValue": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": "Initial value in the input"
+      },
+      "inputClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Class to be applied to the input",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
+      },
+      "items": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "any"
+          }
+        },
+        "required": true,
+        "description": "Array of items to display in the dropdown."
+      },
+      "menuStyle": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Style attributes to be applied to the menu.",
+        "defaultValue": {
+          "value": "{\n  borderRadius: \"3px\",\n  boxShadow: \"0 2px 12px rgba(0, 0, 0, 0.1)\",\n  background: \"rgba(255, 255, 255, 0.9)\",\n  padding: \"2px 0\",\n  fontSize: \"90%\"\n}",
+          "computed": false
+        }
+      },
+      "onChange": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Function to invoke when the value has changed.",
+        "defaultValue": {
+          "value": "function onChange() {}",
+          "computed": false
+        }
+      },
+      "renderItem": {
+        "type": {
+          "name": "func"
+        },
+        "required": true,
+        "description": "Function that is used to render individual items.  Gets the item and the highlighted index as parameters."
+      },
+      "renderMenu": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Function that is used to render the menu.  Takes items and current value as parameters.",
+        "defaultValue": {
+          "value": "function renderMenu(items /*, value */) {\n  return React.createElement(\n    \"div\",\n    { style: this.menuStyle },\n    items\n  );\n}",
+          "computed": false
+        }
+      },
+      "shouldItemRender": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Function used to determine whether the item in the list should render. Takes item and current value as parameters.",
+        "defaultValue": {
+          "value": "function shouldItemRender() {\n  return true;\n}",
+          "computed": false
+        }
+      },
+      "sortItems": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Sorting function used to sort items in the Menu.  Takes both items and current value as parameters.",
+        "defaultValue": {
+          "value": "function sortItems() {\n  return 0;\n}",
+          "computed": false
+        }
+      }
+    }
+  },
   "dist/Components/Callout.jsx": {
-    "description": "Use callouts to display important information or messages.",
+    "description": "",
     "props": {
       "children": {
         "type": {
           "name": "any"
         },
         "required": false,
-        "description": "Optionally include children."
+        "description": ""
       },
       "className": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "Optionally include additional class name(s)."
+        "description": ""
       },
       "heading": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "Optionally include a heading."
+        "description": ""
       },
       "type": {
         "type": {
@@ -50,7 +156,7 @@
           ]
         },
         "required": false,
-        "description": "Options: attention, danger, info, success, warning.",
+        "description": "",
         "defaultValue": {
           "value": "\"info\"",
           "computed": false
@@ -59,121 +165,121 @@
     }
   },
   "dist/Components/FauxLink.jsx": {
-    "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
+    "description": "",
     "props": {}
   },
   "dist/Components/Fauxbox.jsx": {
-    "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
+    "description": "",
     "props": {
       "id": {
         "type": {
           "name": "string"
         },
         "required": true,
-        "description": "Identifier used to link the label and the checkbox"
+        "description": ""
       },
       "className": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "Optional class to provide to div wrapping Fauxbox"
+        "description": ""
       },
       "labelClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "Optional class to provide to wrap the label"
+        "description": ""
       },
       "checked": {
         "type": {
           "name": "bool"
         },
         "required": true,
-        "description": "Indicated whether or not the Fauxbox is checked"
+        "description": ""
       },
       "onClick": {
         "type": {
           "name": "func"
         },
         "required": false,
-        "description": "Event to fire when the Fauxbox is clicked"
+        "description": ""
       },
       "inline": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": "Indicates whether or not the Fauxbox is a block element or inline-block element"
+        "description": ""
       },
       "label": {
         "type": {
           "name": "node"
         },
         "required": false,
-        "description": "Label that is tied to updating the Fauxbox"
+        "description": ""
       }
     }
   },
   "dist/Components/Fauxdio.jsx": {
-    "description": "Display radio buttons in style with the Fauxdio",
+    "description": "",
     "props": {
       "radioID": {
         "type": {
           "name": "string"
         },
         "required": true,
-        "description": "Identifier provided to link together the input with the label"
+        "description": ""
       },
       "radioClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "Optional class to pass to the div that wraps the Fauxdio"
+        "description": ""
       },
       "labelClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "Optional class to pass to the label that accompanies the input"
+        "description": ""
       },
       "checked": {
         "type": {
           "name": "bool"
         },
         "required": true,
-        "description": "Indicates whether or not the Fauxdio is selected"
+        "description": ""
       },
       "value": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "Provided for information on submitting forms"
+        "description": ""
       },
       "onChange": {
         "type": {
           "name": "func"
         },
         "required": false,
-        "description": "A callback to fire when the Fauxdio is selected."
+        "description": ""
       },
       "inline": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": "Indicates whether or not the Fauxdio is block element or inline-block element"
+        "description": ""
       },
       "label": {
         "type": {
           "name": "node"
         },
         "required": false,
-        "description": "A label to accompany the Fauxdio.  Can be text or a React node"
+        "description": ""
       }
     }
   },
@@ -386,7 +492,7 @@
     }
   },
   "dist/Components/Marker.jsx": {
-    "description": "Use markers to represent current searching / filtering parameters.",
+    "description": "",
     "props": {
       "type": {
         "type": {
@@ -487,14 +593,14 @@
     }
   },
   "dist/Components/NavLinksBar.jsx": {
-    "description": "Nav Links Bar provides an animated `tab switcher`-like control",
+    "description": "",
     "props": {
       "activeKey": {
         "type": {
           "name": "number"
         },
         "required": false,
-        "description": "The current key of the child that should have the bar",
+        "description": "",
         "defaultValue": {
           "value": "null",
           "computed": false
@@ -505,7 +611,7 @@
           "name": "string"
         },
         "required": false,
-        "description": "Optional class for wrapping the list",
+        "description": "",
         "defaultValue": {
           "value": "\"\"",
           "computed": false
@@ -516,7 +622,7 @@
           "name": "string"
         },
         "required": false,
-        "description": "Optional class for wrapping the bar that slides",
+        "description": "",
         "defaultValue": {
           "value": "\"\"",
           "computed": false
@@ -537,7 +643,7 @@
           ]
         },
         "required": false,
-        "description": "Direction of the list ('vertical' or 'horizontal'), defaults to 'vertical'",
+        "description": "",
         "defaultValue": {
           "value": "\"vertical\"",
           "computed": false
@@ -548,7 +654,7 @@
           "name": "any"
         },
         "required": false,
-        "description": "Actual Nav Links to render (expected in <li><a /></li> format)\nThis property is provided by React children"
+        "description": ""
       }
     }
   },
@@ -619,14 +725,14 @@
           "name": "string"
         },
         "required": false,
-        "description": "Optionally include additional class name(s)."
+        "description": ""
       },
       "progress": {
         "type": {
           "name": "number"
         },
         "required": false,
-        "description": "Number 1-100 representing a percentage.",
+        "description": "",
         "defaultValue": {
           "value": "0",
           "computed": false
@@ -637,7 +743,7 @@
           "name": "bool"
         },
         "required": false,
-        "description": "Set to 'true' to show label in progress bar.",
+        "description": "",
         "defaultValue": {
           "value": "false",
           "computed": false
@@ -666,7 +772,7 @@
           ]
         },
         "required": false,
-        "description": "Options: xs, sm, lg.",
+        "description": "",
         "defaultValue": {
           "value": "\"\"",
           "computed": false
@@ -707,7 +813,7 @@
           ]
         },
         "required": false,
-        "description": "Options: attention, danger, info, primary, success, success-to-danger, warning.",
+        "description": "",
         "defaultValue": {
           "value": "\"primary\"",
           "computed": false
@@ -716,7 +822,7 @@
     }
   },
   "dist/Components/Score.jsx": {
-    "description": "Use scores to rank / score data.",
+    "description": "",
     "props": {
       "score": {
         "type": {
@@ -735,7 +841,7 @@
     }
   },
   "dist/Components/Switcher.jsx": {
-    "description": "Toggle switch.",
+    "description": "",
     "props": {
       "checked": {
         "type": {
@@ -749,14 +855,14 @@
           "name": "string"
         },
         "required": false,
-        "description": "Optionally include additional class name(s)."
+        "description": ""
       },
       "disabled": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": "Disable switcher.",
+        "description": "",
         "defaultValue": {
           "value": "false",
           "computed": false
@@ -791,7 +897,7 @@
           ]
         },
         "required": false,
-        "description": "Options: sm.",
+        "description": "",
         "defaultValue": {
           "value": "\"\"",
           "computed": false

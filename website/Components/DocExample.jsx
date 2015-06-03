@@ -1,6 +1,10 @@
 const React = require('react/addons');
 
 const DocTypes = {
+  AutoComplete: {
+    Component: require('../../src/Components/AutoComplete.jsx'),
+    Example:   require('raw!../examples/AutoComplete.example.js')
+  },
   Callout: {
     Component: require('../../src/Components/Callout.jsx'),
     Example:   require('raw!../examples/Callout.example.js')
