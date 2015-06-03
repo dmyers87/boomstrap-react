@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
-var _require = require("lodash");
+var _require = require('lodash');
 
 var assign = _require.assign;
 var omit = _require.omit;
 
 module.exports = React.createClass({
-  displayName: "Progress Bar",
+  displayName: 'Progress Bar',
 
   propTypes: {
     /**
@@ -29,19 +29,19 @@ module.exports = React.createClass({
     /**
      * Options: xs, sm, lg.
      */
-    size: React.PropTypes.oneOf(["", "xs", "sm", "lg"]),
+    size: React.PropTypes.oneOf(['', 'xs', 'sm', 'lg']),
     /**
      * Options: attention, danger, info, primary, success, success-to-danger, warning.
      */
-    type: React.PropTypes.oneOf(["attention", "danger", "info", "primary", "success", "success-to-danger", "warning"])
+    type: React.PropTypes.oneOf(['attention', 'danger', 'info', 'primary', 'success', 'success-to-danger', 'warning'])
   },
 
   getDefaultProps: function getDefaultProps() {
     return {
       progress: 0,
       showLabel: false,
-      size: "",
-      type: "primary"
+      size: '',
+      type: 'primary'
     };
   },
 
@@ -54,7 +54,7 @@ module.exports = React.createClass({
     var size = props.size;
     var type = props.type;
 
-    props = omit(props, ["className", "progress", "showLabel", "size", "type"]);
+    props = omit(props, ['className', 'progress', 'showLabel', 'size', 'type']);
 
     var progressTranslation = progress;
 
@@ -64,25 +64,25 @@ module.exports = React.createClass({
       progressTranslation = 0;
     }
 
-    var classes = cx("progress-bar", className, {
-      "progress-bar--attention": type === "attention",
-      "progress-bar--danger": type === "danger",
-      "progress-bar--info": type === "info",
-      "progress-bar--primary": type === "primary",
-      "progress-bar--success": type === "success",
-      "progress-bar--success-to-danger": type === "success-to-danger",
-      "progress-bar--warning": type === "warning",
-      "progress-bar--xs": size === "xs",
-      "progress-bar--sm": size === "sm",
-      "progress-bar--lg": size === "lg"
+    var classes = cx('progress-bar', className, {
+      'progress-bar--attention': type === 'attention',
+      'progress-bar--danger': type === 'danger',
+      'progress-bar--info': type === 'info',
+      'progress-bar--primary': type === 'primary',
+      'progress-bar--success': type === 'success',
+      'progress-bar--success-to-danger': type === 'success-to-danger',
+      'progress-bar--warning': type === 'warning',
+      'progress-bar--xs': size === 'xs',
+      'progress-bar--sm': size === 'sm',
+      'progress-bar--lg': size === 'lg'
     });
 
     /**
      * Style for progressing bar
      */
     var style = {
-      transform: "translateX(" + progressTranslation + "%)",
-      WebkitTransform: "translateX(" + progressTranslation + "%)"
+      transform: 'translateX(' + progressTranslation + '%)',
+      WebkitTransform: 'translateX(' + progressTranslation + '%)'
     };
 
     /**
@@ -90,20 +90,20 @@ module.exports = React.createClass({
      */
     var label = null;
 
-    if (showLabel && size !== "xs") {
+    if (showLabel && size !== 'xs') {
       label = React.createElement(
-        "div",
-        { className: "progress-bar__bar__label" },
-        progressTranslation + "%"
+        'div',
+        { className: 'progress-bar__bar__label' },
+        progressTranslation + '%'
       );
     }
 
     return React.createElement(
-      "div",
+      'div',
       _extends({ className: classes }, props),
       React.createElement(
-        "div",
-        { className: "progress-bar__bar", style: style },
+        'div',
+        { className: 'progress-bar__bar', style: style },
         label
       )
     );

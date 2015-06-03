@@ -1,18 +1,18 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
+var React = require('react/addons');
 
 // Components
 
-var _require = require("react-bootstrap");
+var _require = require('react-bootstrap');
 
 var OverlayTrigger = _require.OverlayTrigger;
 var Tooltip = _require.Tooltip;
 
-var Icon = require("./Icon.jsx");
+var Icon = require('./Icon');
 
 module.exports = React.createClass({
-  displayName: "Icon Tooltip",
+  displayName: 'Icon Tooltip',
 
   propTypes: {
     showIf: React.PropTypes.bool,
@@ -23,7 +23,7 @@ module.exports = React.createClass({
   render: function render() {
     return this.props.showIf ? React.createElement(
       OverlayTrigger,
-      { placement: "top", overlay: React.createElement(
+      { placement: 'top', overlay: React.createElement(
           Tooltip,
           null,
           this.props.text

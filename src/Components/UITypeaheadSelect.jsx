@@ -2,7 +2,7 @@ const React = require('react/addons');
 const cx    = require('classnames');
 
 const OverlayTrigger           = require('react-bootstrap').OverlayTrigger;
-const UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay.jsx');
+const UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay');
 
 module.exports = React.createClass({
   displayName: 'UI Typeahead Select',

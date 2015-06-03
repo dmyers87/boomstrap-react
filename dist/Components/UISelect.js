@@ -1,14 +1,14 @@
 /*eslint react/no-multi-comp: 0*/
 
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
-var FauxLink = require("./FauxLink.jsx");
-var DocumentClickMixin = require("../Mixins/DocumentClickMixin.jsx");
+var React = require('react/addons');
+var cx = require('classnames');
+var FauxLink = require('./FauxLink');
+var DocumentClickMixin = require('../Mixins/DocumentClickMixin');
 
 var UISelectDropdownMenu = React.createClass({
-  displayName: "UI Select Dropdown Menu",
+  displayName: 'UI Select Dropdown Menu',
 
   propTypes: {
     className: React.PropTypes.string,
@@ -24,18 +24,18 @@ var UISelectDropdownMenu = React.createClass({
 
   render: function render() {
     return React.createElement(
-      "ul",
+      'ul',
       {
-        "aria-labelledby": "dLabel",
+        'aria-labelledby': 'dLabel',
         className: this.props.className,
-        role: "menu" },
+        role: 'menu' },
       this.props.children
     );
   }
 });
 
 module.exports = React.createClass({
-  displayName: "UISelect",
+  displayName: 'UISelect',
 
   propTypes: {
     payload: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
@@ -83,30 +83,30 @@ module.exports = React.createClass({
   },
 
   updateSearch: function updateSearch(e) {
-    var _this = this;
+    var _this2 = this;
 
     // Internet Explorer fires change events on blur
     // Because these events do not have a value we can ignore it
     // Because the value will be the same as last time
-    var val = e.target.value || "";
+    var val = e.target.value || '';
     if (val !== this.state.search) {
       this.setState({ search: val }, function () {
-        return _this.setActiveItem(0);
+        return _this2.setActiveItem(0);
       });
     }
   },
 
   setActiveItem: function setActiveItem(index) {
-    var _this = this;
+    var _this3 = this;
 
     this.setState({ activeIndex: index }, function () {
-      return _this._ensureHighlightVisible();
+      return _this3._ensureHighlightVisible();
     });
   },
 
   _ensureHighlightVisible: function _ensureHighlightVisible() {
     var containerRef = this.refs.dropdownMenu;
-    var highlightedRef = this.refs["dropdownMenuItem_" + this.state.activeIndex];
+    var highlightedRef = this.refs['dropdownMenuItem_' + this.state.activeIndex];
     if (containerRef && highlightedRef) {
       var container = React.findDOMNode(containerRef);
       var highlighted = React.findDOMNode(highlightedRef);
@@ -139,28 +139,28 @@ module.exports = React.createClass({
     searchText = this.state.search.toLowerCase();
 
     return items.filter(function (item) {
-      var itemText = item.text || "";
+      var itemText = item.text || '';
       var itemPayload = item.payload;
-      itemPayload = itemPayload === null ? "" : itemPayload.toString();
+      itemPayload = itemPayload === null ? '' : itemPayload.toString();
       return itemText.toLowerCase().indexOf(searchText) !== -1 || itemPayload.toLowerCase().indexOf(searchText) !== -1;
     });
   },
 
   select: function select(index) {
-    var _this = this;
+    var _this4 = this;
 
     var selectedItem = this.getFilteredItems()[index];
     this.setState({
-      search: "",
+      search: '',
       open: false
     }, function () {
-      _this.setActiveItem(0);
-      _this.props.onChange(selectedItem);
+      _this4.setActiveItem(0);
+      _this4.props.onChange(selectedItem);
     });
   },
 
   onKeyDown: function onKeyDown(e) {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       e.preventDefault();
       this.select(this.state.activeIndex);
     } else {
@@ -170,12 +170,12 @@ module.exports = React.createClass({
       filteredItemMaxIndex = this.getFilteredItems().length - 1;
       activeIndex = this.state.activeIndex;
 
-      if (e.key === "ArrowDown") {
+      if (e.key === 'ArrowDown') {
         if (activeIndex < filteredItemMaxIndex) {
           e.preventDefault();
           this.setActiveItem(activeIndex + 1);
         }
-      } else if (e.key === "ArrowUp" && activeIndex > 0) {
+      } else if (e.key === 'ArrowUp' && activeIndex > 0) {
         e.preventDefault();
         this.setActiveItem(activeIndex - 1);
       }
@@ -189,33 +189,33 @@ module.exports = React.createClass({
   },
 
   renderDropdownItem: function renderDropdownItem(item, index) {
-    var _this = this;
+    var _this5 = this;
 
-    var rowClass = cx("ui-select-choices-row", {
-      active: this.state.activeIndex === index
+    var rowClass = cx('ui-select-choices-row', {
+      'active': this.state.activeIndex === index
     });
 
     return React.createElement(
-      "li",
+      'li',
       {
-        className: "ui-select-choices-group",
+        className: 'ui-select-choices-group',
         key: index,
-        ref: "dropdownMenuItem_" + index },
+        ref: 'dropdownMenuItem_' + index },
       React.createElement(
-        "div",
+        'div',
         {
           className: rowClass,
           onMouseEnter: function () {
-            return _this.setActiveItem(index);
+            return _this5.setActiveItem(index);
           },
           onClick: function () {
-            return _this.select(index);
+            return _this5.select(index);
           } },
         React.createElement(
           FauxLink,
-          { className: "ui-select-choices-row-inner" },
+          { className: 'ui-select-choices-row-inner' },
           React.createElement(
-            "div",
+            'div',
             null,
             item.text
           )
@@ -225,8 +225,8 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var containerClass = cx("ui-select-bootstrap dropdown", {
-      open: this.state.open
+    var containerClass = cx('ui-select-bootstrap dropdown', {
+      'open': this.state.open
     });
 
     var showElement = undefined;
@@ -234,57 +234,57 @@ module.exports = React.createClass({
     var isEmpty = !this.props.text;
     var elementClass = undefined;
     if (!this.state.open) {
-      elementClass = cx("btn btn-default form-control ui-select-match", this.props.buttonClass);
+      elementClass = cx('btn btn-default form-control ui-select-match', this.props.buttonClass);
       showElement = React.createElement(
-        "button",
+        'button',
         {
           className: elementClass,
           disabled: this.props.disabled,
           onClick: this.activate,
           placeholder: this.props.placeholder,
-          tabIndex: "-1",
-          type: "button" },
+          tabIndex: '-1',
+          type: 'button' },
         isEmpty ? React.createElement(
-          "span",
-          { className: "text-muted" },
+          'span',
+          { className: 'text-muted' },
           this.props.placeholder
         ) : React.createElement(
-          "span",
+          'span',
           null,
           this.props.text
         ),
-        React.createElement("span", { className: "caret" })
+        React.createElement('span', { className: 'caret' })
       );
     } else {
-      elementClass = cx("form-control ui-select-search", this.props.inputClass);
-      showElement = React.createElement("input", {
-        autoComplete: "off",
+      elementClass = cx('form-control ui-select-search', this.props.inputClass);
+      showElement = React.createElement('input', {
+        autoComplete: 'off',
         className: elementClass,
         onChange: this.updateSearch,
         onKeyDown: this.onKeyDown,
         placeholder: this.props.placeholder,
-        ref: "searchInput",
-        tabIndex: "-1",
-        type: "text",
+        ref: 'searchInput',
+        tabIndex: '-1',
+        type: 'text',
         value: this.state.search });
       var dropdownElements = this.getFilteredItems().map(this.renderDropdownItem);
       if (dropdownElements.length) {
-        var dropdownMenuClass = cx("ui-select-choices ui-select-choices-content dropdown-menu", {
-          "dropdown-menu-right": this.props.alignRight
+        var dropdownMenuClass = cx('ui-select-choices ui-select-choices-content dropdown-menu', {
+          'dropdown-menu-right': this.props.alignRight
         });
         dropdownMenu = React.createElement(
           UISelectDropdownMenu,
           {
             className: dropdownMenuClass,
             onClose: this.onClose,
-            ref: "dropdownMenu" },
+            ref: 'dropdownMenu' },
           dropdownElements
         );
       }
     }
 
     return React.createElement(
-      "div",
+      'div',
       { className: containerClass },
       showElement,
       dropdownMenu
