@@ -3,7 +3,7 @@ const React                 = require('react/addons');
 const cx                    = require('classnames');
 const dateHelper            = require('../Utilities/dateHelper');
 const Button                = require('react-bootstrap').Button;
-const { ImageWithFallback } = require('boomstrap-react').Components;
+const ImageWithFallback     = require('./ImageWithFallback');
 const Icon                  = require('./Icon.jsx');
 
 module.exports = React.createClass({

@@ -9,6 +9,10 @@ const DocTypes = {
     Component: require('../../src/Components/Card.jsx'),
     Example:   require('raw!../examples/Card.example.js')
   },
+  CardSmall: {
+    Component: require('../../src/Components/CardSmall.jsx'),
+    Example:   require('raw!../examples/CardSmall.example.js')
+  },
   Circle: {
     Component: require('../../src/Components/Circle.jsx'),
     Example:   require('raw!../examples/Circle.example.js')

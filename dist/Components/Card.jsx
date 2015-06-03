@@ -4,9 +4,7 @@ var React = require("react/addons");
 var cx = require("classnames");
 var dateHelper = require("../Utilities/dateHelper");
 var Button = require("react-bootstrap").Button;
-
-var ImageWithFallback = require("boomstrap-react").Components.ImageWithFallback;
-
+var ImageWithFallback = require("./ImageWithFallback");
 var Icon = require("./Icon.jsx");
 
 module.exports = React.createClass({

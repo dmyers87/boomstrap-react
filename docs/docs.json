@@ -180,6 +180,102 @@
       }
     }
   },
+  "dist/Components/CardSmall.jsx": {
+    "description": "",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "children": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
+      "imageSrc": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "listingUrl": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "fullAddress": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "address": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "city": {
+              "name": "string"
+            },
+            "street": {
+              "name": "string"
+            },
+            "state": {
+              "name": "string"
+            },
+            "neighborhood": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "listPrice": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "pricePerSqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sash": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "type": {
+              "name": "string"
+            },
+            "timeStamp": {
+              "name": "string"
+            },
+            "reducedAmount": {
+              "name": "string"
+            },
+            "reducedPercent": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
   "dist/Components/Circle.jsx": {
     "description": "Circles are just the colored dots next to times, online now, etc.",
     "props": {
