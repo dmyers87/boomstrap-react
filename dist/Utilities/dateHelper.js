@@ -3,7 +3,7 @@
 var moment = require("moment");
 var _ = require("lodash");
 
-//create function to return moment.calendar without time
+// create function to return moment.calendar without time
 var calendarDate = (function () {
   var baseCal = moment.langData()._calendar;
   var calWithTime = {

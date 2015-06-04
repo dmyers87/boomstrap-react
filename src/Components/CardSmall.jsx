@@ -44,9 +44,8 @@ module.exports = React.createClass({
   _renderLocationPriceInfo() {
     const props = this.props;
 
-    const listingClass = cx('card-sm-priority card-sm-street');
     const listingLink = (
-      <p className={listingClass}>
+      <p className='card-sm-priority card-sm-street'>
         <a target='_blank' href={props.listingUrl}>{props.address.street}</a>
       </p>
     );
@@ -69,23 +68,19 @@ module.exports = React.createClass({
 
   _renderStats() {
     const props = this.props;
-    const cardStatsClass = cx('card-sm-stats');
-    const cardStatClass = cx('card-sm-stat');
 
     return (
-      <div className={cardStatsClass}>
-        <span className={cardStatClass}>{ props.beds } BEDS</span>
-        <span className={cardStatClass}>{ props.baths } BATHS</span>
-        <span className={cardStatClass}>{ props.sqft } SQFT</span>
-        <span className={cardStatClass}>{ props.acres } ACRES</span>
+      <div className='card-sm-stats'>
+        <span className='card-sm-stat'>{ props.beds } BEDS</span>
+        <span className='card-sm-stat'>{ props.baths } BATHS</span>
+        <span className='card-sm-stat'>{ props.sqft } SQFT</span>
+        <span className='card-sm-stat'>{ props.acres } ACRES</span>
       </div>
     );
   },
 
   render() {
     const props = this.props;
-    const cardClass = cx('card card-sm');
-    const cardContainerClass = cx('card-sm-container');
 
     let imageSrc = null;
     if (props.imageSrc && props.imageSrc.length) {
@@ -95,7 +90,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <div className={cardClass}>
+      <div className='card card-sm'>
         <div className='card-photo'>
           <div className='card-photo-inner'>
             {this._renderSash()}
@@ -106,7 +101,7 @@ module.exports = React.createClass({
               fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
           </div>
         </div>
-        <div className={cardContainerClass}>
+        <div className='card-sm-container'>
           {this._renderLocationPriceInfo()}
         </div>
         {this._renderStats()}

@@ -43,10 +43,9 @@ module.exports = React.createClass({
   _renderLocationPriceInfo: function _renderLocationPriceInfo() {
     var props = this.props;
 
-    var listingClass = cx("card-sm-priority card-sm-street");
     var listingLink = React.createElement(
       "p",
-      { className: listingClass },
+      { className: "card-sm-priority card-sm-street" },
       React.createElement(
         "a",
         { target: "_blank", href: props.listingUrl },
@@ -94,33 +93,31 @@ module.exports = React.createClass({
 
   _renderStats: function _renderStats() {
     var props = this.props;
-    var cardStatsClass = cx("card-sm-stats");
-    var cardStatClass = cx("card-sm-stat");
 
     return React.createElement(
       "div",
-      { className: cardStatsClass },
+      { className: "card-sm-stats" },
       React.createElement(
         "span",
-        { className: cardStatClass },
+        { className: "card-sm-stat" },
         props.beds,
         " BEDS"
       ),
       React.createElement(
         "span",
-        { className: cardStatClass },
+        { className: "card-sm-stat" },
         props.baths,
         " BATHS"
       ),
       React.createElement(
         "span",
-        { className: cardStatClass },
+        { className: "card-sm-stat" },
         props.sqft,
         " SQFT"
       ),
       React.createElement(
         "span",
-        { className: cardStatClass },
+        { className: "card-sm-stat" },
         props.acres,
         " ACRES"
       )
@@ -129,8 +126,6 @@ module.exports = React.createClass({
 
   render: function render() {
     var props = this.props;
-    var cardClass = cx("card card-sm");
-    var cardContainerClass = cx("card-sm-container");
 
     var imageSrc = null;
     if (props.imageSrc && props.imageSrc.length) {
@@ -141,7 +136,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       "div",
-      { className: cardClass },
+      { className: "card card-sm" },
       React.createElement(
         "div",
         { className: "card-photo" },
@@ -158,7 +153,7 @@ module.exports = React.createClass({
       ),
       React.createElement(
         "div",
-        { className: cardContainerClass },
+        { className: "card-sm-container" },
         this._renderLocationPriceInfo()
       ),
       this._renderStats(),

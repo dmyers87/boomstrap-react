@@ -45,10 +45,9 @@ module.exports = React.createClass({
   _renderLocationPriceInfo: function _renderLocationPriceInfo() {
     var props = this.props;
 
-    var listingClass = cx("card-priority card-street");
     var listingLink = React.createElement(
       "p",
-      { className: listingClass },
+      { className: "card-priority card-street" },
       React.createElement(
         "a",
         { target: "_blank", href: props.listingUrl },
@@ -101,66 +100,35 @@ module.exports = React.createClass({
   _renderStats: function _renderStats() {
     var props = this.props;
 
-    var cardStatsClass = cx("card-stats");
-    var cardStatClass = cx("card-stat");
-
     return React.createElement(
       "div",
       null,
       React.createElement(
         "div",
-        { className: cardStatsClass },
+        { className: "card-stats" },
         React.createElement(
           "span",
-          { className: cardStatClass },
+          { className: "card-stat" },
           props.beds,
           " BEDS"
         ),
         React.createElement(
           "span",
-          { className: cardStatClass },
+          { className: "card-stat" },
           props.baths,
           " BATHS"
         ),
         React.createElement(
           "span",
-          { className: cardStatClass },
+          { className: "card-stat" },
           props.sqft,
           " SQFT"
         ),
         React.createElement(
           "span",
-          { className: cardStatClass },
+          { className: "card-stat" },
           props.acres,
           " ACRES"
-        )
-      ),
-      React.createElement(
-        "div",
-        { className: "card-container" },
-        React.createElement(
-          "div",
-          { className: "row row-xcondensed" },
-          React.createElement(
-            "div",
-            { className: "col-sm-6" },
-            React.createElement(
-              Button,
-              { bsSize: "small", className: "btn-block" },
-              React.createElement(Icon, { icon: "star" }),
-              " 1220 Best-Fit"
-            )
-          ),
-          React.createElement(
-            "div",
-            { className: "col-sm-6" },
-            React.createElement(
-              Button,
-              { bsSize: "small", className: "btn-block" },
-              React.createElement(Icon, { icon: "heart" }),
-              " 11 Favs"
-            )
-          )
         )
       )
     );
@@ -168,8 +136,6 @@ module.exports = React.createClass({
 
   render: function render() {
     var cardClass = cx("card");
-
-    var cardContainerClass = cx("card-container card-intro");
 
     var imageSrc = null;
     if (this.props.imageSrc && this.props.imageSrc.length) {
@@ -180,7 +146,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       "div",
-      { className: cardClass },
+      { className: "card" },
       React.createElement(
         "div",
         { className: "card-photo" },
@@ -197,7 +163,7 @@ module.exports = React.createClass({
       ),
       React.createElement(
         "div",
-        { className: cardContainerClass },
+        { className: "card-container card-intro" },
         this._renderLocationPriceInfo()
       ),
       this._renderStats(),
@@ -205,3 +171,15 @@ module.exports = React.createClass({
     );
   }
 });
+/*
+<div className='card-container'>
+ <div className='row row-xcondensed'>
+   <div className='col-sm-6'>
+     <Button bsSize='small' className='btn-block'><Icon icon='star'/> 1220 Best-Fit</Button>
+   </div>
+   <div className='col-sm-6'>
+     <Button bsSize='small' className='btn-block'><Icon icon='heart'/> 11 Favs</Button>
+   </div>
+ </div>
+</div>
+*/

@@ -46,9 +46,8 @@ module.exports = React.createClass({
   _renderLocationPriceInfo() {
     const props = this.props;
 
-    const listingClass = cx('card-priority card-street');
     const listingLink = (
-      <p className={listingClass}>
+      <p className='card-priority card-street'>
         <a target='_blank' href={props.listingUrl}>{props.address.street}</a>
       </p>
     );
@@ -74,16 +73,13 @@ module.exports = React.createClass({
   _renderStats() {
     const props = this.props;
 
-    const cardStatsClass = cx('card-stats');
-    const cardStatClass = cx('card-stat');
-
     return (
       <div>
-        <div className={cardStatsClass}>
-          <span className={cardStatClass}>{ props.beds } BEDS</span>
-          <span className={cardStatClass}>{ props.baths } BATHS</span>
-          <span className={cardStatClass}>{ props.sqft } SQFT</span>
-          <span className={cardStatClass}>{ props.acres } ACRES</span>
+        <div className='card-stats'>
+          <span className='card-stat'>{ props.beds } BEDS</span>
+          <span className='card-stat'>{ props.baths } BATHS</span>
+          <span className='card-stat'>{ props.sqft } SQFT</span>
+          <span className='card-stat'>{ props.acres } ACRES</span>
         </div>
         {/*
         <div className='card-container'>
@@ -104,8 +100,6 @@ module.exports = React.createClass({
   render() {
     const cardClass = cx('card');
 
-    const cardContainerClass = cx('card-container card-intro');
-
     let imageSrc = null;
     if (this.props.imageSrc && this.props.imageSrc.length) {
       imageSrc = this.props.imageSrc[0];
@@ -114,7 +108,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <div className={cardClass}>
+      <div className='card'>
         <div className='card-photo'>
           <div className='card-photo-inner'>
             {this._renderSash()}
@@ -125,7 +119,7 @@ module.exports = React.createClass({
               fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
           </div>
         </div>
-        <div className={cardContainerClass}>
+        <div className='card-container card-intro'>
           {this._renderLocationPriceInfo()}
         </div>
         {this._renderStats()}
