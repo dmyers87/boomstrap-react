@@ -7,16 +7,36 @@ module.exports = React.createClass({
   displayName: "Profile Pic",
 
   propTypes: {
+    /**
+     * Optionally, set small to use small profile pic.
+     */
     small: React.PropTypes.bool,
+    /**
+     * Provide src prop when the image is available. If not set, initials will be shown.
+     */
     src: React.PropTypes.string,
+    /**
+     * Provide alt text for image when available.
+     */
     alt: React.PropTypes.string,
+    /**
+     * Provide initials to be displayed when photo is not present. Required as fallback to image.
+     */
     initials: React.PropTypes.string.isRequired
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      small: false,
+      src: null,
+      alt: null
+    };
   },
 
   render: function render() {
     var className = cx("profile-pic", {
       "profile-pic--sm": this.props.small,
-      "profile-pic--initials": this.props.initials
+      "profile-pic--initials": !this.props.src
     });
 
     if (this.props.src) {
