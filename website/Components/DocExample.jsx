@@ -1,9 +1,14 @@
-const React = require('react/addons');
+const React      = require('react/addons');
+const request    = require('superagent');
+const { assign } = require('lodash');
 
 const DocTypes = {
   AutoComplete: {
     Component: require('../../src/Components/AutoComplete.jsx'),
-    Example:   require('raw!../examples/AutoComplete.example.js')
+    Example:   require('raw!../examples/AutoComplete.example.js'),
+    Scope: {
+      request: request
+    }
   },
   Callout: {
     Component: require('../../src/Components/Callout.jsx'),
@@ -82,15 +87,18 @@ module.exports = React.createClass({
   },
 
   render() {
-    const docType = DocTypes[this.props.name]
+    const docType = DocTypes[this.props.name];
     if (!docType) {
-      return <div />
+      return <div />;
     }
 
-    const scope = {
+    let scope = {
       React: React,
       [this.props.name]: docType.Component
     };
+    if (docType.Scope) {
+      scope = assign({}, scope, docType.Scope);
+    }
     console.log(scope);
 
     return (

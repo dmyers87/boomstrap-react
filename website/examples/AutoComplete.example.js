@@ -8,6 +8,27 @@ const ComponentExample = React.createClass({
     };
   },
 
+  componentWillMount() {
+    request.get('http://api.randomuser.me/')
+      .query({ results: 30 })
+      .end((err, data) => {
+        if (err) {
+          return err;
+        }
+
+        if (data && data.body && data.body.results) {
+          this.setState({
+            items: data.body.results.map(({ user }) => {
+              const userName = `${user.name.first} ${user.name.last}`;
+              return {
+                name: userName
+              };
+            })
+          });
+        }
+      });
+  },
+
   selectItem(item) {
     alert(item);
   },
