@@ -1,11 +1,11 @@
 
-var moment = require('moment');
-var _      = require('lodash');
+const moment = require('moment');
+const _      = require('lodash');
 
 //create function to return moment.calendar without time
-var calendarDate = (function () {
-  var baseCal = moment.langData()._calendar;
-  var calWithTime = {
+const calendarDate = (function() {
+  const baseCal = moment.langData()._calendar;
+  const calWithTime = {
     sameDay: '[Today at] LT',
     nextDay: '[Tomorrow at] LT',
     nextWeek: 'ddd [at] LT',
@@ -13,7 +13,7 @@ var calendarDate = (function () {
     lastWeek: '[Last] ddd [at] LT',
     sameElse: 'L LT'
   };
-  var calWithoutTime = {
+  const calWithoutTime = {
     sameDay: '[Today]',
     nextDay: '[Tomorrow]',
     nextWeek: 'dddd',
@@ -37,7 +37,7 @@ var calendarDate = (function () {
   };
 })();
 
-var dateHelper = {
+const dateHelper = {
   calendarDate: calendarDate,
   dateValueOrDefault: function(date) {
     return (
@@ -51,52 +51,51 @@ var dateHelper = {
   },
 
   distance: function(date, fromDate) {
-    date = dateHelper.dateValueOrDefault(date);
-    if (!date) {
+    let theDate = dateHelper.dateValueOrDefault(date);
+    if (!theDate) {
       return 'Never';
     }
-    if (!fromDate){
-      return moment(date).fromNow();
-    } else {
-      return moment(date).from(fromDate);
+    if (!fromDate) {
+      return moment(theDate).fromNow();
     }
+    return moment(theDate).from(fromDate);
   },
 
   pastDistance: function(date) {
-    date = dateHelper.dateValueOrDefault(date);
-    if (!date) {
+    let theDate = dateHelper.dateValueOrDefault(date);
+    if (!theDate) {
       return null;
     }
-    date = moment(date);
-    var today = moment(new Date());
-    if (today.diff(date) < 0) {
+    theDate = moment(theDate);
+    const today = moment(new Date());
+    if (today.diff(theDate) < 0) {
       return 'moments ago';
-    } else {
-      return date.fromNow();
     }
+    return theDate.fromNow();
   },
 
   customDistance: function(date, fromDate) {
-    date = dateHelper.dateValueOrDefault(date);
-    if (!date) {
+    let theDate = dateHelper.dateValueOrDefault(date);
+    if (!theDate) {
       return 'Never';
     }
 
-    if (!fromDate) {
-      fromDate = new Date();
+    let theFromDate = null;
+    if (!theFromDate) {
+      theFromDate = new Date();
     }
 
-    var isPastDate = false;
+    let isPastDate = false;
 
-    var rightNow = moment(fromDate);
-    var comparisonDate = moment(date);
-    var dateDiff = rightNow.diff(comparisonDate, 'minutes');
+    const rightNow = moment(fromDate);
+    const comparisonDate = moment(theDate);
+    let dateDiff = rightNow.diff(comparisonDate, 'minutes');
     if (dateDiff < 0) {
       isPastDate = true;
     }
     dateDiff = Math.abs(dateDiff);
-    var useHalf = false;
-    var dateDiffShort = 'min';
+    let useHalf = false;
+    let dateDiffShort = 'min';
 
     if (dateDiff > 59) {
       dateDiff = Math.floor(dateDiff / 60);
@@ -111,7 +110,7 @@ var dateHelper = {
           dateDiffShort = 'mo';
 
           if (dateDiff > 11) {
-            var dateDiffHalf = dateDiff % 12;
+            const dateDiffHalf = dateDiff % 12;
 
             dateDiff = Math.floor(dateDiff / 12);
             dateDiffShort = 'yr';
@@ -145,9 +144,9 @@ var dateHelper = {
   },
 
   prettyDateDistance: function(date) {
-    var dateValue = dateHelper.distance(date);
+    const dateValue = dateHelper.distance(date);
 
-    var dateValues = dateValue.split(' ');
+    const dateValues = dateValue.split(' ');
     if (dateValues.length > 1) {
       // The first will be the 'number'
       // The rest will be the 'days ago'
@@ -156,14 +155,13 @@ var dateHelper = {
         text: _.rest(dateValues).join(' '),
         hasValue: true
       };
-    } else {
-      // DateValue is 'Never'
-      return {
-        value: null,
-        text: dateValue,
-        hasValue: false
-      };
     }
+    // DateValue is 'Never'
+    return {
+      value: null,
+      text: dateValue,
+      hasValue: false
+    };
   }
 };
 

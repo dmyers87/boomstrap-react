@@ -45,45 +45,44 @@ var dateHelper = {
   },
 
   distance: function distance(date, fromDate) {
-    date = dateHelper.dateValueOrDefault(date);
-    if (!date) {
+    var theDate = dateHelper.dateValueOrDefault(date);
+    if (!theDate) {
       return "Never";
     }
     if (!fromDate) {
-      return moment(date).fromNow();
-    } else {
-      return moment(date).from(fromDate);
+      return moment(theDate).fromNow();
     }
+    return moment(theDate).from(fromDate);
   },
 
   pastDistance: function pastDistance(date) {
-    date = dateHelper.dateValueOrDefault(date);
-    if (!date) {
+    var theDate = dateHelper.dateValueOrDefault(date);
+    if (!theDate) {
       return null;
     }
-    date = moment(date);
+    theDate = moment(theDate);
     var today = moment(new Date());
-    if (today.diff(date) < 0) {
+    if (today.diff(theDate) < 0) {
       return "moments ago";
-    } else {
-      return date.fromNow();
     }
+    return theDate.fromNow();
   },
 
   customDistance: function customDistance(date, fromDate) {
-    date = dateHelper.dateValueOrDefault(date);
-    if (!date) {
+    var theDate = dateHelper.dateValueOrDefault(date);
+    if (!theDate) {
       return "Never";
     }
 
-    if (!fromDate) {
-      fromDate = new Date();
+    var theFromDate = null;
+    if (!theFromDate) {
+      theFromDate = new Date();
     }
 
     var isPastDate = false;
 
     var rightNow = moment(fromDate);
-    var comparisonDate = moment(date);
+    var comparisonDate = moment(theDate);
     var dateDiff = rightNow.diff(comparisonDate, "minutes");
     if (dateDiff < 0) {
       isPastDate = true;
@@ -147,14 +146,13 @@ var dateHelper = {
         text: _.rest(dateValues).join(" "),
         hasValue: true
       };
-    } else {
-      // DateValue is 'Never'
-      return {
-        value: null,
-        text: dateValue,
-        hasValue: false
-      };
     }
+    // DateValue is 'Never'
+    return {
+      value: null,
+      text: dateValue,
+      hasValue: false
+    };
   }
 };
 

@@ -5,7 +5,7 @@ var ComponentExample = React.createClass({
         <h4>Card Small</h4>
         <CardSmall imageSrc={['http://photos.boomtowncdn.com/charleston/orig_boomver_4_1419721-1.jpg','http://photos.boomtowncdn.com/charleston/orig_boomver_4_1419721-2.jpg']} address={{ city:'Mount Pleasant', neighborhood:'Grassy Creek', state:'SC', street:'227 Palmetto Bluff' }} beds='4' baths='3.5' sqft='3200' acres='0.32' listingID='11111111' listPrice='$725,000' pricePerSqft='$226'/>
         &nbsp;&nbsp;
-        <CardSmall imageSrc={['http://photos.boomtowncdn.com/charleston/orig_boomver_4_1419721-1.jpg']} sash={{ type: 'new', timeStamp: '06/05/15'}} address={{ city:'Mount Pleasant', neighborhood:'Grassy Creek', state:'SC', street:'227 Palmetto Bluff' }} beds='4' baths='3.5' sqft='3200' acres='0.32' listingID='11111111' listPrice='$725,000' pricePerSqft='$226'/>
+        <CardSmall imageSrc={['http://photos.boomtowncdn.com/charleston/orig_boomver_4_1419721-1.jpg']} sash={{ type: 'new', timeStamp: '06/04/15'}} address={{ city:'Mount Pleasant', neighborhood:'Grassy Creek', state:'SC', street:'227 Palmetto Bluff' }} beds='4' baths='3.5' sqft='3200' acres='0.32' listingID='11111111' listPrice='$725,000' pricePerSqft='$226'/>
         &nbsp;&nbsp;
         <CardSmall imageSrc={['http://photos.boomtowncdn.com/charleston/orig_boomver_4_1419721-1.jpg']} sash={{ type: 'reduced', reducedAmount: '$20,000', reducedPercent: '10%', timeStamp: '06/02/15'}} address={{ city:'Mount Pleasant', neighborhood:'Grassy Creek', state:'SC', street:'227 Palmetto Bluff' }} beds='4' baths='3.5' sqft='3200' acres='0.32' listingID='11111111' listPrice='$725,000' pricePerSqft='$226'/>
         &nbsp;&nbsp;
