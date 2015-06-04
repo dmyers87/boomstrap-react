@@ -2,25 +2,20 @@
 
 var React = require("react/addons");
 var cx = require("classnames");
-var dateHelper = require("../Utilities/dateHelper");
-var Button = require("react-bootstrap").Button;
 var ImageWithFallback = require("./ImageWithFallback");
+var Sash = require("./Sash.jsx");
 var Icon = require("./Icon.jsx");
+var Button = require("react-bootstrap").Button;
 
 module.exports = React.createClass({
   displayName: "Card",
 
   propTypes: {
+    /**
+     * Optionally include additional class name(s).
+     */
+    className: React.PropTypes.string,
     children: React.PropTypes.any,
-    isSmall: React.PropTypes.bool,
-    newProperty: React.PropTypes.string,
-    offMarket: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.bool]),
-    reduced: React.PropTypes.shape({
-      changed: React.PropTypes.string,
-      changePercent: React.PropTypes.string,
-      when: React.PropTypes.string
-    }),
-    backOnMarket: React.PropTypes.string,
     imageSrc: React.PropTypes.array,
     listingUrl: React.PropTypes.string,
     fullAddress: React.PropTypes.string,
@@ -31,92 +26,26 @@ module.exports = React.createClass({
       neighborhood: React.PropTypes.string
     }),
     listPrice: React.PropTypes.string,
-    pricePerSqft: React.PropTypes.string
+    pricePerSqft: React.PropTypes.string,
+    sash: React.PropTypes.shape({
+      type: React.PropTypes.string,
+      timeStamp: React.PropTypes.string,
+      reducedAmount: React.PropTypes.string,
+      reducedPercent: React.PropTypes.string
+    })
   },
 
   _renderSash: function _renderSash() {
     var props = this.props;
-    var innerSash = React.createElement("span", null);
-    var dateDistance = null;
-    var sashClass = {
-      sash: true
-    };
-
-    if (props.newProperty) {
-      sashClass["sash-new"] = true;
-      dateDistance = dateHelper.distance(props.newProperty);
-      innerSash = React.createElement(
-        "span",
-        null,
-        "New ",
-        React.createElement(
-          "span",
-          { className: "sash-time" },
-          dateDistance
-        )
-      );
-    } else if (props.offMarket) {
-      sashClass["sash-off"] = true;
-      dateDistance = dateHelper.distance(props.offMarket);
-      innerSash = React.createElement(
-        "span",
-        null,
-        "Off Market ",
-        React.createElement(
-          "span",
-          { className: "sash-time" },
-          dateDistance
-        )
-      );
-    } else if (props.reduced) {
-      sashClass["sash-reduced"] = true;
-      dateDistance = dateHelper.distance(props.reduced.when);
-      innerSash = React.createElement(
-        "span",
-        null,
-        React.createElement(Icon, { icon: "arrow-down" }),
-        " ",
-        props.reduced.changed,
-        " (",
-        props.reduced.changePercent,
-        ") ",
-        React.createElement(
-          "span",
-          { className: "sash-time" },
-          dateDistance
-        )
-      );
-    } else if (props.backOnMarket) {
-      sashClass["sash-back"] = true;
-      dateDistance = dateHelper.distance(props.backOnMarket);
-      innerSash = React.createElement(
-        "span",
-        null,
-        "Back ",
-        React.createElement(
-          "span",
-          null,
-          dateDistance
-        )
-      );
-    } else {
-      return null;
+    if (props.sash) {
+      return React.createElement(Sash, { type: props.sash.type, reducedAmount: props.sash.reducedAmount, reducedPercent: props.sash.reducedPercent, timeStamp: props.sash.timeStamp });
     }
-
-    return React.createElement(
-      "div",
-      { className: cx(sashClass) },
-      innerSash
-    );
   },
 
   _renderLocationPriceInfo: function _renderLocationPriceInfo() {
     var props = this.props;
 
-    var listingClass = cx({
-      "card-sm-priority card-sm-street": props.isSmall,
-      "card-priority card-street": !props.isSmall
-    });
+    var listingClass = cx("card-priority card-street");
     var listingLink = React.createElement(
       "p",
       { className: listingClass },
@@ -127,101 +56,53 @@ module.exports = React.createClass({
       )
     );
 
-    var listingMarkup = null;
-
-    if (this.props.isSmall) {
-      listingMarkup = React.createElement(
+    return React.createElement(
+      "div",
+      null,
+      React.createElement(
+        "p",
+        { className: "card-priority card-price" },
+        props.listPrice
+      ),
+      listingLink,
+      React.createElement(
         "div",
         { className: "row row-xcondensed" },
         React.createElement(
           "div",
-          { className: "col-xs-8" },
-          listingLink,
+          { className: "col-xs-7" },
           React.createElement(
             "p",
-            { className: "xsmall" },
+            { className: "small" },
             props.address.city,
             " , ",
             props.address.state
           ),
           React.createElement(
             "p",
-            { className: "xsmall" },
+            { className: "small" },
             props.address.neighborhood
           )
         ),
         React.createElement(
           "div",
-          { className: "col-xs-4 text-right" },
+          { className: "col-xs-5 text-right" },
           React.createElement(
             "p",
-            { className: "card-sm-priority card-sm-price" },
-            props.listPrice
-          ),
-          React.createElement(
-            "p",
-            { className: "xsmall" },
+            { className: "small" },
             props.pricePerSqft,
             "/SQFT"
           )
         )
-      );
-    } else {
-      listingMarkup = React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "p",
-          { className: "card-priority card-price" },
-          props.listPrice
-        ),
-        listingLink,
-        React.createElement(
-          "div",
-          { className: "row row-xcondensed" },
-          React.createElement(
-            "div",
-            { className: "col-xs-7" },
-            React.createElement(
-              "p",
-              { className: "small" },
-              props.address.city,
-              " , ",
-              props.address.state
-            ),
-            React.createElement(
-              "p",
-              { className: "small" },
-              props.address.neighborhood
-            )
-          ),
-          React.createElement(
-            "div",
-            { className: "col-xs-5 text-right" },
-            React.createElement(
-              "p",
-              { className: "small" },
-              props.pricePerSqft,
-              "/SQFT"
-            )
-          )
-        )
-      );
-    }
-    return listingMarkup;
+      )
+    );
   },
 
   _renderStats: function _renderStats() {
     var props = this.props;
-    var cardStatsClass = cx({
-      "card-sm-stats": this.props.isSmall,
-      "card-stats": !this.props.isSmall
-    });
 
-    var cardStatClass = cx({
-      "card-sm-stat": this.props.isSmall,
-      "card-stat": !this.props.isSmall
-    });
+    var cardStatsClass = cx("card-stats");
+    var cardStatClass = cx("card-stat");
 
     return React.createElement(
       "div",
@@ -286,15 +167,9 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var cardClass = cx({
-      card: true,
-      "card-sm": this.props.isSmall
-    });
+    var cardClass = cx("card");
 
-    var cardContainerClass = cx({
-      "card-sm-container": this.props.isSmall,
-      "card-container card-intro": !this.props.isSmall
-    });
+    var cardContainerClass = cx("card-container card-intro");
 
     var imageSrc = null;
     if (this.props.imageSrc && this.props.imageSrc.length) {
