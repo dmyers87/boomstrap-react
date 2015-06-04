@@ -2080,19 +2080,11 @@ process.umask = function() { return 0; };
 (function (global){
 /**
  * @license
-<<<<<<< HEAD
- * Lo-Dash 2.4.2 (Custom Build) <https://lodash.com/>
- * Build: `lodash modern -o ./dist/lodash.js`
- * Copyright 2012-2013 The Dojo Foundation <http://dojofoundation.org/>
- * Based on Underscore.js 1.5.2 <http://underscorejs.org/LICENSE>
- * Copyright 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
-=======
  * lodash 3.9.3 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern -d -o ./index.js`
  * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
->>>>>>> ff6415e751cce61270dd63fe5e9f16a3943f803a
  * Available under MIT license <https://lodash.com/license>
  */
 ;(function() {
@@ -3579,13 +3571,6 @@ process.umask = function() { return 0; };
      * @returns {boolean} Returns `true` if any element passes the predicate check,
      *  else `false`.
      */
-<<<<<<< HEAD
-    var setBindData = !defineProperty ? noop : function(func, value) {
-      descriptor.value = value;
-      defineProperty(func, '__bindData__', descriptor);
-      descriptor.value = null;
-    };
-=======
     function arraySome(array, predicate) {
       var index = -1,
           length = array.length;
@@ -3597,7 +3582,6 @@ process.umask = function() { return 0; };
       }
       return false;
     }
->>>>>>> ff6415e751cce61270dd63fe5e9f16a3943f803a
 
     /**
      * A specialized version of `_.sum` for arrays without support for iteratees.
@@ -13326,16 +13310,8 @@ process.umask = function() { return 0; };
      * destination object. If `object` is a function then methods are added to
      * its prototype as well.
      *
-<<<<<<< HEAD
-     * For more information on precompiling templates see:
-     * https://lodash.com/custom-builds
-     *
-     * For more information on Chrome extension sandboxes see:
-     * http://developer.chrome.com/stable/extensions/sandboxingEval.html
-=======
      * **Note:** Use `_.runInContext` to create a pristine `lodash` function to
      * avoid conflicts caused by modifying the original.
->>>>>>> ff6415e751cce61270dd63fe5e9f16a3943f803a
      *
      * @static
      * @memberOf _
@@ -14082,11 +14058,7 @@ process.umask = function() { return 0; };
      * @memberOf _
      * @type string
      */
-<<<<<<< HEAD
-    lodash.VERSION = '2.4.2';
-=======
     lodash.VERSION = VERSION;
->>>>>>> ff6415e751cce61270dd63fe5e9f16a3943f803a
 
     // Assign default placeholders.
     arrayEach(['bind', 'bindKey', 'curry', 'curryRight', 'partial', 'partialRight'], function(methodName) {

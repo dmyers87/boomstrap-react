@@ -1,18 +1,18 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
+var React = require('react/addons');
 
-var _require = require("lodash");
+var _require = require('lodash');
 
 var assign = _require.assign;
 
-var cx = require("classnames");
+var cx = require('classnames');
 
 /**
  * AutoComplete provides a way to have a typeahead with a dropdown menu.
  */
 var AutoComplete = React.createClass({
-  displayName: "AutoComplete",
+  displayName: 'AutoComplete',
 
   propTypes: {
     /**
@@ -36,17 +36,12 @@ var AutoComplete = React.createClass({
     items: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
 
     /**
-     * Style attributes to be applied to the menu.
-     */
-    menuStyle: React.PropTypes.object,
-
-    /**
      * Function to invoke when the value has changed.
      */
     onChange: React.PropTypes.func,
 
     /**
-     * Function that is used to render individual items.  Gets the item and the highlighted index as parameters.
+     * Function that is used to render individual items.  Gets the item and whether or not this index is highlighted as parameters.
      */
     renderItem: React.PropTypes.func.isRequired,
 
@@ -72,11 +67,11 @@ var AutoComplete = React.createClass({
       getItemValue: function getItemValue(item) {
         return item;
       },
-      inputClass: "",
+      inputClass: '',
       renderMenu: function renderMenu(items /*, value */) {
         return React.createElement(
-          "div",
-          { style: this.menuStyle },
+          'div',
+          null,
           items
         );
       },
@@ -85,20 +80,13 @@ var AutoComplete = React.createClass({
       },
       sortItems: function sortItems() {
         return 0;
-      },
-      menuStyle: {
-        borderRadius: "3px",
-        boxShadow: "0 2px 12px rgba(0, 0, 0, 0.1)",
-        background: "rgba(255, 255, 255, 0.9)",
-        padding: "2px 0",
-        fontSize: "90%"
       }
     };
   },
 
   getInitialState: function getInitialState() {
     return {
-      value: this.props.initialValue || "",
+      value: this.props.initialValue || '',
       isOpen: false,
       highlightedIndex: null,
       performAutoCompleteOnKeyUp: false,
@@ -170,7 +158,7 @@ var AutoComplete = React.createClass({
   },
 
   componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-    var _this = this;
+    var _this2 = this;
 
     var _state = this.state;
     var isOpen = _state.isOpen;
@@ -183,7 +171,7 @@ var AutoComplete = React.createClass({
       /* eslint react/no-did-update-set-state: 0 */
       // Allowing this because it only happens under certain conditions
       this.setState({ performAutoCompleteOnUpdate: false }, function () {
-        _this.maybeAutoCompleteText();
+        _this2.maybeAutoCompleteText();
       });
     }
   },
@@ -200,40 +188,40 @@ var AutoComplete = React.createClass({
   },
 
   handleChange: function handleChange(event) {
-    var _this = this;
+    var _this3 = this;
 
     this.setState({
       value: event.target.value,
       performAutoCompleteOnKeyUp: true
     }, function () {
-      _this.props.onChange(_this.state.value);
+      _this3.props.onChange(_this3.state.value);
     });
   },
 
   handleKeyUp: function handleKeyUp() {
-    var _this = this;
+    var _this4 = this;
 
     if (this.state.performAutoCompleteOnKeyUp) {
       this.setState({ performAutoCompleteOnKeyUp: false }, function () {
-        _this.maybeAutoCompleteText();
+        _this4.maybeAutoCompleteText();
       });
     }
   },
 
   getFilteredItems: function getFilteredItems() {
-    var _this = this;
+    var _this5 = this;
 
     return this.props.items.filter(function (item) {
-      return _this.props.shouldItemRender(item, _this.state.value);
+      return _this5.props.shouldItemRender(item, _this5.state.value);
     }).sort(function (a, b) {
-      return _this.props.sortItems(a, b, _this.state.value);
+      return _this5.props.sortItems(a, b, _this5.state.value);
     });
   },
 
   maybeAutoCompleteText: function maybeAutoCompleteText() {
-    var _this = this;
+    var _this6 = this;
 
-    if (this.state.value === "") {
+    if (this.state.value === '') {
       return;
     }
 
@@ -250,14 +238,14 @@ var AutoComplete = React.createClass({
 
     if (itemValueDoesMatch) {
       (function () {
-        var node = React.findDOMNode(_this.refs.input);
-        var setSelection = function () {
+        var node = React.findDOMNode(_this6.refs.input);
+        var setSelection = function setSelection() {
           node.value = itemValue;
-          node.setSelectionRange(_this.state.value.length, itemValue.length);
+          node.setSelectionRange(_this6.state.value.length, itemValue.length);
         };
 
         if (highlightedIndex === null) {
-          _this.setState({ highlightedIndex: 0 }, setSelection);
+          _this6.setState({ highlightedIndex: 0 }, setSelection);
         } else {
           setSelection();
         }
@@ -280,26 +268,26 @@ var AutoComplete = React.createClass({
   },
 
   renderMenu: function renderMenu() {
-    var _this = this;
+    var _this7 = this;
 
-    var _state = this.state;
-    var menuTop = _state.menuTop;
-    var menuLeft = _state.menuLeft;
-    var menuWidth = _state.menuWidth;
-    var value = _state.value;
-    var highlightedIndex = _state.highlightedIndex;
+    var _state2 = this.state;
+    var menuTop = _state2.menuTop;
+    var menuLeft = _state2.menuLeft;
+    var menuWidth = _state2.menuWidth;
+    var value = _state2.value;
+    var highlightedIndex = _state2.highlightedIndex;
 
     var items = this.getFilteredItems().map(function (item, index) {
-      return _this.props.renderItem(item, highlightedIndex === index);
+      return _this7.props.renderItem(item, highlightedIndex === index);
     });
-    var style = assign({
+    var style = {
       left: menuLeft,
       top: menuTop,
       minWidth: menuWidth,
-      position: "fixed"
-    }, this.props.menuStyle);
+      position: 'fixed'
+    };
     return React.createElement(
-      "div",
+      'div',
       { style: style },
       this.props.renderMenu(items, value)
     );
@@ -307,28 +295,28 @@ var AutoComplete = React.createClass({
 
   getActiveItemValue: function getActiveItemValue() {
     if (this.state.highlightedIndex === null) {
-      return "";
+      return '';
     }
     return this.props.getItemValue(this.props.items[this.state.highlightedIndex]);
   },
 
   render: function render() {
-    var _this = this;
+    var _this8 = this;
 
-    var inputClass = cx("form-control", this.props.inputClass);
+    var inputClass = cx('form-control', this.props.inputClass);
     return React.createElement(
-      "div",
-      { style: { display: "inline-block" } },
-      React.createElement("input", {
+      'div',
+      { style: { display: 'inline-block' } },
+      React.createElement('input', {
         className: inputClass,
-        role: "combobox",
-        "aria-label": this.getActiveItemValue(),
-        ref: "input",
+        role: 'combobox',
+        'aria-label': this.getActiveItemValue(),
+        ref: 'input',
         onFocus: function () {
-          return _this.setState({ isOpen: true });
+          return _this8.setState({ isOpen: true });
         },
         onBlur: function () {
-          return _this.setState({ isOpen: false, highlightedIndex: null });
+          return _this8.setState({ isOpen: false, highlightedIndex: null });
         },
         onChange: this.handleChange,
         onKeyDown: this.handleKeyDown,
