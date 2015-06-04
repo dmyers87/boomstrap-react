@@ -611,6 +611,39 @@
       }
     }
   },
+  "dist/Components/ProfilePic.jsx": {
+    "description": "",
+    "props": {
+      "small": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": ""
+      },
+      "src": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "alt": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "initials": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": ""
+      }
+    }
+  },
   "dist/Components/ProgressBar.jsx": {
     "description": "",
     "props": {

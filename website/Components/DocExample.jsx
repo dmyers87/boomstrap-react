@@ -41,6 +41,10 @@ const DocTypes = {
     Component: require('../../src/Components/Pager.jsx'),
     Example:   require('raw!../examples/Pager.example.js')
   },
+  ProfilePic: {
+    Component: require('../../src/Components/ProfilePic.jsx'),
+    Example:   require('raw!../examples/ProfilePic.example.js')
+  },
   ProgressBar: {
     Component: require('../../src/Components/ProgressBar.jsx'),
     Example:   require('raw!../examples/ProgressBar.example.js')
