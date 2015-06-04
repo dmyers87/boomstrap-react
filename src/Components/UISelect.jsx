@@ -254,7 +254,17 @@ module.exports = React.createClass({
     } else {
       elementClass = cx('form-control ui-select-search', this.props.inputClass);
       showElement  = (
-        <input autoComplete='off' className={elementClass} onChange={this.updateSearch} onKeyDown={this.onKeyDown} placeholder={this.props.placeholder} ref='searchInput' tabIndex='-1' type='text' value={this.state.search}/>
+        <input
+          autoComplete='off'
+          className={elementClass}
+          onChange={this.updateSearch}
+          onKeyDown={this.onKeyDown}
+          placeholder={this.props.placeholder}
+          ref='searchInput'
+          tabIndex='-1'
+          type='text'
+          value={this.state.search}
+        />
       );
 
       const dropdownElements = this.getFilteredItems().map(this.renderDropdownItem);

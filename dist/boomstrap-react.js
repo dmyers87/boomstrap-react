@@ -1506,7 +1506,17 @@ module.exports = React.createClass({
       showElement = React.createElement("button", { className: elementClass, disabled: this.props.disabled, onClick: this.activate, placeholder: this.props.placeholder, tabIndex: "-1", type: "button" }, isEmpty ? React.createElement("span", { className: "text-muted" }, this.props.placeholder) : React.createElement("span", null, this.props.text), React.createElement("span", { className: "caret" }));
     } else {
       elementClass = cx("form-control ui-select-search", this.props.inputClass);
-      showElement = React.createElement("input", { autoComplete: "off", className: elementClass, onChange: this.updateSearch, onKeyDown: this.onKeyDown, placeholder: this.props.placeholder, ref: "searchInput", tabIndex: "-1", type: "text", value: this.state.search });
+      showElement = React.createElement("input", {
+        autoComplete: "off",
+        className: elementClass,
+        onChange: this.updateSearch,
+        onKeyDown: this.onKeyDown,
+        placeholder: this.props.placeholder,
+        ref: "searchInput",
+        tabIndex: "-1",
+        type: "text",
+        value: this.state.search
+      });
 
       var dropdownElements = this.getFilteredItems().map(this.renderDropdownItem);
 
