@@ -1,63 +1,4 @@
 {
-  "dist/Components/Callout.js": {
-    "description": "Use callouts to display important information or messages.",
-    "props": {
-      "children": {
-        "type": {
-          "name": "any"
-        },
-        "required": false,
-        "description": "Optionally include children."
-      },
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optionally include additional class name(s)."
-      },
-      "heading": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optionally include a heading."
-      },
-      "type": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "'attention'",
-              "computed": false
-            },
-            {
-              "value": "'danger'",
-              "computed": false
-            },
-            {
-              "value": "'info'",
-              "computed": false
-            },
-            {
-              "value": "'success'",
-              "computed": false
-            },
-            {
-              "value": "'warning'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Optionally include type.",
-        "defaultValue": {
-          "value": "'info'",
-          "computed": false
-        }
-      }
-    }
-  },
   "dist/Components/Callout.jsx": {
     "description": "Use callouts to display important information or messages.",
     "props": {
@@ -358,67 +299,9 @@
       }
     }
   },
-  "dist/Components/FauxLink.js": {
-    "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
-    "props": {}
-  },
   "dist/Components/FauxLink.jsx": {
     "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
     "props": {}
-  },
-  "dist/Components/Fauxbox.js": {
-    "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
-    "props": {
-      "id": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "Identifier used to link the label and the checkbox"
-      },
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optional class to provide to div wrapping Fauxbox"
-      },
-      "labelClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optional class to provide to wrap the label"
-      },
-      "checked": {
-        "type": {
-          "name": "bool"
-        },
-        "required": true,
-        "description": "Indicated whether or not the Fauxbox is checked"
-      },
-      "onClick": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Event to fire when the Fauxbox is clicked"
-      },
-      "inline": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Indicates whether or not the Fauxbox is a block element or inline-block element"
-      },
-      "label": {
-        "type": {
-          "name": "node"
-        },
-        "required": false,
-        "description": "Label that is tied to updating the Fauxbox"
-      }
-    }
   },
   "dist/Components/Fauxbox.jsx": {
     "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
@@ -471,67 +354,6 @@
         },
         "required": false,
         "description": "Label that is tied to updating the Fauxbox"
-      }
-    }
-  },
-  "dist/Components/Fauxdio.js": {
-    "description": "Display radio buttons in style with the Fauxdio",
-    "props": {
-      "radioID": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "Identifier provided to link together the input with the label"
-      },
-      "radioClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optional class to pass to the div that wraps the Fauxdio"
-      },
-      "labelClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optional class to pass to the label that accompanies the input"
-      },
-      "checked": {
-        "type": {
-          "name": "bool"
-        },
-        "required": true,
-        "description": "Indicates whether or not the Fauxdio is selected"
-      },
-      "value": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Provided for information on submitting forms"
-      },
-      "onChange": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "A callback to fire when the Fauxdio is selected."
-      },
-      "inline": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Indicates whether or not the Fauxdio is block element or inline-block element"
-      },
-      "label": {
-        "type": {
-          "name": "node"
-        },
-        "required": false,
-        "description": "A label to accompany the Fauxdio.  Can be text or a React node"
       }
     }
   },
@@ -596,39 +418,6 @@
       }
     }
   },
-  "dist/Components/IFrame.js": {
-    "description": "",
-    "props": {
-      "src": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": ""
-      },
-      "width": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": ""
-      },
-      "height": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": ""
-      },
-      "onCloseFrame": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
   "dist/Components/IFrame.jsx": {
     "description": "",
     "props": {
@@ -662,25 +451,6 @@
       }
     }
   },
-  "dist/Components/Icon.js": {
-    "description": "",
-    "props": {
-      "icon": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": ""
-      },
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
   "dist/Components/Icon.jsx": {
     "description": "",
     "props": {
@@ -692,32 +462,6 @@
         "description": ""
       },
       "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
-  "dist/Components/IconTooltip.js": {
-    "description": "",
-    "props": {
-      "showIf": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      },
-      "text": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "icon": {
         "type": {
           "name": "string"
         },
@@ -752,25 +496,6 @@
       }
     }
   },
-  "dist/Components/ImageWithFallback.js": {
-    "description": "",
-    "props": {
-      "src": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": ""
-      },
-      "fallbackSrc": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": ""
-      }
-    }
-  },
   "dist/Components/ImageWithFallback.jsx": {
     "description": "",
     "props": {
@@ -787,84 +512,6 @@
         },
         "required": true,
         "description": ""
-      }
-    }
-  },
-  "dist/Components/LeadCategory.js": {
-    "description": "",
-    "props": {
-      "category": {
-        "type": {
-          "name": "number"
-        },
-        "required": true,
-        "description": ""
-      },
-      "equal": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "abbreviated": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "small": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "outline": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "muted": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "disabled": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
       }
     }
   },
@@ -946,39 +593,6 @@
       }
     }
   },
-  "dist/Components/Loader.js": {
-    "description": "",
-    "props": {
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "desaturated": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      },
-      "small": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      },
-      "center": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
   "dist/Components/Loader.jsx": {
     "description": "",
     "props": {
@@ -1009,73 +623,6 @@
         },
         "required": false,
         "description": ""
-      }
-    }
-  },
-  "dist/Components/Marker.js": {
-    "description": "Use markers to represent current searching / filtering parameters.",
-    "props": {
-      "type": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "'default'",
-          "computed": false
-        }
-      },
-      "label": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": ""
-      },
-      "showClose": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "true",
-          "computed": false
-        }
-      },
-      "closeClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
-      },
-      "onClose": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "function onClose() {}",
-          "computed": false
-        }
-      },
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
       }
     }
   },
@@ -1146,40 +693,6 @@
       }
     }
   },
-  "dist/Components/MessageFace.js": {
-    "description": "",
-    "props": {
-      "placement": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "''",
-              "computed": false
-            },
-            {
-              "value": "'left'",
-              "computed": false
-            },
-            {
-              "value": "'top'",
-              "computed": false
-            },
-            {
-              "value": "'right'",
-              "computed": false
-            },
-            {
-              "value": "'bottom'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
   "dist/Components/MessageFace.jsx": {
     "description": "",
     "props": {
@@ -1211,72 +724,6 @@
         },
         "required": false,
         "description": ""
-      }
-    }
-  },
-  "dist/Components/NavLinksBar.js": {
-    "description": "Nav Links Bar provides an animated `tab switcher`-like control",
-    "props": {
-      "activeKey": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": "The current key of the child that should have the bar",
-        "defaultValue": {
-          "value": "null",
-          "computed": false
-        }
-      },
-      "navClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optional class for wrapping the list",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
-      },
-      "barClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optional class for wrapping the bar that slides",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
-      },
-      "orientation": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "'vertical'",
-              "computed": false
-            },
-            {
-              "value": "'horizontal'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Direction of the list ('vertical' or 'horizontal'), defaults to 'vertical'",
-        "defaultValue": {
-          "value": "'vertical'",
-          "computed": false
-        }
-      },
-      "children": {
-        "type": {
-          "name": "any"
-        },
-        "required": false,
-        "description": "Actual Nav Links to render (expected in <li><a /></li> format)\nThis property is provided by React children"
       }
     }
   },
@@ -1346,65 +793,6 @@
       }
     }
   },
-  "dist/Components/Pager.js": {
-    "description": "",
-    "props": {
-      "currentPage": {
-        "type": {
-          "name": "number"
-        },
-        "required": true,
-        "description": ""
-      },
-      "totalItems": {
-        "type": {
-          "name": "number"
-        },
-        "required": true,
-        "description": ""
-      },
-      "itemsPerPage": {
-        "type": {
-          "name": "number"
-        },
-        "required": true,
-        "description": ""
-      },
-      "onPage": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "function onPage() {}",
-          "computed": false
-        }
-      },
-      "disabled": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
-      }
-    }
-  },
   "dist/Components/Pager.jsx": {
     "description": "",
     "props": {
@@ -1459,110 +847,6 @@
         "description": "",
         "defaultValue": {
           "value": "\"\"",
-          "computed": false
-        }
-      }
-    }
-  },
-  "dist/Components/ProgressBar.js": {
-    "description": "",
-    "props": {
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optionally include additional class name(s)."
-      },
-      "progress": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": "Number 1-100 representing a percentage.",
-        "defaultValue": {
-          "value": "0",
-          "computed": false
-        }
-      },
-      "showLabel": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Set to 'true' to show label in progress bar.",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "size": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "''",
-              "computed": false
-            },
-            {
-              "value": "'xs'",
-              "computed": false
-            },
-            {
-              "value": "'sm'",
-              "computed": false
-            },
-            {
-              "value": "'lg'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Options: xs, sm, lg.",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
-      },
-      "type": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "'attention'",
-              "computed": false
-            },
-            {
-              "value": "'danger'",
-              "computed": false
-            },
-            {
-              "value": "'info'",
-              "computed": false
-            },
-            {
-              "value": "'primary'",
-              "computed": false
-            },
-            {
-              "value": "'success'",
-              "computed": false
-            },
-            {
-              "value": "'success-to-danger'",
-              "computed": false
-            },
-            {
-              "value": "'warning'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Optionally include type.",
-        "defaultValue": {
-          "value": "'primary'",
           "computed": false
         }
       }
@@ -1730,25 +1014,6 @@
       }
     }
   },
-  "dist/Components/Score.js": {
-    "description": "Use scores to rank / score data.",
-    "props": {
-      "score": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": ""
-      },
-      "size": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
   "dist/Components/Score.jsx": {
     "description": "Use scores to rank / score data.",
     "props": {
@@ -1765,71 +1030,6 @@
         },
         "required": false,
         "description": ""
-      }
-    }
-  },
-  "dist/Components/Switcher.js": {
-    "description": "Toggle switch.",
-    "props": {
-      "checked": {
-        "type": {
-          "name": "bool"
-        },
-        "required": true,
-        "description": ""
-      },
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optionally include additional class name(s)."
-      },
-      "disabled": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Disable switcher.",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "id": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": ""
-      },
-      "onClick": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      },
-      "size": {
-        "type": {
-          "name": "enum",
-          "value": [
-            {
-              "value": "''",
-              "computed": false
-            },
-            {
-              "value": "'sm'",
-              "computed": false
-            }
-          ]
-        },
-        "required": false,
-        "description": "Options: sm.",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
       }
     }
   },
@@ -1893,116 +1093,6 @@
         "description": "Options: sm.",
         "defaultValue": {
           "value": "\"\"",
-          "computed": false
-        }
-      }
-    }
-  },
-  "dist/Components/UIMultiSelect.js": {
-    "description": "",
-    "props": {
-      "selectedValues": {
-        "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "union",
-            "value": [
-              {
-                "name": "string"
-              },
-              {
-                "name": "number"
-              }
-            ]
-          }
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "[]",
-          "computed": false
-        }
-      },
-      "placeholder": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "items": {
-        "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "shape",
-            "value": {
-              "payload": {
-                "name": "union",
-                "value": [
-                  {
-                    "name": "string"
-                  },
-                  {
-                    "name": "number"
-                  }
-                ]
-              },
-              "text": {
-                "name": "string"
-              }
-            }
-          }
-        },
-        "required": false,
-        "description": ""
-      },
-      "text": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "buttonClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "inputClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "onChange": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      },
-      "disabled": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "alignRight": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
           "computed": false
         }
       }
@@ -2100,138 +1190,6 @@
         },
         "required": false,
         "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "alignRight": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      }
-    }
-  },
-  "dist/Components/UISelect.js": {
-    "description": "",
-    "props": {
-      "payload": {
-        "type": {
-          "name": "union",
-          "value": [
-            {
-              "name": "string"
-            },
-            {
-              "name": "number"
-            }
-          ]
-        },
-        "required": false,
-        "description": "The value the selected item returns. Can be a string or number."
-      },
-      "text": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The label the selected item displays."
-      },
-      "placeholder": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The initial text the UISelect displays"
-      },
-      "items": {
-        "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "shape",
-            "value": {
-              "payload": {
-                "name": "union",
-                "value": [
-                  {
-                    "name": "string"
-                  },
-                  {
-                    "name": "number"
-                  }
-                ]
-              },
-              "text": {
-                "name": "string"
-              }
-            }
-          }
-        },
-        "required": false,
-        "description": "The list of items to populate the dropdown; [{payload: 'value', text: 'label'}..]",
-        "defaultValue": {
-          "value": "[]",
-          "computed": false
-        }
-      },
-      "buttonClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Add a class to the button portion of the component."
-      },
-      "inputClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Add a class to the input portion of the component."
-      },
-      "containerClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Add a class to the component container.",
-        "defaultValue": {
-          "value": "''",
-          "computed": false
-        }
-      },
-      "includeSearchInValues": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      },
-      "translateSearchValue": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      },
-      "onChange": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Function to call when a selection is made."
-      },
-      "disabled": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Disable the element.",
         "defaultValue": {
           "value": "false",
           "computed": false
@@ -2382,78 +1340,6 @@
       }
     }
   },
-  "dist/Components/UITypeaheadSelect.js": {
-    "description": "",
-    "props": {
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "iconClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "inputClass": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "placeholder": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "onSearch": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      },
-      "onSelectMatch": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      },
-      "options": {
-        "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "shape",
-            "value": {
-              "element": {
-                "name": "element"
-              },
-              "payload": {
-                "name": "any"
-              }
-            }
-          }
-        },
-        "required": false,
-        "description": ""
-      },
-      "overlayModal": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
   "dist/Components/UITypeaheadSelect.jsx": {
     "description": "",
     "props": {
@@ -2493,78 +1379,6 @@
         "description": ""
       },
       "onSelectMatch": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      },
-      "options": {
-        "type": {
-          "name": "arrayOf",
-          "value": {
-            "name": "shape",
-            "value": {
-              "element": {
-                "name": "element"
-              },
-              "payload": {
-                "name": "any"
-              }
-            }
-          }
-        },
-        "required": false,
-        "description": ""
-      },
-      "overlayModal": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
-  "dist/Components/UITypeaheadSelectOverlay.js": {
-    "description": "",
-    "props": {
-      "positionLeft": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": ""
-      },
-      "positionLeftOverride": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": ""
-      },
-      "positionTop": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": ""
-      },
-      "searchIndex": {
-        "type": {
-          "name": "number"
-        },
-        "required": false,
-        "description": ""
-      },
-      "selectActive": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": ""
-      },
-      "selectMatch": {
         "type": {
           "name": "func"
         },
@@ -2662,32 +1476,6 @@
         "description": ""
       },
       "overlayModal": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
-  "dist/Components/Well.js": {
-    "description": "",
-    "props": {
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "large": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      },
-      "small": {
         "type": {
           "name": "bool"
         },

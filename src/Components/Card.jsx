@@ -85,6 +85,7 @@ module.exports = React.createClass({
           <span className={cardStatClass}>{ props.sqft } SQFT</span>
           <span className={cardStatClass}>{ props.acres } ACRES</span>
         </div>
+        {/*
         <div className='card-container'>
           <div className='row row-xcondensed'>
             <div className='col-sm-6'>
@@ -95,6 +96,7 @@ module.exports = React.createClass({
             </div>
           </div>
         </div>
+        */}
       </div>
     );
   },
