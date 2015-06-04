@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 /**
  * Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.
  * Fauxbox is a drop-in replacement for checkboxes in Boomstrap.
  */
 var Fauxbox = React.createClass({
-  displayName: "Fauxbox",
+  displayName: 'Fauxbox',
 
   propTypes: {
     /**
@@ -48,22 +48,22 @@ var Fauxbox = React.createClass({
   },
 
   render: function render() {
-    var fauxboxClass = cx(this.props.className, "fauxbox", {
-      "fauxbox-inline": !!this.props.inline
+    var fauxboxClass = cx(this.props.className, 'fauxbox', {
+      'fauxbox-inline': !!this.props.inline
     });
-    var labelClass = this.props.labelClass || "";
+    var labelClass = this.props.labelClass || '';
 
     return React.createElement(
-      "div",
+      'div',
       { className: fauxboxClass },
-      React.createElement("input", {
-        type: "checkbox",
+      React.createElement('input', {
+        type: 'checkbox',
         id: this.props.id,
         checked: this.props.checked,
         readOnly: true,
         onClick: this.props.onClick }),
       React.createElement(
-        "label",
+        'label',
         { className: labelClass, htmlFor: this.props.id },
         this.props.label
       )

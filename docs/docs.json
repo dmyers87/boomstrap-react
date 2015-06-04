@@ -1031,21 +1031,21 @@
           ]
         },
         "required": false,
-        "description": ""
+        "description": "The value the selected item returns. Can be a string or number."
       },
       "text": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "The label the selected item displays."
       },
       "placeholder": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "The initial text the UISelect displays"
       },
       "items": {
         "type": {
@@ -1071,7 +1071,7 @@
           }
         },
         "required": false,
-        "description": "",
+        "description": "The list of items to populate the dropdown; [{payload: 'value', text: 'label'}..]",
         "defaultValue": {
           "value": "[]",
           "computed": false
@@ -1082,14 +1082,25 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Add a class to the button portion of the component."
       },
       "inputClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Add a class to the input portion of the component."
+      },
+      "containerClass": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Add a class to the component container.",
+        "defaultValue": {
+          "value": "\"\"",
+          "computed": false
+        }
       },
       "includeSearchInValues": {
         "type": {
@@ -1110,14 +1121,14 @@
           "name": "func"
         },
         "required": false,
-        "description": ""
+        "description": "Function to call when a selection is made."
       },
       "disabled": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": "",
+        "description": "Disable the element.",
         "defaultValue": {
           "value": "false",
           "computed": false

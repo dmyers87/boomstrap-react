@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
 module.exports = {
-  Components: require("./Components/App.js"),
-  Constants: require("./Constants/App.js"),
-  Mixins: require("./Mixins/App.js")
+  Components: require('./Components/App'),
+  Constants: require('./Constants/App'),
+  Mixins: require('./Mixins/App')
 };
