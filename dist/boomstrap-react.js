@@ -34,7 +34,6 @@ module.exports = {
 };
 
 },{"./FauxLink":3,"./Fauxbox":4,"./Fauxdio":5,"./IFrame":6,"./Icon":7,"./IconTooltip":8,"./ImageWithFallback":9,"./LeadCategory":10,"./Loader":11,"./Marker":12,"./MessageFace":13,"./NavLinksBar":14,"./Pager":15,"./ProgressBar":16,"./Score":17,"./Switcher":18,"./UIMultiSelect":19,"./UISelect":20,"./UITypeaheadSelect":21,"./Well":23}],3:[function(require,module,exports){
-/*eslint no-script-url:0 */
 "use strict";
 
 var _extends = Object.assign || function (target) {
@@ -47,6 +46,7 @@ var _extends = Object.assign || function (target) {
   }return target;
 };
 
+/*eslint no-script-url:0 */
 var React = (window.React);
 
 /**
@@ -231,12 +231,12 @@ module.exports = React.createClass({
   },
 
   _iFrameCloseRegister: function _iFrameCloseRegister() {
-    var _this2 = this;
+    var _this = this;
 
     var element = React.findDOMNode(this.refs.iframe);
     if (element && element.contentWindow && element.contentWindow.registerClose) {
       element.contentWindow.registerClose(function (options) {
-        _this2.props.onCloseFrame(options);
+        _this.props.onCloseFrame(options);
       });
     }
   },
@@ -258,6 +258,12 @@ module.exports = React.createClass({
 },{}],7:[function(require,module,exports){
 "use strict";
 
+var _objectWithoutProperties = function _objectWithoutProperties(obj, keys) {
+  var target = {};for (var i in obj) {
+    if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];
+  }return target;
+};
+
 var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];for (var key in source) {
@@ -267,12 +273,6 @@ var _extends = Object.assign || function (target) {
     }
   }return target;
 };
-
-function _objectWithoutProperties(obj, keys) {
-  var target = {};for (var i in obj) {
-    if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];
-  }return target;
-}
 
 var React = (window.React);
 var cx = require("classnames");
@@ -581,9 +581,9 @@ var getVerticalNavPos = function getVerticalNavPos(child) {
 var getHorizontalNavPos = function getHorizontalNavPos(child) {
   var left = child.offsetLeft;
 
-  var _child$getBoundingClientRect2 = child.getBoundingClientRect();
+  var _child$getBoundingClientRect = child.getBoundingClientRect();
 
-  var width = _child$getBoundingClientRect2.width;
+  var width = _child$getBoundingClientRect.width;
 
   left = Math.round(left);
   width = Math.round(width);
@@ -910,9 +910,9 @@ module.exports = React.createClass({
 },{"classnames":30,"lodash":31}],17:[function(require,module,exports){
 "use strict";
 
-function _defineProperty(obj, key, value) {
+var _defineProperty = function _defineProperty(obj, key, value) {
   return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-}
+};
 
 var React = (window.React);
 var cx = require("classnames");
@@ -1115,7 +1115,7 @@ module.exports = React.createClass({
   },
 
   select: function select(index) {
-    var _this2 = this;
+    var _this = this;
 
     var selectedItem = this.getFilteredItems()[index];
     this.setState({
@@ -1125,14 +1125,14 @@ module.exports = React.createClass({
       allowBlurEvent: true
     }, function () {
       var selectedValues = undefined;
-      if (_this2._payloadIsSelected(selectedItem.payload)) {
-        selectedValues = _this2.props.selectedValues.filter(function (val) {
+      if (_this._payloadIsSelected(selectedItem.payload)) {
+        selectedValues = _this.props.selectedValues.filter(function (val) {
           return val !== selectedItem.payload;
         });
       } else {
-        selectedValues = _this2.props.selectedValues.concat([selectedItem.payload]);
+        selectedValues = _this.props.selectedValues.concat([selectedItem.payload]);
       }
-      _this2.props.onChange(selectedValues);
+      _this.props.onChange(selectedValues);
     });
   },
 
@@ -1220,7 +1220,7 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var _this3 = this;
+    var _this = this;
 
     var showElement = this._renderBaseElement();
 
@@ -1230,15 +1230,15 @@ module.exports = React.createClass({
 
     var dropdownElements = this.getFilteredItems().map(function (item, index) {
       var rowClass = cx("ui-select-choices-row", {
-        active: _this3.state.activeIndex === index
+        active: _this.state.activeIndex === index
       });
 
-      var itemSelected = _this3._payloadIsSelected(item.payload);
+      var itemSelected = _this._payloadIsSelected(item.payload);
 
       return React.createElement("li", { className: "ui-select-choices-group", key: index }, React.createElement("div", {
         className: rowClass,
-        onMouseEnter: _this3.setActiveItem.bind(_this3, index),
-        onClick: _this3.select.bind(_this3, index) }, React.createElement(FauxLink, { className: "ui-select-choices-row-inner" }, React.createElement(Fauxbox, {
+        onMouseEnter: _this.setActiveItem.bind(_this, index),
+        onClick: _this.select.bind(_this, index) }, React.createElement(FauxLink, { className: "ui-select-choices-row-inner" }, React.createElement(Fauxbox, {
         id: "ui-multi-select-" + item.payload,
         checked: itemSelected,
         label: item.text }))));
@@ -1364,7 +1364,7 @@ module.exports = React.createClass({
   },
 
   updateSearch: function updateSearch(e) {
-    var _this2 = this;
+    var _this = this;
 
     // Internet Explorer fires change events on blur
     // Because these events do not have a value we can ignore it
@@ -1373,16 +1373,16 @@ module.exports = React.createClass({
 
     if (val !== this.state.search) {
       this.setState({ search: val }, function () {
-        return _this2.setActiveItem(0);
+        return _this.setActiveItem(0);
       });
     }
   },
 
   setActiveItem: function setActiveItem(index) {
-    var _this3 = this;
+    var _this = this;
 
     this.setState({ activeIndex: index }, function () {
-      return _this3._ensureHighlightVisible();
+      return _this._ensureHighlightVisible();
     });
   },
 
@@ -1432,7 +1432,7 @@ module.exports = React.createClass({
   },
 
   select: function select(index) {
-    var _this4 = this;
+    var _this = this;
 
     var selectedItem = this.getFilteredItems()[index];
 
@@ -1440,8 +1440,8 @@ module.exports = React.createClass({
       search: "",
       open: false
     }, function () {
-      _this4.setActiveItem(0);
-      _this4.props.onChange(selectedItem);
+      _this.setActiveItem(0);
+      _this.props.onChange(selectedItem);
     });
   },
 
@@ -1478,16 +1478,16 @@ module.exports = React.createClass({
   },
 
   renderDropdownItem: function renderDropdownItem(item, index) {
-    var _this5 = this;
+    var _this = this;
 
     var rowClass = cx("ui-select-choices-row", {
       active: this.state.activeIndex === index
     });
 
     return React.createElement("li", { className: "ui-select-choices-group", key: index, ref: "dropdownMenuItem_" + index }, React.createElement("div", { className: rowClass, onMouseEnter: function onMouseEnter() {
-        return _this5.setActiveItem(index);
+        return _this.setActiveItem(index);
       }, onClick: function onClick() {
-        return _this5.select(index);
+        return _this.select(index);
       } }, React.createElement(FauxLink, { className: "ui-select-choices-row-inner" }, React.createElement("div", null, item.text))));
   },
 
@@ -1636,7 +1636,7 @@ module.exports = React.createClass({
   },
 
   _selectMatch: function _selectMatch(payload) {
-    var _this2 = this;
+    var _this = this;
 
     // Blur input to close search
     this.refs.overlay.getOverlayDOMNode().blur();
@@ -1644,8 +1644,8 @@ module.exports = React.createClass({
     this.setState({
       searchText: ""
     }, function () {
-      _this2.props.onSelectMatch(payload);
-      _this2.props.onSearch(_this2.state.searchText);
+      _this.props.onSelectMatch(payload);
+      _this.props.onSearch(_this.state.searchText);
     });
   },
 

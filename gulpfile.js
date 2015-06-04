@@ -19,7 +19,7 @@ function compileScriptsFromEntryPoint(entry, fileName, destination) {
 
   var b = browserify({
     standalone: 'BoomstrapReact',
-    extension: [ 'jsx', 'js' ]
+    extensions: [ '.jsx', '.js' ]
   });
 
   b.transform(babelify.configure({
