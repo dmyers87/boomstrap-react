@@ -2,8 +2,8 @@
 
 const React              = require('react/addons');
 const cx                 = require('classnames');
-const FauxLink           = require('./FauxLink.jsx');
-const DocumentClickMixin = require('../Mixins/DocumentClickMixin.jsx');
+const FauxLink           = require('./FauxLink');
+const DocumentClickMixin = require('../Mixins/DocumentClickMixin');
 
 const UISelectDropdownMenu = React.createClass({
   displayName: 'UI Select Dropdown Menu',

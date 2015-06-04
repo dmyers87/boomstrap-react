@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
-var _require = require("lodash");
+var _require = require('lodash');
 
 var assign = _require.assign;
 var omit = _require.omit;
@@ -14,7 +14,7 @@ var omit = _require.omit;
  * Toggle switch.
  */
 module.exports = React.createClass({
-  displayName: "Switcher",
+  displayName: 'Switcher',
 
   propTypes: {
     checked: React.PropTypes.bool.isRequired,
@@ -31,13 +31,13 @@ module.exports = React.createClass({
     /**
      * Options: sm.
      */
-    size: React.PropTypes.oneOf(["", "sm"])
+    size: React.PropTypes.oneOf(['', 'sm'])
   },
 
   getDefaultProps: function getDefaultProps() {
     return {
       disabled: false,
-      size: ""
+      size: ''
     };
   },
 
@@ -52,41 +52,41 @@ module.exports = React.createClass({
     var onClick = props.onClick;
     var size = props.size;
 
-    props = omit(props, ["checked", "className", "disabled", "id", "onClick", "size"]);
+    props = omit(props, ['checked', 'className', 'disabled', 'id', 'onClick', 'size']);
 
-    var switcherClass = cx("switcher", className, {
-      "switcher--sm": size === "sm",
-      "switcher--disabled": disabled
+    var switcherClass = cx('switcher', className, {
+      'switcher--sm': size === 'sm',
+      'switcher--disabled': disabled
     });
 
-    var switcherLabelClass = cx("switcher__label", {
-      "switcher__label--sm": size === "sm"
+    var switcherLabelClass = cx('switcher__label', {
+      'switcher__label--sm': size === 'sm'
     });
 
     return React.createElement(
-      "div",
+      'div',
       _extends({ className: switcherClass }, props),
-      React.createElement("input", { type: "checkbox",
-        className: "switcher__input",
+      React.createElement('input', { type: 'checkbox',
+        className: 'switcher__input',
         id: id,
         checked: checked,
         readOnly: true,
         onClick: onClick }),
       React.createElement(
-        "label",
+        'label',
         { className: switcherLabelClass, htmlFor: id },
         React.createElement(
-          "div",
-          { className: "switcher__inner" },
+          'div',
+          { className: 'switcher__inner' },
           React.createElement(
-            "div",
-            { className: "switcher__on" },
-            React.createElement("i", { className: "ficon ficon-checkmark" })
+            'div',
+            { className: 'switcher__on' },
+            React.createElement('i', { className: 'ficon ficon-checkmark' })
           ),
           React.createElement(
-            "div",
-            { className: "switcher__off" },
-            React.createElement("i", { className: "ficon ficon-cross" })
+            'div',
+            { className: 'switcher__off' },
+            React.createElement('i', { className: 'ficon ficon-cross' })
           )
         )
       )

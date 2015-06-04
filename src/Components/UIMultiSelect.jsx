@@ -1,8 +1,8 @@
 const React = require('react/addons');
 const cx    = require('classnames');
 
-const Fauxbox  = require('./Fauxbox.jsx');
-const FauxLink = require('./FauxLink.jsx');
+const Fauxbox  = require('./Fauxbox');
+const FauxLink = require('./FauxLink');
 
 module.exports = React.createClass({
   displayName: 'UI MultiSelect',

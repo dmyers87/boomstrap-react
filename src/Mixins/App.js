@@ -1,3 +1,3 @@
 module.exports = {
-  DocumentClickMixin: require('./DocumentClickMixin.jsx')
+  DocumentClickMixin: require('./DocumentClickMixin')
 };

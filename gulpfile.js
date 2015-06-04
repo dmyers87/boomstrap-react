@@ -9,24 +9,23 @@ var WebpackDevServer = require('webpack-dev-server');
 
 function compileScriptsFromEntryPoint(entry, fileName, destination) {
   var browserify = require('browserify');
-  var to5ify     = require('babelify');
+  var babelify   = require('babelify');
   var source     = require('vinyl-source-stream');
-  //var uglify     = require('uglifyify');
 
   var globalShim = require('browserify-global-shim').configure({
     'react/addons': 'React',
     'react': 'React'
   });
 
-  var b = browserify({ standalone: 'BoomstrapReact'});
-  //b.exclude('react/addons');
-  //b.exclude('lodash');
+  var b = browserify({
+    standalone: 'BoomstrapReact',
+    extension: [ 'jsx', 'js' ]
+  });
 
-  b.transform(to5ify); // use the babelify transform
+  b.transform(babelify.configure({
+    optional: ['es7.objectRestSpread']
+  })); // use the babelify transform
   b.transform(globalShim);
-
-  // TODO: Implement uglifyify
-  //b.transform(uglify);
   b.add(entry);
 
   return b.bundle()
@@ -37,7 +36,9 @@ function compileScriptsFromEntryPoint(entry, fileName, destination) {
 gulp.task('transformScripts', function() {
   var to5    = require('gulp-babel');
   return gulp.src('src/**')
-    .pipe(to5())
+    .pipe(to5({
+      optional: ['es7.objectRestSpread']
+    }))
     .pipe(gulp.dest('dist/'));
 });
 

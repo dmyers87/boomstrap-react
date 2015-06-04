@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 // Components
-var Icon = require("./Icon.jsx");
+var Icon = require('./Icon');
 
 /**
  * Use markers to represent current searching / filtering parameters.
  */
 module.exports = React.createClass({
-  displayName: "Marker",
+  displayName: 'Marker',
 
   propTypes: {
     type: React.PropTypes.string,
@@ -23,30 +23,30 @@ module.exports = React.createClass({
 
   getDefaultProps: function getDefaultProps() {
     return {
-      type: "default",
+      type: 'default',
       onClose: function onClose() {},
-      closeClass: "",
+      closeClass: '',
       showClose: true,
-      className: ""
+      className: ''
     };
   },
 
   render: function render() {
-    var markerClass = cx("marker", "marker-" + this.props.type, this.props.className);
+    var markerClass = cx('marker', 'marker-' + this.props.type, this.props.className);
 
     var close = null;
     if (this.props.showClose) {
-      close = React.createElement(Icon, { icon: "cross", className: this.props.closeClass, onClick: this.props.onClose });
+      close = React.createElement(Icon, { icon: 'cross', className: this.props.closeClass, onClick: this.props.onClose });
     }
 
     return React.createElement(
-      "span",
+      'span',
       { className: markerClass },
       React.createElement(
-        "span",
+        'span',
         null,
         this.props.label,
-        " "
+        ' '
       ),
       close
     );
