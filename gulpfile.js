@@ -26,9 +26,6 @@ function compileScriptsFromEntryPoint(entry, fileName, destination) {
     optional: ['es7.objectRestSpread']
   })); // use the babelify transform
   b.transform(globalShim);
-
-  // TODO: Implement uglifyify
-  // b.transform(uglify);
   b.add(entry);
 
   return b.bundle()
