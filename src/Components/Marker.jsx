@@ -2,7 +2,7 @@ const React = require('react/addons');
 const cx    = require('classnames');
 
 // Components
-const Icon = require('./Icon.jsx');
+const Icon = require('./Icon');
 
 /**
  * Use markers to represent current searching / filtering parameters.

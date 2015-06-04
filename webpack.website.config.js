@@ -15,9 +15,16 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: [/node_modules/, /examples/], loader: 'babel-loader' },
+      {
+        test: /\.jsx?$/,
+        exclude: [/node_modules/, /examples/],
+        loader: 'babel-loader',
+        query: {
+          optional: ['es7.objectRestSpread']
+        }
+      },
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader!autoprefixer-loader?{browsers:["last 2 version", "IE 9"]}'}
-    ],
+    ]
   },
   resolve: {
     // you can now require('file') instead of require('file.coffee')

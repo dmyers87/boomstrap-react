@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 /**
  * Use callouts to display important information or messages.
  */
 module.exports = React.createClass({
-  displayName: "Callout",
+  displayName: 'Callout',
 
   propTypes: {
     /**
@@ -25,30 +25,30 @@ module.exports = React.createClass({
     /**
      * Optionally include type.
      */
-    type: React.PropTypes.oneOf(["attention", "danger", "info", "success", "warning"])
+    type: React.PropTypes.oneOf(['attention', 'danger', 'info', 'success', 'warning'])
   },
 
   getDefaultProps: function getDefaultProps() {
     return {
-      type: "info"
+      type: 'info'
     };
   },
 
   render: function render() {
-    var classes = cx("callout", "callout-" + this.props.type, this.props.className);
+    var classes = cx('callout', 'callout-' + this.props.type, this.props.className);
 
     var calloutHeading = null;
 
     if (this.props.heading) {
       calloutHeading = React.createElement(
-        "h4",
+        'h4',
         null,
         this.props.heading
       );
     }
 
     return React.createElement(
-      "div",
+      'div',
       { className: classes },
       calloutHeading,
       this.props.children

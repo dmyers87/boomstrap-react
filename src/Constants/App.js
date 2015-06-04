@@ -1,3 +1,3 @@
 module.exports = {
-  LeadCategories: require('./LeadCategories.js')
+  LeadCategories: require('./LeadCategories')
 };

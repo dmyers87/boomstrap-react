@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 var Orientations = {
-  Vertical: "vertical",
-  Horizontal: "horizontal"
+  'Vertical': 'vertical',
+  'Horizontal': 'horizontal'
 };
 
-var getVerticalNavPos = function (child) {
+var getVerticalNavPos = function getVerticalNavPos(child) {
   var top = child.offsetTop;
 
   var _child$getBoundingClientRect = child.getBoundingClientRect();
@@ -21,12 +21,12 @@ var getVerticalNavPos = function (child) {
   return { top: top, height: height };
 };
 
-var getHorizontalNavPos = function (child) {
+var getHorizontalNavPos = function getHorizontalNavPos(child) {
   var left = child.offsetLeft;
 
-  var _child$getBoundingClientRect = child.getBoundingClientRect();
+  var _child$getBoundingClientRect2 = child.getBoundingClientRect();
 
-  var width = _child$getBoundingClientRect.width;
+  var width = _child$getBoundingClientRect2.width;
 
   left = Math.round(left);
   width = Math.round(width);
@@ -38,7 +38,7 @@ var getHorizontalNavPos = function (child) {
  * Nav Links Bar provides an animated `tab switcher`-like control
  */
 module.exports = React.createClass({
-  displayName: "Nav Links Bar",
+  displayName: 'Nav Links Bar',
 
   propTypes: {
     /**
@@ -59,7 +59,7 @@ module.exports = React.createClass({
     /**
      * Direction of the list ('vertical' or 'horizontal'), defaults to 'vertical'
      */
-    orientation: React.PropTypes.oneOf(["vertical", "horizontal"]),
+    orientation: React.PropTypes.oneOf(['vertical', 'horizontal']),
 
     /**
      * Actual Nav Links to render (expected in <li><a /></li> format)
@@ -70,10 +70,10 @@ module.exports = React.createClass({
 
   getDefaultProps: function getDefaultProps() {
     return {
-      orientation: "vertical",
+      orientation: 'vertical',
       activeKey: null,
-      navClass: "",
-      barClass: ""
+      navClass: '',
+      barClass: ''
     };
   },
 
@@ -103,7 +103,7 @@ module.exports = React.createClass({
     var getNavPos = this.props.orientation === Orientations.Vertical ? getVerticalNavPos : getHorizontalNavPos;
 
     Object.keys(this.refs).forEach(function (ref, index) {
-      if (ref.indexOf("navChild-") !== -1) {
+      if (ref.indexOf('navChild-') !== -1) {
         var child = React.findDOMNode(_this.refs[ref]);
         navPositions[index] = getNavPos(child);
         childCount++;
@@ -117,11 +117,11 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var listClass = cx("nav", this.props.navClass, {
-      "nav-blocks": this.props.orientation === Orientations.Vertical,
-      "nav-links": this.props.orientation === Orientations.Horizontal
+    var listClass = cx('nav', this.props.navClass, {
+      'nav-blocks': this.props.orientation === Orientations.Vertical,
+      'nav-links': this.props.orientation === Orientations.Horizontal
     });
-    var barClass = cx("nav-links__bar", this.props.barClass);
+    var barClass = cx('nav-links__bar', this.props.barClass);
 
     var barStyle = {};
     if (this.props.orientation === Orientations.Vertical) {
@@ -134,13 +134,13 @@ module.exports = React.createClass({
           barHeight = activeNav.height;
         }
       }
-      var transform = "translateY(" + barTop + "px)";
+      var transform = 'translateY(' + barTop + 'px)';
       barStyle = {
         transform: transform,
         WebkitTransform: transform,
         msTransform: transform,
-        height: "" + barHeight + "px",
-        top: "0"
+        height: '' + barHeight + 'px',
+        top: '0'
       };
     } else {
       // Horizontal bar
@@ -153,30 +153,30 @@ module.exports = React.createClass({
           barWidth = activeNav.width;
         }
       }
-      var transform = "translateX(" + barLeft + "px)";
+      var transform = 'translateX(' + barLeft + 'px)';
       barStyle = {
         transform: transform,
         WebkitTransform: transform,
         msTransform: transform,
-        width: "" + barWidth + "px",
-        left: "0",
-        bottom: "0"
+        width: '' + barWidth + 'px',
+        left: '0',
+        bottom: '0'
       };
     }
 
     return React.createElement(
-      "div",
-      { style: { position: "relative" } },
+      'div',
+      { style: { position: 'relative' } },
       React.createElement(
-        "ul",
+        'ul',
         { className: listClass },
         React.Children.map(this.props.children, function (child, index) {
           return React.cloneElement(child, {
             key: index,
-            ref: "navChild-" + index
+            ref: 'navChild-' + index
           });
         }),
-        React.createElement("span", { className: barClass, style: barStyle })
+        React.createElement('span', { className: barClass, style: barStyle })
       )
     );
   }
