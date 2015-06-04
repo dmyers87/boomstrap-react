@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
-var React = require('react/addons');
+var React = require("react/addons");
 
 module.exports = React.createClass({
-  displayName: 'IFrame',
+  displayName: "IFrame",
 
   propTypes: {
     src: React.PropTypes.string.isRequired,
@@ -20,7 +20,7 @@ module.exports = React.createClass({
     // https://github.com/facebook/react/issues/1718
     var iframe = React.findDOMNode(this.refs.iframe);
     if (iframe.attachEvent) {
-      iframe.attachEvent('onload', function () {
+      iframe.attachEvent("onload", function () {
         _this._iFrameCloseRegister();
       });
     } else {
@@ -31,12 +31,12 @@ module.exports = React.createClass({
   },
 
   _iFrameCloseRegister: function _iFrameCloseRegister() {
-    var _this2 = this;
+    var _this = this;
 
     var element = React.findDOMNode(this.refs.iframe);
     if (element && element.contentWindow && element.contentWindow.registerClose) {
       element.contentWindow.registerClose(function (options) {
-        _this2.props.onCloseFrame(options);
+        _this.props.onCloseFrame(options);
       });
     }
   },
@@ -46,7 +46,7 @@ module.exports = React.createClass({
     var width = this.props.width || null;
     var height = this.props.height || null;
 
-    return React.createElement('iframe', { ref: 'iframe',
+    return React.createElement("iframe", { ref: "iframe",
       src: src,
       width: width,
       height: height,

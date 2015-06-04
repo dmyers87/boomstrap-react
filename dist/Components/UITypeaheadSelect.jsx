@@ -1,13 +1,13 @@
-'use strict';
+"use strict";
 
-var React = require('react/addons');
-var cx = require('classnames');
+var React = require("react/addons");
+var cx = require("classnames");
 
-var OverlayTrigger = require('react-bootstrap').OverlayTrigger;
-var UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay');
+var OverlayTrigger = require("react-bootstrap").OverlayTrigger;
+var UITypeaheadSelectOverlay = require("./UITypeaheadSelectOverlay");
 
 module.exports = React.createClass({
-  displayName: 'UI Typeahead Select',
+  displayName: "UI Typeahead Select",
 
   propTypes: {
     className: React.PropTypes.string,
@@ -25,7 +25,7 @@ module.exports = React.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      searchText: '',
+      searchText: "",
       searchIndex: 0,
       searchLeft: 0
     };
@@ -50,11 +50,11 @@ module.exports = React.createClass({
   },
 
   _onKeyDown: function _onKeyDown(e) {
-    if (e.key === 'Enter' || e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    if (e.key === "Enter" || e.key === "ArrowDown" || e.key === "ArrowUp") {
       e.preventDefault();
     }
 
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       if (this.props.options && this.props.options.length) {
         this._selectMatch(this.props.options[this.state.searchIndex].payload);
       }
@@ -62,7 +62,7 @@ module.exports = React.createClass({
     }
 
     var newSearchIndex = 0;
-    if (e.key === 'ArrowDown') {
+    if (e.key === "ArrowDown") {
       if (this.state.searchIndex !== this.props.options.length - 1) {
         newSearchIndex = this.state.searchIndex + 1;
       }
@@ -70,7 +70,7 @@ module.exports = React.createClass({
       this.setState({
         searchIndex: newSearchIndex
       });
-    } else if (e.key === 'ArrowUp') {
+    } else if (e.key === "ArrowUp") {
       if (this.state.searchIndex !== 0) {
         newSearchIndex = this.state.searchIndex - 1;
       } else {
@@ -100,16 +100,16 @@ module.exports = React.createClass({
   },
 
   _selectMatch: function _selectMatch(payload) {
-    var _this2 = this;
+    var _this = this;
 
     // Blur input to close search
     this.refs.overlay.getOverlayDOMNode().blur();
 
     this.setState({
-      searchText: ''
+      searchText: ""
     }, function () {
-      _this2.props.onSelectMatch(payload);
-      _this2.props.onSearch(_this2.state.searchText);
+      _this.props.onSelectMatch(payload);
+      _this.props.onSearch(_this.state.searchText);
     });
   },
 
@@ -122,16 +122,16 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var searchIcon = cx('ficon ficon-search', this.props.iconClass);
+    var searchIcon = cx("ficon ficon-search", this.props.iconClass);
 
-    var inputClass = cx('form-control', this.props.inputClass);
+    var inputClass = cx("form-control", this.props.inputClass);
 
     return React.createElement(
-      'div',
+      "div",
       { className: this.props.className },
       React.createElement(
         OverlayTrigger,
-        { ref: 'overlay', trigger: 'manual',
+        { ref: "overlay", trigger: "manual",
           defaultOverlayShown: false,
           overlay: React.createElement(UITypeaheadSelectOverlay, {
             positionLeftOverride: this.state.searchLeft,
@@ -140,17 +140,17 @@ module.exports = React.createClass({
             selectMatch: this._selectMatch,
             options: this.props.options,
             overlayModal: this.props.overlayModal }),
-          placement: 'bottom' },
-        React.createElement('input', {
+          placement: "bottom" },
+        React.createElement("input", {
           onFocus: this._onFocus, onBlur: this._onBlur,
-          autoComplete: 'off', type: 'text',
+          autoComplete: "off", type: "text",
           className: inputClass,
           placeholder: this.props.placeholder,
           onKeyDown: this._onKeyDown,
           onChange: this._onChange,
           value: this.state.searchText })
       ),
-      React.createElement('i', { className: searchIcon })
+      React.createElement("i", { className: searchIcon })
     );
   }
 });

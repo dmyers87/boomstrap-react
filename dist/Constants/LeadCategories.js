@@ -1,49 +1,49 @@
-'use strict';
+"use strict";
 
 module.exports = [{
   value: 0,
-  name: 'new',
-  abbr: 'new',
+  name: "new",
+  abbr: "new",
   active: true
 }, {
   value: 3,
-  name: 'qualify',
-  abbr: 'qual',
+  name: "qualify",
+  abbr: "qual",
   active: true
 }, {
   value: 5,
-  name: 'hot',
-  abbr: 'hot',
+  name: "hot",
+  abbr: "hot",
   active: true
 }, {
   value: 4,
-  name: 'nurture',
-  abbr: 'nurt',
+  name: "nurture",
+  abbr: "nurt",
   active: true
 
 }, {
   value: 2,
-  name: 'watch',
-  abbr: 'watch',
+  name: "watch",
+  abbr: "watch",
   active: true
 }, {
   value: 11,
-  name: 'pending',
-  abbr: 'pend',
+  name: "pending",
+  abbr: "pend",
   active: false
 }, {
   value: 10,
-  name: 'closed',
-  abbr: 'close',
+  name: "closed",
+  abbr: "close",
   active: false
 }, {
   value: 6,
-  name: 'archive',
-  abbr: 'arch',
+  name: "archive",
+  abbr: "arch",
   active: false
 }, {
   value: 1,
-  name: 'trash',
-  abbr: 'trash',
+  name: "trash",
+  abbr: "trash",
   active: false
 }];

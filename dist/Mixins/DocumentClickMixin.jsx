@@ -3,9 +3,9 @@
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
 
-'use strict';
+"use strict";
 
-var React = require('react/addons');
+var React = require("react/addons");
 
 /**
 * Checks whether a node is within
@@ -46,19 +46,19 @@ module.exports = {
 
   componentDidMount: function componentDidMount() {
     if (this.onDocumentClick) {
-      document.addEventListener('click', this.handleDocumentClick, false);
-      document.addEventListener('keyup', this.handleDocumentKeyUp, false);
+      document.addEventListener("click", this.handleDocumentClick, false);
+      document.addEventListener("keyup", this.handleDocumentKeyUp, false);
     } else if (console && console.warn) {
-      console.warn('Please provide the function `onDocumentClick` to your Component');
+      console.warn("Please provide the function `onDocumentClick` to your Component");
     }
   },
 
   componentWillUnmount: function componentWillUnmount() {
     if (this.onDocumentClick) {
-      document.removeEventListener('click', this.handleDocumentClick, false);
-      document.removeEventListener('keyup', this.handleDocumentKeyUp, false);
+      document.removeEventListener("click", this.handleDocumentClick, false);
+      document.removeEventListener("keyup", this.handleDocumentKeyUp, false);
     } else if (console && console.warn) {
-      console.warn('Please provide the function `onDocumentClick` to your Component');
+      console.warn("Please provide the function `onDocumentClick` to your Component");
     }
   }
 };

@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
-var React = require('react/addons');
-var cx = require('classnames');
+var React = require("react/addons");
+var cx = require("classnames");
 var PureRenderMixin = React.addons.PureRenderMixin;
 
-var LeadCategories = require('../Constants/LeadCategories');
+var LeadCategories = require("../Constants/LeadCategories");
 
 var categories = {};
 var abbrs = {};
@@ -15,7 +15,7 @@ LeadCategories.forEach(function (category) {
 });
 
 module.exports = React.createClass({
-  displayName: 'Lead Category',
+  displayName: "Lead Category",
 
   propTypes: {
     category: React.PropTypes.number.isRequired,
@@ -52,18 +52,18 @@ module.exports = React.createClass({
     var category = categories[this.props.category];
     var abbr = abbrs[this.props.category];
 
-    var categoryClass = 'leadcat-' + category.toLowerCase();
-    var catClass = cx(categoryClass, 'leadcat', {
-      'leadcat-eq-abbr': equal && abbreviated && !small,
-      'leadcat-eq-abbr-sm': equal && abbreviated && small,
-      'leadcat-eq': equal && !abbreviated,
-      'leadcat-outline': outline,
-      'leadcat-muted': muted,
-      'leadcat-disabled': disabled
+    var categoryClass = "leadcat-" + category.toLowerCase();
+    var catClass = cx(categoryClass, "leadcat", {
+      "leadcat-eq-abbr": equal && abbreviated && !small,
+      "leadcat-eq-abbr-sm": equal && abbreviated && small,
+      "leadcat-eq": equal && !abbreviated,
+      "leadcat-outline": outline,
+      "leadcat-muted": muted,
+      "leadcat-disabled": disabled
     });
 
     return React.createElement(
-      'span',
+      "span",
       { className: catClass },
       abbreviated ? abbr : category
     );
