@@ -53,6 +53,10 @@ const DocTypes = {
     Component: require('../../src/Components/Switcher.jsx'),
     Example:   require('raw!../examples/Switcher.example.js')
   },
+  UISelect: {
+    Component: require('../../src/Components/UISelect.jsx'),
+    Example:   require('raw!../examples/UISelect.example.js')
+  },
   Well: {
     Component: require('../../src/Components/Well.jsx'),
     Example:   require('raw!../examples/Well.example.js')
