@@ -38,7 +38,6 @@ module.exports = React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    console.log('yada');
     if (nextProps.src !== this.props.src) {
       this.setState({
         error: false
