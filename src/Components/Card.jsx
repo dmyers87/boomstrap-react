@@ -5,6 +5,8 @@ const ImageWithFallback     = require('./ImageWithFallback');
 const Sash                  = require('./Sash.jsx');
 const Icon                  = require('./Icon.jsx');
 const Button                = require('react-bootstrap').Button;
+const Carousel             = require('react-bootstrap').Carousel;
+const CarouselItem          = require('react-bootstrap').CarouselItem;
 
 module.exports = React.createClass({
   displayName: 'Card',
@@ -97,26 +99,55 @@ module.exports = React.createClass({
     );
   },
 
-  render() {
-    const cardClass = cx('card');
+  _renderCarousel() {
+    const props = this.props;
 
     let imageSrc = null;
+
     if (this.props.imageSrc && this.props.imageSrc.length) {
       imageSrc = this.props.imageSrc[0];
     } else {
-      imageSrc = 'http://boomstatic.com/img/comingsoon-lg.jpg';
+      imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
     }
+
+    return (
+      <Carousel>
+        <CarouselItem>
+          <img width={900} height={500} alt='900x500' src={imageSrc}/>
+        </CarouselItem>
+        <CarouselItem>
+          <img width={900} height={500} alt='900x500' src='//boomstatic.com/img/comingsoon-lg.jpg'/>
+        </CarouselItem>
+      </Carousel>
+      {/*<ImageWithFallback
+              className='card-img'
+              alt={ this.props.fullAddress }
+              src={imageSrc}
+              fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>*/}
+    );
+
+  },
+
+  render() {
+
+    {/*let imageSrc = null;
+    if (this.props.imageSrc && this.props.imageSrc.length) {
+      imageSrc = this.props.imageSrc[0];
+    } else {
+      imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
+    }*/}
 
     return (
       <div className='card'>
         <div className='card-photo'>
           <div className='card-photo-inner'>
             {this._renderSash()}
-            <ImageWithFallback
+            {this._renderCarousel()}
+            {/*<ImageWithFallback
               className='card-img'
               alt={ this.props.fullAddress }
               src={imageSrc}
-              fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
+              fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>*/}
           </div>
         </div>
         <div className='card-container card-intro'>

@@ -86,7 +86,7 @@ module.exports = React.createClass({
     if (props.imageSrc && props.imageSrc.length) {
       imageSrc = props.imageSrc[0];
     } else {
-      imageSrc = 'http://boomstatic.com/img/comingsoon-lg.jpg';
+      imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
     }
 
     return (
