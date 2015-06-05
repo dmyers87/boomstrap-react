@@ -1,7 +1,7 @@
 {
   "name": "boomstrap-react",
   "description": "React Components and Mixins for the Boomstrap library",
-  "version": "0.1.19",
+  "version": "0.2.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/BoomTownROI/boomstrap-react"
