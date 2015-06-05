@@ -33,14 +33,36 @@ module.exports = React.createClass({
     };
   },
 
+  getInitialState: function getInitialState() {
+    return {
+      error: false
+    };
+  },
+
+  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+    console.log("yada");
+    if (nextProps.src !== this.props.src) {
+      this.setState({
+        error: false
+      });
+    }
+  },
+
+  _handleImgError: function _handleImgError() {
+    this.setState({
+      error: true
+    });
+  },
+
   render: function render() {
     var className = cx("profile-pic", {
       "profile-pic--sm": this.props.small,
-      "profile-pic--initials": !this.props.src
+      "profile-pic--initials": !this.props.src || this.state.error
     });
 
-    if (this.props.src) {
+    if (this.props.src && !this.state.error) {
       return React.createElement("img", {
+        onError: this._handleImgError,
         className: className,
         src: this.props.src,
         alt: this.props.alt });
