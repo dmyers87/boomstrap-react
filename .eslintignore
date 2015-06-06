@@ -1,2 +1,6 @@
 gulpfile.js
-website/examples/**/*.*
+webpack.website.config.js
+website
+dist
+docs
+__tests__
