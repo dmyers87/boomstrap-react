@@ -1,6 +1,7 @@
 gulpfile.js
 webpack.website.config.js
 website
+www
 dist
 docs
 __tests__
