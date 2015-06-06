@@ -22,10 +22,11 @@ module.exports = React.createClass({
   },
 
   renderPropType(type) {
+    let values;
     const name = type.name;
     switch (name) {
       case DocProps.UNION:
-        const values = type.value.map(this.renderPropType);
+        values = type.value.map(this.renderPropType);
         return `${values.join(' or ')}`;
 
       case DocProps.ARRAYOF:
@@ -33,14 +34,14 @@ module.exports = React.createClass({
         return `[ ${value} ]`;
 
       case DocProps.SHAPE:
-        const values = Object.keys(type.value).map((propName) => {
+        values = Object.keys(type.value).map((propName) => {
           const val = this.renderPropType(type.value[propName]);
           return `${propName}: ${val}`;
         });
         return `{ ${values.join(', ')} }`;
 
       case DocProps.ENUM:
-        const values = type.value.map((val) => val.value);
+        values = type.value.map((val) => val.value);
         return `Options: [ ${values.join(', ')} ]`;
 
       default:
