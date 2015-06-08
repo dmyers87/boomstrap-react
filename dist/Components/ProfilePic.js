@@ -8,6 +8,10 @@ module.exports = React.createClass({
 
   propTypes: {
     /**
+     * Optionally, add additional classes to the component.
+     */
+    className: React.PropTypes.string,
+    /**
      * Optionally, set small to use small profile pic.
      */
     small: React.PropTypes.bool,
@@ -23,6 +27,7 @@ module.exports = React.createClass({
 
   getDefaultProps: function getDefaultProps() {
     return {
+      className: null,
       small: false,
       src: null,
       alt: null
@@ -50,7 +55,7 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var className = cx('profile-pic', {
+    var className = cx(this.props.className, 'profile-pic', {
       'profile-pic--sm': this.props.small,
       'profile-pic--initials': !this.props.src || this.state.error
     });
