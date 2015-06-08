@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 module.exports = React.createClass({
-  displayName: "Profile Pic",
+  displayName: 'Profile Pic',
 
   propTypes: {
     /**
@@ -15,10 +15,6 @@ module.exports = React.createClass({
      * Provide src prop when the image is available. If not set, initials will be shown.
      */
     src: React.PropTypes.string,
-    /**
-     * Provide alt text for image when available.
-     */
-    alt: React.PropTypes.string,
     /**
      * Provide initials to be displayed when photo is not present. Required as fallback to image.
      */
@@ -54,21 +50,30 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var className = cx("profile-pic", {
-      "profile-pic--sm": this.props.small,
-      "profile-pic--initials": !this.props.src || this.state.error
+    var className = cx('profile-pic', {
+      'profile-pic--sm': this.props.small,
+      'profile-pic--initials': !this.props.src || this.state.error
     });
+    var imgStyle = {
+      display: 'none'
+    };
+    var style = {
+      backgroundImage: 'url(' + this.props.src + ')'
+    };
 
     if (this.props.src && !this.state.error) {
-      return React.createElement("img", {
-        onError: this._handleImgError,
-        className: className,
-        src: this.props.src,
-        alt: this.props.alt });
+      return React.createElement(
+        'div',
+        { className: className, style: style },
+        React.createElement('img', {
+          onError: this._handleImgError,
+          style: imgStyle,
+          src: this.props.src })
+      );
     }
 
     return React.createElement(
-      "div",
+      'div',
       { className: className },
       this.props.initials
     );

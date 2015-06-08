@@ -1,5 +1,5 @@
-"use strict";
+'use strict';
 
 module.exports = {
-  LeadCategories: require("./LeadCategories")
+  LeadCategories: require('./LeadCategories')
 };
