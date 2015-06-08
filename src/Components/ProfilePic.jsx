@@ -59,14 +59,13 @@ module.exports = React.createClass({
         'profile-pic--initials':  !this.props.src || this.state.error
       }
     );
+    const style = {
+      backgroundImage: 'url(' + this.props.src + ')'
+    };
 
     if (this.props.src && !this.state.error) {
       return (
-        <img
-          onError={this._handleImgError}
-          className={className}
-          src={this.props.src}
-          alt={this.props.alt} />
+        <div className={className} style={style}></div>
       );
     }
 

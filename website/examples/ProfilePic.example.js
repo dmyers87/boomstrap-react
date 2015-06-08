@@ -8,7 +8,7 @@ var ComponentExample = React.createClass({
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        imgSrc: 'http://seanmccambridge.com/img/sean-boat.jpg'
+        imgSrc: '//scontent.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/11173398_10101985017610718_4173222164779011522_n.jpg?oh=14837ad39c948e21af6b8b331b78875b&oe=55F189A1'
       });
     }, 4000);
   },
