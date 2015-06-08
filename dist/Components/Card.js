@@ -144,32 +144,40 @@ module.exports = React.createClass({
 
     var imageSrc = null;
 
-    if (this.props.imageSrc && this.props.imageSrc.length) {
-      imageSrc = this.props.imageSrc[0];
-    } else {
+    // If no imageSrc or if empty imageSrce array, return coming soon image
+    if (!this.props.imageSrc || this.props.imageSrc && !this.props.imageSrc.length) {
       imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
+      return React.createElement(ImageWithFallback, {
+        className: 'card-img',
+        alt: this.props.fullAddress,
+        src: imageSrc,
+        fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' });
+    }
+
+    // If imageSrc only has one image in the array, return the image
+    if (this.props.imageSrc && this.props.imageSrc.length === 1) {
+      imageSrc = this.props.imageSrc[0];
+      return React.createElement(ImageWithFallback, {
+        className: 'card-img',
+        alt: this.props.fullAddress,
+        src: imageSrc,
+        fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' });
     }
 
     return React.createElement(
       Carousel,
       null,
-      React.createElement(
-        CarouselItem,
-        null,
-        React.createElement('img', { width: 900, height: 500, alt: '900x500', src: imageSrc })
-      ),
-      React.createElement(
-        CarouselItem,
-        null,
-        React.createElement('img', { width: 900, height: 500, alt: '900x500', src: '//boomstatic.com/img/comingsoon-lg.jpg' })
-      )
+      this.props.imageSrc.map(function (img) {
+        return React.createElement(
+          CarouselItem,
+          null,
+          React.createElement(ImageWithFallback, { src: img, fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' })
+        );
+      })
     );
-    {}
   },
 
   render: function render() {
-
-    {}
 
     return React.createElement(
       'div',
@@ -205,17 +213,4 @@ module.exports = React.createClass({
    </div>
  </div>
 </div>
-*/ /*<ImageWithFallback
-            className='card-img'
-            alt={ this.props.fullAddress }
-            src={imageSrc}
-            fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>*/ /*let imageSrc = null;
-                                                                       if (this.props.imageSrc && this.props.imageSrc.length) {
-                                                                        imageSrc = this.props.imageSrc[0];
-                                                                       } else {
-                                                                        imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
-                                                                       }*/ /*<ImageWithFallback
-                                                                            className='card-img'
-                                                                            alt={ this.props.fullAddress }
-                                                                            src={imageSrc}
-                                                                            fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>*/
+*/

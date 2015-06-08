@@ -71,7 +71,6 @@ module.exports = React.createClass({
         </div>
       </div>
     );
-
   },
 
   _renderStats() {
@@ -98,14 +97,6 @@ module.exports = React.createClass({
         </div>
         */}
       </div>
-    );
-  },
-
-  _renderCarouselItem() {
-    return (
-      <CarouselItem>
-        <ImageWithFallback src={imageSrc} fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
-      </CarouselItem>
     );
   },
 
@@ -149,7 +140,6 @@ module.exports = React.createClass({
         })}
       </Carousel>
     );
-    
   },
 
   render() {
@@ -169,6 +159,5 @@ module.exports = React.createClass({
         {this.props.children}
       </div>
     );
-
   }
 });

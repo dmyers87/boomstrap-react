@@ -28,23 +28,23 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"attention\"",
+              "value": "'attention'",
               "computed": false
             },
             {
-              "value": "\"danger\"",
+              "value": "'danger'",
               "computed": false
             },
             {
-              "value": "\"info\"",
+              "value": "'info'",
               "computed": false
             },
             {
-              "value": "\"success\"",
+              "value": "'success'",
               "computed": false
             },
             {
-              "value": "\"warning\"",
+              "value": "'warning'",
               "computed": false
             }
           ]
@@ -52,13 +52,13 @@
         "required": false,
         "description": "Optionally include type.",
         "defaultValue": {
-          "value": "\"info\"",
+          "value": "'info'",
           "computed": false
         }
       }
     }
   },
-  "dist/Components/Card.jsx": {
+  "dist/Components/Card.js": {
     "description": "",
     "props": {
       "className": {
@@ -154,7 +154,7 @@
       }
     }
   },
-  "dist/Components/CardSmall.jsx": {
+  "dist/Components/CardSmall.js": {
     "description": "",
     "props": {
       "className": {
@@ -250,7 +250,7 @@
       }
     }
   },
-  "dist/Components/Circle.jsx": {
+  "dist/Components/Circle.js": {
     "description": "Circles are just the colored dots next to times, online now, etc.",
     "props": {
       "className": {
@@ -265,27 +265,27 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"\"",
+              "value": "''",
               "computed": false
             },
             {
-              "value": "\"now\"",
+              "value": "'now'",
               "computed": false
             },
             {
-              "value": "\"today\"",
+              "value": "'today'",
               "computed": false
             },
             {
-              "value": "\"14-days\"",
+              "value": "'14-days'",
               "computed": false
             },
             {
-              "value": "\"90-days\"",
+              "value": "'90-days'",
               "computed": false
             },
             {
-              "value": "\"forever\"",
+              "value": "'forever'",
               "computed": false
             }
           ]
@@ -293,7 +293,7 @@
         "required": false,
         "description": "Optionally include type.",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       }
@@ -636,7 +636,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"default\"",
+          "value": "'default'",
           "computed": false
         }
       },
@@ -665,7 +665,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -687,7 +687,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       }
@@ -701,23 +701,23 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"\"",
+              "value": "''",
               "computed": false
             },
             {
-              "value": "\"left\"",
+              "value": "'left'",
               "computed": false
             },
             {
-              "value": "\"top\"",
+              "value": "'top'",
               "computed": false
             },
             {
-              "value": "\"right\"",
+              "value": "'right'",
               "computed": false
             },
             {
-              "value": "\"bottom\"",
+              "value": "'bottom'",
               "computed": false
             }
           ]
@@ -748,7 +748,7 @@
         "required": false,
         "description": "Optional class for wrapping the list",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -759,7 +759,7 @@
         "required": false,
         "description": "Optional class for wrapping the bar that slides",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -768,11 +768,11 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"vertical\"",
+              "value": "'vertical'",
               "computed": false
             },
             {
-              "value": "\"horizontal\"",
+              "value": "'horizontal'",
               "computed": false
             }
           ]
@@ -780,7 +780,7 @@
         "required": false,
         "description": "Direction of the list ('vertical' or 'horizontal'), defaults to 'vertical'",
         "defaultValue": {
-          "value": "\"vertical\"",
+          "value": "'vertical'",
           "computed": false
         }
       },
@@ -846,7 +846,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       }
@@ -934,19 +934,19 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"\"",
+              "value": "''",
               "computed": false
             },
             {
-              "value": "\"xs\"",
+              "value": "'xs'",
               "computed": false
             },
             {
-              "value": "\"sm\"",
+              "value": "'sm'",
               "computed": false
             },
             {
-              "value": "\"lg\"",
+              "value": "'lg'",
               "computed": false
             }
           ]
@@ -954,7 +954,7 @@
         "required": false,
         "description": "Options: xs, sm, lg.",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -963,31 +963,31 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"attention\"",
+              "value": "'attention'",
               "computed": false
             },
             {
-              "value": "\"danger\"",
+              "value": "'danger'",
               "computed": false
             },
             {
-              "value": "\"info\"",
+              "value": "'info'",
               "computed": false
             },
             {
-              "value": "\"primary\"",
+              "value": "'primary'",
               "computed": false
             },
             {
-              "value": "\"success\"",
+              "value": "'success'",
               "computed": false
             },
             {
-              "value": "\"success-to-danger\"",
+              "value": "'success-to-danger'",
               "computed": false
             },
             {
-              "value": "\"warning\"",
+              "value": "'warning'",
               "computed": false
             }
           ]
@@ -995,13 +995,13 @@
         "required": false,
         "description": "Optionally include type.",
         "defaultValue": {
-          "value": "\"primary\"",
+          "value": "'primary'",
           "computed": false
         }
       }
     }
   },
-  "dist/Components/Sash.jsx": {
+  "dist/Components/Sash.js": {
     "description": "Use sashes for showing property status.",
     "props": {
       "className": {
@@ -1016,19 +1016,19 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"back\"",
+              "value": "'back'",
               "computed": false
             },
             {
-              "value": "\"new\"",
+              "value": "'new'",
               "computed": false
             },
             {
-              "value": "\"off\"",
+              "value": "'off'",
               "computed": false
             },
             {
-              "value": "\"reduced\"",
+              "value": "'reduced'",
               "computed": false
             }
           ]
@@ -1125,11 +1125,11 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"\"",
+              "value": "''",
               "computed": false
             },
             {
-              "value": "\"sm\"",
+              "value": "'sm'",
               "computed": false
             }
           ]
@@ -1137,7 +1137,7 @@
         "required": false,
         "description": "Options: sm.",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       }
@@ -1336,7 +1336,7 @@
         "required": false,
         "description": "Add a class to the component container.",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
