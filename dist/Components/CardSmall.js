@@ -1,12 +1,12 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
-var ImageWithFallback = require("./ImageWithFallback");
-var Sash = require("./Sash.jsx");
+var React = require('react/addons');
+var cx = require('classnames');
+var ImageWithFallback = require('./ImageWithFallback');
+var Sash = require('./Sash.jsx');
 
 module.exports = React.createClass({
-  displayName: "Card Small",
+  displayName: 'Card Small',
 
   propTypes: {
     /**
@@ -44,48 +44,48 @@ module.exports = React.createClass({
     var props = this.props;
 
     var listingLink = React.createElement(
-      "p",
-      { className: "card-sm-priority card-sm-street" },
+      'p',
+      { className: 'card-sm-priority card-sm-street' },
       React.createElement(
-        "a",
-        { target: "_blank", href: props.listingUrl },
+        'a',
+        { target: '_blank', href: props.listingUrl },
         props.address.street
       )
     );
 
     return React.createElement(
-      "div",
-      { className: "row row-xcondensed" },
+      'div',
+      { className: 'row row-xcondensed' },
       React.createElement(
-        "div",
-        { className: "col-xs-8" },
+        'div',
+        { className: 'col-xs-8' },
         listingLink,
         React.createElement(
-          "p",
-          { className: "xsmall" },
+          'p',
+          { className: 'xsmall' },
           props.address.city,
-          " , ",
+          ' , ',
           props.address.state
         ),
         React.createElement(
-          "p",
-          { className: "xsmall" },
+          'p',
+          { className: 'xsmall' },
           props.address.neighborhood
         )
       ),
       React.createElement(
-        "div",
-        { className: "col-xs-4 text-right" },
+        'div',
+        { className: 'col-xs-4 text-right' },
         React.createElement(
-          "p",
-          { className: "card-sm-priority card-sm-price" },
+          'p',
+          { className: 'card-sm-priority card-sm-price' },
           props.listPrice
         ),
         React.createElement(
-          "p",
-          { className: "xsmall" },
+          'p',
+          { className: 'xsmall' },
           props.pricePerSqft,
-          "/SQFT"
+          '/SQFT'
         )
       )
     );
@@ -95,31 +95,31 @@ module.exports = React.createClass({
     var props = this.props;
 
     return React.createElement(
-      "div",
-      { className: "card-sm-stats" },
+      'div',
+      { className: 'card-sm-stats' },
       React.createElement(
-        "span",
-        { className: "card-sm-stat" },
+        'span',
+        { className: 'card-sm-stat' },
         props.beds,
-        " BEDS"
+        ' BEDS'
       ),
       React.createElement(
-        "span",
-        { className: "card-sm-stat" },
+        'span',
+        { className: 'card-sm-stat' },
         props.baths,
-        " BATHS"
+        ' BATHS'
       ),
       React.createElement(
-        "span",
-        { className: "card-sm-stat" },
+        'span',
+        { className: 'card-sm-stat' },
         props.sqft,
-        " SQFT"
+        ' SQFT'
       ),
       React.createElement(
-        "span",
-        { className: "card-sm-stat" },
+        'span',
+        { className: 'card-sm-stat' },
         props.acres,
-        " ACRES"
+        ' ACRES'
       )
     );
   },
@@ -131,29 +131,29 @@ module.exports = React.createClass({
     if (props.imageSrc && props.imageSrc.length) {
       imageSrc = props.imageSrc[0];
     } else {
-      imageSrc = "http://boomstatic.com/img/comingsoon-lg.jpg";
+      imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
     }
 
     return React.createElement(
-      "div",
-      { className: "card card-sm" },
+      'div',
+      { className: 'card card-sm' },
       React.createElement(
-        "div",
-        { className: "card-photo" },
+        'div',
+        { className: 'card-photo' },
         React.createElement(
-          "div",
-          { className: "card-photo-inner" },
+          'div',
+          { className: 'card-photo-inner' },
           this._renderSash(),
           React.createElement(ImageWithFallback, {
-            className: "card-img",
+            className: 'card-img',
             alt: props.fullAddress,
             src: imageSrc,
-            fallbackSrc: "//boomstatic.com/img/comingsoon-lg.jpg" })
+            fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' })
         )
       ),
       React.createElement(
-        "div",
-        { className: "card-sm-container" },
+        'div',
+        { className: 'card-sm-container' },
         this._renderLocationPriceInfo()
       ),
       this._renderStats(),

@@ -101,43 +101,58 @@ module.exports = React.createClass({
     );
   },
 
+  _renderCarouselItem() {
+    return (
+      <CarouselItem>
+        <ImageWithFallback src={imageSrc} fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
+      </CarouselItem>
+    );
+  },
+
   _renderCarousel() {
     const props = this.props;
 
     let imageSrc = null;
 
-    if (this.props.imageSrc && this.props.imageSrc.length) {
-      imageSrc = this.props.imageSrc[0];
-    } else {
+    // If no imageSrc or if empty imageSrce array, return coming soon image
+    if (!this.props.imageSrc || this.props.imageSrc && !this.props.imageSrc.length) {
       imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
+      return (
+        <ImageWithFallback
+                className='card-img'
+                alt={ this.props.fullAddress }
+                src={imageSrc}
+                fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
+      );
+    }
+
+    // If imageSrc only has one image in the array, return the image
+    if (this.props.imageSrc && this.props.imageSrc.length === 1) {
+      imageSrc = this.props.imageSrc[0];
+      return (
+        <ImageWithFallback
+                className='card-img'
+                alt={ this.props.fullAddress }
+                src={imageSrc}
+                fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
+      );
     }
 
     return (
       <Carousel>
-        <CarouselItem>
-          <img width={900} height={500} alt='900x500' src={imageSrc}/>
-        </CarouselItem>
-        <CarouselItem>
-          <img width={900} height={500} alt='900x500' src='//boomstatic.com/img/comingsoon-lg.jpg'/>
-        </CarouselItem>
+        {this.props.imageSrc.map(function(img) {
+          return (
+            <CarouselItem>
+              <ImageWithFallback src={img} fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
+            </CarouselItem>
+          );
+        })}
       </Carousel>
-      {/*<ImageWithFallback
-              className='card-img'
-              alt={ this.props.fullAddress }
-              src={imageSrc}
-              fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>*/}
     );
-
+    
   },
 
   render() {
-
-    {/*let imageSrc = null;
-    if (this.props.imageSrc && this.props.imageSrc.length) {
-      imageSrc = this.props.imageSrc[0];
-    } else {
-      imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
-    }*/}
 
     return (
       <div className='card'>
@@ -145,11 +160,6 @@ module.exports = React.createClass({
           <div className='card-photo-inner'>
             {this._renderSash()}
             {this._renderCarousel()}
-            {/*<ImageWithFallback
-              className='card-img'
-              alt={ this.props.fullAddress }
-              src={imageSrc}
-              fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>*/}
           </div>
         </div>
         <div className='card-container card-intro'>
@@ -159,5 +169,6 @@ module.exports = React.createClass({
         {this.props.children}
       </div>
     );
+
   }
 });

@@ -1,5 +1,5 @@
 {
-  "dist/Components/Callout.jsx": {
+  "dist/Components/Callout.js": {
     "description": "Use callouts to display important information or messages.",
     "props": {
       "children": {
@@ -299,11 +299,11 @@
       }
     }
   },
-  "dist/Components/FauxLink.jsx": {
+  "dist/Components/FauxLink.js": {
     "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
     "props": {}
   },
-  "dist/Components/Fauxbox.jsx": {
+  "dist/Components/Fauxbox.js": {
     "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
     "props": {
       "id": {
@@ -357,7 +357,7 @@
       }
     }
   },
-  "dist/Components/Fauxdio.jsx": {
+  "dist/Components/Fauxdio.js": {
     "description": "Display radio buttons in style with the Fauxdio",
     "props": {
       "radioID": {
@@ -418,7 +418,7 @@
       }
     }
   },
-  "dist/Components/IFrame.jsx": {
+  "dist/Components/IFrame.js": {
     "description": "",
     "props": {
       "src": {
@@ -451,7 +451,7 @@
       }
     }
   },
-  "dist/Components/Icon.jsx": {
+  "dist/Components/Icon.js": {
     "description": "",
     "props": {
       "icon": {
@@ -470,7 +470,7 @@
       }
     }
   },
-  "dist/Components/IconTooltip.jsx": {
+  "dist/Components/IconTooltip.js": {
     "description": "",
     "props": {
       "showIf": {
@@ -496,7 +496,7 @@
       }
     }
   },
-  "dist/Components/ImageWithFallback.jsx": {
+  "dist/Components/ImageWithFallback.js": {
     "description": "",
     "props": {
       "src": {
@@ -515,7 +515,7 @@
       }
     }
   },
-  "dist/Components/LeadCategory.jsx": {
+  "dist/Components/LeadCategory.js": {
     "description": "",
     "props": {
       "category": {
@@ -593,7 +593,7 @@
       }
     }
   },
-  "dist/Components/Loader.jsx": {
+  "dist/Components/Loader.js": {
     "description": "",
     "props": {
       "className": {
@@ -626,7 +626,7 @@
       }
     }
   },
-  "dist/Components/Marker.jsx": {
+  "dist/Components/Marker.js": {
     "description": "Use markers to represent current searching / filtering parameters.",
     "props": {
       "type": {
@@ -693,7 +693,7 @@
       }
     }
   },
-  "dist/Components/MessageFace.jsx": {
+  "dist/Components/MessageFace.js": {
     "description": "",
     "props": {
       "placement": {
@@ -727,7 +727,7 @@
       }
     }
   },
-  "dist/Components/NavLinksBar.jsx": {
+  "dist/Components/NavLinksBar.js": {
     "description": "Nav Links Bar provides an animated `tab switcher`-like control",
     "props": {
       "activeKey": {
@@ -793,7 +793,7 @@
       }
     }
   },
-  "dist/Components/Pager.jsx": {
+  "dist/Components/Pager.js": {
     "description": "",
     "props": {
       "currentPage": {
@@ -852,7 +852,7 @@
       }
     }
   },
-  "dist/Components/ProfilePic.jsx": {
+  "dist/Components/ProfilePic.js": {
     "description": "",
     "props": {
       "small": {
@@ -897,7 +897,7 @@
       }
     }
   },
-  "dist/Components/ProgressBar.jsx": {
+  "dist/Components/ProgressBar.js": {
     "description": "",
     "props": {
       "className": {
@@ -1059,7 +1059,7 @@
       }
     }
   },
-  "dist/Components/Score.jsx": {
+  "dist/Components/Score.js": {
     "description": "Use scores to rank / score data.",
     "props": {
       "score": {
@@ -1078,7 +1078,7 @@
       }
     }
   },
-  "dist/Components/Switcher.jsx": {
+  "dist/Components/Switcher.js": {
     "description": "Toggle switch.",
     "props": {
       "checked": {
@@ -1143,7 +1143,7 @@
       }
     }
   },
-  "dist/Components/UIMultiSelect.jsx": {
+  "dist/Components/UIMultiSelect.js": {
     "description": "",
     "props": {
       "selectedValues": {
@@ -1253,7 +1253,7 @@
       }
     }
   },
-  "dist/Components/UISelect.jsx": {
+  "dist/Components/UISelect.js": {
     "description": "",
     "props": {
       "payload": {
@@ -1385,7 +1385,7 @@
       }
     }
   },
-  "dist/Components/UITypeaheadSelect.jsx": {
+  "dist/Components/UITypeaheadSelect.js": {
     "description": "",
     "props": {
       "className": {
@@ -1457,7 +1457,7 @@
       }
     }
   },
-  "dist/Components/UITypeaheadSelectOverlay.jsx": {
+  "dist/Components/UITypeaheadSelectOverlay.js": {
     "description": "",
     "props": {
       "positionLeft": {
@@ -1529,7 +1529,7 @@
       }
     }
   },
-  "dist/Components/Well.jsx": {
+  "dist/Components/Well.js": {
     "description": "",
     "props": {
       "className": {

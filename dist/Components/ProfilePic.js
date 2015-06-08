@@ -1,10 +1,10 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 module.exports = React.createClass({
-  displayName: "Profile Pic",
+  displayName: 'Profile Pic',
 
   propTypes: {
     /**
@@ -54,13 +54,13 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var className = cx("profile-pic", {
-      "profile-pic--sm": this.props.small,
-      "profile-pic--initials": !this.props.src || this.state.error
+    var className = cx('profile-pic', {
+      'profile-pic--sm': this.props.small,
+      'profile-pic--initials': !this.props.src || this.state.error
     });
 
     if (this.props.src && !this.state.error) {
-      return React.createElement("img", {
+      return React.createElement('img', {
         onError: this._handleImgError,
         className: className,
         src: this.props.src,
@@ -68,7 +68,7 @@ module.exports = React.createClass({
     }
 
     return React.createElement(
-      "div",
+      'div',
       { className: className },
       this.props.initials
     );

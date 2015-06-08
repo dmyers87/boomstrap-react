@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
+var React = require('react/addons');
 
-var ModalOverlay = require("../Constants/BootstrapConstants").Modal.Overlay;
+var ModalOverlay = require('../Constants/BootstrapConstants').Modal.Overlay;
 
 var UITypeaheadSelectOverlay = React.createClass({
-  displayName: "UI Typeahead Select Overlay",
+  displayName: 'UI Typeahead Select Overlay',
 
   propTypes: {
     positionLeft: React.PropTypes.number,
@@ -33,22 +33,22 @@ var UITypeaheadSelectOverlay = React.createClass({
     var _this = this;
 
     if (!this.props.options || !this.props.options.length) {
-      return React.createElement("span", null);
+      return React.createElement('span', null);
     }
 
     // Select is fired on mouse down so that the select fires
     // Before the input blur
     var options = this.props.options.map(function (result, index) {
-      var optionClass = _this.props.searchIndex === index ? "active" : "";
+      var optionClass = _this.props.searchIndex === index ? 'active' : '';
       return React.createElement(
-        "li",
-        { role: "option", key: index,
+        'li',
+        { role: 'option', key: index,
           className: optionClass,
           onMouseEnter: _this._selectActive.bind(_this, index),
           onMouseDown: _this._selectMatch.bind(_this, result.payload) },
         React.createElement(
-          "a",
-          { tabIndex: "-1" },
+          'a',
+          { tabIndex: '-1' },
           result.element
         )
       );
@@ -60,8 +60,8 @@ var UITypeaheadSelectOverlay = React.createClass({
     var positionLeft = this.props.positionLeftOverride || this.props.positionLeft;
 
     var ulStyle = {
-      display: "block",
-      position: "absolute",
+      display: 'block',
+      position: 'absolute',
       left: positionLeft,
       top: this.props.positionTop
     };
@@ -71,10 +71,10 @@ var UITypeaheadSelectOverlay = React.createClass({
     }
 
     return React.createElement(
-      "ul",
+      'ul',
       {
         style: ulStyle,
-        className: "dropdown-menu", role: "listbox", "aria-hidden": "false" },
+        className: 'dropdown-menu', role: 'listbox', 'aria-hidden': 'false' },
       options
     );
   }

@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
-var dateHelper = require("../Utilities/dateHelper");
-var Icon = require("./Icon.jsx");
+var React = require('react/addons');
+var cx = require('classnames');
+var dateHelper = require('../Utilities/dateHelper');
+var Icon = require('./Icon.jsx');
 
 /**
  * Use sashes for showing property status.
  */
 module.exports = React.createClass({
-  displayName: "Sash",
+  displayName: 'Sash',
 
   propTypes: {
     /**
@@ -19,7 +19,7 @@ module.exports = React.createClass({
     /**
      * Type is required.
      */
-    type: React.PropTypes.oneOf(["back", "new", "off", "reduced"]).isRequired,
+    type: React.PropTypes.oneOf(['back', 'new', 'off', 'reduced']).isRequired,
     /**
      * Time stamp is required.
      */
@@ -35,47 +35,47 @@ module.exports = React.createClass({
   },
 
   render: function render() {
-    var classes = cx("sash", "sash-" + this.props.type, this.props.className);
+    var classes = cx('sash', 'sash-' + this.props.type, this.props.className);
     var dateDistance = dateHelper.distance(this.props.timeStamp);
 
     var sashTitle = null;
 
     switch (this.props.type) {
-      case "back":
-        sashTitle = "Back";
+      case 'back':
+        sashTitle = 'Back';
         break;
-      case "new":
-        sashTitle = "New";
+      case 'new':
+        sashTitle = 'New';
         break;
-      case "off":
-        sashTitle = "Off";
+      case 'off':
+        sashTitle = 'Off';
         break;
-      case "reduced":
+      case 'reduced':
         if (this.props.reducedAmount && this.props.reducedPercent) {
           sashTitle = React.createElement(
-            "span",
+            'span',
             null,
-            React.createElement(Icon, { icon: "arrow-down" }),
-            " ",
+            React.createElement(Icon, { icon: 'arrow-down' }),
+            ' ',
             this.props.reducedAmount,
-            " (",
+            ' (',
             this.props.reducedPercent,
-            ")"
+            ')'
           );
         } else {
-          sashTitle = "Reduced";
+          sashTitle = 'Reduced';
         }
         break;
       default:
     }
 
     return React.createElement(
-      "div",
+      'div',
       { className: classes },
       sashTitle,
       React.createElement(
-        "span",
-        { className: "sash-time" },
+        'span',
+        { className: 'sash-time' },
         dateDistance
       )
     );

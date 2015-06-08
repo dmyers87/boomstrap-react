@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 /**
  * Circles are just the colored dots next to times, online now, etc.
  */
 module.exports = React.createClass({
 
-  displayName: "Circle",
+  displayName: 'Circle',
 
   propTypes: {
     /**
@@ -18,20 +18,20 @@ module.exports = React.createClass({
     /**
      * Optionally include type.
      */
-    type: React.PropTypes.oneOf(["", "now", "today", "14-days", "90-days", "forever"])
+    type: React.PropTypes.oneOf(['', 'now', 'today', '14-days', '90-days', 'forever'])
   },
 
   getDefaultProps: function getDefaultProps() {
     return {
-      type: ""
+      type: ''
     };
   },
 
   render: function render() {
 
-    var classes = cx("circle", "circle-" + this.props.type, this.props.className);
+    var classes = cx('circle', 'circle-' + this.props.type, this.props.className);
 
-    return React.createElement("i", { className: classes });
+    return React.createElement('i', { className: classes });
   }
 
 });
