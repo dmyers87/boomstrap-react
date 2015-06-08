@@ -68,8 +68,7 @@ module.exports = React.createClass({
         <img
           onError={this._handleImgError}
           style={imgStyle}
-          src={this.props.src}
-          alt={this.props.alt} />
+          src={this.props.src} />
         </div>
       );
     }
