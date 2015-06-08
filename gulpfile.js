@@ -33,15 +33,6 @@ function compileScriptsFromEntryPoint(entry, fileName, destination) {
   .pipe(gulp.dest(destination));
 }
 
-gulp.task('transformScripts', function() {
-  var to5    = require('gulp-babel');
-  return gulp.src('src/**')
-    .pipe(to5({
-      optional: ['es7.objectRestSpread']
-    }))
-    .pipe(gulp.dest('dist/'));
-});
-
 gulp.task('compileScripts', function() {
   return compileScriptsFromEntryPoint('./src/App.js', 'boomstrap-react.js', 'dist/');
 });
@@ -83,7 +74,7 @@ gulp.task('websiteDeploy', ['docs'], function() {
     .pipe(ghpages());
 });
 
-gulp.task('default', ['transformScripts', 'compileScripts']);
+gulp.task('default', ['compileScripts']);
 
 gulp.task('server', ['copyDocs'], function() {
   // Start a webpack-dev-server

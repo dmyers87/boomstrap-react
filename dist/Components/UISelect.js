@@ -1,6 +1,6 @@
-/*eslint react/no-multi-comp: 0*/
-
 "use strict";
+
+/*eslint react/no-multi-comp: 0*/
 
 var React = require("react/addons");
 var cx = require("classnames");

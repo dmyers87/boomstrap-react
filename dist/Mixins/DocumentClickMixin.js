@@ -1,9 +1,9 @@
+"use strict";
+
 /*eslint no-console:0*/
 
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
-
-"use strict";
 
 var React = require("react/addons");
 
