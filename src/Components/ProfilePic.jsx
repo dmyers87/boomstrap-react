@@ -60,7 +60,7 @@ module.exports = React.createClass({
       }
     );
     const style = {
-      backgroundImage: 'url(' + this.props.src + ')'
+      backgroundImage: `url(${this.props.src})`
     };
 
     if (this.props.src && !this.state.error) {
