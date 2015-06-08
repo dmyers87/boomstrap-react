@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 
-var React = require("react/addons");
-var cx = require("classnames");
+var React = require('react/addons');
+var cx = require('classnames');
 
 // Components
-var Icon = require("./Icon");
+var Icon = require('./Icon');
 
 module.exports = React.createClass({
-  displayName: "Pager",
+  displayName: 'Pager',
 
   propTypes: {
     currentPage: React.PropTypes.number.isRequired,
@@ -22,7 +22,7 @@ module.exports = React.createClass({
     return {
       onPage: function onPage() {},
       disabled: false,
-      className: ""
+      className: ''
     };
   },
 
@@ -51,28 +51,28 @@ module.exports = React.createClass({
     var currentPage = this.props.currentPage;
     var maxPage = this._getMaxPage();
 
-    var backBtnClass = cx("btn btn-default btn-icon", {
-      disabled: currentPage === 1 || this.props.disabled
+    var backBtnClass = cx('btn btn-default btn-icon', {
+      'disabled': currentPage === 1 || this.props.disabled
     });
 
-    var fwdBtnClass = cx("btn btn-default btn-icon", {
-      disabled: currentPage === maxPage || this.props.disabled
+    var fwdBtnClass = cx('btn btn-default btn-icon', {
+      'disabled': currentPage === maxPage || this.props.disabled
     });
 
-    var pagerClass = cx("btn-group minimal-pager", this.props.className);
+    var pagerClass = cx('btn-group minimal-pager', this.props.className);
 
     return React.createElement(
-      "div",
+      'div',
       { className: pagerClass },
       React.createElement(
-        "button",
-        { type: "button", className: backBtnClass, onClick: this._onPageBack },
-        React.createElement(Icon, { icon: "chevron-left" })
+        'button',
+        { type: 'button', className: backBtnClass, onClick: this._onPageBack },
+        React.createElement(Icon, { icon: 'chevron-left' })
       ),
       React.createElement(
-        "button",
-        { type: "button", className: fwdBtnClass, onClick: this._onPageFwd },
-        React.createElement(Icon, { icon: "chevron-right" })
+        'button',
+        { type: 'button', className: fwdBtnClass, onClick: this._onPageFwd },
+        React.createElement(Icon, { icon: 'chevron-right' })
       )
     );
   }

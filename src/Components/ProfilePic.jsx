@@ -14,10 +14,6 @@ module.exports = React.createClass({
      */
     src:       React.PropTypes.string,
     /**
-     * Provide alt text for image when available.
-     */
-    alt:       React.PropTypes.string,
-    /**
      * Provide initials to be displayed when photo is not present. Required as fallback to image.
      */
     initials:  React.PropTypes.string.isRequired
@@ -59,14 +55,21 @@ module.exports = React.createClass({
         'profile-pic--initials':  !this.props.src || this.state.error
       }
     );
+    const imgStyle = {
+      display: 'none'
+    };
+    const style = {
+      backgroundImage: `url(${this.props.src})`
+    };
 
     if (this.props.src && !this.state.error) {
       return (
+        <div className={className} style={style}>
         <img
           onError={this._handleImgError}
-          className={className}
-          src={this.props.src}
-          alt={this.props.alt} />
+          style={imgStyle}
+          src={this.props.src} />
+        </div>
       );
     }
 
