@@ -7,7 +7,7 @@ module.exports = {
   Mixins: require("./Mixins/App")
 };
 
-},{"./Components/App":228,"./Constants/App":250,"./Mixins/App":253}],2:[function(require,module,exports){
+},{"./Components/App":228,"./Constants/App":252,"./Mixins/App":255}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -33742,6 +33742,7 @@ module.exports = require('./lib/React');
 "use strict";
 
 module.exports = {
+  Callout: require("./Callout"),
   Fauxbox: require("./Fauxbox"),
   Fauxdio: require("./Fauxdio"),
   FauxLink: require("./FauxLink"),
@@ -33755,6 +33756,7 @@ module.exports = {
   MessageFace: require("./MessageFace"),
   NavLinksBar: require("./NavLinksBar"),
   Pager: require("./Pager"),
+  ProfilePic: require("./ProfilePic"),
   ProgressBar: require("./ProgressBar"),
   Score: require("./Score"),
   Switcher: require("./Switcher"),
@@ -33764,7 +33766,66 @@ module.exports = {
   Well: require("./Well")
 };
 
-},{"./FauxLink":229,"./Fauxbox":230,"./Fauxdio":231,"./IFrame":232,"./Icon":233,"./IconTooltip":234,"./ImageWithFallback":235,"./LeadCategory":236,"./Loader":237,"./Marker":238,"./MessageFace":239,"./NavLinksBar":240,"./Pager":241,"./ProgressBar":242,"./Score":243,"./Switcher":244,"./UIMultiSelect":245,"./UISelect":246,"./UITypeaheadSelect":247,"./Well":249}],229:[function(require,module,exports){
+},{"./Callout":229,"./FauxLink":230,"./Fauxbox":231,"./Fauxdio":232,"./IFrame":233,"./Icon":234,"./IconTooltip":235,"./ImageWithFallback":236,"./LeadCategory":237,"./Loader":238,"./Marker":239,"./MessageFace":240,"./NavLinksBar":241,"./Pager":242,"./ProfilePic":243,"./ProgressBar":244,"./Score":245,"./Switcher":246,"./UIMultiSelect":247,"./UISelect":248,"./UITypeaheadSelect":249,"./Well":251}],229:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+var cx = require("classnames");
+
+/**
+ * Use callouts to display important information or messages.
+ */
+module.exports = React.createClass({
+  displayName: "Callout",
+
+  propTypes: {
+    /**
+     * Optionally include children.
+     */
+    children: React.PropTypes.any,
+    /**
+     * Optionally include additional class name(s).
+     */
+    className: React.PropTypes.string,
+    /**
+     * Optionally include a heading.
+     */
+    heading: React.PropTypes.string,
+    /**
+     * Options: attention, danger, info, success, warning.
+     */
+    type: React.PropTypes.oneOf(["attention", "danger", "info", "success", "warning"])
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      type: "info"
+    };
+  },
+
+  render: function render() {
+    var classes = cx("callout", "callout-" + this.props.type, this.props.className);
+
+    var calloutHeading = null;
+
+    if (this.props.heading) {
+      calloutHeading = React.createElement(
+        "h4",
+        null,
+        this.props.heading
+      );
+    }
+
+    return React.createElement(
+      "div",
+      { className: classes },
+      calloutHeading,
+      this.props.children
+    );
+  }
+});
+
+},{"classnames":3}],230:[function(require,module,exports){
 "use strict";
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -33785,7 +33846,7 @@ module.exports = React.createClass({
   }
 });
 
-},{}],230:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -33861,7 +33922,7 @@ var Fauxbox = React.createClass({
 
 module.exports = Fauxbox;
 
-},{"classnames":3}],231:[function(require,module,exports){
+},{"classnames":3}],232:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -33938,7 +33999,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3}],232:[function(require,module,exports){
+},{"classnames":3}],233:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -33996,7 +34057,7 @@ module.exports = React.createClass({
   }
 });
 
-},{}],233:[function(require,module,exports){
+},{}],234:[function(require,module,exports){
 "use strict";
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
@@ -34027,7 +34088,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3}],234:[function(require,module,exports){
+},{"classnames":3}],235:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -34063,7 +34124,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"./Icon":233,"react-bootstrap":61}],235:[function(require,module,exports){
+},{"./Icon":234,"react-bootstrap":61}],236:[function(require,module,exports){
 "use strict";
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -34106,7 +34167,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"lodash":4}],236:[function(require,module,exports){
+},{"lodash":4}],237:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -34179,7 +34240,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"../Constants/LeadCategories":252,"classnames":3}],237:[function(require,module,exports){
+},{"../Constants/LeadCategories":254,"classnames":3}],238:[function(require,module,exports){
 "use strict";
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -34214,7 +34275,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3}],238:[function(require,module,exports){
+},{"classnames":3}],239:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -34270,7 +34331,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"./Icon":233,"classnames":3}],239:[function(require,module,exports){
+},{"./Icon":234,"classnames":3}],240:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -34305,7 +34366,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3}],240:[function(require,module,exports){
+},{"classnames":3}],241:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -34490,7 +34551,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3}],241:[function(require,module,exports){
+},{"classnames":3}],242:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -34571,7 +34632,85 @@ module.exports = React.createClass({
   }
 });
 
-},{"./Icon":233,"classnames":3}],242:[function(require,module,exports){
+},{"./Icon":234,"classnames":3}],243:[function(require,module,exports){
+"use strict";
+
+var React = (window.React);
+var cx = require("classnames");
+
+module.exports = React.createClass({
+  displayName: "Profile Pic",
+
+  propTypes: {
+    /**
+     * Optionally, set small to use small profile pic.
+     */
+    small: React.PropTypes.bool,
+    /**
+     * Provide src prop when the image is available. If not set, initials will be shown.
+     */
+    src: React.PropTypes.string,
+    /**
+     * Provide alt text for image when available.
+     */
+    alt: React.PropTypes.string,
+    /**
+     * Provide initials to be displayed when photo is not present. Required as fallback to image.
+     */
+    initials: React.PropTypes.string.isRequired
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      small: false,
+      src: null,
+      alt: null
+    };
+  },
+
+  getInitialState: function getInitialState() {
+    return {
+      error: false
+    };
+  },
+
+  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+    if (nextProps.src !== this.props.src) {
+      this.setState({
+        error: false
+      });
+    }
+  },
+
+  _handleImgError: function _handleImgError() {
+    this.setState({
+      error: true
+    });
+  },
+
+  render: function render() {
+    var className = cx("profile-pic", {
+      "profile-pic--sm": this.props.small,
+      "profile-pic--initials": !this.props.src || this.state.error
+    });
+
+    if (this.props.src && !this.state.error) {
+      return React.createElement("img", {
+        onError: this._handleImgError,
+        className: className,
+        src: this.props.src,
+        alt: this.props.alt });
+    }
+
+    return React.createElement(
+      "div",
+      { className: className },
+      this.props.initials
+    );
+  }
+});
+
+},{"classnames":3}],244:[function(require,module,exports){
 "use strict";
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -34684,7 +34823,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3,"lodash":4}],243:[function(require,module,exports){
+},{"classnames":3,"lodash":4}],245:[function(require,module,exports){
 "use strict";
 
 var _defineProperty = function (obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); };
@@ -34722,7 +34861,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3}],244:[function(require,module,exports){
+},{"classnames":3}],246:[function(require,module,exports){
 "use strict";
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -34819,7 +34958,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3,"lodash":4}],245:[function(require,module,exports){
+},{"classnames":3,"lodash":4}],247:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -35087,7 +35226,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"./FauxLink":229,"./Fauxbox":230,"classnames":3}],246:[function(require,module,exports){
+},{"./FauxLink":230,"./Fauxbox":231,"classnames":3}],248:[function(require,module,exports){
 /*eslint react/no-multi-comp: 0*/
 
 "use strict";
@@ -35406,7 +35545,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"../Mixins/DocumentClickMixin":254,"./FauxLink":229,"classnames":3}],247:[function(require,module,exports){
+},{"../Mixins/DocumentClickMixin":256,"./FauxLink":230,"classnames":3}],249:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -35564,7 +35703,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"./UITypeaheadSelectOverlay":248,"classnames":3,"react-bootstrap":61}],248:[function(require,module,exports){
+},{"./UITypeaheadSelectOverlay":250,"classnames":3,"react-bootstrap":61}],250:[function(require,module,exports){
 "use strict";
 
 var React = (window.React);
@@ -35649,7 +35788,7 @@ var UITypeaheadSelectOverlay = React.createClass({
 
 module.exports = UITypeaheadSelectOverlay;
 
-},{"../Constants/BootstrapConstants":251}],249:[function(require,module,exports){
+},{"../Constants/BootstrapConstants":253}],251:[function(require,module,exports){
 "use strict";
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -35676,14 +35815,14 @@ module.exports = React.createClass({
   }
 });
 
-},{"classnames":3}],250:[function(require,module,exports){
+},{"classnames":3}],252:[function(require,module,exports){
 "use strict";
 
 module.exports = {
   LeadCategories: require("./LeadCategories")
 };
 
-},{"./LeadCategories":252}],251:[function(require,module,exports){
+},{"./LeadCategories":254}],253:[function(require,module,exports){
 "use strict";
 
 module.exports = {
@@ -35695,7 +35834,7 @@ module.exports = {
   }
 };
 
-},{}],252:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 "use strict";
 
 module.exports = [{
@@ -35746,14 +35885,14 @@ module.exports = [{
   active: false
 }];
 
-},{}],253:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
 "use strict";
 
 module.exports = {
   DocumentClickMixin: require("./DocumentClickMixin")
 };
 
-},{"./DocumentClickMixin":254}],254:[function(require,module,exports){
+},{"./DocumentClickMixin":256}],256:[function(require,module,exports){
 /*eslint no-console:0*/
 
 // Code used from DropdownStateMixin from react-bootstrap
