@@ -19,7 +19,7 @@ var ComponentExample = React.createClass({
         <div>
           <ProfilePic src="//media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/087/3b6/03d99cf.jpg" initials="MF" />
           &nbsp;
-          <ProfilePic src={this.state.imgSrc} initials="SM" />
+          <ProfilePic className="some-additional-class" src={this.state.imgSrc} initials="SM" />
           &nbsp;
           <ProfilePic initials="BT" />
         </div>
