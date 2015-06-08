@@ -852,6 +852,51 @@
       }
     }
   },
+  "dist/Components/ProfilePic.jsx": {
+    "description": "",
+    "props": {
+      "small": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Optionally, set small to use small profile pic.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "src": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Provide src prop when the image is available. If not set, initials will be shown.",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "alt": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Provide alt text for image when available.",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
+      "initials": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "Provide initials to be displayed when photo is not present. Required as fallback to image."
+      }
+    }
+  },
   "dist/Components/ProgressBar.jsx": {
     "description": "",
     "props": {

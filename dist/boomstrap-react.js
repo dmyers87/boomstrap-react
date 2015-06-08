@@ -840,7 +840,7 @@ module.exports = React.createClass({
      */
     size: React.PropTypes.oneOf(["", "xs", "sm", "lg"]),
     /**
-     * Optionally include type.
+     * Options: attention, danger, info, primary, success, success-to-danger, warning.
      */
     type: React.PropTypes.oneOf(["attention", "danger", "info", "primary", "success", "success-to-danger", "warning"])
   },

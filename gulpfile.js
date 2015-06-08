@@ -7,47 +7,25 @@ var ghpages = require('gulp-gh-pages');
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 
-function compileScriptsFromEntryPoint(entry, fileName, destination) {
-  var browserify = require('browserify');
-  var babelify   = require('babelify');
-  var source     = require('vinyl-source-stream');
+gulp.task('compileScripts', function(callback) {
+  // run webpack
+  webpack(require('./webpack.config.js'), function(err, stats) {
+    if (err) {
+      throw new gutil.PluginError('webpack', err);
+    }
+    stats = stats.toString();
 
-  var globalShim = require('browserify-global-shim').configure({
-    'react/addons': 'React',
-    'react': 'React'
+    // Remove dropping unused statements and individual modules built
+    var tester = /Dropping unused(.*?)\n|\n(.*?)\[built\]/g;
+    stats = stats.replace(tester, '');
+    gutil.log('[webpack]', stats);
+    gutil.log('[webpack]', new Date());
+    callback();
   });
-
-  var b = browserify({
-    standalone: 'BoomstrapReact',
-    extensions: [ '.jsx', '.js' ]
-  });
-
-  b.transform(babelify.configure({
-    optional: ['es7.objectRestSpread']
-  })); // use the babelify transform
-  b.transform(globalShim);
-  b.add(entry);
-
-  return b.bundle()
-  .pipe(source(fileName))
-  .pipe(gulp.dest(destination));
-}
-
-gulp.task('transformScripts', function() {
-  var to5    = require('gulp-babel');
-  return gulp.src('src/**')
-    .pipe(to5({
-      optional: ['es7.objectRestSpread']
-    }))
-    .pipe(gulp.dest('dist/'));
-});
-
-gulp.task('compileScripts', ['transformScripts'], function() {
-  return compileScriptsFromEntryPoint('./dist/App.js', 'boomstrap-react.js', 'dist/');
 });
 
 gulp.task('compileDocsScripts', function(callback) {
-   // run webpack
+  // run webpack
   webpack(require('./webpack.website.config.js'), function(err, stats) {
     if(err) {
       throw new gutil.PluginError('webpack', err);
@@ -83,7 +61,7 @@ gulp.task('websiteDeploy', ['docs'], function() {
     .pipe(ghpages());
 });
 
-gulp.task('default', ['transformScripts', 'compileScripts']);
+gulp.task('default', ['compileScripts']);
 
 gulp.task('server', ['copyDocs'], function() {
   // Start a webpack-dev-server

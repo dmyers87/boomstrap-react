@@ -1,6 +1,7 @@
 "use strict";
 
 module.exports = {
+  Callout: require("./Callout"),
   Fauxbox: require("./Fauxbox"),
   Fauxdio: require("./Fauxdio"),
   FauxLink: require("./FauxLink"),
@@ -14,6 +15,7 @@ module.exports = {
   MessageFace: require("./MessageFace"),
   NavLinksBar: require("./NavLinksBar"),
   Pager: require("./Pager"),
+  ProfilePic: require("./ProfilePic"),
   ProgressBar: require("./ProgressBar"),
   Score: require("./Score"),
   Switcher: require("./Switcher"),

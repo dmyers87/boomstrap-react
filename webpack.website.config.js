@@ -18,10 +18,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: [/node_modules/, /examples/],
-        loader: 'babel-loader',
-        query: {
-          optional: ['es7.objectRestSpread']
-        }
+        loader: 'babel-loader'
       },
       { test: /\.less$/, loader: 'style-loader!css-loader!less-loader!autoprefixer-loader?{browsers:["last 2 version", "IE 9"]}'}
     ]

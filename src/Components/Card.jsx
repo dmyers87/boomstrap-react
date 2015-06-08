@@ -4,9 +4,11 @@ const cx                    = require('classnames');
 const ImageWithFallback     = require('./ImageWithFallback');
 const Sash                  = require('./Sash.jsx');
 const Icon                  = require('./Icon.jsx');
-const Button                = require('react-bootstrap').Button;
-const Carousel             = require('react-bootstrap').Carousel;
-const CarouselItem          = require('react-bootstrap').CarouselItem;
+const {
+  Button,
+  Carousel,
+  CarouselItem
+} = require('react-bootstrap');
 
 module.exports = React.createClass({
   displayName: 'Card',
