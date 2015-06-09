@@ -31,21 +31,17 @@ module.exports = React.createClass({
     };
   },
 
-  componentDidMount: function componentDidMount() {
-    this._updateSearchLeft();
-  },
-
-  componentDidUpdate: function componentDidUpdate() {
-    this._updateSearchLeft();
-  },
-
   _updateSearchLeft: function _updateSearchLeft() {
+    var callback = arguments[0] === undefined ? function () {} : arguments[0];
+
     var node = React.findDOMNode(this);
     var nodeBox = node.getBoundingClientRect();
     var documentElement = document.documentElement;
     var searchLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
     if (searchLeft !== this.state.searchLeft) {
-      this.setState({ searchLeft: searchLeft });
+      this.setState({ searchLeft: searchLeft }, callback);
+    } else {
+      callback();
     }
   },
 
@@ -114,7 +110,11 @@ module.exports = React.createClass({
   },
 
   _onFocus: function _onFocus() {
-    this.refs.overlay.show();
+    var _this3 = this;
+
+    this._updateSearchLeft(function () {
+      _this3.refs.overlay.show();
+    });
   },
 
   _onBlur: function _onBlur() {
