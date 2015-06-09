@@ -5,6 +5,18 @@ const DocTypes = {
     Component: require('../../src/Components/Callout.jsx'),
     Example:   require('raw!../examples/Callout.example.js')
   },
+  Card: {
+    Component: require('../../src/Components/Card.jsx'),
+    Example:   require('raw!../examples/Card.example.js')
+  },
+  CardSmall: {
+    Component: require('../../src/Components/CardSmall.jsx'),
+    Example:   require('raw!../examples/CardSmall.example.js')
+  },
+  Circle: {
+    Component: require('../../src/Components/Circle.jsx'),
+    Example:   require('raw!../examples/Circle.example.js')
+  },
   Fauxbox: {
     Component: require('../../src/Components/Fauxbox.jsx'),
     Example:   require('raw!../examples/Fauxbox.example.js')
@@ -49,6 +61,10 @@ const DocTypes = {
     Component: require('../../src/Components/ProgressBar.jsx'),
     Example:   require('raw!../examples/ProgressBar.example.js')
   },
+  Sash: {
+    Component: require('../../src/Components/Sash.jsx'),
+    Example:   require('raw!../examples/Sash.example.js')
+  },
   Score: {
     Component: require('../../src/Components/Score.jsx'),
     Example:   require('raw!../examples/Score.example.js')
@@ -60,10 +76,6 @@ const DocTypes = {
   UISelect: {
     Component: require('../../src/Components/UISelect.jsx'),
     Example:   require('raw!../examples/UISelect.example.js')
-  },
-  Well: {
-    Component: require('../../src/Components/Well.jsx'),
-    Example:   require('raw!../examples/Well.example.js')
   }
 }
 const Playground  = require('component-playground');

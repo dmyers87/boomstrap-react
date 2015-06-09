@@ -1,10 +1,10 @@
 {
-  "dist/Components/Callout.jsx": {
+  "dist/Components/Callout.js": {
     "description": "Use callouts to display important information or messages.",
     "props": {
       "children": {
         "type": {
-          "name": "any"
+          "name": "node"
         },
         "required": false,
         "description": "Optionally include children."
@@ -28,41 +28,338 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"attention\"",
+              "value": "'attention'",
               "computed": false
             },
             {
-              "value": "\"danger\"",
+              "value": "'danger'",
               "computed": false
             },
             {
-              "value": "\"info\"",
+              "value": "'info'",
               "computed": false
             },
             {
-              "value": "\"success\"",
+              "value": "'success'",
               "computed": false
             },
             {
-              "value": "\"warning\"",
+              "value": "'warning'",
               "computed": false
             }
           ]
         },
         "required": false,
-        "description": "Options: attention, danger, info, success, warning.",
+        "description": "Optionally include type.",
         "defaultValue": {
-          "value": "\"info\"",
+          "value": "'info'",
           "computed": false
         }
       }
     }
   },
-  "dist/Components/FauxLink.jsx": {
+  "dist/Components/Card.js": {
+    "description": "",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "children": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
+      "imageSrc": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "listingUrl": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "fullAddress": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "address": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "city": {
+              "name": "string"
+            },
+            "street": {
+              "name": "string"
+            },
+            "state": {
+              "name": "string"
+            },
+            "neighborhood": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "listPrice": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "pricePerSqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sash": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "type": {
+              "name": "string"
+            },
+            "timeStamp": {
+              "name": "string"
+            },
+            "reducedAmount": {
+              "name": "string"
+            },
+            "reducedPercent": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "beds": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "baths": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "acres": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "dist/Components/CardSmall.js": {
+    "description": "",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "children": {
+        "type": {
+          "name": "any"
+        },
+        "required": false,
+        "description": ""
+      },
+      "imageSrc": {
+        "type": {
+          "name": "array"
+        },
+        "required": false,
+        "description": ""
+      },
+      "listingUrl": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "fullAddress": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "address": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "city": {
+              "name": "string"
+            },
+            "street": {
+              "name": "string"
+            },
+            "state": {
+              "name": "string"
+            },
+            "neighborhood": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "listPrice": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "pricePerSqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sash": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "type": {
+              "name": "string"
+            },
+            "timeStamp": {
+              "name": "string"
+            },
+            "reducedAmount": {
+              "name": "string"
+            },
+            "reducedPercent": {
+              "name": "string"
+            }
+          }
+        },
+        "required": false,
+        "description": ""
+      },
+      "beds": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "baths": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "acres": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      }
+    }
+  },
+  "dist/Components/Circle.js": {
+    "description": "Circles are colored dots representing time.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "''",
+              "computed": false
+            },
+            {
+              "value": "'now'",
+              "computed": false
+            },
+            {
+              "value": "'today'",
+              "computed": false
+            },
+            {
+              "value": "'14-days'",
+              "computed": false
+            },
+            {
+              "value": "'90-days'",
+              "computed": false
+            },
+            {
+              "value": "'forever'",
+              "computed": false
+            }
+          ]
+        },
+        "required": false,
+        "description": "Optionally include type.",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      }
+    }
+  },
+  "dist/Components/FauxLink.js": {
     "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
     "props": {}
   },
-  "dist/Components/Fauxbox.jsx": {
+  "dist/Components/Fauxbox.js": {
     "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
     "props": {
       "id": {
@@ -116,7 +413,7 @@
       }
     }
   },
-  "dist/Components/Fauxdio.jsx": {
+  "dist/Components/Fauxdio.js": {
     "description": "Display radio buttons in style with the Fauxdio",
     "props": {
       "radioID": {
@@ -177,7 +474,7 @@
       }
     }
   },
-  "dist/Components/IFrame.jsx": {
+  "dist/Components/IFrame.js": {
     "description": "",
     "props": {
       "src": {
@@ -210,7 +507,7 @@
       }
     }
   },
-  "dist/Components/Icon.jsx": {
+  "dist/Components/Icon.js": {
     "description": "",
     "props": {
       "icon": {
@@ -229,7 +526,7 @@
       }
     }
   },
-  "dist/Components/IconTooltip.jsx": {
+  "dist/Components/IconTooltip.js": {
     "description": "",
     "props": {
       "showIf": {
@@ -255,7 +552,7 @@
       }
     }
   },
-  "dist/Components/ImageWithFallback.jsx": {
+  "dist/Components/ImageWithFallback.js": {
     "description": "",
     "props": {
       "src": {
@@ -274,7 +571,7 @@
       }
     }
   },
-  "dist/Components/LeadCategory.jsx": {
+  "dist/Components/LeadCategory.js": {
     "description": "",
     "props": {
       "category": {
@@ -352,7 +649,7 @@
       }
     }
   },
-  "dist/Components/Loader.jsx": {
+  "dist/Components/Loader.js": {
     "description": "",
     "props": {
       "className": {
@@ -385,7 +682,7 @@
       }
     }
   },
-  "dist/Components/Marker.jsx": {
+  "dist/Components/Marker.js": {
     "description": "Use markers to represent current searching / filtering parameters.",
     "props": {
       "type": {
@@ -395,7 +692,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"default\"",
+          "value": "'default'",
           "computed": false
         }
       },
@@ -424,7 +721,7 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -446,13 +743,13 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       }
     }
   },
-  "dist/Components/MessageFace.jsx": {
+  "dist/Components/MessageFace.js": {
     "description": "",
     "props": {
       "placement": {
@@ -460,23 +757,23 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"\"",
+              "value": "''",
               "computed": false
             },
             {
-              "value": "\"left\"",
+              "value": "'left'",
               "computed": false
             },
             {
-              "value": "\"top\"",
+              "value": "'top'",
               "computed": false
             },
             {
-              "value": "\"right\"",
+              "value": "'right'",
               "computed": false
             },
             {
-              "value": "\"bottom\"",
+              "value": "'bottom'",
               "computed": false
             }
           ]
@@ -486,7 +783,7 @@
       }
     }
   },
-  "dist/Components/NavLinksBar.jsx": {
+  "dist/Components/NavLinksBar.js": {
     "description": "Nav Links Bar provides an animated `tab switcher`-like control",
     "props": {
       "activeKey": {
@@ -507,7 +804,7 @@
         "required": false,
         "description": "Optional class for wrapping the list",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -518,7 +815,7 @@
         "required": false,
         "description": "Optional class for wrapping the bar that slides",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -527,11 +824,11 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"vertical\"",
+              "value": "'vertical'",
               "computed": false
             },
             {
-              "value": "\"horizontal\"",
+              "value": "'horizontal'",
               "computed": false
             }
           ]
@@ -539,7 +836,7 @@
         "required": false,
         "description": "Direction of the list ('vertical' or 'horizontal'), defaults to 'vertical'",
         "defaultValue": {
-          "value": "\"vertical\"",
+          "value": "'vertical'",
           "computed": false
         }
       },
@@ -552,7 +849,7 @@
       }
     }
   },
-  "dist/Components/Pager.jsx": {
+  "dist/Components/Pager.js": {
     "description": "",
     "props": {
       "currentPage": {
@@ -605,15 +902,26 @@
         "required": false,
         "description": "",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       }
     }
   },
-  "dist/Components/ProfilePic.jsx": {
+  "dist/Components/ProfilePic.js": {
     "description": "",
     "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally, add additional classes to the component.",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
       "small": {
         "type": {
           "name": "bool"
@@ -636,27 +944,22 @@
           "computed": false
         }
       },
-      "alt": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Provide alt text for image when available.",
-        "defaultValue": {
-          "value": "null",
-          "computed": false
-        }
-      },
       "initials": {
         "type": {
           "name": "string"
         },
         "required": true,
         "description": "Provide initials to be displayed when photo is not present. Required as fallback to image."
+      },
+      "alt": {
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
       }
     }
   },
-  "dist/Components/ProgressBar.jsx": {
+  "dist/Components/ProgressBar.js": {
     "description": "",
     "props": {
       "className": {
@@ -693,19 +996,19 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"\"",
+              "value": "''",
               "computed": false
             },
             {
-              "value": "\"xs\"",
+              "value": "'xs'",
               "computed": false
             },
             {
-              "value": "\"sm\"",
+              "value": "'sm'",
               "computed": false
             },
             {
-              "value": "\"lg\"",
+              "value": "'lg'",
               "computed": false
             }
           ]
@@ -713,7 +1016,7 @@
         "required": false,
         "description": "Options: xs, sm, lg.",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -722,45 +1025,103 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"attention\"",
+              "value": "'attention'",
               "computed": false
             },
             {
-              "value": "\"danger\"",
+              "value": "'danger'",
               "computed": false
             },
             {
-              "value": "\"info\"",
+              "value": "'info'",
               "computed": false
             },
             {
-              "value": "\"primary\"",
+              "value": "'primary'",
               "computed": false
             },
             {
-              "value": "\"success\"",
+              "value": "'success'",
               "computed": false
             },
             {
-              "value": "\"success-to-danger\"",
+              "value": "'success-to-danger'",
               "computed": false
             },
             {
-              "value": "\"warning\"",
+              "value": "'warning'",
               "computed": false
             }
           ]
         },
         "required": false,
-        "description": "Options: attention, danger, info, primary, success, success-to-danger, warning.",
+        "description": "Optionally include type.",
         "defaultValue": {
-          "value": "\"primary\"",
+          "value": "'primary'",
           "computed": false
         }
       }
     }
   },
-  "dist/Components/Score.jsx": {
+  "dist/Components/Sash.js": {
+    "description": "Use sashes for showing property status.",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
+      },
+      "type": {
+        "type": {
+          "name": "enum",
+          "value": [
+            {
+              "value": "'back'",
+              "computed": false
+            },
+            {
+              "value": "'new'",
+              "computed": false
+            },
+            {
+              "value": "'off'",
+              "computed": false
+            },
+            {
+              "value": "'reduced'",
+              "computed": false
+            }
+          ]
+        },
+        "required": true,
+        "description": "Type is required."
+      },
+      "timeStamp": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "Time stamp is required."
+      },
+      "reducedAmount": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "For 'reduced' type, include amount property was reduced in dollars"
+      },
+      "reducedPercent": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "For 'reduced' type, include amount property was reduced as a percentage"
+      }
+    }
+  },
+  "dist/Components/Score.js": {
     "description": "Use scores to rank / score data.",
     "props": {
       "score": {
@@ -779,7 +1140,7 @@
       }
     }
   },
-  "dist/Components/Switcher.jsx": {
+  "dist/Components/Switcher.js": {
     "description": "Toggle switch.",
     "props": {
       "checked": {
@@ -826,11 +1187,11 @@
           "name": "enum",
           "value": [
             {
-              "value": "\"\"",
+              "value": "''",
               "computed": false
             },
             {
-              "value": "\"sm\"",
+              "value": "'sm'",
               "computed": false
             }
           ]
@@ -838,13 +1199,13 @@
         "required": false,
         "description": "Options: sm.",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       }
     }
   },
-  "dist/Components/UIMultiSelect.jsx": {
+  "dist/Components/UIMultiSelect.js": {
     "description": "",
     "props": {
       "selectedValues": {
@@ -954,7 +1315,7 @@
       }
     }
   },
-  "dist/Components/UISelect.jsx": {
+  "dist/Components/UISelect.js": {
     "description": "",
     "props": {
       "payload": {
@@ -1037,7 +1398,7 @@
         "required": false,
         "description": "Add a class to the component container.",
         "defaultValue": {
-          "value": "\"\"",
+          "value": "''",
           "computed": false
         }
       },
@@ -1086,7 +1447,7 @@
       }
     }
   },
-  "dist/Components/UITypeaheadSelect.jsx": {
+  "dist/Components/UITypeaheadSelect.js": {
     "description": "",
     "props": {
       "className": {
@@ -1158,7 +1519,7 @@
       }
     }
   },
-  "dist/Components/UITypeaheadSelectOverlay.jsx": {
+  "dist/Components/UITypeaheadSelectOverlay.js": {
     "description": "",
     "props": {
       "positionLeft": {
@@ -1222,32 +1583,6 @@
         "description": ""
       },
       "overlayModal": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
-  },
-  "dist/Components/Well.jsx": {
-    "description": "",
-    "props": {
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "large": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      },
-      "small": {
         "type": {
           "name": "bool"
         },

@@ -13,7 +13,7 @@ var UISelectDropdownMenu = React.createClass({
   propTypes: {
     className: React.PropTypes.string,
     onClose: React.PropTypes.func,
-    children: React.PropTypes.any
+    children: React.PropTypes.node
   },
 
   mixins: [DocumentClickMixin],
@@ -83,8 +83,8 @@ module.exports = React.createClass({
     return {
       items: [],
       disabled: false,
-      alignRight: false,
-      containerClass: ''
+      containerClass: '',
+      alignRight: false
     };
   },
 
@@ -266,7 +266,12 @@ module.exports = React.createClass({
       elementClass = cx('btn btn-default form-control ui-select-match', this.props.buttonClass);
       showElement = React.createElement(
         'button',
-        { className: elementClass, disabled: this.props.disabled, onClick: this.activate, placeholder: this.props.placeholder, tabIndex: '-1', type: 'button' },
+        {
+          className: elementClass,
+          disabled: this.props.disabled,
+          onClick: this.activate,
+          tabIndex: '-1',
+          type: 'button' },
         isEmpty ? React.createElement(
           'span',
           { className: 'text-muted' },
