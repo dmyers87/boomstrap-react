@@ -4,7 +4,6 @@ const cx                    = require('classnames');
 const ImageWithFallback     = require('./ImageWithFallback');
 const Sash                  = require('./Sash');
 const {
-  Button,
   Carousel,
   CarouselItem
 } = require('react-bootstrap');

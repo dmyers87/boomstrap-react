@@ -7,7 +7,6 @@ var Sash = require('./Sash');
 
 var _require = require('react-bootstrap');
 
-var Button = _require.Button;
 var Carousel = _require.Carousel;
 var CarouselItem = _require.CarouselItem;
 
