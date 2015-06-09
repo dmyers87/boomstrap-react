@@ -1590,31 +1590,5 @@
         "description": ""
       }
     }
-  },
-  "dist/Components/Well.js": {
-    "description": "",
-    "props": {
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": ""
-      },
-      "large": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      },
-      "small": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": ""
-      }
-    }
   }
 }
