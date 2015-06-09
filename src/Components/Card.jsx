@@ -2,8 +2,7 @@
 const React                 = require('react/addons');
 const cx                    = require('classnames');
 const ImageWithFallback     = require('./ImageWithFallback');
-const Sash                  = require('./Sash.jsx');
-const Icon                  = require('./Icon.jsx');
+const Sash                  = require('./Sash');
 const {
   Button,
   Carousel,
@@ -35,14 +34,22 @@ module.exports = React.createClass({
       timeStamp:       React.PropTypes.string,
       reducedAmount:   React.PropTypes.string,
       reducedPercent:  React.PropTypes.string
-    })
+    }),
+    beds:           React.PropTypes.string,
+    baths:          React.PropTypes.string,
+    sqft:           React.PropTypes.string,
+    acres:          React.PropTypes.string
   },
 
   _renderSash() {
     const props = this.props;
     if (props.sash) {
       return (
-        <Sash type={props.sash.type} reducedAmount= {props.sash.reducedAmount} reducedPercent= {props.sash.reducedPercent} timeStamp={props.sash.timeStamp} />
+        <Sash
+          type={props.sash.type}
+          reducedAmount= {props.sash.reducedAmount}
+          reducedPercent= {props.sash.reducedPercent}
+          timeStamp={props.sash.timeStamp} />
       );
     }
   },
@@ -62,7 +69,7 @@ module.exports = React.createClass({
         {listingLink}
         <div className='row row-xcondensed'>
           <div className='col-xs-7'>
-            <p className='small'>{props.address.city} , {props.address.state}</p>
+            <p className='small'>{props.address.city}, {props.address.state}</p>
             <p className='small'>{props.address.neighborhood}</p>
           </div>
           <div className='col-xs-5 text-right'>
@@ -74,15 +81,15 @@ module.exports = React.createClass({
   },
 
   _renderStats() {
-    const props = this.props;
+    const { beds, baths, sqft, acres } = this.props;
 
     return (
       <div>
         <div className='card-stats'>
-          <span className='card-stat'>{props.beds} BEDS</span>
-          <span className='card-stat'>{props.baths} BATHS</span>
-          <span className='card-stat'>{props.sqft} SQFT</span>
-          <span className='card-stat'>{props.acres} ACRES</span>
+          <span className='card-stat'>{beds} BEDS</span>
+          <span className='card-stat'>{baths} BATHS</span>
+          <span className='card-stat'>{sqft} SQFT</span>
+          <span className='card-stat'>{acres} ACRES</span>
         </div>
       </div>
     );
@@ -91,38 +98,27 @@ module.exports = React.createClass({
   _renderCarousel() {
     const props = this.props;
 
-    let imageSrc = null;
+    let images = props.imageSrc || [];
 
-    // If no imageSrc or if empty imageSrce array, return coming soon image
-    if (!this.props.imageSrc || this.props.imageSrc && !this.props.imageSrc.length) {
-      imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
+    if (!images.length || images.length === 1) {
+      const img = images[0] || '//boomstatic.com/img/comingsoon-lg.jpg';
       return (
         <ImageWithFallback
-                className='card-img'
-                alt={this.props.fullAddress}
-                src={imageSrc}
-                fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
-      );
-    }
-
-    // If imageSrc only has one image in the array, return the image
-    if (this.props.imageSrc && this.props.imageSrc.length === 1) {
-      imageSrc = this.props.imageSrc[0];
-      return (
-        <ImageWithFallback
-                className='card-img'
-                alt={this.props.fullAddress}
-                src={imageSrc}
-                fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
+          className='card-img'
+          alt={props.fullAddress}
+          src={img}
+          fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
       );
     }
 
     return (
       <Carousel>
-        {this.props.imageSrc.map(function(img) {
+        {images.map((img) => {
           return (
             <CarouselItem>
-              <ImageWithFallback src={img} fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
+              <ImageWithFallback
+                src={img}
+                fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
             </CarouselItem>
           );
         })}

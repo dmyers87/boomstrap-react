@@ -21,13 +21,15 @@ module.exports = React.createClass({
 
   getDefaultProps() {
     return {
-      type:     ''
+      type: ''
     };
   },
 
   render() {
 
-    const classes = cx('circle', 'circle-' + this.props.type, this.props.className);
+    const classes = cx('circle', this.props.className, {
+      ['circle-' + this.props.type]: this.props.type
+    });
 
     return (
       <i className={classes} />

@@ -1,5 +1,7 @@
 'use strict';
 
+function _defineProperty(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); }
+
 var React = require('react/addons');
 var cx = require('classnames');
 
@@ -29,7 +31,7 @@ module.exports = React.createClass({
 
   render: function render() {
 
-    var classes = cx('circle', 'circle-' + this.props.type, this.props.className);
+    var classes = cx('circle', this.props.className, _defineProperty({}, 'circle-' + this.props.type, this.props.type));
 
     return React.createElement('i', { className: classes });
   }

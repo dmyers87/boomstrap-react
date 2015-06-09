@@ -2,7 +2,7 @@
 const React                 = require('react/addons');
 const cx                    = require('classnames');
 const ImageWithFallback     = require('./ImageWithFallback');
-const Sash                  = require('./Sash.jsx');
+const Sash                  = require('./Sash');
 
 module.exports = React.createClass({
   displayName: 'Card Small',
@@ -29,14 +29,22 @@ module.exports = React.createClass({
       timeStamp:       React.PropTypes.string,
       reducedAmount:   React.PropTypes.string,
       reducedPercent:  React.PropTypes.string
-    })
+    }),
+    beds:           React.PropTypes.string,
+    baths:          React.PropTypes.string,
+    sqft:           React.PropTypes.string,
+    acres:          React.PropTypes.string
   },
 
   _renderSash() {
-    const props = this.props;
-    if (props.sash) {
+    const { sash } = this.props;
+    if (sash) {
       return (
-        <Sash type={props.sash.type} reducedAmount= {props.sash.reducedAmount} reducedPercent= {props.sash.reducedPercent} timeStamp={props.sash.timeStamp} />
+        <Sash
+          type={sash.type}
+          reducedAmount= {sash.reducedAmount}
+          reducedPercent= {sash.reducedPercent}
+          timeStamp={sash.timeStamp} />
       );
     }
   },
@@ -54,7 +62,7 @@ module.exports = React.createClass({
       <div className='row row-xcondensed'>
         <div className='col-xs-8'>
           {listingLink}
-          <p className='xsmall'>{props.address.city} , {props.address.state}</p>
+          <p className='xsmall'>{props.address.city}, {props.address.state}</p>
           <p className='xsmall'>{props.address.neighborhood}</p>
         </div>
         <div className='col-xs-4 text-right'>
@@ -67,14 +75,14 @@ module.exports = React.createClass({
   },
 
   _renderStats() {
-    const props = this.props;
+    const { beds, baths, sqft, acres } = this.props;
 
     return (
       <div className='card-sm-stats'>
-        <span className='card-sm-stat'>{props.beds} BEDS</span>
-        <span className='card-sm-stat'>{props.baths} BATHS</span>
-        <span className='card-sm-stat'>{props.sqft} SQFT</span>
-        <span className='card-sm-stat'>{props.acres} ACRES</span>
+        <span className='card-sm-stat'>{beds} BEDS</span>
+        <span className='card-sm-stat'>{baths} BATHS</span>
+        <span className='card-sm-stat'>{sqft} SQFT</span>
+        <span className='card-sm-stat'>{acres} ACRES</span>
       </div>
     );
   },
@@ -92,7 +100,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <div className={classes }>
+      <div className={classes}>
         <div className='card-photo'>
           <div className='card-photo-inner'>
             {this._renderSash()}

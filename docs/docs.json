@@ -151,6 +151,34 @@
         },
         "required": false,
         "description": ""
+      },
+      "beds": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "baths": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "acres": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
       }
     }
   },
@@ -244,6 +272,34 @@
               "name": "string"
             }
           }
+        },
+        "required": false,
+        "description": ""
+      },
+      "beds": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "baths": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "sqft": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "acres": {
+        "type": {
+          "name": "string"
         },
         "required": false,
         "description": ""

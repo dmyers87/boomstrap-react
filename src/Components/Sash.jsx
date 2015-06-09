@@ -1,7 +1,7 @@
 const React      = require('react/addons');
 const cx         = require('classnames');
 const dateHelper = require('../Utilities/dateHelper');
-const Icon       = require('./Icon.jsx');
+const Icon       = require('./Icon');
 
 /**
  * Use sashes for showing property status.
@@ -50,7 +50,11 @@ module.exports = React.createClass({
         break;
       case 'reduced':
         if (this.props.reducedAmount && this.props.reducedPercent) {
-          sashTitle = <span><Icon icon='arrow-down' /> {this.props.reducedAmount} ({this.props.reducedPercent})</span>;
+          sashTitle = (
+            <span>
+              <Icon icon='arrow-down' /> {this.props.reducedAmount} ({this.props.reducedPercent})
+            </span>
+          );
         } else {
           sashTitle = 'Reduced';
         }

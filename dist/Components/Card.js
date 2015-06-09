@@ -3,8 +3,7 @@
 var React = require('react/addons');
 var cx = require('classnames');
 var ImageWithFallback = require('./ImageWithFallback');
-var Sash = require('./Sash.jsx');
-var Icon = require('./Icon.jsx');
+var Sash = require('./Sash');
 
 var _require = require('react-bootstrap');
 
@@ -37,13 +36,21 @@ module.exports = React.createClass({
       timeStamp: React.PropTypes.string,
       reducedAmount: React.PropTypes.string,
       reducedPercent: React.PropTypes.string
-    })
+    }),
+    beds: React.PropTypes.string,
+    baths: React.PropTypes.string,
+    sqft: React.PropTypes.string,
+    acres: React.PropTypes.string
   },
 
   _renderSash: function _renderSash() {
     var props = this.props;
     if (props.sash) {
-      return React.createElement(Sash, { type: props.sash.type, reducedAmount: props.sash.reducedAmount, reducedPercent: props.sash.reducedPercent, timeStamp: props.sash.timeStamp });
+      return React.createElement(Sash, {
+        type: props.sash.type,
+        reducedAmount: props.sash.reducedAmount,
+        reducedPercent: props.sash.reducedPercent,
+        timeStamp: props.sash.timeStamp });
     }
   },
 
@@ -79,7 +86,7 @@ module.exports = React.createClass({
             'p',
             { className: 'small' },
             props.address.city,
-            ' , ',
+            ', ',
             props.address.state
           ),
           React.createElement(
@@ -103,7 +110,11 @@ module.exports = React.createClass({
   },
 
   _renderStats: function _renderStats() {
-    var props = this.props;
+    var _props = this.props;
+    var beds = _props.beds;
+    var baths = _props.baths;
+    var sqft = _props.sqft;
+    var acres = _props.acres;
 
     return React.createElement(
       'div',
@@ -114,25 +125,25 @@ module.exports = React.createClass({
         React.createElement(
           'span',
           { className: 'card-stat' },
-          props.beds,
+          beds,
           ' BEDS'
         ),
         React.createElement(
           'span',
           { className: 'card-stat' },
-          props.baths,
+          baths,
           ' BATHS'
         ),
         React.createElement(
           'span',
           { className: 'card-stat' },
-          props.sqft,
+          sqft,
           ' SQFT'
         ),
         React.createElement(
           'span',
           { className: 'card-stat' },
-          props.acres,
+          acres,
           ' ACRES'
         )
       )
@@ -142,36 +153,27 @@ module.exports = React.createClass({
   _renderCarousel: function _renderCarousel() {
     var props = this.props;
 
-    var imageSrc = null;
+    var images = props.imageSrc || [];
 
-    // If no imageSrc or if empty imageSrce array, return coming soon image
-    if (!this.props.imageSrc || this.props.imageSrc && !this.props.imageSrc.length) {
-      imageSrc = '//boomstatic.com/img/comingsoon-lg.jpg';
+    if (!images.length || images.length === 1) {
+      var img = images[0] || '//boomstatic.com/img/comingsoon-lg.jpg';
       return React.createElement(ImageWithFallback, {
         className: 'card-img',
-        alt: this.props.fullAddress,
-        src: imageSrc,
-        fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' });
-    }
-
-    // If imageSrc only has one image in the array, return the image
-    if (this.props.imageSrc && this.props.imageSrc.length === 1) {
-      imageSrc = this.props.imageSrc[0];
-      return React.createElement(ImageWithFallback, {
-        className: 'card-img',
-        alt: this.props.fullAddress,
-        src: imageSrc,
+        alt: props.fullAddress,
+        src: img,
         fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' });
     }
 
     return React.createElement(
       Carousel,
       null,
-      this.props.imageSrc.map(function (img) {
+      images.map(function (img) {
         return React.createElement(
           CarouselItem,
           null,
-          React.createElement(ImageWithFallback, { src: img, fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' })
+          React.createElement(ImageWithFallback, {
+            src: img,
+            fallbackSrc: '//boomstatic.com/img/comingsoon-lg.jpg' })
         );
       })
     );

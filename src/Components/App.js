@@ -19,6 +19,5 @@ module.exports = {
   Switcher:          require('./Switcher'),
   UIMultiSelect:     require('./UIMultiSelect'),
   UISelect:          require('./UISelect'),
-  UITypeaheadSelect: require('./UITypeaheadSelect'),
-  Well:              require('./Well')
+  UITypeaheadSelect: require('./UITypeaheadSelect')
 };

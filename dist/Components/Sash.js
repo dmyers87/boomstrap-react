@@ -3,7 +3,7 @@
 var React = require('react/addons');
 var cx = require('classnames');
 var dateHelper = require('../Utilities/dateHelper');
-var Icon = require('./Icon.jsx');
+var Icon = require('./Icon');
 
 /**
  * Use sashes for showing property status.

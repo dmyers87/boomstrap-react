@@ -76,10 +76,6 @@ const DocTypes = {
   UISelect: {
     Component: require('../../src/Components/UISelect.jsx'),
     Example:   require('raw!../examples/UISelect.example.js')
-  },
-  Well: {
-    Component: require('../../src/Components/Well.jsx'),
-    Example:   require('raw!../examples/Well.example.js')
   }
 }
 const Playground  = require('component-playground');
