@@ -8,7 +8,7 @@ var ComponentExample = React.createClass({
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        imgSrc: 'http://seanmccambridge.com/img/sean-boat.jpg'
+        imgSrc: '//scontent.xx.fbcdn.net/hphotos-xpa1/v/t1.0-9/11173398_10101985017610718_4173222164779011522_n.jpg?oh=14837ad39c948e21af6b8b331b78875b&oe=55F189A1'
       });
     }, 4000);
   },
@@ -17,15 +17,15 @@ var ComponentExample = React.createClass({
     return (
       <div>
         <div>
-          <ProfilePic src="//media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/087/3b6/03d99cf.jpg" initials="MF" alt="Mark Funk" />
+          <ProfilePic src="//media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/087/3b6/03d99cf.jpg" initials="MF" />
           &nbsp;
-          <ProfilePic src={this.state.imgSrc} initials="SM" alt="Sean McCambridge" />
+          <ProfilePic className="some-additional-class" src={this.state.imgSrc} initials="SM" />
           &nbsp;
           <ProfilePic initials="BT" />
         </div>
         <hr />
         <div>
-          <ProfilePic small src="//media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/087/3b6/03d99cf.jpg" initials="MF" alt="Mark Funk" />
+          <ProfilePic small src="//media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/087/3b6/03d99cf.jpg" initials="MF" />
           &nbsp;
           <ProfilePic small initials="MF" />
         </div>

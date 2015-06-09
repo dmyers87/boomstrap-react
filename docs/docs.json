@@ -4,7 +4,7 @@
     "props": {
       "children": {
         "type": {
-          "name": "any"
+          "name": "node"
         },
         "required": false,
         "description": "Optionally include children."
@@ -911,6 +911,17 @@
   "dist/Components/ProfilePic.js": {
     "description": "",
     "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally, add additional classes to the component.",
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
+      },
       "small": {
         "type": {
           "name": "bool"
@@ -933,23 +944,18 @@
           "computed": false
         }
       },
-      "alt": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Provide alt text for image when available.",
-        "defaultValue": {
-          "value": "null",
-          "computed": false
-        }
-      },
       "initials": {
         "type": {
           "name": "string"
         },
         "required": true,
         "description": "Provide initials to be displayed when photo is not present. Required as fallback to image."
+      },
+      "alt": {
+        "defaultValue": {
+          "value": "null",
+          "computed": false
+        }
       }
     }
   },
