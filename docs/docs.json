@@ -251,7 +251,7 @@
     }
   },
   "dist/Components/Circle.js": {
-    "description": "Circles are just the colored dots next to times, online now, etc.",
+    "description": "Circles are colored dots representing time.",
     "props": {
       "className": {
         "type": {

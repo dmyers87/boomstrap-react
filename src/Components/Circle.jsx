@@ -2,7 +2,7 @@ const React = require('react/addons');
 const cx    = require('classnames');
 
 /**
- * Circles are just the colored dots next to times, online now, etc.
+ * Circles are colored dots representing time.
  */
 module.exports = React.createClass({
 
