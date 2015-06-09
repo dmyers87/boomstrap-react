@@ -127,6 +127,8 @@ module.exports = React.createClass({
   render: function render() {
     var props = this.props;
 
+    var classes = cx('card card-sm', props.className);
+
     var imageSrc = null;
     if (props.imageSrc && props.imageSrc.length) {
       imageSrc = props.imageSrc[0];
@@ -136,7 +138,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       'div',
-      { className: 'card card-sm' },
+      { className: classes },
       React.createElement(
         'div',
         { className: 'card-photo' },
@@ -157,7 +159,7 @@ module.exports = React.createClass({
         this._renderLocationPriceInfo()
       ),
       this._renderStats(),
-      props.children
+      this.props.children
     );
   }
 });

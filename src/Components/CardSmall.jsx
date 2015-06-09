@@ -36,7 +36,7 @@ module.exports = React.createClass({
     const props = this.props;
     if (props.sash) {
       return (
-        <Sash type={ props.sash.type } reducedAmount= { props.sash.reducedAmount } reducedPercent= { props.sash.reducedPercent } timeStamp={ props.sash.timeStamp } />
+        <Sash type={props.sash.type} reducedAmount= {props.sash.reducedAmount} reducedPercent= {props.sash.reducedPercent} timeStamp={props.sash.timeStamp} />
       );
     }
   },
@@ -54,12 +54,12 @@ module.exports = React.createClass({
       <div className='row row-xcondensed'>
         <div className='col-xs-8'>
           {listingLink}
-          <p className='xsmall'>{ props.address.city } , { props.address.state }</p>
-          <p className='xsmall'>{ props.address.neighborhood }</p>
+          <p className='xsmall'>{props.address.city} , {props.address.state}</p>
+          <p className='xsmall'>{props.address.neighborhood}</p>
         </div>
         <div className='col-xs-4 text-right'>
-          <p className='card-sm-priority card-sm-price'>{ props.listPrice }</p>
-          <p className='xsmall'>{ props.pricePerSqft }/SQFT</p>
+          <p className='card-sm-priority card-sm-price'>{props.listPrice}</p>
+          <p className='xsmall'>{props.pricePerSqft}/SQFT</p>
         </div>
       </div>
     );
@@ -71,16 +71,18 @@ module.exports = React.createClass({
 
     return (
       <div className='card-sm-stats'>
-        <span className='card-sm-stat'>{ props.beds } BEDS</span>
-        <span className='card-sm-stat'>{ props.baths } BATHS</span>
-        <span className='card-sm-stat'>{ props.sqft } SQFT</span>
-        <span className='card-sm-stat'>{ props.acres } ACRES</span>
+        <span className='card-sm-stat'>{props.beds} BEDS</span>
+        <span className='card-sm-stat'>{props.baths} BATHS</span>
+        <span className='card-sm-stat'>{props.sqft} SQFT</span>
+        <span className='card-sm-stat'>{props.acres} ACRES</span>
       </div>
     );
   },
 
   render() {
     const props = this.props;
+
+    const classes = cx('card card-sm', props.className);
 
     let imageSrc = null;
     if (props.imageSrc && props.imageSrc.length) {
@@ -90,7 +92,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <div className='card card-sm'>
+      <div className={classes }>
         <div className='card-photo'>
           <div className='card-photo-inner'>
             {this._renderSash()}
@@ -105,7 +107,7 @@ module.exports = React.createClass({
           {this._renderLocationPriceInfo()}
         </div>
         {this._renderStats()}
-        {props.children}
+        {this.props.children}
       </div>
     );
   }

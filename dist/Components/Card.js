@@ -179,9 +179,11 @@ module.exports = React.createClass({
 
   render: function render() {
 
+    var classes = cx('card', this.props.className);
+
     return React.createElement(
       'div',
-      { className: 'card' },
+      { className: classes },
       React.createElement(
         'div',
         { className: 'card-photo' },
@@ -202,15 +204,3 @@ module.exports = React.createClass({
     );
   }
 });
-/*
-<div className='card-container'>
- <div className='row row-xcondensed'>
-   <div className='col-sm-6'>
-     <Button bsSize='small' className='btn-block'><Icon icon='star'/> 1220 Best-Fit</Button>
-   </div>
-   <div className='col-sm-6'>
-     <Button bsSize='small' className='btn-block'><Icon icon='heart'/> 11 Favs</Button>
-   </div>
- </div>
-</div>
-*/

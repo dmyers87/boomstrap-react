@@ -42,7 +42,7 @@ module.exports = React.createClass({
     const props = this.props;
     if (props.sash) {
       return (
-        <Sash type={ props.sash.type } reducedAmount= { props.sash.reducedAmount } reducedPercent= { props.sash.reducedPercent } timeStamp={ props.sash.timeStamp } />
+        <Sash type={props.sash.type} reducedAmount= {props.sash.reducedAmount} reducedPercent= {props.sash.reducedPercent} timeStamp={props.sash.timeStamp} />
       );
     }
   },
@@ -52,21 +52,21 @@ module.exports = React.createClass({
 
     const listingLink = (
       <p className='card-priority card-street'>
-        <a target='_blank' href={props.listingUrl}>{props.address.street}</a>
+        <a target='_blank' href={props.listingUrl }>{props.address.street}</a>
       </p>
     );
 
     return (
       <div>
-        <p className='card-priority card-price'>{ props.listPrice }</p>
+        <p className='card-priority card-price'>{props.listPrice}</p>
         {listingLink}
         <div className='row row-xcondensed'>
           <div className='col-xs-7'>
-            <p className='small'>{ props.address.city } , { props.address.state }</p>
-            <p className='small'>{ props.address.neighborhood }</p>
+            <p className='small'>{props.address.city} , {props.address.state}</p>
+            <p className='small'>{props.address.neighborhood}</p>
           </div>
           <div className='col-xs-5 text-right'>
-            <p className='small'>{ props.pricePerSqft }/SQFT</p>
+            <p className='small'>{props.pricePerSqft}/SQFT</p>
           </div>
         </div>
       </div>
@@ -79,23 +79,11 @@ module.exports = React.createClass({
     return (
       <div>
         <div className='card-stats'>
-          <span className='card-stat'>{ props.beds } BEDS</span>
-          <span className='card-stat'>{ props.baths } BATHS</span>
-          <span className='card-stat'>{ props.sqft } SQFT</span>
-          <span className='card-stat'>{ props.acres } ACRES</span>
+          <span className='card-stat'>{props.beds} BEDS</span>
+          <span className='card-stat'>{props.baths} BATHS</span>
+          <span className='card-stat'>{props.sqft} SQFT</span>
+          <span className='card-stat'>{props.acres} ACRES</span>
         </div>
-        {/*
-        <div className='card-container'>
-          <div className='row row-xcondensed'>
-            <div className='col-sm-6'>
-              <Button bsSize='small' className='btn-block'><Icon icon='star'/> 1220 Best-Fit</Button>
-            </div>
-            <div className='col-sm-6'>
-              <Button bsSize='small' className='btn-block'><Icon icon='heart'/> 11 Favs</Button>
-            </div>
-          </div>
-        </div>
-        */}
       </div>
     );
   },
@@ -111,7 +99,7 @@ module.exports = React.createClass({
       return (
         <ImageWithFallback
                 className='card-img'
-                alt={ this.props.fullAddress }
+                alt={this.props.fullAddress}
                 src={imageSrc}
                 fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
       );
@@ -123,7 +111,7 @@ module.exports = React.createClass({
       return (
         <ImageWithFallback
                 className='card-img'
-                alt={ this.props.fullAddress }
+                alt={this.props.fullAddress}
                 src={imageSrc}
                 fallbackSrc={'//boomstatic.com/img/comingsoon-lg.jpg'}/>
       );
@@ -144,8 +132,10 @@ module.exports = React.createClass({
 
   render() {
 
+    const classes = cx('card', this.props.className);
+
     return (
-      <div className='card'>
+      <div className={classes}>
         <div className='card-photo'>
           <div className='card-photo-inner'>
             {this._renderSash()}
