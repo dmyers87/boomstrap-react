@@ -43,13 +43,14 @@ module.exports = React.createClass({
   },
 
   _renderSash: function _renderSash() {
-    var props = this.props;
-    if (props.sash) {
+    var sash = this.props.sash;
+
+    if (sash) {
       return React.createElement(Sash, {
-        type: props.sash.type,
-        reducedAmount: props.sash.reducedAmount,
-        reducedPercent: props.sash.reducedPercent,
-        timeStamp: props.sash.timeStamp });
+        type: sash.type,
+        reducedAmount: sash.reducedAmount,
+        reducedPercent: sash.reducedPercent,
+        timeStamp: sash.timeStamp });
     }
   },
 

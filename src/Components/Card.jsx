@@ -41,14 +41,14 @@ module.exports = React.createClass({
   },
 
   _renderSash() {
-    const props = this.props;
-    if (props.sash) {
+    const {sash} = this.props;
+    if (sash) {
       return (
         <Sash
-          type={props.sash.type}
-          reducedAmount= {props.sash.reducedAmount}
-          reducedPercent= {props.sash.reducedPercent}
-          timeStamp={props.sash.timeStamp} />
+          type={sash.type}
+          reducedAmount= {sash.reducedAmount}
+          reducedPercent= {sash.reducedPercent}
+          timeStamp={sash.timeStamp} />
       );
     }
   },

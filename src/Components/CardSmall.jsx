@@ -37,7 +37,7 @@ module.exports = React.createClass({
   },
 
   _renderSash() {
-    const { sash } = this.props;
+    const {sash} = this.props;
     if (sash) {
       return (
         <Sash
