@@ -31,21 +31,15 @@ module.exports = React.createClass({
     };
   },
 
-  componentDidMount() {
-    this._updateSearchLeft();
-  },
-
-  componentDidUpdate() {
-    this._updateSearchLeft();
-  },
-
-  _updateSearchLeft() {
+  _updateSearchLeft(callback = () => {}) {
     const node            = React.findDOMNode(this);
     const nodeBox         = node.getBoundingClientRect();
     const documentElement = document.documentElement;
     const searchLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
     if (searchLeft !== this.state.searchLeft) {
-      this.setState({ searchLeft });
+      this.setState({ searchLeft }, callback);
+    } else {
+      callback();
     }
   },
 
@@ -110,7 +104,9 @@ module.exports = React.createClass({
   },
 
   _onFocus() {
-    this.refs.overlay.show();
+    this._updateSearchLeft(() => {
+      this.refs.overlay.show();
+    });
   },
 
   _onBlur() {
