@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   cache: true,
   entry: {
-    'boomstrap-react': path.join(__dirname, 'src/App.js')
+    'boomstrap-react': path.join(__dirname, 'src/index.js')
   },
   output: {
     path: path.join(__dirname, 'dist'),
