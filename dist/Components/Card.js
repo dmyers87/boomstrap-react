@@ -2,6 +2,7 @@
 
 var React = require('react/addons');
 var cx = require('classnames');
+var Icon = require('./Icon');
 var ImageWithFallback = require('./ImageWithFallback');
 var Sash = require('./Sash');
 
@@ -166,7 +167,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       Carousel,
-      null,
+      { indicators: false, prevIcon: React.createElement(Icon, { icon: 'chevron-left' }), nextIcon: React.createElement(Icon, { icon: 'chevron-right' }) },
       images.map(function (img) {
         return React.createElement(
           CarouselItem,

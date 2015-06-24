@@ -1,5 +1,8 @@
 module.exports = {
   Callout:           require('./Callout'),
+  Card:              require('./Card'),
+  CardSmall:         require('./CardSmall'),
+  Circle:            require('./Circle'),
   Fauxbox:           require('./Fauxbox'),
   Fauxdio:           require('./Fauxdio'),
   FauxLink:          require('./FauxLink'),
@@ -15,6 +18,7 @@ module.exports = {
   Pager:             require('./Pager'),
   ProfilePic:        require('./ProfilePic'),
   ProgressBar:       require('./ProgressBar'),
+  Sash:              require('./Sash'),
   Score:             require('./Score'),
   Switcher:          require('./Switcher'),
   UIMultiSelect:     require('./UIMultiSelect'),
