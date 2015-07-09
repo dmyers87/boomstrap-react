@@ -29,8 +29,7 @@ module.exports = React.createClass({
     return {
       className: null,
       small: false,
-      src: null,
-      alt: null
+      src: null
     };
   },
 
@@ -69,7 +68,7 @@ module.exports = React.createClass({
     if (this.props.src && !this.state.error) {
       return React.createElement(
         'div',
-        { className: className, style: style },
+        { className: className, style: style, 'data-initials': this.props.initials },
         React.createElement('img', {
           onError: this._handleImgError,
           style: imgStyle,

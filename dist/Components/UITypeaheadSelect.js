@@ -32,7 +32,7 @@ module.exports = React.createClass({
   },
 
   _updateSearchLeft: function _updateSearchLeft() {
-    var callback = arguments[0] === undefined ? function () {} : arguments[0];
+    var callback = arguments.length <= 0 || arguments[0] === undefined ? function () {} : arguments[0];
 
     var node = React.findDOMNode(this);
     var nodeBox = node.getBoundingClientRect();
