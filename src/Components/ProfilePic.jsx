@@ -27,8 +27,7 @@ module.exports = React.createClass({
     return {
       className: null,
       small: false,
-      src: null,
-      alt: null
+      src: null
     };
   },
 
@@ -70,7 +69,7 @@ module.exports = React.createClass({
 
     if (this.props.src && !this.state.error) {
       return (
-        <div className={className} style={style}>
+        <div className={className} style={style} data-initials={this.props.initials}>
         <img
           onError={this._handleImgError}
           style={imgStyle}

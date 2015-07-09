@@ -21,7 +21,7 @@ module.exports = React.createClass({
     })
   },
 
-  renderPropType(type) {
+  renderPropType(type = {}) {
     let values;
     const name = type.name;
     switch (name) {
