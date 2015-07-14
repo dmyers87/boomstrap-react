@@ -356,11 +356,11 @@
     }
   },
   "dist/Components/FauxLink.js": {
-    "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
+    "description": "Faux Link allows the user to create text that resembles a link\r\n without worrying about the href accidentally causing a route change.\r\nIt is intended to be used with actionable text that does not navigate.",
     "props": {}
   },
   "dist/Components/Fauxbox.js": {
-    "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
+    "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\r\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
     "props": {
       "id": {
         "type": {
@@ -845,7 +845,7 @@
           "name": "any"
         },
         "required": false,
-        "description": "Actual Nav Links to render (expected in <li><a /></li> format)\nThis property is provided by React children"
+        "description": "Actual Nav Links to render (expected in <li><a /></li> format)\r\nThis property is provided by React children"
       }
     }
   },
@@ -950,12 +950,6 @@
         },
         "required": true,
         "description": "Provide initials to be displayed when photo is not present. Required as fallback to image."
-      },
-      "alt": {
-        "defaultValue": {
-          "value": "null",
-          "computed": false
-        }
       }
     }
   },
@@ -1455,42 +1449,66 @@
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Class for Container of Typeahead",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
       },
       "iconClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Class for Icon in input",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
       },
       "inputClass": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Class for input",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
       },
       "placeholder": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Placeholder text for input",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
       },
       "onSearch": {
         "type": {
           "name": "func"
         },
         "required": false,
-        "description": ""
+        "description": "Function to call when the user types in the input",
+        "defaultValue": {
+          "value": "function onSearch() {}",
+          "computed": false
+        }
       },
       "onSelectMatch": {
         "type": {
           "name": "func"
         },
         "required": false,
-        "description": ""
+        "description": "Function to call when the user selects an item in the dropdown",
+        "defaultValue": {
+          "value": "function onSelectMatch() {}",
+          "computed": false
+        }
       },
       "options": {
         "type": {
@@ -1499,7 +1517,7 @@
             "name": "shape",
             "value": {
               "element": {
-                "name": "element"
+                "name": "node"
               },
               "payload": {
                 "name": "any"
@@ -1508,14 +1526,22 @@
           }
         },
         "required": false,
-        "description": ""
+        "description": "Array of options to display to the user",
+        "defaultValue": {
+          "value": "[]",
+          "computed": false
+        }
       },
       "overlayModal": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": ""
+        "description": "Indicates this typeahead is on a modal and must be a higher zIndex",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
       }
     }
   },
