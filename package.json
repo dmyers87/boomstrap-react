@@ -47,7 +47,7 @@
     "classnames": "^2.1.0",
     "lodash": "^2.4.1",
     "react": "^0.13.3",
-    "react-bootstrap": "^0.23.1"
+    "react-bootstrap": "^0.23.7"
   },
   "scripts": {
     "test": "jest",

@@ -1,5 +1,7 @@
 const React = require('react/addons');
 
+require('../less/ExampleStyles.less');
+
 const DocTypes = {
   Callout: {
     Component: require('../../src/Components/Callout.jsx'),
@@ -72,6 +74,10 @@ const DocTypes = {
   Switcher: {
     Component: require('../../src/Components/Switcher.jsx'),
     Example:   require('raw!../examples/Switcher.example.js')
+  },
+  UITypeaheadSelect: {
+    Component: require('../../src/Components/UITypeaheadSelect.jsx'),
+    Example:   require('raw!../examples/UITypeaheadSelect.example.js')
   },
   UISelect: {
     Component: require('../../src/Components/UISelect.jsx'),

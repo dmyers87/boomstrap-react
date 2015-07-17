@@ -56,8 +56,8 @@ const UITypeaheadSelectOverlay = React.createClass({
     let ulStyle = {
       display:  'block',
       position: 'absolute',
-      left: positionLeft,
-      top:  this.props.positionTop
+      left:     positionLeft,
+      top:      this.props.positionTop
     };
 
     if (this.props.overlayModal) {
