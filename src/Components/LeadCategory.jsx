@@ -45,7 +45,8 @@ module.exports = React.createClass({
       small,
       outline,
       muted,
-      disabled
+      disabled,
+      ...props
     } = this.props;
 
     const category  = categories[this.props.category];
@@ -62,7 +63,9 @@ module.exports = React.createClass({
     });
 
     return (
-      <span className={catClass}>{ abbreviated ? abbr : category }</span>
+      <span {...props} className={catClass}>
+        { abbreviated ? abbr : category }
+      </span>
     );
   }
 });

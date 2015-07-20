@@ -660,6 +660,88 @@
       }
     }
   },
+  "dist/Components/LeadCategoryByType.js": {
+    "description": "",
+    "props": {
+      "seller": {
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      }
+    }
+  },
+  "dist/Components/LeadType.js": {
+    "description": "",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "buyer": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Indicates whether or not this is a buyer lead type.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "seller": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Indicates whether or not this is a seller lead type.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "equal": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "For equal width lead type labels, set equal to true.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "abbreviated": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "For abbreviated lead type labels, set abbreviated to true.\nAbbreviated version will always be uppercase.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "vertical": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Sometimes you just want to stand things on their heads.\nSet vertical and abbreviated to true when you need your leadtype to reach for the stars.\nThis only applies to the B/S combination.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      }
+    }
+  },
   "dist/Components/Loader.js": {
     "description": "",
     "props": {

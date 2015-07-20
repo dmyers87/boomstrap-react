@@ -13,6 +13,8 @@ module.exports = {
   IFrame: require('./IFrame'),
   ImageWithFallback: require('./ImageWithFallback'),
   LeadCategory: require('./LeadCategory'),
+  LeadCategoryByType: require('./LeadCategoryByType'),
+  LeadType: require('./LeadType'),
   Loader: require('./Loader'),
   Marker: require('./Marker'),
   MessageFace: require('./MessageFace'),
