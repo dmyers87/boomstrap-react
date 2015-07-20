@@ -1,5 +1,9 @@
 'use strict';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
 var React = require('react/addons');
 var cx = require('classnames');
 var PureRenderMixin = React.addons.PureRenderMixin;
@@ -49,6 +53,8 @@ module.exports = React.createClass({
     var muted = _props.muted;
     var disabled = _props.disabled;
 
+    var props = _objectWithoutProperties(_props, ['equal', 'abbreviated', 'small', 'outline', 'muted', 'disabled']);
+
     var category = categories[this.props.category];
     var abbr = abbrs[this.props.category];
 
@@ -64,7 +70,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       'span',
-      { className: catClass },
+      _extends({}, props, { className: catClass }),
       abbreviated ? abbr : category
     );
   }

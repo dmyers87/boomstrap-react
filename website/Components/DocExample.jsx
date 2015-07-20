@@ -35,6 +35,14 @@ const DocTypes = {
     Component: require('../../src/Components/LeadCategory.jsx'),
     Example:   require('raw!../examples/LeadCategory.example.js')
   },
+  LeadCategoryByType: {
+    Component: require('../../src/Components/LeadCategoryByType.jsx'),
+    Example:   require('raw!../examples/LeadCategoryByType.example.js')
+  },
+  LeadType: {
+    Component: require('../../src/Components/LeadType.jsx'),
+    Example:   require('raw!../examples/LeadType.example.js')
+  },
   Loader: {
     Component: require('../../src/Components/Loader.jsx'),
     Example:   require('raw!../examples/Loader.example.js')
