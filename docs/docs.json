@@ -356,11 +356,11 @@
     }
   },
   "dist/Components/FauxLink.js": {
-    "description": "Faux Link allows the user to create text that resembles a link\r\n without worrying about the href accidentally causing a route change.\r\nIt is intended to be used with actionable text that does not navigate.",
+    "description": "Faux Link allows the user to create text that resembles a link\n without worrying about the href accidentally causing a route change.\nIt is intended to be used with actionable text that does not navigate.",
     "props": {}
   },
   "dist/Components/Fauxbox.js": {
-    "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\r\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
+    "description": "Much like the similarly named hairstyle of the '00s, the Fauxbox replaces something functional with something flashy in hopes to lure the user into touching it.\nFauxbox is a drop-in replacement for checkboxes in Boomstrap.",
     "props": {
       "id": {
         "type": {
@@ -430,6 +430,13 @@
         "required": false,
         "description": "Optional class to pass to the div that wraps the Fauxdio"
       },
+      "radioName": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "Identifier provided to link together the radio group"
+      },
       "labelClass": {
         "type": {
           "name": "string"
@@ -441,8 +448,12 @@
         "type": {
           "name": "bool"
         },
-        "required": true,
-        "description": "Indicates whether or not the Fauxdio is selected"
+        "required": false,
+        "description": "Indicates whether or not the Fauxdio is selected",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
       },
       "value": {
         "type": {
@@ -649,6 +660,88 @@
       }
     }
   },
+  "dist/Components/LeadCategoryByType.js": {
+    "description": "",
+    "props": {
+      "seller": {
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      }
+    }
+  },
+  "dist/Components/LeadType.js": {
+    "description": "",
+    "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "",
+        "defaultValue": {
+          "value": "''",
+          "computed": false
+        }
+      },
+      "buyer": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Indicates whether or not this is a buyer lead type.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "seller": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Indicates whether or not this is a seller lead type.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "equal": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "For equal width lead type labels, set equal to true.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "abbreviated": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "For abbreviated lead type labels, set abbreviated to true.\nAbbreviated version will always be uppercase.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "vertical": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Sometimes you just want to stand things on their heads.\nSet vertical and abbreviated to true when you need your leadtype to reach for the stars.\nThis only applies to the B/S combination.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      }
+    }
+  },
   "dist/Components/Loader.js": {
     "description": "",
     "props": {
@@ -845,7 +938,7 @@
           "name": "any"
         },
         "required": false,
-        "description": "Actual Nav Links to render (expected in <li><a /></li> format)\r\nThis property is provided by React children"
+        "description": "Actual Nav Links to render (expected in <li><a /></li> format)\nThis property is provided by React children"
       }
     }
   },
