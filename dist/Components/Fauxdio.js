@@ -21,6 +21,11 @@ module.exports = React.createClass({
     radioClass: React.PropTypes.string,
 
     /**
+     * Identifier provided to link together the radio group
+     */
+    radioName: React.PropTypes.string.isRequired,
+
+    /**
      * Optional class to pass to the label that accompanies the input
      */
     labelClass: React.PropTypes.string,
@@ -28,7 +33,7 @@ module.exports = React.createClass({
     /**
      * Indicates whether or not the Fauxdio is selected
      */
-    checked: React.PropTypes.bool.isRequired,
+    checked: React.PropTypes.bool,
 
     /**
      * Provided for information on submitting forms
@@ -50,6 +55,13 @@ module.exports = React.createClass({
      */
     label: React.PropTypes.node
   },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      checked: false
+    };
+  },
+
   render: function render() {
     var labelClass = this.props.labelClass || '';
     var fauxdioClass = cx(this.props.radioClass, 'fauxdio', {
@@ -62,6 +74,7 @@ module.exports = React.createClass({
       React.createElement('input', {
         id: this.props.radioID,
         type: 'radio',
+        name: this.props.radioName,
         value: this.props.value,
         checked: this.props.checked,
         onChange: this.props.onChange }),

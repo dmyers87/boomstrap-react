@@ -3,16 +3,16 @@ var ComponentExample = React.createClass({
     return (
       <div>
         <h4>Fauxdio</h4>
-        <Fauxdio radioID='fb1' checked={true} label='Radio'/>
-        <Fauxdio radioID='fb2' checked={false} label='Is'/>
-        <Fauxdio radioID='fb3' checked={false} label='Faux'/>
-        <Fauxdio radioID='fb4' checked={false} label='Yeaux!'/>
+        <Fauxdio radioID='optionRadios1' checked radioName='optionRadiosOne' label='Radio'/>
+        <Fauxdio radioID='optionRadios2' radioName='optionRadiosOne' label='Is'/>
+        <Fauxdio radioID='optionRadios3' radioName='optionRadiosOne' label='Faux'/>
+        <Fauxdio radioID='optionRadios4' radioName='optionRadiosOne' label='Yeaux!'/>
         <hr/>
         <h4 className='inline-block' style={{marginRight: 1 + 'em'}}>Inline Fauxdio: </h4>
-        <Fauxdio radioID='fb5' checked={false} label='Radio' inline={true}/>
-        <Fauxdio radioID='fb6' checked={false} label='Is' inline={true}/>
-        <Fauxdio radioID='fb7' checked={true} label='Faux'inline={true}/>
-        <Fauxdio radioID='fb8' checked={false} label='Yeaux!' inline={true}/>
+        <Fauxdio radioID='optionRadios5' radioName='optionRadiosTwo'label='Radio' inline={true}/>
+        <Fauxdio radioID='optionRadios6' radioName='optionRadiosTwo'label='Is' inline={true}/>
+        <Fauxdio radioID='optionRadios7' checked radioName='optionRadiosTwo'label='Faux'inline={true}/>
+        <Fauxdio radioID='optionRadios8' radioName='optionRadiosTwo'label='Yeaux!' inline={true}/>
       </div>
     );
   }
