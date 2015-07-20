@@ -1,5 +1,4 @@
 const React         = require('react/addons');
-const cx            = require('classnames');
 const LeadCategory  = require('./LeadCategory');
 const LeadType      = require('./LeadType');
 
@@ -9,6 +8,8 @@ module.exports = React.createClass({
   displayName: 'LeadCategoryByType',
 
   propTypes: {
+    className: React.PropTypes.string,
+
     /**
      * Indicates whether or not this is a seller category
      */

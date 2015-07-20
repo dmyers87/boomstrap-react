@@ -252,7 +252,10 @@ module.exports = React.createClass({
           onClick={this.activate}
           tabIndex='-1'
           type='button'>
-          {isEmpty ?  (<span className='text-muted'>{this.props.placeholder}</span>) : (<span>{this.props.text}</span>) }
+          { isEmpty ?
+            <span className='text-muted'>{this.props.placeholder}</span> :
+            <span>{this.props.text}</span>
+          }
           <span className='caret'></span>
         </button>
       );

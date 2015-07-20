@@ -5,7 +5,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 var React = require('react/addons');
-var cx = require('classnames');
 var LeadCategory = require('./LeadCategory');
 var LeadType = require('./LeadType');
 
@@ -15,6 +14,8 @@ module.exports = React.createClass({
   displayName: 'LeadCategoryByType',
 
   propTypes: _extends({
+    className: React.PropTypes.string,
+
     /**
      * Indicates whether or not this is a seller category
      */
