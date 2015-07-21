@@ -43,6 +43,10 @@ gulp.task('compileDocsScripts', function(callback) {
 
 gulp.task('copyDocs', function() {
 
+  // copy Boomstrap's svg files for use in documentation
+  gulp.src('bower_components/boomstrap/dist/svg/**/*.svg')
+    .pipe(gulp.dest('www/svg/'));
+
   gulp.src('docs/**')
     .pipe(gulp.dest('www/docs/'));
 

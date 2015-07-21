@@ -5,3 +5,4 @@ node_modules/
 .orig
 www/
 npm-debug.log
+bower_components/

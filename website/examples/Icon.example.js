@@ -7,7 +7,7 @@ var ComponentExample = React.createClass({
           <Icon icon='heart'/> <Icon icon='eye'/> <Icon icon='chat'/> <Icon icon='user'/> <Icon icon='cog'/> 
           <Icon icon='chevron-left'/> <Icon icon='chevron-right'/>
         </p>
-        <a href={'http://boomtownroi.github.io/boomstrap/css/fonts/ficon-docs/demo.html'} target={'_blank'}>view full set</a>
+        <a href={'http://boomtownroi.github.io/boomstrap/svg/sprite.symbol.html'} target={'_blank'}>view full set</a>
       </div>
     );
   }

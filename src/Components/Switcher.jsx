@@ -1,5 +1,6 @@
 const React = require('react/addons');
 const cx    = require('classnames');
+const Icon                  = require('./Icon');
 
 const { assign, omit } = require('lodash');
 
@@ -69,10 +70,10 @@ module.exports = React.createClass({
         <label className={switcherLabelClass} htmlFor={id}>
           <div className='switcher__inner'>
             <div className='switcher__on'>
-              <i className='ficon ficon-checkmark'/>
+              <Icon icon='checkmark' />
             </div>
             <div className='switcher__off'>
-              <i className='ficon ficon-cross'/>
+              <Icon icon='cross' />
             </div>
           </div>
         </label>

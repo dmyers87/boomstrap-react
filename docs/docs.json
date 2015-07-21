@@ -526,14 +526,25 @@
           "name": "string"
         },
         "required": true,
-        "description": ""
+        "description": "Icon name."
+      },
+      "iconPath": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Path to SVG sprite.",
+        "defaultValue": {
+          "value": "'svg/sprite.svg'",
+          "computed": false
+        }
       },
       "className": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": ""
+        "description": "Optionally include additional class name(s)."
       }
     }
   },
