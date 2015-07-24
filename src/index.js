@@ -1,5 +1,12 @@
+const Components = require('./Components');
+const Constants  = require('./Constants');
+const Mixins     = require('./Mixins');
+
 module.exports = {
-  Components: require('./Components'),
-  Constants:  require('./Constants'),
-  Mixins:     require('./Mixins')
+  Components,
+  Constants,
+  Mixins,
+  ...Components,
+  ...Constants,
+  ...Mixins
 };
