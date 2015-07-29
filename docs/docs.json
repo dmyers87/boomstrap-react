@@ -528,17 +528,6 @@
         "required": true,
         "description": "Icon name."
       },
-      "iconPath": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Path to SVG sprite.",
-        "defaultValue": {
-          "value": "'svg/sprite.svg'",
-          "computed": false
-        }
-      },
       "className": {
         "type": {
           "name": "string"
@@ -1235,6 +1224,36 @@
         },
         "required": false,
         "description": ""
+      }
+    }
+  },
+  "dist/Components/SvgIcon.js": {
+    "description": "",
+    "props": {
+      "icon": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "Icon name."
+      },
+      "iconPath": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Path to SVG sprite.",
+        "defaultValue": {
+          "value": "'svg/sprite.svg'",
+          "computed": false
+        }
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Optionally include additional class name(s)."
       }
     }
   },

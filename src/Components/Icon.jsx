@@ -11,41 +11,20 @@ module.exports = React.createClass({
     icon: React.PropTypes.string.isRequired,
 
     /**
-     * Path to SVG sprite.
-     */
-    iconPath: React.PropTypes.string,
-
-    /**
      * Optionally include additional class name(s).
      */
     className: React.PropTypes.string
   },
 
-  getDefaultProps() {
-    return {
-      iconPath: 'svg/sprite.svg'
-    };
-  },
-
   render() {
-    let { className, icon, iconPath, ...props } = this.props;
+    let { className, icon, ...props } = this.props;
 
-    let useTag = `<use xlink:href=${iconPath}#${icon} />`;
-
-    const classes = cx(
+    const iconClass = cx(
       className,
-      'icon',
-      'icon-' + icon
+      'ficon',
+      'ficon-' + icon
     );
 
-    const createUseTag = () => {
-      return {
-        __html: useTag
-      };
-    };
-
-    return <svg className={classes} {...props} dangerouslySetInnerHTML={createUseTag()}/>;
+    return <i className={iconClass} {...props} />;
   }
 });
-
-

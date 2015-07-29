@@ -8,7 +8,7 @@ var React = require('react/addons');
 var cx = require('classnames');
 
 module.exports = React.createClass({
-  displayName: 'Icon',
+  displayName: 'SvgIcon',
 
   propTypes: {
     /**
@@ -17,20 +17,40 @@ module.exports = React.createClass({
     icon: React.PropTypes.string.isRequired,
 
     /**
+     * Path to SVG sprite.
+     */
+    iconPath: React.PropTypes.string,
+
+    /**
      * Optionally include additional class name(s).
      */
     className: React.PropTypes.string
+  },
+
+  getDefaultProps: function getDefaultProps() {
+    return {
+      iconPath: 'svg/sprite.svg'
+    };
   },
 
   render: function render() {
     var _props = this.props;
     var className = _props.className;
     var icon = _props.icon;
+    var iconPath = _props.iconPath;
 
-    var props = _objectWithoutProperties(_props, ['className', 'icon']);
+    var props = _objectWithoutProperties(_props, ['className', 'icon', 'iconPath']);
 
-    var iconClass = cx(className, 'ficon', 'ficon-' + icon);
+    var useTag = '<use xlink:href=' + iconPath + '#' + icon + ' />';
 
-    return React.createElement('i', _extends({ className: iconClass }, props));
+    var classes = cx(className, 'icon', 'icon-' + icon);
+
+    var createUseTag = function createUseTag() {
+      return {
+        __html: useTag
+      };
+    };
+
+    return React.createElement('svg', _extends({ className: classes }, props, { dangerouslySetInnerHTML: createUseTag() }));
   }
 });
