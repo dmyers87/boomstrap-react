@@ -14,6 +14,7 @@ module.exports = {
   ImageWithFallback: require('./ImageWithFallback'),
   LeadCategory: require('./LeadCategory'),
   LeadCategoryByType: require('./LeadCategoryByType'),
+  LeadCategoryDropdown: require('./LeadCategoryDropdown'),
   LeadType: require('./LeadType'),
   Loader: require('./Loader'),
   Marker: require('./Marker'),
