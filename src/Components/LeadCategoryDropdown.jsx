@@ -1,6 +1,6 @@
 const React = require('react/addons');
 
-const { Overlay, Popover } = require('react-bootstrap');
+const { Overlay }          = require('react-bootstrap');
 
 const LeadCategory         = require('./LeadCategory');
 const LeadCategoryByType   = require('./LeadCategoryByType');

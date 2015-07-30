@@ -7,7 +7,6 @@ var React = require('react/addons');
 var _require = require('react-bootstrap');
 
 var Overlay = _require.Overlay;
-var Popover = _require.Popover;
 
 var LeadCategory = require('./LeadCategory');
 var LeadCategoryByType = require('./LeadCategoryByType');
