@@ -125,12 +125,9 @@ module.exports = React.createClass({
   },
 
   render() {
-    const dropdownStyle = {
-      display: 'inline-block' // For dropdown positioning
-    };
     return (
       <div>
-        <div ref='cat' style={dropdownStyle}>
+        <div ref='cat' className='inline-block'>
           <FauxLink onClick={() => this.setState({ open: true })}>
             {this._renderCategory()}
           </FauxLink>

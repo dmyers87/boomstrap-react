@@ -147,15 +147,12 @@ module.exports = React.createClass({
   render: function render() {
     var _this3 = this;
 
-    var dropdownStyle = {
-      display: 'inline-block' // For dropdown positioning
-    };
     return React.createElement(
       'div',
       null,
       React.createElement(
         'div',
-        { ref: 'cat', style: dropdownStyle },
+        { ref: 'cat', className: 'inline-block' },
         React.createElement(
           FauxLink,
           { onClick: function () {
