@@ -20,6 +20,7 @@ module.exports = {
   Marker: require('./Marker'),
   MessageFace: require('./MessageFace'),
   NavLinksBar: require('./NavLinksBar'),
+  OverlayBox: require('./OverlayBox'),
   Pager: require('./Pager'),
   ProfilePic: require('./ProfilePic'),
   ProgressBar: require('./ProgressBar'),
