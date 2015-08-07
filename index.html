@@ -19,10 +19,20 @@
     <body>
         <div id='page'></div>
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/mode/javascript/javascript.min.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/mode/javascript/javascript.min.js"></script>
         <script src="//fb.me/react-with-addons-0.13.1.js"></script>
         <script src="boomstrap-react.js"></script>
         <script src="vendor.bundle.js"></script>
         <script src="boomstrap-react-docs.js"></script>
+
+        <!-- load boomstrap's js to give us access to boomsvgloader -->
+        <script src="//boomtownroi.github.io/boomstrap/js/boomstrap.min.js"></script>
+        <!-- load boomstrap's svg sprite -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+              boomsvgloader.load('//boomtownroi.github.io/boomstrap/svg/sprite.svg');
+            });
+        </script>
+
     </body>
 </html>

@@ -17,7 +17,7 @@ module.exports = React.createClass({
   },
 
   render() {
-    let { className, icon, iconPath, ...props } = this.props;
+    let { className, icon, ...props } = this.props;
 
     let useTag = `<use xlink:href=#${icon} />`;
 

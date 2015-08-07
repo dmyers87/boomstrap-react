@@ -1,7 +1,0 @@
-{
-  "name": "boomstrap-react",
-  "version": "0.0.0",
-  "devDependencies": {
-    "boomstrap": "~1.16.6"
-  }
-}

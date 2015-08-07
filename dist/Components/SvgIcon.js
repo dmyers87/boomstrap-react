@@ -17,31 +17,19 @@ module.exports = React.createClass({
     icon: React.PropTypes.string.isRequired,
 
     /**
-     * Path to SVG sprite.
-     */
-    iconPath: React.PropTypes.string,
-
-    /**
      * Optionally include additional class name(s).
      */
     className: React.PropTypes.string
-  },
-
-  getDefaultProps: function getDefaultProps() {
-    return {
-      iconPath: 'svg/sprite.svg'
-    };
   },
 
   render: function render() {
     var _props = this.props;
     var className = _props.className;
     var icon = _props.icon;
-    var iconPath = _props.iconPath;
 
-    var props = _objectWithoutProperties(_props, ['className', 'icon', 'iconPath']);
+    var props = _objectWithoutProperties(_props, ['className', 'icon']);
 
-    var useTag = '<use xlink:href=' + iconPath + '#' + icon + ' />';
+    var useTag = '<use xlink:href=#' + icon + ' />';
 
     var classes = cx(className, 'icon', 'icon-' + icon);
 
