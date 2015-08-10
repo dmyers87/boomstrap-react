@@ -1,6 +1,6 @@
 const React = require('react/addons');
 const cx    = require('classnames');
-const Icon                  = require('./Icon');
+const Icon  = require('./Icon');
 
 const { assign, omit } = require('lodash');
 
