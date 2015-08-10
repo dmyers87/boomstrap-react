@@ -27,12 +27,10 @@ module.exports = React.createClass({
       'icon-' + icon
     );
 
-    const createUseTag = () => {
-      return {
-        __html: useTag
-      };
+    const useTagHtml = {
+      __html: useTag
     };
 
-    return <svg className={classes} {...props} dangerouslySetInnerHTML={createUseTag()}/>;
+    return <svg className={classes} {...props} dangerouslySetInnerHTML={useTagHtml}/>;
   }
 });
