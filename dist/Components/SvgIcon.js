@@ -29,7 +29,7 @@ module.exports = React.createClass({
 
     var props = _objectWithoutProperties(_props, ['className', 'icon']);
 
-    var useTag = '<use xlink:href=#' + icon + ' />';
+    var useTag = '<use xlink:href=#icon-' + icon + ' />';
 
     var classes = cx(className, 'icon', 'icon-' + icon);
 
