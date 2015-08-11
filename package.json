@@ -53,8 +53,10 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --ext .js --ext .jsx .",
-    "docs": "react-docgen dist/Components/ --pretty --o ./docs/docs.json",
-    "build": "babel src --out-dir dist && gulp"
+    "build": "babel src --out-dir dist && gulp",
+    "docs": "npm run build && react-docgen dist/Components/ --pretty --o ./docs/docs.json",
+    "start": "npm run docs && gulp server",
+    "website": "gulp website"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
