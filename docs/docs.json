@@ -1043,6 +1043,28 @@
         },
         "required": true,
         "description": "Provide initials to be displayed when photo is not present. Required as fallback to image."
+      },
+      "buyer": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Optionally set buyer prop if you want to show leadtype styling.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "seller": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Optionally set seller prop if you want to show leadtype styling.",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
       }
     }
   },

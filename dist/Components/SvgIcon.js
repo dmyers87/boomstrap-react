@@ -33,12 +33,10 @@ module.exports = React.createClass({
 
     var classes = cx(className, 'icon', 'icon-' + icon);
 
-    var createUseTag = function createUseTag() {
-      return {
-        __html: useTag
-      };
+    var useTagHtml = {
+      __html: useTag
     };
 
-    return React.createElement('svg', _extends({ className: classes }, props, { dangerouslySetInnerHTML: createUseTag() }));
+    return React.createElement('svg', _extends({ className: classes }, props, { dangerouslySetInnerHTML: useTagHtml }));
   }
 });
