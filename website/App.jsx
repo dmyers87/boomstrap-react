@@ -9,6 +9,7 @@ const version = JSON.parse(require('raw!../package.json')).version;
 const request = require('superagent');
 
 require('./less/App.less');
+const loader = require('boomsvgloader');
 
 request.get('docs/docs.json').end((err, data) => {
   if (err) {
@@ -30,6 +31,11 @@ request.get('docs/docs.json').end((err, data) => {
 
   const App = React.createClass({
     displayName: 'App',
+
+    componentDidMount() {
+      loader.load('//boomtownroi.github.io/boomstrap/svg/sprite.svg');
+    },
+
     render() {
       return (
         <div>

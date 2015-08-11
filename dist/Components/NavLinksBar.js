@@ -139,7 +139,7 @@ module.exports = React.createClass({
         transform: transform,
         WebkitTransform: transform,
         msTransform: transform,
-        height: '' + barHeight + 'px',
+        height: barHeight + 'px',
         top: '0'
       };
     } else {
@@ -158,7 +158,7 @@ module.exports = React.createClass({
         transform: transform,
         WebkitTransform: transform,
         msTransform: transform,
-        width: '' + barWidth + 'px',
+        width: barWidth + 'px',
         left: '0',
         bottom: '0'
       };

@@ -2,7 +2,7 @@ const React = require('react/addons');
 const cx    = require('classnames');
 
 module.exports = React.createClass({
-  displayName: 'Icon',
+  displayName: 'SvgIcon',
 
   propTypes: {
     /**
@@ -19,12 +19,18 @@ module.exports = React.createClass({
   render() {
     let { className, icon, ...props } = this.props;
 
-    const iconClass = cx(
+    let useTag = `<use xlink:href=#icon-${icon} />`;
+
+    const classes = cx(
       className,
-      'ficon',
-      'ficon-' + icon
+      'icon',
+      'icon-' + icon
     );
 
-    return <i className={iconClass} {...props} />;
+    const useTagHtml = {
+      __html: useTag
+    };
+
+    return <svg className={classes} {...props} dangerouslySetInnerHTML={useTagHtml}/>;
   }
 });
