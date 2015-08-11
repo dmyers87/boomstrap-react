@@ -22,14 +22,24 @@ module.exports = React.createClass({
     /**
      * Provide initials to be displayed when photo is not present. Required as fallback to image.
      */
-    initials: React.PropTypes.string.isRequired
+    initials: React.PropTypes.string.isRequired,
+    /**
+     * Optionally set buyer prop if you want to show leadtype styling.
+     */
+    buyer: React.PropTypes.bool,
+    /**
+     * Optionally set seller prop if you want to show leadtype styling.
+     */
+    seller: React.PropTypes.bool
   },
 
   getDefaultProps: function getDefaultProps() {
     return {
       className: null,
       small: false,
-      src: null
+      src: null,
+      buyer: false,
+      seller: false
     };
   },
 
@@ -56,7 +66,10 @@ module.exports = React.createClass({
   render: function render() {
     var className = cx(this.props.className, 'profile-pic', {
       'profile-pic--sm': this.props.small,
-      'profile-pic--initials': !this.props.src || this.state.error
+      'profile-pic--initials': !this.props.src || this.state.error,
+      'profile-pic--buyer': this.props.buyer && !this.props.seller,
+      'profile-pic--seller': !this.props.buyer && this.props.seller,
+      'profile-pic--buyer-seller': this.props.buyer && this.props.seller
     });
     var imgStyle = {
       display: 'none'
