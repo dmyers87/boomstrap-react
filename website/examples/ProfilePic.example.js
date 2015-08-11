@@ -29,7 +29,7 @@ var ComponentExample = React.createClass({
           &nbsp;
           <ProfilePic small initials="MF" />
         </div>
-        <br />
+        <hr />
         <div>
           <ProfilePic buyer src="//img1.wikia.nocookie.net/__cb20120128192952/muppet/images/0/08/CookieMonsterWaving.jpg" initials="CM" />
           &nbsp;
