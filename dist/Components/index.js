@@ -24,6 +24,7 @@ module.exports = {
   ProgressBar: require('./ProgressBar'),
   Sash: require('./Sash'),
   Score: require('./Score'),
+  SvgIcon: require('./SvgIcon'),
   Switcher: require('./Switcher'),
   UIMultiSelect: require('./UIMultiSelect'),
   UISelect: require('./UISelect'),
