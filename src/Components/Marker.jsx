@@ -1,8 +1,8 @@
-const React = require('react/addons');
-const cx    = require('classnames');
+const React   = require('react/addons');
+const cx      = require('classnames');
 
 // Components
-const Icon = require('./Icon');
+const SvgIcon = require('./SvgIcon');
 
 /**
  * Use markers to represent current searching / filtering parameters.
@@ -35,7 +35,7 @@ module.exports = React.createClass({
     let close = null;
     if (this.props.showClose) {
       close = (
-        <Icon icon='cross' className={this.props.closeClass} onClick={this.props.onClose} />
+        <SvgIcon icon='cross' className={this.props.closeClass} onClick={this.props.onClose} />
       );
     }
 

@@ -4,7 +4,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var React = require('react/addons');
 var cx = require('classnames');
-var Icon = require('./Icon');
+var SvgIcon = require('./SvgIcon');
 
 var _require = require('lodash');
 
@@ -82,12 +82,12 @@ module.exports = React.createClass({
           React.createElement(
             'div',
             { className: 'switcher__on' },
-            React.createElement(Icon, { icon: 'checkmark' })
+            React.createElement(SvgIcon, { icon: 'checkmark' })
           ),
           React.createElement(
             'div',
             { className: 'switcher__off' },
-            React.createElement(Icon, { icon: 'cross' })
+            React.createElement(SvgIcon, { icon: 'cross' })
           )
         )
       )

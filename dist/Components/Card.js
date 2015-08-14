@@ -2,7 +2,7 @@
 
 var React = require('react/addons');
 var cx = require('classnames');
-var Icon = require('./Icon');
+var SvgIcon = require('./SvgIcon');
 var ImageWithFallback = require('./ImageWithFallback');
 var Sash = require('./Sash');
 
@@ -167,7 +167,7 @@ module.exports = React.createClass({
 
     return React.createElement(
       Carousel,
-      { indicators: false, prevIcon: React.createElement(Icon, { icon: 'chevron-left' }), nextIcon: React.createElement(Icon, { icon: 'chevron-right' }) },
+      { indicators: false, prevIcon: React.createElement(SvgIcon, { icon: 'chevron-left' }), nextIcon: React.createElement(SvgIcon, { icon: 'chevron-right' }) },
       images.map(function (img) {
         return React.createElement(
           CarouselItem,

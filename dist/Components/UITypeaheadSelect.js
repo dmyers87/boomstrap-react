@@ -8,6 +8,7 @@ var _require = require('react-bootstrap');
 var Overlay = _require.Overlay;
 
 var UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay');
+var SvgIcon = require('./SvgIcon');
 
 module.exports = React.createClass({
   displayName: 'UI Typeahead Select',
@@ -163,7 +164,7 @@ module.exports = React.createClass({
   render: function render() {
     var _this3 = this;
 
-    var searchIcon = cx('ficon ficon-search', this.props.iconClass);
+    var searchIcon = this.props.iconClass;
     var inputClass = cx('form-control', this.props.inputClass);
 
     return React.createElement(
@@ -179,7 +180,7 @@ module.exports = React.createClass({
         onKeyDown: this._onKeyDown,
         onChange: this._onChange,
         value: this.state.searchText }),
-      React.createElement('i', { className: searchIcon }),
+      React.createElement(SvgIcon, { icon: 'search', className: searchIcon }),
       React.createElement(
         Overlay,
         {
