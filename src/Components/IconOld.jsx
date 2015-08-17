@@ -2,7 +2,7 @@ const React = require('react/addons');
 const cx    = require('classnames');
 
 module.exports = React.createClass({
-  displayName: 'Icon',
+  displayName: 'Icon (deprecated)',
 
   propTypes: {
     /**
