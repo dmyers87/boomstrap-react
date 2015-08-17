@@ -3,7 +3,7 @@ const cx    = require('classnames');
 
 const { Overlay }              = require('react-bootstrap');
 const UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay');
-const SvgIcon                  = require('./SvgIcon');
+const Icon                     = require('./Icon');
 
 module.exports = React.createClass({
   displayName: 'UI Typeahead Select',
@@ -170,7 +170,7 @@ module.exports = React.createClass({
           onKeyDown={this._onKeyDown}
           onChange={this._onChange}
           value={this.state.searchText}/>
-        <SvgIcon icon='search' className={searchIcon}/>
+        <Icon icon='search' className={searchIcon}/>
         <Overlay
           show={this.state.overlayShown}
           target={() => React.findDOMNode(this)}

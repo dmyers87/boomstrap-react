@@ -9,7 +9,7 @@ var _require = require('react-bootstrap');
 var OverlayTrigger = _require.OverlayTrigger;
 var Tooltip = _require.Tooltip;
 
-var SvgIcon = require('./SvgIcon');
+var Icon = require('./Icon');
 
 module.exports = React.createClass({
   displayName: 'Icon Tooltip',
@@ -28,7 +28,7 @@ module.exports = React.createClass({
           null,
           this.props.text
         ) },
-      React.createElement(SvgIcon, { icon: this.props.icon })
+      React.createElement(Icon, { icon: this.props.icon })
     ) : null;
   }
 });

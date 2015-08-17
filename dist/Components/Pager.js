@@ -4,7 +4,7 @@ var React = require('react/addons');
 var cx = require('classnames');
 
 // Components
-var SvgIcon = require('./SvgIcon');
+var Icon = require('./Icon');
 
 module.exports = React.createClass({
   displayName: 'Pager',
@@ -67,12 +67,12 @@ module.exports = React.createClass({
       React.createElement(
         'button',
         { type: 'button', className: backBtnClass, onClick: this._onPageBack },
-        React.createElement(SvgIcon, { icon: 'chevron-left' })
+        React.createElement(Icon, { icon: 'chevron-left' })
       ),
       React.createElement(
         'button',
         { type: 'button', className: fwdBtnClass, onClick: this._onPageFwd },
-        React.createElement(SvgIcon, { icon: 'chevron-right' })
+        React.createElement(Icon, { icon: 'chevron-right' })
       )
     );
   }

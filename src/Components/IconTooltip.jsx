@@ -2,7 +2,7 @@ const React = require('react/addons');
 
 // Components
 const { OverlayTrigger, Tooltip } = require('react-bootstrap');
-const SvgIcon = require('./SvgIcon');
+const Icon = require('./Icon');
 
 module.exports = React.createClass({
   displayName: 'Icon Tooltip',
@@ -17,7 +17,7 @@ module.exports = React.createClass({
     return (
       this.props.showIf ?
       <OverlayTrigger placement='top' overlay={<Tooltip>{this.props.text}</Tooltip>}>
-        <SvgIcon icon={this.props.icon} />
+        <Icon icon={this.props.icon} />
       </OverlayTrigger> : null
     );
   }

@@ -1,7 +1,7 @@
 
 const React                 = require('react/addons');
 const cx                    = require('classnames');
-const SvgIcon               = require('./SvgIcon');
+const Icon                  = require('./Icon');
 const ImageWithFallback     = require('./ImageWithFallback');
 const Sash                  = require('./Sash');
 const {
@@ -112,7 +112,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <Carousel indicators={false} prevIcon={<SvgIcon icon='chevron-left'/>} nextIcon={<SvgIcon icon='chevron-right'/>}>
+      <Carousel indicators={false} prevIcon={<Icon icon='chevron-left'/>} nextIcon={<Icon icon='chevron-right'/>}>
         {images.map((img) => {
           return (
             <CarouselItem>

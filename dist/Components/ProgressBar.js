@@ -48,11 +48,12 @@ module.exports = React.createClass({
   render: function render() {
     var props = assign({}, this.props);
 
-    var className = props.className;
-    var progress = props.progress;
-    var showLabel = props.showLabel;
-    var size = props.size;
-    var type = props.type;
+    var _props = props;
+    var className = _props.className;
+    var progress = _props.progress;
+    var showLabel = _props.showLabel;
+    var size = _props.size;
+    var type = _props.type;
 
     props = omit(props, ['className', 'progress', 'showLabel', 'size', 'type']);
 

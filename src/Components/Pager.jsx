@@ -2,7 +2,7 @@ const React = require('react/addons');
 const cx    = require('classnames');
 
 // Components
-const SvgIcon = require('./SvgIcon');
+const Icon = require('./Icon');
 
 module.exports = React.createClass({
   displayName: 'Pager',
@@ -62,10 +62,10 @@ module.exports = React.createClass({
     return (
       <div className={pagerClass}>
         <button type='button' className={backBtnClass} onClick={this._onPageBack}>
-          <SvgIcon icon='chevron-left' />
+          <Icon icon='chevron-left' />
         </button>
         <button type='button' className={fwdBtnClass} onClick={this._onPageFwd}>
-          <SvgIcon icon='chevron-right' />
+          <Icon icon='chevron-right' />
         </button>
       </div>
     );

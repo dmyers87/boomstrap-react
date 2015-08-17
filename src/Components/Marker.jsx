@@ -2,7 +2,7 @@ const React   = require('react/addons');
 const cx      = require('classnames');
 
 // Components
-const SvgIcon = require('./SvgIcon');
+const Icon = require('./Icon');
 
 /**
  * Use markers to represent current searching / filtering parameters.
@@ -35,7 +35,7 @@ module.exports = React.createClass({
     let close = null;
     if (this.props.showClose) {
       close = (
-        <SvgIcon icon='cross' className={this.props.closeClass} onClick={this.props.onClose} />
+        <Icon icon='cross' className={this.props.closeClass} onClick={this.props.onClose} />
       );
     }
 

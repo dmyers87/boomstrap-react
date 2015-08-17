@@ -1,6 +1,6 @@
 const React = require('react/addons');
 const cx    = require('classnames');
-const SvgIcon  = require('./SvgIcon');
+const Icon  = require('./Icon');
 
 const { assign, omit } = require('lodash');
 
@@ -70,10 +70,10 @@ module.exports = React.createClass({
         <label className={switcherLabelClass} htmlFor={id}>
           <div className='switcher__inner'>
             <div className='switcher__on'>
-              <SvgIcon icon='checkmark' />
+              <Icon icon='checkmark' />
             </div>
             <div className='switcher__off'>
-              <SvgIcon icon='cross' />
+              <Icon icon='cross' />
             </div>
           </div>
         </label>

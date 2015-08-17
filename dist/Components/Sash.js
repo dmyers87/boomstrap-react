@@ -3,7 +3,7 @@
 var React = require('react/addons');
 var cx = require('classnames');
 var dateHelper = require('../Utilities/dateHelper');
-var SvgIcon = require('./SvgIcon');
+var Icon = require('./Icon');
 
 /**
  * Use sashes for showing property status.
@@ -55,7 +55,7 @@ module.exports = React.createClass({
           sashTitle = React.createElement(
             'span',
             null,
-            React.createElement(SvgIcon, { icon: 'arrow-down' }),
+            React.createElement(Icon, { icon: 'arrow-down' }),
             ' ',
             this.props.reducedAmount,
             ' (',
