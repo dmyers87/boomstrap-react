@@ -29,8 +29,14 @@ module.exports = React.createClass({
 
     var props = _objectWithoutProperties(_props, ['className', 'icon']);
 
-    var iconClass = cx(className, 'ficon', 'ficon-' + icon);
+    var useTag = '<use xlink:href=#icon-' + icon + ' />';
 
-    return React.createElement('i', _extends({ className: iconClass }, props));
+    var classes = cx(className, 'icon', 'icon-' + icon);
+
+    var useTagHtml = {
+      __html: useTag
+    };
+
+    return React.createElement('svg', _extends({ className: classes }, props, { dangerouslySetInnerHTML: useTagHtml }));
   }
 });

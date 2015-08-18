@@ -1,5 +1,5 @@
-const React = require('react/addons');
-const cx    = require('classnames');
+const React   = require('react/addons');
+const cx      = require('classnames');
 
 // Components
 const Icon = require('./Icon');

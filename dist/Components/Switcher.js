@@ -46,12 +46,13 @@ module.exports = React.createClass({
 
     var props = assign({}, this.props);
 
-    var checked = props.checked;
-    var className = props.className;
-    var disabled = props.disabled;
-    var id = props.id;
-    var onClick = props.onClick;
-    var size = props.size;
+    var _props = props;
+    var checked = _props.checked;
+    var className = _props.className;
+    var disabled = _props.disabled;
+    var id = _props.id;
+    var onClick = _props.onClick;
+    var size = _props.size;
 
     props = omit(props, ['checked', 'className', 'disabled', 'id', 'onClick', 'size']);
 

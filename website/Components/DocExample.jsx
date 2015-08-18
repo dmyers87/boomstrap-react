@@ -79,10 +79,6 @@ const DocTypes = {
     Component: require('../../src/Components/Score.jsx'),
     Example:   require('raw!../examples/Score.example.js')
   },
-  SvgIcon: {
-    Component: require('../../src/Components/SvgIcon.jsx'),
-    Example:   require('raw!../examples/SvgIcon.example.js')
-  },
   Switcher: {
     Component: require('../../src/Components/Switcher.jsx'),
     Example:   require('raw!../examples/Switcher.example.js')

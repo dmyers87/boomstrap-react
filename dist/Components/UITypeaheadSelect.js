@@ -8,6 +8,7 @@ var _require = require('react-bootstrap');
 var Overlay = _require.Overlay;
 
 var UITypeaheadSelectOverlay = require('./UITypeaheadSelectOverlay');
+var Icon = require('./Icon');
 
 module.exports = React.createClass({
   displayName: 'UI Typeahead Select',
@@ -80,13 +81,13 @@ module.exports = React.createClass({
   },
 
   keyHandlers: {
-    Enter: function Enter() {
+    Enter: function Enter() /* e */{
       if (this.props.options.length) {
         this._selectMatch(this.props.options[this.state.searchIndex].payload);
       }
     },
 
-    ArrowDown: function ArrowDown() {
+    ArrowDown: function ArrowDown() /* e */{
       var searchIndex = 0;
       if (this.state.searchIndex !== this.props.options.length - 1) {
         searchIndex = this.state.searchIndex + 1;
@@ -95,7 +96,7 @@ module.exports = React.createClass({
       this.setState({ searchIndex: searchIndex });
     },
 
-    ArrowUp: function ArrowUp() {
+    ArrowUp: function ArrowUp() /* e */{
       var searchIndex = undefined;
       if (this.state.searchIndex !== 0) {
         searchIndex = this.state.searchIndex - 1;
@@ -163,7 +164,7 @@ module.exports = React.createClass({
   render: function render() {
     var _this3 = this;
 
-    var searchIcon = cx('ficon ficon-search', this.props.iconClass);
+    var searchIcon = this.props.iconClass;
     var inputClass = cx('form-control', this.props.inputClass);
 
     return React.createElement(
@@ -179,7 +180,7 @@ module.exports = React.createClass({
         onKeyDown: this._onKeyDown,
         onChange: this._onChange,
         value: this.state.searchText }),
-      React.createElement('i', { className: searchIcon }),
+      React.createElement(Icon, { icon: 'search', className: searchIcon }),
       React.createElement(
         Overlay,
         {
@@ -199,4 +200,3 @@ module.exports = React.createClass({
     );
   }
 });
-/* e */ /* e */ /* e */

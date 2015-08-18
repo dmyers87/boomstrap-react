@@ -8,7 +8,7 @@ var React = require('react/addons');
 var cx = require('classnames');
 
 module.exports = React.createClass({
-  displayName: 'SvgIcon',
+  displayName: 'Icon (deprecated)',
 
   propTypes: {
     /**
@@ -29,14 +29,8 @@ module.exports = React.createClass({
 
     var props = _objectWithoutProperties(_props, ['className', 'icon']);
 
-    var useTag = '<use xlink:href=#icon-' + icon + ' />';
+    var iconClass = cx(className, 'ficon', 'ficon-' + icon);
 
-    var classes = cx(className, 'icon', 'icon-' + icon);
-
-    var useTagHtml = {
-      __html: useTag
-    };
-
-    return React.createElement('svg', _extends({ className: classes }, props, { dangerouslySetInnerHTML: useTagHtml }));
+    return React.createElement('i', _extends({ className: iconClass }, props));
   }
 });
