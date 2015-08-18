@@ -537,25 +537,6 @@
       }
     }
   },
-  "dist/Components/IconOld.js": {
-    "description": "",
-    "props": {
-      "icon": {
-        "type": {
-          "name": "string"
-        },
-        "required": true,
-        "description": "Icon name."
-      },
-      "className": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "Optionally include additional class name(s)."
-      }
-    }
-  },
   "dist/Components/IconTooltip.js": {
     "description": "",
     "props": {
