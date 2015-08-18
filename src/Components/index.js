@@ -7,7 +7,6 @@ module.exports = {
   Fauxdio:            require('./Fauxdio'),
   FauxLink:           require('./FauxLink'),
   Icon:               require('./Icon'),
-  IconOld:            require('./IconOld'),
   IconTooltip:        require('./IconTooltip'),
   IFrame:             require('./IFrame'),
   ImageWithFallback:  require('./ImageWithFallback'),
