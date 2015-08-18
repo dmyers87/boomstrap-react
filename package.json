@@ -56,7 +56,7 @@
     "build": "babel src --out-dir dist && gulp",
     "docs": "npm run build && react-docgen dist/Components/ --pretty --o ./docs/docs.json",
     "start": "npm run docs && gulp server",
-    "website": "gulp website",
+    "website": "npm run docs && gulp website",
     "prepublish": "npm run build",
     "postpublish": "npm run website"
   },
