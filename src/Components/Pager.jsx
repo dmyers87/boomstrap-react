@@ -50,11 +50,11 @@ module.exports = React.createClass({
     const maxPage = this._getMaxPage();
 
     const backBtnClass = cx('btn btn-default btn-icon', {
-      'disabled': currentPage === 1 || this.props.disabled
+      disabled: currentPage === 1 || this.props.disabled
     });
 
     const fwdBtnClass = cx('btn btn-default btn-icon', {
-      'disabled': currentPage === maxPage || this.props.disabled
+      disabled: currentPage === maxPage || this.props.disabled
     });
 
     const pagerClass = cx('btn-group minimal-pager', this.props.className);

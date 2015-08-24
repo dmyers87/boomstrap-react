@@ -211,12 +211,12 @@ module.exports = React.createClass({
     const showElement = this._renderBaseElement();
 
     const containerClass = cx('ui-select-bootstrap dropdown', {
-      'open': this.state.open
+      open: this.state.open
     });
 
     const dropdownElements = this.getFilteredItems().map((item, index) => {
       const rowClass = cx('ui-select-choices-row', {
-        'active': this.state.activeIndex === index
+        active: this.state.activeIndex === index
       });
 
       const itemSelected = this._payloadIsSelected(item.payload);

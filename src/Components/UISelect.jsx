@@ -1,4 +1,4 @@
-/*eslint react/no-multi-comp: 0*/
+/* eslint react/no-multi-comp: 0*/
 
 const React              = require('react/addons');
 const cx                 = require('classnames');
@@ -219,7 +219,7 @@ module.exports = React.createClass({
 
   renderDropdownItem(item, index) {
     const rowClass = cx('ui-select-choices-row', {
-      'active': this.state.activeIndex === index
+      active: this.state.activeIndex === index
     });
 
     return (
@@ -235,7 +235,7 @@ module.exports = React.createClass({
 
   render() {
     const containerClass = cx('ui-select-bootstrap dropdown', this.props.containerClass, {
-      'open': this.state.open
+      open: this.state.open
     });
 
     const isEmpty    = !this.props.text;

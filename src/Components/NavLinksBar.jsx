@@ -2,8 +2,8 @@ const React          = require('react/addons');
 const cx             = require('classnames');
 
 const Orientations = {
-  'Vertical':   'vertical',
-  'Horizontal': 'horizontal'
+  Vertical:   'vertical',
+  Horizontal: 'horizontal'
 };
 
 const getVerticalNavPos = (child) => {
