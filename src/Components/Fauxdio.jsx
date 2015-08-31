@@ -36,7 +36,10 @@ module.exports = React.createClass({
     /**
      * Provided for information on submitting forms
      */
-    value: React.PropTypes.string,
+    value: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number
+    ]),
 
     /**
      * A callback to fire when the Fauxdio is selected.
