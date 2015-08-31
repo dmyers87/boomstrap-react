@@ -27,6 +27,10 @@ const DocTypes = {
     Component: require('../../src/Components/Fauxdio.jsx'),
     Example:   require('raw!../examples/Fauxdio.example.js')
   },
+  FauxdioGroup: {
+    Component: require('../../src/Components/FauxdioGroup.jsx'),
+    Example:   require('raw!../examples/FauxdioGroup.example.js')
+  },
   Icon: {
     Component: require('../../src/Components/Icon.jsx'),
     Example:   require('raw!../examples/Icon.example.js')

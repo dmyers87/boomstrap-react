@@ -485,6 +485,85 @@
       }
     }
   },
+  "dist/Components/FauxdioGroup.js": {
+    "description": "Link your stylish Fauxdios together with the stylish FauxioGroup",
+    "props": {
+      "list": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "id": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ]
+              },
+              "label": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "element"
+                  }
+                ]
+              },
+              "value": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "required": true,
+        "description": "The list of items"
+      },
+      "groupName": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The name of the group"
+      },
+      "selectedValue": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        "required": false,
+        "description": "Sets a given item in the list to be (pre)selected"
+      },
+      "onClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "A function to run when an item in the list is clicked. The value of the item is passed to the function"
+      }
+    }
+  },
   "dist/Components/IFrame.js": {
     "description": "",
     "props": {
