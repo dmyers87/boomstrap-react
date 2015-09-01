@@ -59,7 +59,7 @@ module.exports = React.createClass({
           label={item.label}
           key={item.id}
           checked={item.value === this.props.selectedValue}
-          onChange={this.props.onClick.bind(null, item.value)}
+          onChange={() => this.props.onClick(item.value)}
         />
       );
     };
