@@ -5,6 +5,7 @@ module.exports = {
   Circle:             require('./Circle'),
   Fauxbox:            require('./Fauxbox'),
   Fauxdio:            require('./Fauxdio'),
+  FauxdioGroup:       require('./FauxdioGroup'),
   FauxLink:           require('./FauxLink'),
   Icon:               require('./Icon'),
   IconTooltip:        require('./IconTooltip'),

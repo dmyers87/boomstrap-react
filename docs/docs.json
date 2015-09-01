@@ -457,7 +457,15 @@
       },
       "value": {
         "type": {
-          "name": "string"
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "number"
+            }
+          ]
         },
         "required": false,
         "description": "Provided for information on submitting forms"
@@ -482,6 +490,93 @@
         },
         "required": false,
         "description": "A label to accompany the Fauxdio.  Can be text or a React node"
+      }
+    }
+  },
+  "dist/Components/FauxdioGroup.js": {
+    "description": "Link your stylish Fauxdios together with the stylish FauxioGroup",
+    "props": {
+      "list": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "id": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ]
+              },
+              "label": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "element"
+                  }
+                ]
+              },
+              "value": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "number"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "required": true,
+        "description": "The list of items"
+      },
+      "groupName": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "The name of the group"
+      },
+      "selectedValue": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        "required": false,
+        "description": "Sets a given item in the list to be (pre)selected"
+      },
+      "onClick": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "A function to run when an item in the list is clicked. The value of the item is passed to the function"
+      },
+      "fauxdioProps": {
+        "type": {
+          "name": "shape",
+          "value": "unkown"
+        },
+        "required": false,
+        "description": "A place for the various props you want to pass to the Fauxdios"
       }
     }
   },
