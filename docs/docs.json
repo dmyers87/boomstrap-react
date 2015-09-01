@@ -576,7 +576,7 @@
           "value": "unkown"
         },
         "required": false,
-        "description": ""
+        "description": "A place for the various props you want to pass to the Fauxdios"
       }
     }
   },

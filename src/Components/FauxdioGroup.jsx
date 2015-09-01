@@ -42,6 +42,9 @@ module.exports = React.createClass({
      * A function to run when an item in the list is clicked. The value of the item is passed to the function
      */
     onClick: React.PropTypes.func,
+    /**
+     * A place for the various props you want to pass to the Fauxdios
+     */
     fauxdioProps: React.PropTypes.shape({ ...Fauxdio.propTypes })
   },
 
