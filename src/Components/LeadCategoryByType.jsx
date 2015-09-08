@@ -8,7 +8,6 @@ module.exports = React.createClass({
   displayName: 'LeadCategoryByType',
 
   propTypes: {
-    ...LeadCategory.propTypes,
     className: React.PropTypes.string,
 
     /**
@@ -20,6 +19,7 @@ module.exports = React.createClass({
      * Indicates whether or not this is a seller category
      */
     seller: React.PropTypes.bool,
+    ...LeadCategory.propTypes
   },
 
   mixins: [PureRenderMixin],
