@@ -11,10 +11,14 @@ module.exports = React.createClass({
     className: React.PropTypes.string,
 
     /**
+     * Indicates whether or not this is a buyer category
+     */
+    buyer: React.PropTypes.bool,
+
+    /**
      * Indicates whether or not this is a seller category
      */
     seller: React.PropTypes.bool,
-
     ...LeadCategory.propTypes
   },
 
@@ -22,21 +26,27 @@ module.exports = React.createClass({
 
   getDefaultProps() {
     return {
+      buyer:  false,
       seller: false
     };
   },
 
   render: function() {
     const {
+      buyer,
       seller,
       className,
       ...props
     } = this.props;
 
+    if (!buyer && !seller) {
+      return null;
+    }
+
     return (
       <span className={className}>
         <LeadType
-          buyer={!seller}
+          buyer={buyer}
           seller={seller}
           abbreviated
           style={{
@@ -53,3 +63,4 @@ module.exports = React.createClass({
     );
   }
 });
+

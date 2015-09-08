@@ -17,10 +17,6 @@ module.exports = React.createClass({
 
   propTypes: {
     category:    React.PropTypes.number.isRequired,
-    equal:       React.PropTypes.bool,
-    abbreviated: React.PropTypes.bool,
-    small:       React.PropTypes.bool,
-    outline:     React.PropTypes.bool,
     muted:       React.PropTypes.bool,
     disabled:    React.PropTypes.bool
   },
@@ -29,10 +25,6 @@ module.exports = React.createClass({
 
   getDefaultProps() {
     return {
-      equal:       false,
-      abbreviated: false,
-      small:       false,
-      outline:     false,
       muted:       false,
       disabled:    false
     };
@@ -40,10 +32,6 @@ module.exports = React.createClass({
 
   render: function() {
     const {
-      equal,
-      abbreviated,
-      small,
-      outline,
       muted,
       disabled,
       ...props
@@ -54,17 +42,13 @@ module.exports = React.createClass({
 
     const categoryClass = 'leadcat-' + category.toLowerCase();
     const catClass = cx(categoryClass, 'leadcat', {
-      'leadcat-eq-abbr':    equal && abbreviated && !small,
-      'leadcat-eq-abbr-sm': equal && abbreviated && small,
-      'leadcat-eq':         equal && !abbreviated,
-      'leadcat-outline':    outline,
       'leadcat-muted':      muted,
       'leadcat-disabled':   disabled
     });
 
     return (
       <span {...props} className={catClass}>
-        { abbreviated ? abbr : category }
+        { abbr }
       </span>
     );
   }

@@ -9,22 +9,16 @@ var ComponentExample = React.createClass({
           <LeadType buyer seller />&nbsp;
         </div>
         <div>
-          <h4>Equal Width</h4>
-          <LeadType buyer equal />&nbsp;
-          <LeadType seller equal />&nbsp;
-          <LeadType buyer seller equal />&nbsp;
+          <h4>Square</h4>
+          <LeadType buyer square />&nbsp;
+          <LeadType seller square />&nbsp;
+          <LeadType buyer seller square />&nbsp;
         </div>
         <div>
-          <h4>Abbreviated</h4>
-          <LeadType buyer abbreviated />&nbsp;
-          <LeadType seller abbreviated />&nbsp;
-          <LeadType buyer seller abbreviated />&nbsp;
-        </div>
-        <div>
-          <h4>Abbreviated Vertical</h4>
-          <LeadType buyer abbreviated vertical />&nbsp;
-          <LeadType seller abbreviated vertical />&nbsp;
-          <LeadType buyer seller abbreviated vertical />&nbsp;
+          <h4>Square Small</h4>
+          <LeadType buyer square small />&nbsp;
+          <LeadType seller square small />&nbsp;
+          <LeadType buyer seller square small />&nbsp;
         </div>
       </div>
     );

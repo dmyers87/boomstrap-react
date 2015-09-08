@@ -20,34 +20,26 @@ module.exports = React.createClass({
     seller:      PropTypes.bool,
 
     /**
-     * For equal width lead type labels, set equal to true.
+     * For square (and stacked b/s) lead type labels, set square to true.
      */
-    equal:       PropTypes.bool,
+    square:      PropTypes.bool,
 
     /**
-     * For abbreviated lead type labels, set abbreviated to true.
-     * Abbreviated version will always be uppercase.
+     * Small augments square and produces leadtype-square-sm.
+     * Small by itself does nothing.
      */
-    abbreviated: PropTypes.bool,
-
-    /**
-     * Sometimes you just want to stand things on their heads.
-     * Set vertical and abbreviated to true when you need your leadtype to reach for the stars.
-     * This only applies to the B/S combination.
-     */
-    vertical:    PropTypes.bool
+    small:       PropTypes.bool
   },
 
   mixins: [addons.PureRenderMixin],
 
   getDefaultProps() {
     return {
-      className: '',
-      buyer: false,
-      seller: false,
-      equal: false,
-      abbreviated: false,
-      vertical: false
+      className:    '',
+      buyer:        false,
+      seller:       false,
+      square:       false,
+      small:        false
     };
   },
 
@@ -55,9 +47,8 @@ module.exports = React.createClass({
     const {
       buyer,
       seller,
-      equal,
-      abbreviated,
-      vertical,
+      square,
+      small,
       ...props
     } = this.props;
 
@@ -65,9 +56,8 @@ module.exports = React.createClass({
       'leadtype-buyer':         buyer && !seller,
       'leadtype-seller':       !buyer &&  seller,
       'leadtype-bs':            buyer &&  seller,
-      'leadtype-eq':            equal,
-      'leadtype-abbr':          abbreviated,
-      'leadtype-abbr-vertical': abbreviated && vertical
+      'leadtype-square':        square,
+      'leadtype-square-sm':     square && small
     });
 
     return (
