@@ -8,20 +8,25 @@ module.exports = React.createClass({
   displayName: 'LeadCategoryByType',
 
   propTypes: {
+    ...LeadCategory.propTypes,
     className: React.PropTypes.string,
+
+    /**
+     * Indicates whether or not this is a buyer category
+     */
+    buyer: React.PropTypes.bool,
 
     /**
      * Indicates whether or not this is a seller category
      */
     seller: React.PropTypes.bool,
-
-    ...LeadCategory.propTypes
   },
 
   mixins: [PureRenderMixin],
 
   getDefaultProps() {
     return {
+      buyer:  false,
       seller: false
     };
   },
@@ -33,6 +38,10 @@ module.exports = React.createClass({
       className,
       ...props
     } = this.props;
+
+    if (!buyer && !seller) {
+      return null;
+    }
 
     return (
       <span className={className}>
@@ -54,3 +63,4 @@ module.exports = React.createClass({
     );
   }
 });
+

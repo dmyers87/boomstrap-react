@@ -714,7 +714,30 @@
   "dist/Components/LeadCategoryByType.js": {
     "description": "",
     "props": {
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": ""
+      },
+      "buyer": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Indicates whether or not this is a buyer category",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
       "seller": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Indicates whether or not this is a seller category",
         "defaultValue": {
           "value": "false",
           "computed": false
