@@ -28,6 +28,7 @@ module.exports = React.createClass({
 
   render: function() {
     const {
+      buyer,
       seller,
       className,
       ...props
@@ -36,7 +37,7 @@ module.exports = React.createClass({
     return (
       <span className={className}>
         <LeadType
-          buyer={!seller}
+          buyer={buyer}
           seller={seller}
           abbreviated
           style={{
