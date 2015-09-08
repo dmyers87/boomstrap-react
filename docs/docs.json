@@ -687,50 +687,6 @@
         "required": true,
         "description": ""
       },
-      "equal": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "abbreviated": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "small": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "outline": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
       "muted": {
         "type": {
           "name": "bool"
@@ -758,6 +714,12 @@
   "dist/Components/LeadCategoryByType.js": {
     "description": "",
     "props": {
+      "buyer": {
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
       "seller": {
         "defaultValue": {
           "value": "false",
@@ -802,34 +764,23 @@
           "computed": false
         }
       },
-      "equal": {
+      "square": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": "For equal width lead type labels, set equal to true.",
+        "description": "For square (and stacked b/s) lead type labels, set square to true.",
         "defaultValue": {
           "value": "false",
           "computed": false
         }
       },
-      "abbreviated": {
+      "small": {
         "type": {
           "name": "bool"
         },
         "required": false,
-        "description": "For abbreviated lead type labels, set abbreviated to true.\nAbbreviated version will always be uppercase.",
-        "defaultValue": {
-          "value": "false",
-          "computed": false
-        }
-      },
-      "vertical": {
-        "type": {
-          "name": "bool"
-        },
-        "required": false,
-        "description": "Sometimes you just want to stand things on their heads.\nSet vertical and abbreviated to true when you need your leadtype to reach for the stars.\nThis only applies to the B/S combination.",
+        "description": "Small augments square and produces leadtype-square-sm.\nSmall by itself does nothing.",
         "defaultValue": {
           "value": "false",
           "computed": false
