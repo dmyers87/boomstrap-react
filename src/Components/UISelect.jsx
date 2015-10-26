@@ -176,13 +176,15 @@ module.exports = React.createClass({
   select(index) {
     const selectedItem = this.getFilteredItems()[index];
 
-    this.setState({
-      search: '',
-      open: false
-    }, () => {
-      this.setActiveItem(0);
-      this.props.onChange(selectedItem);
-    });
+    if (selectedItem) {
+      this.setState({
+        search: '',
+        open: false
+      }, () => {
+        this.setActiveItem(0);
+        this.props.onChange(selectedItem);
+      });
+    }
   },
 
   onKeyDown(e) {
