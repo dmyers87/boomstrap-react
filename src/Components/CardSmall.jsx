@@ -1,5 +1,5 @@
 
-const React                 = require('react/addons');
+const React                 = require('react');
 const cx                    = require('classnames');
 const ImageWithFallback     = require('./ImageWithFallback');
 const Sash                  = require('./Sash');

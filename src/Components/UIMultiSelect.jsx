@@ -1,4 +1,5 @@
-const React = require('react/addons');
+const React = require('react');
+const ReactDOM = require('react-dom');
 const cx    = require('classnames');
 
 const Fauxbox  = require('./Fauxbox');
@@ -55,7 +56,7 @@ module.exports = React.createClass({
         open: true,
         allowBlurEvent: true
       }, () => {
-        React.findDOMNode(this.refs.searchInput).focus();
+        ReactDOM.findDOMNode(this.refs.searchInput).focus();
       });
     }
   },

@@ -6,7 +6,8 @@ module.exports = {
   entry: {
     'boomstrap-react-docs': path.join(__dirname, 'website/App.jsx'),
     vendor: [
-      'component-playground'
+      'component-playground',
+      'react-bootstrap'
     ]
   },
   output: {
@@ -35,10 +36,5 @@ module.exports = {
       exclude: /vendor/
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
-  ],
-  externals: {
-    'react': 'React',
-    'react/addons': 'React',
-    'boomstrap-react': 'BoomstrapReact'
-  }
+  ]
 };

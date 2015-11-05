@@ -1,8 +1,8 @@
-const React         = require('react/addons');
+const React         = require('react');
 const LeadCategory  = require('./LeadCategory');
 const LeadType      = require('./LeadType');
 
-const PureRenderMixin = React.addons.PureRenderMixin;
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 
 module.exports = React.createClass({
   displayName: 'LeadCategoryByType',

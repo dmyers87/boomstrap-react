@@ -1,4 +1,5 @@
-const React = require('react/addons');
+const React = require('react');
+const ReactDOM = require('react-dom');
 
 module.exports = React.createClass({
   displayName: 'IFrame',
@@ -14,7 +15,7 @@ module.exports = React.createClass({
     // React does not work with onLoad events in iFrames yet
     // Because of the event delegation setters
     // https://github.com/facebook/react/issues/1718
-    const iframe = React.findDOMNode(this.refs.iframe);
+    const iframe = ReactDOM.findDOMNode(this.refs.iframe);
     if (iframe.attachEvent) {
       iframe.attachEvent('onload', () => {
         this._iFrameCloseRegister();
@@ -27,7 +28,7 @@ module.exports = React.createClass({
   },
 
   _iFrameCloseRegister() {
-    const element = React.findDOMNode(this.refs.iframe);
+    const element = ReactDOM.findDOMNode(this.refs.iframe);
     if (element &&
       element.contentWindow &&
       element.contentWindow.registerClose) {

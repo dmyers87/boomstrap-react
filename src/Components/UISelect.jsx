@@ -1,6 +1,7 @@
 /* eslint react/no-multi-comp: 0*/
 
-const React              = require('react/addons');
+const React              = require('react');
+const ReactDOM           = require('react-dom');
 const cx                 = require('classnames');
 const FauxLink           = require('./FauxLink');
 const DocumentClickMixin = require('../Mixins/DocumentClickMixin');
@@ -105,7 +106,7 @@ module.exports = React.createClass({
       this.setState({
         open: true
       }, () => {
-        React.findDOMNode(this.refs.searchInput).focus();
+        ReactDOM.findDOMNode(this.refs.searchInput).focus();
       });
     }
   },
@@ -130,8 +131,8 @@ module.exports = React.createClass({
     const highlightedRef = this.refs['dropdownMenuItem_' + this.state.activeIndex];
 
     if (containerRef && highlightedRef) {
-      const container   = React.findDOMNode(containerRef);
-      const highlighted = React.findDOMNode(highlightedRef);
+      const container   = ReactDOM.findDOMNode(containerRef);
+      const highlighted = ReactDOM.findDOMNode(highlightedRef);
       const posY        = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
       const height      = container.offsetHeight;
 

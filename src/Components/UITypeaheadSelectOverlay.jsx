@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 
 const ModalOverlay = require('../Constants/BootstrapConstants').Modal.Overlay;
 

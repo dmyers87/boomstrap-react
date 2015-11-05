@@ -1,4 +1,4 @@
-const React      = require('react/addons');
+const React      = require('react');
 const DocExample = require('./DocExample');
 
 require('../less/GeneratedDoc');
@@ -38,7 +38,7 @@ module.exports = React.createClass({
           const val = this.renderPropType(type.value[propName]);
           return `${propName}: ${val}`;
         });
-        return `{ ${values.join(', ')} }`;
+        return `Shape of { ${values.join(', ')} }`;
 
       case DocProps.ENUM:
         values = type.value.map((val) => val.value);
@@ -52,15 +52,18 @@ module.exports = React.createClass({
   renderPropRow(prop, index) {
     const thisProp = this.props.info.props[prop];
     let valueColumn = this.renderPropType(thisProp.type);
+
+    const defaultValue = (thisProp.defaultValue || {}).value || 'N/A';
+
     return (
       <tr key={index}>
         <td>{prop}</td>
         <td>{thisProp.required ? <b>Yes</b> : 'No'}</td>
-        <td>{thisProp.defaultValue || 'N/A'}</td>
+        <td>{defaultValue}</td>
         <td>{valueColumn}</td>
         <td>{thisProp.description}</td>
       </tr>
-      );
+    );
   },
 
   renderTable() {
@@ -89,11 +92,13 @@ module.exports = React.createClass({
         <h4>Props</h4>
         <table className='table table-bordered'>
           <thead>
-            <th>Name</th>
-            <th>Required</th>
-            <th>Default Value</th>
-            <th>Type</th>
-            <th>Description</th>
+            <tr>
+              <th>Name</th>
+              <th>Required</th>
+              <th>Default Value</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
           </thead>
           <tbody>
             {rows}

@@ -3,7 +3,8 @@
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
 
-const React = require('react/addons');
+const React = require('react');
+const ReactDOM = require('react-dom');
 
 /**
 * Checks whether a node is within
@@ -36,7 +37,7 @@ module.exports = {
   handleDocumentClick: function(e) {
     // If the click originated from within this component
     // don't do anything.
-    if (isNodeInRoot(e.target, React.findDOMNode(this))) {
+    if (isNodeInRoot(e.target, ReactDOM.findDOMNode(this))) {
       return;
     }
     this.onDocumentClick();
