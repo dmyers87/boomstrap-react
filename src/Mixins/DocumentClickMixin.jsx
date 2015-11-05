@@ -3,7 +3,6 @@
 // Code used from DropdownStateMixin from react-bootstrap
 // https://github.com/react-bootstrap/react-bootstrap/blob/master/src/DropdownStateMixin.js
 
-const React = require('react');
 const ReactDOM = require('react-dom');
 
 /**

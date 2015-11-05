@@ -57,7 +57,7 @@ const Fauxbox = React.createClass({
           type='checkbox'
           id={this.props.id}
           checked={this.props.checked}
-          readOnly={true}
+          readOnly
           onClick={this.props.onClick} />
         <label className={labelClass} htmlFor={this.props.id}>{this.props.label}</label>
       </div>

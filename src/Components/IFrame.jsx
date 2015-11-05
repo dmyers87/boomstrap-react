@@ -48,7 +48,7 @@ module.exports = React.createClass({
         src={src}
         width={width}
         height={height}
-        seamless={true}
+        seamless
         onLoad={this._iFrameCloseRegister} />
     );
   }
