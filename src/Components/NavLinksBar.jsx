@@ -95,6 +95,13 @@ module.exports = React.createClass({
     this.childRefs = null;
   },
 
+  _setChildRef(ref, index) {
+    // Null checking because refs can occur as un-mount is happening
+    if (this.childRefs) {
+      this.childRefs[`navChild-${index}`] = ref;
+    }
+  },
+
   _fillNavPositions() {
     let navPositions = {};
     let childCount   = 0;
@@ -171,7 +178,7 @@ module.exports = React.createClass({
           {React.Children.map(this.props.children, (child, index) => {
             return React.cloneElement(child, {
               key: index,
-              ref: (ref) => this.childRefs['navChild-' + index] = ref
+              ref: (ref) => this._setChildRef(ref, index)
             });
           })}
           <span className={barClass} style={barStyle} />
