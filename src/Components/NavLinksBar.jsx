@@ -113,8 +113,14 @@ module.exports = React.createClass({
     Object.keys(this.childRefs).forEach((ref, index) => {
       if (ref.indexOf('navChild-') !== -1) {
         const child = ReactDOM.findDOMNode(this.childRefs[ref]);
-        navPositions[index] = getNavPos(child);
-        childCount++;
+        if (child) {
+          navPositions[index] = getNavPos(child);
+          childCount++;
+        } else {
+          // This child Ref does not exist anymore.
+          // It could have been removed.
+          delete this.childRefs[ref];
+        }
       }
     });
 
