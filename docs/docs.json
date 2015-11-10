@@ -475,7 +475,11 @@
           "name": "func"
         },
         "required": false,
-        "description": "A callback to fire when the Fauxdio is selected."
+        "description": "A callback to fire when the Fauxdio is selected.",
+        "defaultValue": {
+          "value": "function onChange() {}",
+          "computed": false
+        }
       },
       "inline": {
         "type": {
