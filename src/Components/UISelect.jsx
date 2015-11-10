@@ -4,7 +4,6 @@ const React              = require('react');
 const ReactDOM           = require('react-dom');
 const cx                 = require('classnames');
 const FauxLink           = require('./FauxLink');
-const DocumentClickMixin = require('../Mixins/DocumentClickMixin');
 const documentClickContainer = require('../Containers/DocumentClickContainer');
 
 const ClosableUl = documentClickContainer('ul');
