@@ -15,6 +15,12 @@ module.exports = React.createClass({
     className: React.PropTypes.string
   },
 
+  getDefaultProps() {
+    return {
+      className: ''
+    };
+  },
+
   render() {
     let { className, icon, ...props } = this.props;
 
