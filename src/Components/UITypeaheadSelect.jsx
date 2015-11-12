@@ -1,4 +1,5 @@
-const React = require('react/addons');
+const React = require('react');
+const ReactDOM = require('react-dom');
 const cx    = require('classnames');
 
 const { Overlay }              = require('react-bootstrap');
@@ -133,12 +134,12 @@ module.exports = React.createClass({
     }, () => {
       this.props.onSelectMatch(payload);
       this.props.onSearch(this.state.searchText);
-      React.findDOMNode(this.refs.searchInput).blur();
+      ReactDOM.findDOMNode(this.refs.searchInput).blur();
     });
   },
 
   _onFocus() {
-    const node            = React.findDOMNode(this);
+    const node            = ReactDOM.findDOMNode(this);
     const nodeBox         = node.getBoundingClientRect();
     const documentElement = document.documentElement;
     const searchLeft = nodeBox.left + window.pageXOffset - documentElement.clientLeft;
@@ -173,7 +174,7 @@ module.exports = React.createClass({
         <Icon icon='search' className={searchIcon}/>
         <Overlay
           show={this.state.overlayShown}
-          target={() => React.findDOMNode(this)}
+          target={() => ReactDOM.findDOMNode(this)}
           placement='bottom'>
           <UITypeaheadSelectOverlay
             positionLeftOverride={this.state.searchLeft}

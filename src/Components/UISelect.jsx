@@ -1,31 +1,12 @@
 /* eslint react/no-multi-comp: 0*/
 
-const React              = require('react/addons');
+const React              = require('react');
+const ReactDOM           = require('react-dom');
 const cx                 = require('classnames');
 const FauxLink           = require('./FauxLink');
-const DocumentClickMixin = require('../Mixins/DocumentClickMixin');
+const documentClickContainer = require('../Containers/DocumentClickContainer');
 
-const UISelectDropdownMenu = React.createClass({
-  displayName: 'UI Select Dropdown Menu',
-
-  propTypes: {
-    className: React.PropTypes.string,
-    onClose:   React.PropTypes.func,
-    children:  React.PropTypes.node
-  },
-
-  mixins: [DocumentClickMixin],
-
-  onDocumentClick() {
-    this.props.onClose();
-  },
-
-  render() {
-    return (
-      <ul aria-labelledby='dLabel' className={this.props.className} role='menu'>{this.props.children}</ul>
-    );
-  }
-});
+const ClosableUl = documentClickContainer('ul');
 
 module.exports = React.createClass({
   displayName: 'UISelect',
@@ -100,12 +81,20 @@ module.exports = React.createClass({
     };
   },
 
+  componentWillMount() {
+    this._refs = {};
+  },
+
+  componentWillUnmount() {
+    this._refs = null;
+  },
+
   activate() {
     if (!this.props.disabled) {
       this.setState({
         open: true
       }, () => {
-        React.findDOMNode(this.refs.searchInput).focus();
+        this._refs.searchInput.focus();
       });
     }
   },
@@ -126,12 +115,12 @@ module.exports = React.createClass({
   },
 
   _ensureHighlightVisible() {
-    const containerRef   = this.refs.dropdownMenu;
-    const highlightedRef = this.refs['dropdownMenuItem_' + this.state.activeIndex];
+    const containerRef   = this._refs.dropdownMenu;
+    const highlightedRef = this._refs[`dropdownMenuItem_${this.state.activeIndex}`];
 
     if (containerRef && highlightedRef) {
-      const container   = React.findDOMNode(containerRef);
-      const highlighted = React.findDOMNode(highlightedRef);
+      const container   = ReactDOM.findDOMNode(containerRef);
+      const highlighted = highlightedRef;
       const posY        = highlighted.offsetTop + highlighted.clientHeight - container.scrollTop;
       const height      = container.offsetHeight;
 
@@ -225,8 +214,14 @@ module.exports = React.createClass({
     });
 
     return (
-      <li className='ui-select-choices-group' key={index} ref={'dropdownMenuItem_' + index}>
-        <div className={rowClass} onMouseEnter={() => this.setActiveItem(index)} onClick={() => this.select(index)}>
+      <li
+        className='ui-select-choices-group'
+        key={index}
+        ref={(ref) => this._refs['dropdownMenuItem_' + index] = ref}>
+        <div
+          className={rowClass}
+          onMouseEnter={() => this.setActiveItem(index)}
+          onClick={() => this.select(index)}>
           <FauxLink className='ui-select-choices-row-inner'>
             <div>{item.text}</div>
           </FauxLink>
@@ -270,7 +265,7 @@ module.exports = React.createClass({
           onChange={this.updateSearch}
           onKeyDown={this.onKeyDown}
           placeholder={this.props.placeholder}
-          ref='searchInput'
+          ref={(ref) => this._refs.searchInput = ref}
           tabIndex='-1'
           type='text'
           value={this.state.search}
@@ -285,9 +280,16 @@ module.exports = React.createClass({
         });
 
         dropdownMenu = (
-          <UISelectDropdownMenu className={dropdownMenuClass} onClose={this.onClose} ref='dropdownMenu'>
+          <ClosableUl
+            aria-labelledby='dLabel'
+            className={dropdownMenuClass}
+            onDocumentClick={this.onClose}
+            ref={(ref) => {
+              this._refs.dropdownMenu = ReactDOM.findDOMNode(ref);
+            }}
+            role='menu'>
             {dropdownElements}
-          </UISelectDropdownMenu>
+          </ClosableUl>
         );
       }
     }

@@ -1,7 +1,8 @@
-const React = require('react/addons');
+const React = require('react');
 const cx    = require('classnames');
+const PureRenderMixin = require('react-addons-pure-render-mixin');
 
-const { PropTypes, addons } = React;
+const { PropTypes } = React;
 
 module.exports = React.createClass({
   displayName: 'LeadType',
@@ -31,7 +32,7 @@ module.exports = React.createClass({
     small:       PropTypes.bool
   },
 
-  mixins: [addons.PureRenderMixin],
+  mixins: [PureRenderMixin],
 
   getDefaultProps() {
     return {

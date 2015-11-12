@@ -1,5 +1,5 @@
 /* eslint no-script-url:0 */
-const React = require('react/addons');
+const React = require('react');
 
 /**
  * Faux Link allows the user to create text that resembles a link

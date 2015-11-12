@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 const cx    = require('classnames');
 
 /**
@@ -59,7 +59,8 @@ module.exports = React.createClass({
 
   getDefaultProps() {
     return {
-      checked: false
+      checked: false,
+      onChange: () => {}
     };
   },
 

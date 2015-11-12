@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 const cx    = require('classnames');
 const _     = require('lodash');
 const { Link } = require('react-router');
@@ -49,7 +49,7 @@ const DocsPage = React.createClass({
               'active': index === componentIndex
             });
             return (
-              <li className={listItemClass}>
+              <li className={listItemClass} key={index}>
                 <Link to={'/docs/' + comp.name}>{comp.name}</Link>
               </li>
             );

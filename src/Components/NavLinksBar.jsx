@@ -1,4 +1,5 @@
-const React          = require('react/addons');
+const React          = require('react');
+const ReactDOM       = require('react-dom');
 const cx             = require('classnames');
 
 const Orientations = {
@@ -75,6 +76,10 @@ module.exports = React.createClass({
     };
   },
 
+  componentWillMount() {
+    this.childRefs = {};
+  },
+
   componentDidMount() {
     this._fillNavPositions();
   },
@@ -86,6 +91,17 @@ module.exports = React.createClass({
     }
   },
 
+  componentWillUnmount() {
+    this.childRefs = null;
+  },
+
+  _setChildRef(ref, index) {
+    // Null checking because refs can occur as un-mount is happening
+    if (this.childRefs) {
+      this.childRefs[`navChild-${index}`] = ref;
+    }
+  },
+
   _fillNavPositions() {
     let navPositions = {};
     let childCount   = 0;
@@ -94,11 +110,17 @@ module.exports = React.createClass({
       getVerticalNavPos :
       getHorizontalNavPos;
 
-    Object.keys(this.refs).forEach((ref, index) => {
+    Object.keys(this.childRefs).forEach((ref, index) => {
       if (ref.indexOf('navChild-') !== -1) {
-        const child = React.findDOMNode(this.refs[ref]);
-        navPositions[index] = getNavPos(child);
-        childCount++;
+        const child = ReactDOM.findDOMNode(this.childRefs[ref]);
+        if (child) {
+          navPositions[index] = getNavPos(child);
+          childCount++;
+        } else {
+          // This child Ref does not exist anymore.
+          // It could have been removed.
+          delete this.childRefs[ref];
+        }
       }
     });
 
@@ -162,7 +184,7 @@ module.exports = React.createClass({
           {React.Children.map(this.props.children, (child, index) => {
             return React.cloneElement(child, {
               key: index,
-              ref: 'navChild-' + index
+              ref: (ref) => this._setChildRef(ref, index)
             });
           })}
           <span className={barClass} style={barStyle} />

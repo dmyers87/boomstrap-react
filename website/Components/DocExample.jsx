@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 
 require('../less/ExampleStyles.less');
 
@@ -119,14 +119,15 @@ module.exports = React.createClass({
 
     const scope = {
       React: React,
+      ReactDOM: ReactDOM,
       [this.props.name]: docType.Component
     };
-    console.log(scope);
 
     return (
       <div>
         <h4>Try it out!</h4>
         <Playground
+          noRender={false}
           key={this.props.name}
           codeText={docType.Example}
           theme={'neo'}

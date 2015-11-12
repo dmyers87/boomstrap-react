@@ -1,4 +1,4 @@
-const React = require('react/addons');
+const React = require('react');
 const cx    = require('classnames');
 const Icon  = require('./Icon');
 
@@ -65,7 +65,7 @@ module.exports = React.createClass({
           className='switcher__input'
           id={id}
           checked={checked}
-          readOnly={true}
+          readOnly
           onClick={onClick} />
         <label className={switcherLabelClass} htmlFor={id}>
           <div className='switcher__inner'>

@@ -40,4 +40,4 @@ var ComponentExample = React.createClass({
     );
   }
 });
-React.render(<ComponentExample/>, mountNode);
+ReactDOM.render(<ComponentExample/>, mountNode);

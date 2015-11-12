@@ -1,5 +1,5 @@
-const React = require('react/addons');
-const { extend, omit } = require('lodash');
+const React = require('react');
+const { omit } = require('lodash');
 
 module.exports = React.createClass({
   displayName: 'Image with Fallback',
@@ -24,7 +24,7 @@ module.exports = React.createClass({
   },
 
   render() {
-    const props = omit(extend({}, this.props), ['fallbackSrc', 'src']);
+    const props = omit(this.props, ['fallbackSrc', 'src']);
 
     const src = this.state.src || this.props.src;
 

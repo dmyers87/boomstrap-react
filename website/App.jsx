@@ -1,4 +1,9 @@
 const React  = require('react/addons');
+const ReactDOM = require('react-dom');
+
+window.React = React;
+window.ReactDOM = ReactDOM;
+
 const Router = require('react-router');
 const { RouteHandler, Route } = Router;
 
@@ -55,7 +60,7 @@ request.get('docs/docs.json').end((err, data) => {
   );
 
   Router.run(routes, Router.HashLocation, (Root) => {
-    React.render(<Root/>, document.getElementById('page'));
+    ReactDOM.render(<Root/>, document.getElementById('page'));
   });
 });
 
