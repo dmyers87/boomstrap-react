@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
-    "lodash": "^2.4.1",
+    "lodash": "^4.17.21",
     "react-addons-pure-render-mixin": "^0.14.2"
   },
   "scripts": {
