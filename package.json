@@ -42,7 +42,7 @@
     "node-libs-browser": "^0.5.2",
     "raw-loader": "^0.5.1",
     "react-docgen": "^1.2.0",
-    "react-router": "^0.13.5",
+    "react-router": "^1.0.0",
     "react": "^0.14.2",
     "react-bootstrap": "^0.27.0",
     "react-dom": "^0.14.2",
