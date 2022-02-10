@@ -35,7 +35,7 @@
     "gulp-gh-pages": "^0.4.0",
     "gulp-util": "^3.0.4",
     "jest-cli": "^0.2.1",
-    "less": "^2.5.0",
+    "less": "^3.0.0",
     "less-loader": "^2.2.0",
     "marked": "^0.3.2",
     "moment": "^2.8.4",
