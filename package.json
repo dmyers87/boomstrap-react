@@ -48,7 +48,7 @@
     "react-dom": "^0.14.2",
     "style-loader": "^0.12.2",
     "superagent": "^1.2.0",
-    "uglifyify": "^3.0.1",
+    "uglifyify": "^4.0.0",
     "vinyl-source-stream": "^1.0.0",
     "webpack": "^1.8.11",
     "webpack-dev-server": "^1.8.2"
