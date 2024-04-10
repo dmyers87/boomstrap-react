@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
-    "babel": "^5.5.4",
+    "babel": "^6.0.0",
     "babel-core": "^5.5.4",
     "babel-eslint": "^4.0.10",
     "babel-jest": "^4.0.0",
